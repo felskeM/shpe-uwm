@@ -1,0 +1,14 @@
+[
+  {
+    "name": "Erick Covarrubias",
+    "role": "President",
+    "photo": "/images/erick.jpg",
+    "bio": ""
+  },
+  {
+    "name": "Diego Sarmiento",
+    "role": "Vice President",
+    "photo": "/images/diego.jpg",
+    "bio": ""
+  }
+]
