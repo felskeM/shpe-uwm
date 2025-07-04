@@ -1,22 +1,17 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* globals.css */
+@import "tailwindcss";
 
-/* variables… */
+/* then your custom CSS… */
 :root {
   --background: #ffffff;
   --foreground: #171717;
 }
-
-/* dark mode overrides… */
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
   }
 }
-
-/* base styles… */
 body {
   background: var(--background);
   color: var(--foreground);
