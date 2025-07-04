@@ -10,7 +10,7 @@ interface Props {
 export default function RootLayout({ children }: Props) {
   return (
     <html lang="en">
-      <body className="antialiased">
+      <body className="bg-background text-foreground antialiased">
         <Header />
         <main>{children}</main>
         <Footer />

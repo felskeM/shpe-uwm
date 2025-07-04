@@ -11,7 +11,7 @@ const NAV = [
 
 export default function Header() {
   return (
-    <header className="fixed w-full bg-shpe-mainNavy shadow z-50">
+    <header className="fixed w-full bg-shpe-mainnavy shadow z-50">
       <div className="container mx-auto flex items-center justify-between p-4">
         <Link href="/">
           <span className="font-bold text-xl">SHPE-UWM</span>
