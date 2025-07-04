@@ -17,15 +17,12 @@ const FEATURES = [
 
 export default function FeatureSection() {
   return (
-    <section
-      id="features"
-      className="py-20 bg-gray-50"
-    >
+    <section id="features" className="py-20 bg-shpe-lightGray">
       <div className="container mx-auto px-4">
         <div className="grid gap-8 md:grid-cols-3">
           {FEATURES.map((f) => (
             <div key={f.title} className="text-center">
-              <div className="mx-auto w-20 h-20">
+              <div className="mx-auto w-20 h-20 text-shpe-red">
                 <Image
                   src="/images/placeholder-card.jpg"
                   alt="icon"
@@ -33,8 +30,10 @@ export default function FeatureSection() {
                   height={80}
                 />
               </div>
-              <h3 className="mt-4 text-xl font-semibold">{f.title}</h3>
-              <p className="mt-2 text-gray-600">{f.desc}</p>
+              <h3 className="mt-4 text-xl font-semibold text-shpe-dark">
+                {f.title}
+              </h3>
+              <p className="mt-2 text-shpe-dark/75">{f.desc}</p>
             </div>
           ))}
         </div>

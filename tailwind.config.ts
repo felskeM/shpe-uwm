@@ -1,26 +1,18 @@
 // tailwind.config.ts
-import type { Config } from "tailwindcss";
+import type { Config } from 'tailwindcss'
+import { shpeColors } from './styles/colors'
 
 const config: Config = {
   content: [
-    "./app/**/*.{ts,tsx,js,jsx}",
-    "./components/**/*.{ts,tsx,js,jsx}",
+    './app/**/*.{ts,tsx,js,jsx}',
+    './components/**/*.{ts,tsx,js,jsx}',
   ],
-  theme: { 
+  theme: {
     extend: {
       colors: {
-        shpe: {
-          red: '#CF371B', // RGB 207,55,27 :contentReference[oaicite:1]{index=1}
-          mainnavy: '#1A2B52', // RGB 26,43,82 :contentReference[oaicite:2]{index=2}
-          lightnavy: '#1B69B0', // RGB 27,105,176 :contentReference[oaicite:3]{index=3}
-          orange: '#ED5D29', // RGB 237,93,41 :contentReference[oaicite:4]{index=4}
-          dark: '#1C1B1A', // RGB 28,27,26 :contentReference[oaicite:5]{index=5}
-          midnavy: '#2F4D87', // RGB 47,77,135 :contentReference[oaicite:6]{index=6}
-          lightblue: '#79ABBE', // RGB 121,171,190 :contentReference[oaicite:7]{index=7}
-          lightgray: '#BADEEC', // RGB 186,222,236 :contentReference[oaicite:8]{index=8}
-        },
+        shpe: shpeColors,  // now yields classes like bg-shpe-main-navy
       },
-    }, 
+    },
   },
   plugins: [],
 }

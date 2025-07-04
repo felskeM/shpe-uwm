@@ -2,9 +2,9 @@ import Image from 'next/image'
 
 export default function SponsorsSection() {
   return (
-    <section id="sponsors" className="py-20 bg-gray-50">
+    <section id="sponsors" className="py-20 bg-shpe-lightGray">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-bold text-center mb-12">
+        <h2 className="text-3xl font-bold text-center text-shpe-dark mb-12">
           Our Sponsoring Partners
         </h2>
         <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 gap-8 items-center">

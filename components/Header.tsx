@@ -9,21 +9,27 @@ const NAV = [
   { label: 'Contact', href: '#contact' },
 ]
 
+/**
+ * Site header with SHPE main navy background.
+ */
 export default function Header() {
   return (
-    <header className="fixed w-full bg-shpe-mainnavy shadow z-50">
+    <header className="fixed top-0 w-full bg-shpe-main-navy text-shpe-orange z-50 shadow">
       <div className="container mx-auto flex items-center justify-between p-4">
         <Link href="/">
           <span className="font-bold text-xl">SHPE-UWM</span>
         </Link>
-        <nav className="space-x-6 hidden md:flex">
-          {NAV.map((item) => (
-            <Link key={item.href} href={item.href} className="hover:text-shpe-red">
-              {item.label}
+        <nav className="hidden md:flex space-x-8">
+          {NAV.map(({ label, href }) => (
+            <Link
+              key={href}
+              href={href}
+              className="hover:text-shpe-orange transition"
+            >
+              {label}
             </Link>
           ))}
         </nav>
-        {/* Mobile menu button if you want */}
       </div>
     </header>
   )

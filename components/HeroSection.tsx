@@ -20,7 +20,7 @@ export default function HeroSection() {
         </p>
         <Link
           href="#programs"
-          className="mt-6 px-6 py-3 bg-red-600 hover:bg-red-700 text-white rounded-xl font-medium"
+          className="mt-6 px-6 py-3 bg-shpe-red hover:bg-shpe-orange text-white rounded-xl font-medium transition"
         >
           Explore Programs
         </Link>

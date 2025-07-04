@@ -8,7 +8,7 @@ const TESTIMONIALS = [
   },
   {
     quote:
-      'Joining SHPE-–UWM was the best decision of my college experience.',
+      'Joining SHPE–UWM was the best decision of my college experience.',
     name: 'Tyler Junk',
   },
   {
@@ -20,12 +20,14 @@ const TESTIMONIALS = [
 
 export default function TestimonialsSection() {
   return (
-    <section id="testimonials" className="py-20 bg-gray-50">
+    <section id="testimonials" className="py-20 bg-white">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-bold text-center mb-12">Hear From Our Alumni</h2>
+        <h2 className="text-3xl font-bold text-center text-shpe-dark mb-12">
+          Hear From Our Alumni
+        </h2>
         <div className="grid gap-8 md:grid-cols-3">
           {TESTIMONIALS.map((t, i) => (
-            <div key={i} className="bg-white p-6 rounded-lg shadow">
+            <div key={i} className="bg-shpe-lightGray p-6 rounded-lg">
               <div className="flex items-center space-x-4 mb-4">
                 <Image
                   src="/images/placeholder-profile.jpg"
@@ -34,9 +36,9 @@ export default function TestimonialsSection() {
                   height={48}
                   className="rounded-full"
                 />
-                <span className="font-semibold">{t.name}</span>
+                <span className="font-semibold text-shpe-dark">{t.name}</span>
               </div>
-              <p className="text-gray-600">&ldquo;{t.quote}&rdquo;</p>
+              <p className="text-shpe-dark">&ldquo;{t.quote}&rdquo;</p>
             </div>
           ))}
         </div>

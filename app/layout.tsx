@@ -10,11 +10,15 @@ interface Props {
 export default function RootLayout({ children }: Props) {
   return (
     <html lang="en">
-      <body className="bg-background text-foreground antialiased">
+      <body className="bg-white text-shpe-dark antialiased">
         <Header />
         <main>{children}</main>
         <Footer />
       </body>
     </html>
   )
+}
+export const metadata = {
+  title: 'SHPE',
+  description: 'Society of Hispanic Professional Engineers',
 }
