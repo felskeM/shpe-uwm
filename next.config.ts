@@ -1,10 +1,6 @@
-const config = {
-  content: [
-    './app/**/*.{js,ts,jsx,tsx}',
-    './components/**/*.{js,ts,jsx,tsx}',
-  ],
-  theme: { extend: {} },
-  plugins: [],
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  // Add Next.js options here if needed
 }
 
-export default config;
+export default nextConfig;
