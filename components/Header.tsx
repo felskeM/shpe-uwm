@@ -14,19 +14,17 @@ const NAV = [
  */
 export default function Header() {
   return (
-    <header className="fixed top-0 w-full bg-shpe-main-navy text-shpe-orange z-50 shadow">
+    <header className="fixed top-0 w-full bg-shpe-main-navy text-white z-50 shadow">
       <div className="container mx-auto flex items-center justify-between p-4">
-        <Link href="/">
-          <span className="font-bold text-xl">SHPE-UWM</span>
-        </Link>
+        <Link href="/"><span className="font-bold text-xl">SHPE-UWM</span></Link>
         <nav className="hidden md:flex space-x-8">
-          {NAV.map(({ label, href }) => (
+          {NAV.map((item) => (
             <Link
-              key={href}
-              href={href}
+              key={item.href}
+              href={item.href}
               className="hover:text-shpe-orange transition"
             >
-              {label}
+              {item.label}
             </Link>
           ))}
         </nav>
