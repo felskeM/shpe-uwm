@@ -2,10 +2,14 @@
 import Image from 'next/image'
 
 const boardMembers = [
-  { name: 'Alice Alvarez', role: 'President',   img: '/images/placeholder-profile.jpg' },
-  { name: 'Ben Cortez',    role: 'Vice President', img: '/images/placeholder-profile.jpg' },
-  { name: 'Clara Diaz',    role: 'Treasurer',   img: '/images/placeholder-profile.jpg' },
-  // …add your exec board here
+  { name: 'Diego Sarmiento', role: 'President',   img: '/images/placeholder-profile.jpg' },
+  { name: 'Erick Covarrubias',    role: 'Vice President', img: '/images/placeholder-profile.jpg' },
+  { name: 'Amanda Chavez',    role: 'Treasurer', img: '/images/placeholder-profile.jpg' },
+  { name: 'Jesus Garcia Rodriguez',    role: 'Secretary', img: '/images/placeholder-profile.jpg' },
+  { name: 'Ismael Ovalle Castorena',    role: 'Social Media Coordinator', img: '/images/placeholder-profile.jpg' },
+  { name: 'Flavio Ibarra',    role: 'Social Media Coordinator', img: '/images/placeholder-profile.jpg' },
+  { name: 'Gabriella Davila Albor',    role: 'Recruiter', img: '/images/placeholder-profile.jpg' },
+  { name: 'Matthew Felske',    role: 'Webmaster',   img: '/images/placeholder-profile.jpg' },
 ]
 
 export default function BoardPage() {
