@@ -6,7 +6,7 @@ export default function HomePage() {
   return (
     <section className="relative h-screen">
       <Image
-        src="/images/placeholder-hero.jpg"
+        src="/images/hero.png"
         alt="Campus chapter"
         fill
         className="object-cover"

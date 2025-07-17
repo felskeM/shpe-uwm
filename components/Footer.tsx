@@ -29,7 +29,7 @@ export default function Footer() {
             Twitter
           </Link>
           <Link
-            href="https://www.instagram.com/shpeuwm"
+            href="https://www.instagram.com/shpe_uwm/"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-shpe-red transition"
