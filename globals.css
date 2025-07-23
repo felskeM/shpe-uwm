@@ -1,19 +1,29 @@
 /* globals.css */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 @import "tailwindcss";
 
-/* then your custom CSS… */
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --font-family: 'Poppins', 'Roboto', sans-serif;
 }
+
+@font-face {
+  font-family: 'Inter';
+  src: url('https://fonts.googleapis.com/css2?') format('wght@400;500;600;700&');
+  font-display: swap;
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
   }
-}
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+
+  body {
+    background: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-family), Helvetica;
+  }
 }
