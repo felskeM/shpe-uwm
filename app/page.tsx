@@ -25,14 +25,14 @@ export default function HomePage() {
         {/* Hero Content */}
         <div className="relative z-10 flex flex-col items-center justify-center h-full px-4 text-center">
           <h1 className="text-5xl font-bold leading-tight text-white md:text-7xl">
-            Welcome to <span className="var(--shpe-primary)">SHPE-UWM</span>
+            Welcome to <span className="text-shpe-primary">SHPE-UWM</span>
           </h1>
           <p className="max-w-3xl mt-6 text-xl text-white md:text-3xl">
             Empowering Hispanic STEM leaders on campus, in industry, and beyond.
           </p>
           <Link
             href="/about"
-            className="inline-block px-8 py-4 mt-10 text-lg font-semibold text-white transition duration-300 transform rounded-full shadow-lg  bg-shpe-primary hover:bg-shpe-accent hover:scale-105 hover:shadow-xl"
+            className="inline-block px-8 py-4 mt-10 text-lg font-semibold text-white transition duration-300 transform rounded-full shadow-lg bg-shpe-primary hover:bg-shpe-accent hover:scale-105 hover:shadow-xl"
           >
             Learn More
           </Link>
@@ -53,7 +53,7 @@ export default function HomePage() {
             {/* About */}
             <Link
               href="/about"
-              className="block p-6 transition bg-white border rounded-lg  border-shpe-light-gray hover:shadow-lg"
+              className="block p-6 transition bg-white border rounded-lg border-shpe-light-gray hover:shadow-lg"
             >
               <div className="flex items-center justify-center h-20 mb-4">
                 <Image
@@ -74,7 +74,7 @@ export default function HomePage() {
             {/* Board */}
             <Link
               href="/board"
-              className="block p-6 transition bg-white border rounded-lg  border-shpe-light-gray hover:shadow-lg"
+              className="block p-6 transition bg-white border rounded-lg border-shpe-light-gray hover:shadow-lg"
             >
               <div className="flex items-center justify-center h-20 mb-4">
                 <Image
@@ -95,7 +95,7 @@ export default function HomePage() {
             {/* Sponsors */}
             <Link
               href="/sponsors"
-              className="block p-6 transition bg-white border rounded-lg  border-shpe-light-gray hover:shadow-lg"
+              className="block p-6 transition bg-white border rounded-lg border-shpe-light-gray hover:shadow-lg"
             >
               <div className="flex items-center justify-center h-20 mb-4">
                 <Image
@@ -114,7 +114,7 @@ export default function HomePage() {
             {/* Contact */}
             <Link
               href="/contact"
-              className="block p-6 transition bg-white border rounded-lg  border-shpe-light-gray hover:shadow-lg"
+              className="block p-6 transition bg-white border rounded-lg border-shpe-light-gray hover:shadow-lg"
             >
               <div className="flex items-center justify-center h-20 mb-4">
                 <Image
@@ -144,7 +144,7 @@ export default function HomePage() {
           </p>
           <Link
             href="/contact"
-            className="inline-block px-8 py-4 font-semibold text-white transition duration-300 rounded-full  bg-shpe-primary hover:bg-shpe-accent hover:scale-105"
+            className="inline-block px-8 py-4 font-semibold text-white transition duration-300 rounded-full bg-shpe-primary hover:bg-shpe-accent hover:scale-105"
           >
             Get Involved
           </Link>

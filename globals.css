@@ -8,22 +8,14 @@
   --foreground: #171717;
   --font-family: 'Poppins', 'Roboto', sans-serif;
 
-  /* ⇒ SHPE brand palette as CSS variables */
+  /* ⇒ SHPE CSS color variables */
   --shpe-primary: #CF371B;
   --shpe-secondary: #1A2B52;
   --shpe-accent: #ED5D29;
-
-  /* utility colors */
   --shpe-dark: #1C1B1A;
   --shpe-light-gray: #BADEEC;
   --shpe-light-blue: #79ABBE;
   --shpe-mid-navy: #2F4D87;
-}
-
-@font-face {
-  font-family: 'Inter';
-  src: url('https://fonts.googleapis.com/css2?') format('wght@400;500;600;700&');
-  font-display: swap;
 }
 
 @media (prefers-color-scheme: dark) {
