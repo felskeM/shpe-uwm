@@ -46,27 +46,41 @@ const boardMembers = [
 
 export default function BoardPage() {
   return (
-    <section className="container px-4 py-20 mx-auto">
-      <h1 className="mb-12 text-4xl font-bold text-shpe-dark">
-        Executive Board
-      </h1>
-      <div className="grid gap-8 md:grid-cols-3">
-        {boardMembers.map(({ name, role, img }) => (
-          <div key={name} className="text-center">
-            <Image
-              src={img}
-              alt={"HEADSHOT"}
-              width={128}
-              height={128}
-              className="mx-auto rounded-full"
-            />
-            <h3 className="mt-4 text-xl font-semibold text-shpe-dark">
-              {name}
-            </h3>
-            <p className="text-shpe-mid-navy">{role}</p>
-          </div>
-        ))}
-      </div>
-    </section>
+    <main className="min-h-screen pt-24 bg-shpe-light-gray">
+      {/* Intro */}
+      <section className="container px-4 py-12 mx-auto text-center">
+        <h1 className="mb-4 text-4xl font-bold text-shpe-secondary">
+          Meet Our Executive Board
+        </h1>
+        <p className="max-w-2xl mx-auto mb-8 text-shpe-dark/75">
+          These dedicated individuals lead SHPE-UWM’s mission to empower
+          Hispanic STEM students.
+        </p>
+      </section>
+
+      {/* Member Grid */}
+      <section className="container px-4 pb-12 mx-auto">
+        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+          {boardMembers.map(({ name, role, img }) => (
+            <div
+              key={name}
+              className="flex flex-col items-center p-6 transition bg-white shadow rounded-xl hover:shadow-lg"
+            >
+              <Image
+                src={img}
+                alt={name}
+                width={160}
+                height={160}
+                className="rounded-full"
+              />
+              <h3 className="mt-4 text-xl font-semibold text-shpe-dark">
+                {name}
+              </h3>
+              <p className="mt-2 italic text-shpe-mid-navy">{role}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+    </main>
   );
 }
