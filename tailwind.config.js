@@ -10,20 +10,18 @@ module.exports = {
       },
       colors: {
         shpe: {
-          primary: "#CF371B", // formerly shpe-primary
-          secondary: "#1A2B52", // formerly shpe-secondary
-          accent: "#ED5D29", // formerly shpe-accent
+          primary: "var(--shpe-primary)",
+          secondary: "var(--shpe-secondary)",
+          accent: "var(--shpe-accent)",
 
-          // utility colors
-          dark: "#1C1B1A", // was dark-text
-          "light-gray": "#BADEEC",
-          "light-blue": "#79ABBE",
-          "mid-navy": "#2F4D87",
+          dark: "var(--shpe-dark)",
+          "light-gray": "var(--shpe-light-gray)",
+          "light-blue": "var(--shpe-light-blue)",
+          "mid-navy": "var(--shpe-mid-navy)",
         },
-        // any extra feedback colors
-        success: "#34D399",
-        warning: "#FBBF24",
-        error: "#EF4444",
+      },
+      fontFamily: {
+        sans: ["var(--font-family)", "sans-serif"],
       },
     },
   },

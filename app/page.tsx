@@ -9,7 +9,7 @@ export default function HomePage() {
   return (
     <main>
       {/* Hero Section */}
-      <section className="relative h-screen w-full overflow-hidden">
+      <section className="relative w-full h-screen overflow-hidden">
         {/* Background Image */}
         <div className="absolute inset-0 -z-10">
           <Image
@@ -21,25 +21,18 @@ export default function HomePage() {
           />
         </div>
         {/* Dark Overlay */}
-        <div className="absolute inset-0 bg-black/60 z-0" />
+        <div className="absolute inset-0 z-0 bg-black/60" />
         {/* Hero Content */}
-        <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-4">
-          <h1 className="text-white text-5xl md:text-7xl font-bold leading-tight">
-            Welcome to <span className="text-shpe-primary">SHPE-UWM</span>
+        <div className="relative z-10 flex flex-col items-center justify-center h-full px-4 text-center">
+          <h1 className="text-5xl font-bold leading-tight text-white md:text-7xl">
+            Welcome to <span className="var(--shpe-primary)">SHPE-UWM</span>
           </h1>
-          <p className="mt-6 text-white text-xl md:text-3xl max-w-3xl">
+          <p className="max-w-3xl mt-6 text-xl text-white md:text-3xl">
             Empowering Hispanic STEM leaders on campus, in industry, and beyond.
           </p>
           <Link
             href="/about"
-            className="
-              mt-10 inline-block px-8 py-4
-              bg-shpe-primary hover:bg-shpe-accent
-              text-white text-lg rounded-full
-              font-semibold transition
-              transform hover:scale-105 duration-300
-              shadow-lg hover:shadow-xl
-            "
+            className="inline-block px-8 py-4 mt-10 text-lg font-semibold text-white transition duration-300 transform rounded-full shadow-lg  bg-shpe-primary hover:bg-shpe-accent hover:scale-105 hover:shadow-xl"
           >
             Learn More
           </Link>
@@ -48,11 +41,11 @@ export default function HomePage() {
 
       {/* Quick-links Grid */}
       <section className="py-20 bg-shpe-light-gray">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold text-shpe-secondary mb-4">
+        <div className="container px-4 mx-auto text-center">
+          <h2 className="mb-4 text-3xl font-bold text-shpe-secondary">
             Explore Our Chapter
           </h2>
-          <p className="text-shpe-dark/75 max-w-2xl mx-auto mb-12">
+          <p className="max-w-2xl mx-auto mb-12 text-shpe-dark/75">
             Dive into our mission, meet the team, connect with our sponsors, or
             get in touch.
           </p>
@@ -60,12 +53,9 @@ export default function HomePage() {
             {/* About */}
             <Link
               href="/about"
-              className="
-                block p-6 bg-white border border-shpe-light-gray
-                rounded-lg hover:shadow-lg transition
-              "
+              className="block p-6 transition bg-white border rounded-lg  border-shpe-light-gray hover:shadow-lg"
             >
-              <div className="h-20 mb-4 flex items-center justify-center">
+              <div className="flex items-center justify-center h-20 mb-4">
                 <Image
                   src="/images/placeholder-card.jpg"
                   alt="About"
@@ -73,7 +63,7 @@ export default function HomePage() {
                   height={64}
                 />
               </div>
-              <h3 className="text-xl font-semibold text-shpe-secondary mb-2">
+              <h3 className="mb-2 text-xl font-semibold text-shpe-secondary">
                 About SHPE-UWM
               </h3>
               <p className="text-shpe-dark/75">
@@ -84,12 +74,9 @@ export default function HomePage() {
             {/* Board */}
             <Link
               href="/board"
-              className="
-                block p-6 bg-white border border-shpe-light-gray
-                rounded-lg hover:shadow-lg transition
-              "
+              className="block p-6 transition bg-white border rounded-lg  border-shpe-light-gray hover:shadow-lg"
             >
-              <div className="h-20 mb-4 flex items-center justify-center">
+              <div className="flex items-center justify-center h-20 mb-4">
                 <Image
                   src="/images/placeholder-profile.jpg"
                   alt="Board"
@@ -97,7 +84,7 @@ export default function HomePage() {
                   height={64}
                 />
               </div>
-              <h3 className="text-xl font-semibold text-shpe-secondary mb-2">
+              <h3 className="mb-2 text-xl font-semibold text-shpe-secondary">
                 Meet the Board
               </h3>
               <p className="text-shpe-dark/75">
@@ -108,12 +95,9 @@ export default function HomePage() {
             {/* Sponsors */}
             <Link
               href="/sponsors"
-              className="
-                block p-6 bg-white border border-shpe-light-gray
-                rounded-lg hover:shadow-lg transition
-              "
+              className="block p-6 transition bg-white border rounded-lg  border-shpe-light-gray hover:shadow-lg"
             >
-              <div className="h-20 mb-4 flex items-center justify-center">
+              <div className="flex items-center justify-center h-20 mb-4">
                 <Image
                   src="/images/placeholder-logo.png"
                   alt="Sponsors"
@@ -121,7 +105,7 @@ export default function HomePage() {
                   height={64}
                 />
               </div>
-              <h3 className="text-xl font-semibold text-shpe-secondary mb-2">
+              <h3 className="mb-2 text-xl font-semibold text-shpe-secondary">
                 Our Sponsors
               </h3>
               <p className="text-shpe-dark/75">See who supports our chapter.</p>
@@ -130,12 +114,9 @@ export default function HomePage() {
             {/* Contact */}
             <Link
               href="/contact"
-              className="
-                block p-6 bg-white border border-shpe-light-gray
-                rounded-lg hover:shadow-lg transition
-              "
+              className="block p-6 transition bg-white border rounded-lg  border-shpe-light-gray hover:shadow-lg"
             >
-              <div className="h-20 mb-4 flex items-center justify-center">
+              <div className="flex items-center justify-center h-20 mb-4">
                 <Image
                   src="/images/placeholder-card.jpg"
                   alt="Contact"
@@ -143,7 +124,7 @@ export default function HomePage() {
                   height={64}
                 />
               </div>
-              <h3 className="text-xl font-semibold text-shpe-secondary mb-2">
+              <h3 className="mb-2 text-xl font-semibold text-shpe-secondary">
                 Contact Us
               </h3>
               <p className="text-shpe-dark/75">
@@ -155,20 +136,15 @@ export default function HomePage() {
       </section>
 
       {/* Join CTA */}
-      <section className="py-20 bg-shpe-secondary text-white text-center">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold mb-4">Join Our Chapter</h2>
+      <section className="py-20 text-center text-white bg-shpe-secondary">
+        <div className="container px-4 mx-auto">
+          <h2 className="mb-4 text-3xl font-bold">Join Our Chapter</h2>
           <p className="max-w-xl mx-auto mb-6 text-lg">
             Become a member today and elevate your STEM journey with SHPE-UWM.
           </p>
           <Link
             href="/contact"
-            className="
-              inline-block px-8 py-4
-              bg-shpe-primary hover:bg-shpe-accent
-              text-white font-semibold rounded-full
-              transition hover:scale-105 duration-300
-            "
+            className="inline-block px-8 py-4 font-semibold text-white transition duration-300 rounded-full  bg-shpe-primary hover:bg-shpe-accent hover:scale-105"
           >
             Get Involved
           </Link>

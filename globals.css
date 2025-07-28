@@ -7,6 +7,17 @@
   --background: #ffffff;
   --foreground: #171717;
   --font-family: 'Poppins', 'Roboto', sans-serif;
+
+  /* ⇒ SHPE brand palette as CSS variables */
+  --shpe-primary: #CF371B;
+  --shpe-secondary: #1A2B52;
+  --shpe-accent: #ED5D29;
+
+  /* utility colors */
+  --shpe-dark: #1C1B1A;
+  --shpe-light-gray: #BADEEC;
+  --shpe-light-blue: #79ABBE;
+  --shpe-mid-navy: #2F4D87;
 }
 
 @font-face {
@@ -21,9 +32,65 @@
     --foreground: #ededed;
   }
 
-  body {
-    background: var(--background);
-    color: var(--foreground);
-    font-family: var(--font-family), Helvetica;
+  @layer base {
+    html {
+      font-family: var(--font-sans);
+    }
+
+    body {
+      background: var(--background);
+      color: var(--foreground);
+      font-family: var(--font-family);
+    }
+  }
+
+  @layer utilities {
+
+    /* background colors */
+    .bg-shpe-primary {
+      background-color: var(--shpe-primary) !important;
+    }
+
+    .bg-shpe-secondary {
+      background-color: var(--shpe-secondary) !important;
+    }
+
+    .bg-shpe-accent {
+      background-color: var(--shpe-accent) !important;
+    }
+
+    .bg-shpe-light-gray {
+      background-color: var(--shpe-light-gray) !important;
+    }
+
+    .bg-shpe-mid-navy {
+      background-color: var(--shpe-mid-navy) !important;
+    }
+
+    /* text colors */
+    .text-shpe-primary {
+      color: var(--shpe-primary) !important;
+    }
+
+    .text-shpe-secondary {
+      color: var(--shpe-secondary) !important;
+    }
+
+    .text-shpe-accent {
+      color: var(--shpe-accent) !important;
+    }
+
+    .text-shpe-dark {
+      color: var(--shpe-dark) !important;
+    }
+
+    /* hover variants */
+    .hover\:bg-shpe-accent:hover {
+      background-color: var(--shpe-accent) !important;
+    }
+
+    .hover\:text-shpe-orange:hover {
+      color: var(--shpe-accent) !important;
+    }
   }
 }
