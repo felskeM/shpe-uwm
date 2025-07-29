@@ -4,11 +4,13 @@ import Image from 'next/image'
 const sponsors = [
   {
     name: 'GE Healthcare',
-    logo: '/images/placeholder-logo.png',
+    logo: '/images/GELogo.png',
+    description: 'Leading provider of medical imaging and healthcare IT solutions.',
   },
   {
     name: 'Eaton',
-    logo: '/images/placeholder-logo.png',
+    logo: '/images/EatonLogo.png',
+    description: 'Power management company providing energy-efficient solutions.',
   },
 ];
 
@@ -19,7 +21,7 @@ export default function SponsorsPage() {
         Our Sponsors
       </h1>
       <div className="grid items-center grid-cols-2 gap-8 sm:grid-cols-3 md:grid-cols-6">
-        {sponsors.map(({ name, logo }) => (
+        {sponsors.map(({ name, logo, description }) => (
           <div key={name} className="flex justify-center">
             <Image
               src={logo}
@@ -27,6 +29,7 @@ export default function SponsorsPage() {
               width={100}
               height={60}
             />
+            <p className="mt-1 text-xs text-center text-shpe-dark">{description}</p>
           </div>
         ))}
       </div>
