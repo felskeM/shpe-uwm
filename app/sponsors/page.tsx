@@ -1,18 +1,24 @@
 // app/sponsors/page.tsx
 import Image from 'next/image'
 
-const sponsors = Array.from({ length: 6 }).map((_, i) => ({
-  name: `Sponsor ${i + 1}`,
-  logo: '/images/placeholder-logo.png',
-}))
+const sponsors = [
+  {
+    name: 'GE Healthcare',
+    logo: '/images/placeholder-logo.png',
+  },
+  {
+    name: 'Eaton',
+    logo: '/images/placeholder-logo.png',
+  },
+];
 
 export default function SponsorsPage() {
   return (
-    <section className="py-20 container mx-auto px-4">
-      <h1 className="text-4xl font-bold text-shpe-dark mb-12">
+    <section className="container px-4 py-20 mx-auto">
+      <h1 className="mb-12 text-4xl font-bold text-shpe-dark">
         Our Sponsors
       </h1>
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-8 items-center">
+      <div className="grid items-center grid-cols-2 gap-8 sm:grid-cols-3 md:grid-cols-6">
         {sponsors.map(({ name, logo }) => (
           <div key={name} className="flex justify-center">
             <Image

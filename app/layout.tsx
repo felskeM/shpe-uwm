@@ -20,7 +20,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
     <html lang="en" className={poppins.variable}>
       <body className="antialiased bg-white text-shpe-dark">
         <Header />
-        <main>{children}</main>
+        <main className="min-h-screen">{children}</main>
         <Footer />
       </body>
     </html>

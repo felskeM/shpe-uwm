@@ -27,6 +27,12 @@
       font-family: var(--font-sans);
     }
 
+    html,
+    :host {
+      -webkit-text-size-adjust: 100%;
+      text-size-adjust: 100%;
+    }
+
     body {
       background: var(--background);
       color: var(--foreground);

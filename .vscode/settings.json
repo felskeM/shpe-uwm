@@ -4,19 +4,33 @@
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit"
   },
-
   // Use Prettier as the default formatter
-  "[javascript]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
-  "[typescript]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
-  "[typescriptreact]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
-
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
   // Tailwind CSS IntelliSense
-  "tailwindCSS.experimental.classRegex": ["tw`([^`]*)`", "clsx\\(([^)]*)\\)"],
-
+  "tailwindCSS.experimental.classRegex": [
+    "tw`([^`]*)`",
+    "clsx\\(([^)]*)\\)"
+  ],
   // Show import sizes
   "importCost.showInlineWarnings": false,
   "importCost.includePackages": true,
   "cSpell.words": [
+    "Albor",
+    "Castorena",
+    "Covarrubias",
+    "Davila",
+    "Flavio",
+    "Ibarra",
+    "Ovalle",
+    "Sarmiento",
     "SHPE"
   ]
 }

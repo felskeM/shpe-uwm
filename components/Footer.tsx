@@ -5,34 +5,26 @@ import Link from 'next/link'
  */
 export default function Footer() {
   return (
-    <footer className="bg-shpe-main-navy text-shpe-light-gray py-8">
-      <div className="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center">
-        <div className="mb-4 md:mb-0 text-center md:text-left">
-          <h3 className="text-white text-lg font-bold">SHPE-UWM</h3>
+    <footer className="py-8 bg-shpe-main-navy text-shpe-light-gray">
+      <div className="container flex flex-col items-center justify-between px-4 mx-auto md:flex-row">
+        <div className="mb-4 text-center md:mb-0 md:text-left">
+          <h3 className="text-lg font-bold text-white">SHPE-UWM</h3>
           <p className="text-shpe-light-gray">Empowering Hispanic STEM leaders.</p>
         </div>
         <div className="flex space-x-6">
           <Link
-            href="https://www.facebook.com/shpeuwm"
+            href="https://www.linkedin.com/in/society-of-hispanic-professional-engineers-at-university-of-wisconsin-milwaukee-1b9031232/"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-shpe-red transition"
+            className="transition hover:text-shpe-red"
           >
-            Facebook
-          </Link>
-          <Link
-            href="https://twitter.com/shpeuwm"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:text-shpe-red transition"
-          >
-            Twitter
+            LinkedIn
           </Link>
           <Link
             href="https://www.instagram.com/shpe_uwm/"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-shpe-red transition"
+            className="transition hover:text-shpe-red"
           >
             Instagram
           </Link>
