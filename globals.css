@@ -6,14 +6,18 @@
   --foreground: #171717;
   --font-family: 'Poppins', 'Roboto', sans-serif;
 
-  /* ⇒ SHPE CSS color variables */
+  /* SHPE CSS color variables */
   --shpe-primary: #CF371B;
   --shpe-secondary: #1A2B52;
+  /* global primary SHPE color */
   --shpe-accent: #ED5D29;
+  /* global secondary SHPE color */
   --shpe-dark: #1C1B1A;
+  /* global color for dark text */
   --shpe-light-gray: #BADEEC;
   --shpe-light-blue: #79ABBE;
   --shpe-mid-navy: #2F4D87;
+  /* global color for accent */
 }
 
 @media (prefers-color-scheme: dark) {
@@ -70,6 +74,10 @@
 
     .text-shpe-secondary {
       color: var(--shpe-secondary) !important;
+    }
+
+    .text-shpe-light-gray {
+      color: var(--shpe-light-gray) !important;
     }
 
     .text-shpe-accent {
