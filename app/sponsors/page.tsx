@@ -63,10 +63,10 @@ export default function SponsorsPage() {
       <section className="py-16 text-center text-white bg-shpe-secondary">
         <div className="container px-4 mx-auto">
           <h3 className="mb-4 text-2xl font-bold">
-            Want to see your logo here?
+            Support SHPE at UWM to see your company here!
           </h3>
           <p className="max-w-lg mx-auto mb-6">
-            Partner with SHPE-UWM to support Hispanic STEM leaders—and get
+            Partner with SHPE-UWM to show your support for Hispanic STEM leaders—and get
             your brand in front of our passionate community.
           </p>
           <Link
