@@ -5,11 +5,11 @@ import Link from "next/link";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 
 const NAV = [
-  { label: "Home", href: "/" },
   { label: "About", href: "/about" },
   { label: "Board", href: "/board" },
   { label: "Sponsors", href: "/sponsors" },
   { label: "Contact", href: "/contact" },
+  { label: "TESTER", href: "/mockup" }
 ];
 
 export default function Header() {
@@ -31,14 +31,17 @@ export default function Header() {
 
   return (
     <header className={headerClasses}>
-      <div className="container flex items-center justify-between p-4 mx-auto">
+      <div className="flex items-center h-16 gap-6 px-4 mx-auto max-w-7xl">
         {/* Logo as Link without nested <a> */}
-        <Link href="/" className="text-xl font-bold">
-          SHPE-UWM
+        <Link
+          href="/"
+          className="inline-flex items-center gap-2 font-bold group"
+        >
+          SHPE @ UWM
         </Link>
 
         {/* Desktop nav */}
-        <nav className="hidden space-x-8 md:flex">
+        <nav className="items-center gap-6 ml-auto sm:flex">
           {NAV.map(({ label, href }) => (
             <Link
               key={href}

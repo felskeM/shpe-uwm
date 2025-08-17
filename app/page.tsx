@@ -1,11 +1,24 @@
 // app/page.tsx
+'use client'
+import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 /**
  * Home page for SHPE-UWM chapter.
  */
 export default function HomePage() {
+  const container = {
+    hidden: { opacity: 0, y: 12 },
+    show: {
+      opacity: 1,
+      y: 0,
+      transition: { staggerChildren: 0.06, when: "beforeChildren" },
+    },
+  };
+
+  const item = { hidden: { opacity: 0, y: 12 }, show: { opacity: 1, y: 0 } };
   return (
     <main>
       {/* Hero Section */}
@@ -19,6 +32,17 @@ export default function HomePage() {
             className="object-cover"
             priority
           />
+        </div>
+        <div className="grid max-w-6xl grid-cols-1 gap-10 px-4 py-16 mx-auto text-white lg:grid-cols-2 lg:py-24">
+          <motion.div className="text-white border shadow-xl isolate rounded-2xl border-black/5 bg-shpe-secondary" variants={container} initial="hidden" whileInView="show" viewport={{ once: true }}>
+            <motion.h1 variants={item} className="text-4xl font-extrabold tracking-tight text-white sm:text-5xl">
+              Building community, leadership, and careers in STEM.
+            </motion.h1>
+            <motion.p variants={item} className="mt-4 text-white">
+              SHPE at University of Wisconsin–Milwaukee connects Hispanic/Latino students with industry mentors,
+              hands‑on projects, and career‑ready opportunities.
+            </motion.p>
+          </motion.div>
         </div>
         {/* Dark Overlay */}
         <div className="absolute inset-0 z-0 bg-black/60" />
@@ -150,6 +174,6 @@ export default function HomePage() {
           </Link>
         </div>
       </section>
-    </main>
+    </main >
   );
 }
