@@ -2,6 +2,8 @@
 @import "tailwindcss";
 
 :root {
+  --radius: 1rem;
+  
   --background: #ffffff;
   --foreground: #171717;
   --font-family: 'Poppins', 'Roboto', sans-serif;
@@ -18,6 +20,21 @@
   --shpe-light-blue: #79ABBE;
   --shpe-mid-navy: #2F4D87;
   /* global color for accent */
+}
+
+html, body { font-family: "Poppins", "Inter Variable", system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica Neue, Arial, "Apple Color Emoji", "Segoe UI Emoji"; }
+
+/***** Soft card *****/
+.card {
+border-radius: var(--radius);
+box-shadow: 0 1px 2px rgb(0 0 0 / 0.04), 0 8px 24px rgb(0 0 0 / 0.06);
+background: hsl(0 0% 100% / 0.7);
+backdrop-filter: blur(6px);
+}
+
+
+.dark .card {
+background: hsl(0 0% 6% / 0.6);
 }
 
 @media (prefers-color-scheme: dark) {

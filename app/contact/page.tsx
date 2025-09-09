@@ -1,5 +1,5 @@
 // app/contact/page.tsx
-import ContactForm from '../../components/ContactForm'
+import { ContactForm } from '../../components/contact-card'
 
 export default function ContactPage() {
   return (

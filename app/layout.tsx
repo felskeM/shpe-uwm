@@ -1,8 +1,14 @@
 // app/layout.tsx
+import type { Metadata } from "next";
 import "../globals.css";
 import { ReactNode } from "react";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
+import { SiteHeader } from "@/components/site-header";
+import { SiteFooter } from "@/components/site-footer";
+
+export const metadata: Metadata = {
+  title: "SHPE UWM",
+  description: "Society of Hispanic Professional Engineers — University of Wisconsin–Milwaukee",
+};
 
 // ① Import and configure Poppins
 import { Poppins } from "next/font/google";
@@ -17,11 +23,13 @@ interface RootLayoutProps {
 }
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
-    <html lang="en" className={poppins.variable}>
-      <body className="antialiased bg-white text-shpe-dark">
-        <Header />
-        <main className="min-h-screen">{children}</main>
-        <Footer />
+    <html lang="en" className={`scroll-smooth ${poppins.variable}`}>
+      <body className="min-h-screen bg-gradient-to-b from-zinc-50 to-white text-zinc-900 antialiased dark:from-zinc-950 dark:to-black dark:text-zinc-100">
+        <div className="relative flex min-h-screen flex-col">
+          <SiteHeader />
+          <main className="min-h-screen">{children}</main>
+          <SiteFooter />
+        </div>
       </body>
     </html>
   );
