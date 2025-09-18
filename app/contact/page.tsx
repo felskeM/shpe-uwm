@@ -1,18 +1,16 @@
-// app/contact/page.tsx
-import { ContactForm } from '../../components/contact-card'
+import { Section } from "@/components/section";
+import { ContactCard } from "@/components/contact-card";
 
-export default function ContactPage() {
+
+export default function Page() {
   return (
-    <div className="py-20">
-      <ContactForm />
-      <div className="container mx-auto px-4 mt-12 text-center">
-        <p className="text-shpe-dark">
-          Follow us on{' '}
-          <a href="#" className="text-shpe-orange hover:text-shpe-red">Instagram</a>,{' '}
-          <a href="#" className="text-shpe-orange hover:text-shpe-red">LinkedIn</a>, and{' '}
-          <a href="#" className="text-shpe-orange hover:text-shpe-red">Facebook</a>.
-        </p>
+    <Section
+      title="Contact"
+      subtitle="Have questions about joining, partnering, or sponsoring? We’d love to hear from you."
+    >
+      <div className="max-w-2xl mx-auto">
+        <ContactCard />
       </div>
-    </div>
-  )
+    </Section>
+  );
 }

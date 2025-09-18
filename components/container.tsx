@@ -1,6 +1,4 @@
-// Update the import path to match your project structure, for example:
-import { cn } from "../lib/cn";
-// or create the file at /workspaces/shpe-uwm/lib/cn.ts if it does not exist
+import { cn } from "@/lib/cn";
 
 
 export function Container({ className, children }: { className?: string; children: React.ReactNode }) {

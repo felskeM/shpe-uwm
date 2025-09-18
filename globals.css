@@ -3,10 +3,10 @@
 
 :root {
   --radius: 1rem;
-  
-  --background: #ffffff;
-  --foreground: #171717;
-  --font-family: 'Poppins', 'Roboto', sans-serif;
+  --background: #0a0a0a;
+  --foreground: #ededed;
+  --font-family: "Poppins", "Inter Variable", system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica Neue, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+
 
   /* SHPE CSS color variables */
   --shpe-primary: #CF371B;
@@ -20,98 +20,125 @@
   --shpe-light-blue: #79ABBE;
   --shpe-mid-navy: #2F4D87;
   /* global color for accent */
+
+  --surface-1: rgba(255, 255, 255, 0.04);
+  --surface-2: rgba(255, 255, 255, 0.06);
+  --border-1: rgba(255, 255, 255, 0.08);
 }
 
-html, body { font-family: "Poppins", "Inter Variable", system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica Neue, Arial, "Apple Color Emoji", "Segoe UI Emoji"; }
+html {
+  color-scheme: dark;
+}
 
-/***** Soft card *****/
+html, body {
+  font-family: var(--font-family);
+}
+
+@layer base {
+  body {
+    background: var(--background);
+    color: var(--foreground);
+  }
+}
+
 .card {
-border-radius: var(--radius);
-box-shadow: 0 1px 2px rgb(0 0 0 / 0.04), 0 8px 24px rgb(0 0 0 / 0.06);
-background: hsl(0 0% 100% / 0.7);
-backdrop-filter: blur(6px);
+  border-radius: var(--radius);
+  border: 1px solid var(--border-1);
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.04), 0 8px 24px rgb(0 0 0 / 0.06);
+  backdrop-filter: blur(6px);
 }
 
+@layer utilities {
 
-.dark .card {
-background: hsl(0 0% 6% / 0.6);
+  /* backgrounds */
+  .bg-shpe-primary {
+    background-color: var(--shpe-primary) !important;
+  }
+
+  .bg-shpe-secondary {
+    background-color: var(--shpe-secondary) !important;
+  }
+
+  .bg-shpe-accent {
+    background-color: var(--shpe-accent) !important;
+  }
+
+  .bg-shpe-light-gray {
+    background-color: var(--shpe-light-gray) !important;
+  }
+
+  .bg-shpe-mid-navy {
+    background-color: var(--shpe-mid-navy) !important;
+  }
+
+  /* text */
+  .text-shpe-primary {
+    color: var(--shpe-primary) !important;
+  }
+
+  .text-shpe-secondary {
+    color: var(--shpe-secondary) !important;
+  }
+
+  .text-shpe-light-gray {
+    color: var(--shpe-light-gray) !important;
+  }
+
+  .text-shpe-accent {
+    color: var(--shpe-accent) !important;
+  }
+
+  .text-shpe-dark {
+    color: var(--shpe-dark) !important;
+  }
+
+  /* hovers */
+  .hover\:bg-shpe-accent:hover {
+    background-color: var(--shpe-accent) !important;
+  }
+
+  .hover\:text-shpe-orange:hover {
+    color: var(--shpe-accent) !important;
+  }
+
+  .hover\:bg-shpe-mid-navy:hover {
+    background-color: var(--shpe-mid-navy) !important;
+  }
+
+  /* translucent */
+  .bg-shpe-secondary-10 {
+    background-color: color-mix(in oklab, var(--shpe-secondary) 10%, transparent) !important;
+  }
+
+  .bg-shpe-secondary-20 {
+    background-color: color-mix(in oklab, var(--shpe-secondary) 20%, transparent) !important;
+  }
+
+  .bg-shpe-secondary-30 {
+    background-color: color-mix(in oklab, var(--shpe-secondary) 30%, transparent) !important;
+  }
+
+  .bg-shpe-secondary-40 {
+    background-color: color-mix(in oklab, var(--shpe-secondary) 40%, transparent) !important;
+  }
+
+  .bg-shpe-accent-15 {
+    background-color: color-mix(in oklab, var(--shpe-accent) 15%, transparent) !important;
+  }
+
+  .btn {
+    background: var(--shpe-primary);
+    color: white;
+  }
+
+  .btn:hover {
+    background: var(--shpe-accent);
+  }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-
-  @layer base {
-    html {
-      font-family: var(--font-sans);
-    }
-
-    html,
-    :host {
-      -webkit-text-size-adjust: 100%;
-      text-size-adjust: 100%;
-    }
-
-    body {
-      background: var(--background);
-      color: var(--foreground);
-      font-family: var(--font-family);
-    }
-  }
-
-  @layer utilities {
-
-    /* background colors */
-    .bg-shpe-primary {
-      background-color: var(--shpe-primary) !important;
-    }
-
-    .bg-shpe-secondary {
-      background-color: var(--shpe-secondary) !important;
-    }
-
-    .bg-shpe-accent {
-      background-color: var(--shpe-accent) !important;
-    }
-
-    .bg-shpe-light-gray {
-      background-color: var(--shpe-light-gray) !important;
-    }
-
-    .bg-shpe-mid-navy {
-      background-color: var(--shpe-mid-navy) !important;
-    }
-
-    /* text colors */
-    .text-shpe-primary {
-      color: var(--shpe-primary) !important;
-    }
-
-    .text-shpe-secondary {
-      color: var(--shpe-secondary) !important;
-    }
-
-    .text-shpe-light-gray {
-      color: var(--shpe-light-gray) !important;
-    }
-
-    .text-shpe-accent {
-      color: var(--shpe-accent) !important;
-    }
-
-    .text-shpe-dark {
-      color: var(--shpe-dark) !important;
-    }
-
-    /* hover variants */
-    .hover\:bg-shpe-accent:hover {
-      background-color: var(--shpe-accent) !important;
-    }
-
-    .hover\:text-shpe-orange:hover {
-      color: var(--shpe-accent) !important;
-    }
+/* focus rings */
+@layer utilities {
+  .ring-brand {
+    box-shadow: 0 0 0 2px color-mix(in oklab, var(--shpe-accent) 65%, transparent);
   }
 }

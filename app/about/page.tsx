@@ -1,87 +1,132 @@
-// app/about/page.tsx
 import Image from "next/image";
+import { Section } from "@/components/section";
+import { Container } from "@/components/container";
+import { Users, GraduationCap, Handshake, Rocket } from "lucide-react";
 
-export default function AboutPage() {
+
+export default function Page() {
   const values = [
     {
+      title: "Outreach",
+      desc: "Serving Milwaukee high school STEM exposure and community events.",
+      icon: Handshake,
+    },
+    {
+      title: "Familia",
+      desc: "Building a welcoming, supportive network for everyone.",
+      icon: Users,
+    },
+    {
       title: "Education",
-      desc: "Providing academic resources, workshops, and tutorials to help our members excel at UWM.",
-      icon: "/images/placeholder-card.jpg",
+      desc: "Workshops, study groups, and hands-on projects to level up skills.",
+      icon: GraduationCap,
     },
     {
-      title: "Mentorship",
-      desc: "Connecting students with industry professionals for guidance and growth.",
-      icon: "/images/placeholder-card.jpg",
-    },
-    {
-      title: "Community",
-      desc: "Building a supportive network that fosters collaboration and leadership.",
-      icon: "/images/placeholder-card.jpg",
+      title: "Professionalism",
+      desc: "Resume reviews, interview prep, and direct access to industry.",
+      icon: Rocket,
     },
   ];
 
+  const surface =
+    "bg-shpe-secondary-20";
+  const surfaceFallback: Record<string, string> = {
+    ["--card-bg"]:
+      "color-mix(in oklab, var(--shpe-secondary) 20%, transparent)",
+  };
   return (
-    <>
-      {/* Hero banner */}
-      <section className="relative w-full h-96">
-        <Image
-          src="/images/hero.png"
-          alt="SHPE UWM Campus"
-          fill
-          className="object-cover"
-        />
-        <div className="absolute inset-0 flex items-center justify-center bg-black/60">
-          <h1 className="text-4xl font-bold text-white md:text-5xl lg:text-6xl">
-            Our Mission &amp; Values
-          </h1>
+    <Section title="About SHPE UWM" >
+      <Container>
+        <div
+          className={"card border-zinc-800 ${surface} [--tw-ring-color:var(--shpe-accent)]"}
+          style={surface === "bg-shpe-secondary-20" ? undefined : (surfaceFallback as React.CSSProperties)}
+        >
+          <div className="grid gap-6 p-6 md:grid-cols-[1fr]">
+            <p className="text-zinc-300">
+              At UWM, SHPE is dedicated to empowering Hispanic students in STEM
+              through education, mentorship, and professional development. We
+              strive to create a supportive environment that fosters academic
+              excellence, leadership, and community engagement. We host
+              workshops, networking events, and outreach programs to help our
+              members succeed academically and professionally, and to develop the
+              next generation of Hispanic leaders in STEM.
+            </p>
+            <div className="h-px mt-3 bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+            <div className="flex flex-wrap gap-2">
+              <span className="px-3 py-1 text-xs font-medium rounded-full bg-shpe-accent/20 text-shpe-accent">
+                Mentorship
+              </span>
+              <span className="px-3 py-1 text-xs font-medium rounded-full bg-shpe-primary/20 text-shpe-primary">
+                Professional Dev
+              </span>
+              <span className="px-3 py-1 text-xs font-medium rounded-full bg-shpe-mid-navy/30 text-shpe-light-gray">
+                Outreach
+              </span>
+            </div>
+          </div>
+          <div className="h-1 w-full rounded-b-[inherit] bg-gradient-to-r from-shpe-primary via-shpe-accent to-shpe-mid-navy" />
         </div>
-      </section>
-
-      {/* Mission copy */}
-      <section className="py-16 bg-white">
-        <div className="container max-w-3xl px-4 mx-auto text-center">
-          <p className="text-lg leading-relaxed text-shpe-dark/80 md:text-xl">
-            At UWM, SHPE is dedicated to empowering Hispanic students in STEM
-            through education, mentorship, and professional development. We
-            strive to create a supportive environment that fosters academic
-            excellence, leadership, and community engagement. We host workshops,
-            networking events, and outreach programs to help our members succeed
-            academically and professionally, and to develop the next generation
-            of Hispanic leaders in STEM.
-          </p>
-        </div>
-      </section>
-
-      {/* Core Values */}
-      <section className="py-16 bg-shpe-light-gray">
-        <div className="container px-4 mx-auto">
-          <h2 className="mb-12 text-3xl font-semibold text-center text-shpe-dark">
-            Our Core Values
-          </h2>
-          <div className="grid gap-8 md:grid-cols-3">
-            {values.map(({ title, desc, icon }) => (
-              <div
-                key={title}
-                className="p-6 transition bg-white rounded-lg shadow hover:shadow-lg"
-              >
-                <div className="w-16 h-16 mx-auto mb-4">
-                  <Image
-                    src={icon}
-                    alt={`${title} icon`}
-                    width={64}
-                    height={64}
-                    className="object-contain"
-                  />
+        {/* Values */}
+        <h3 className="mt-12 text-xl font-semibold text-white">Our values</h3>
+        <p className="mt-2 text-zinc-400">
+          The pillars that shape how we learn, lead, and serve.
+        </p>
+        <div className="grid gap-4 mt-6 sm:grid-cols-2 lg:grid-cols-4">
+          {values.map(({ title, desc, icon: Icon }) => (
+            <div
+              key={title}
+              className={`card group border-zinc-800 ${surface} p-5 transition-transform hover:-translate-y-1 hover:border-shpe-accent/70`}
+              style={surface === "bg-shpe-secondary-20" ? undefined : (surfaceFallback as React.CSSProperties)}
+            >
+              <div className="flex items-center gap-3">
+                <div className="p-2 rounded-xl bg-shpe-accent/15 ring-1 ring-white/10">
+                  <Icon className="w-5 h-5 text-shpe-accent" />
                 </div>
-                <h3 className="mb-2 text-xl font-bold text-shpe-dark">
-                  {title}
-                </h3>
-                <p className="text-shpe-dark/75">{desc}</p>
+                <h4 className="font-semibold text-white">{title}</h4>
               </div>
-            ))}
+              <p className="mt-3 text-sm text-zinc-400">{desc}</p>
+            </div>
+          ))}
+        </div>
+
+        {/* Photo strip (swap images later) */}
+        <div className="grid grid-cols-3 gap-3 mt-12">
+          {["/images/hero.png", "/images/placeholder-event.jpg", "/images/placeholder-hero.jpg"].map(
+            (src, i) => (
+              <div key={i} className="relative aspect-[16/9] overflow-hidden rounded-2xl ring-1 ring-white/10">
+                <Image
+                  src={src}
+                  alt="SHPE UWM"
+                  fill
+                  sizes="(max-width:1024px) 100vw, 33vw"
+                  className="object-cover"
+                />
+              </div>
+            )
+          )}
+        </div>
+
+        {/* CTA */}
+        <div className="mt-12 grid gap-4 sm:grid-cols-[1fr_auto] items-center">
+          <p className="text-zinc-300">
+            Want to get involved, sponsor an event, or speak at a meeting?
+          </p>
+          <div className="flex gap-3">
+            <a
+              href="/events"
+              className="px-4 py-2 text-sm font-medium text-white rounded-xl bg-shpe-primary hover:bg-shpe-accent"
+            >
+              See events
+            </a>
+            <a
+              href="/contact"
+              className="px-4 py-2 text-sm font-medium border rounded-xl border-zinc-800 bg-zinc-950 text-zinc-200 hover:bg-zinc-900"
+            >
+              Contact us
+            </a>
           </div>
         </div>
-      </section>
-    </>
+      </Container>
+    </Section>
   );
 }
