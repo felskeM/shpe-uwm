@@ -32,7 +32,7 @@ export function SponsorGrid() {
                                 alt={s.name}
                                 fill
                                 sizes="(max-width: 640px) 120px, 160px"
-                                className="object-contain brightness-95 contrast-110 grayscale opacity-80 transition-[filter,opacity] duration-200 group-hover:grayscale-0 group-hover:opacity-100"
+                                className="object-contain brightness-95 contrast-110 opacity-80 transition-[filter,opacity] duration-200 group-hover:opacity-100"
                             />
                         </span>
                         <span className="min-w-0 text-sm font-medium truncate text-zinc-200">

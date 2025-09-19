@@ -16,14 +16,27 @@ export function Hero() {
                     transition={{ duration: 0.5 }}
                 >
                     <h1 className="text-4xl font-extrabold tracking-tight text-white sm:text-5xl">
-                        Building community, leadership, and careers in STEM.
+                        Building community, leadership, and careers in{" "}
+                        <span className="bg-gradient-to-r from-[var(--shpe-primary)] via-[var(--shpe-accent)] to-[var(--shpe-mid-navy)] bg-clip-text text-transparent">
+                            STEM.
+                        </span>
                     </h1>
                     <p className="max-w-xl mt-4 text-lg text-zinc-300">
                         At UWM, SHPE empowers Hispanic students through mentorship, industry partnerships, and hands‑on projects — while welcoming allies of every background.
                     </p>
                     <div className="flex flex-wrap gap-3 mt-6">
-                        <a href="/events" className="px-4 py-2 font-medium text-white shadow rounded-xl bg-shpe-primary hover:bg-shpe-accent focus:outline-none focus:ring-2 focus:ring-brand">See upcoming events</a>
-                        <a href="/contact" className="px-4 py-2 font-medium border rounded-xl border-zinc-800 bg-zinc-950 text-zinc-200 hover:bg-zinc-900 focus:outline-none focus:ring-2 focus:ring-brand">Get involved</a>
+                        <a
+                            href="/events"
+                            className="rounded-xl bg-[var(--shpe-primary)] px-4 py-2 font-medium text-white shadow hover:bg-[var(--shpe-accent)] focus:outline-none focus:ring-2 focus:ring-brand"
+                        >
+                            See upcoming events
+                        </a>
+                        <a
+                            href="/contact"
+                            className="px-4 py-2 font-medium border rounded-xl border-zinc-800 bg-zinc-950 text-zinc-200 hover:bg-zinc-900 focus:outline-none focus:ring-2 focus:ring-brand"
+                        >
+                            Get involved
+                        </a>
                     </div>
                 </motion.div>
                 <motion.div
@@ -32,6 +45,8 @@ export function Hero() {
                     transition={{ duration: 0.6 }}
                     className="relative w-full aspect-[4/3]"
                 >
+                    <div className="absolute -inset-6 -z-10 rounded-3xl blur-2xl"
+                        style={{ background: "linear-gradient(120deg,var(--shpe-secondary),transparent 60%), radial-gradient(40rem 20rem at 80% 20%, color-mix(in oklab,var(--shpe-accent) 25%, transparent), transparent)" }} />
                     <Image
                         src="/images/hero.png"
                         alt="SHPE UWM students at an event"
