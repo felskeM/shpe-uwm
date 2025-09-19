@@ -4,14 +4,20 @@ import "../globals.css";
 import { ReactNode } from "react";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
+import { Poppins } from "next/font/google";
+import type { Viewport } from 'next'
+
+
+export const viewport: Viewport = {
+  themeColor: "#0a0a0a",
+}
 
 export const metadata: Metadata = {
-  title: "SHPE UWM",
+  title: "UWM-SHPE",
   description: "Society of Hispanic Professional Engineers — University of Wisconsin–Milwaukee",
+  themeColor: viewport.themeColor,
 };
 
-// ① Import and configure Poppins
-import { Poppins } from "next/font/google";
 const poppins = Poppins({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
@@ -23,11 +29,11 @@ interface RootLayoutProps {
 }
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
-    <html lang="en" className={`scroll-smooth ${poppins.variable}`}>
-      <body className="min-h-screen bg-gradient-to-b from-zinc-50 to-white text-zinc-900 antialiased dark:from-zinc-950 dark:to-black dark:text-zinc-100">
-        <div className="relative flex min-h-screen flex-col">
+    <html lang="en" className={`dark scroll-smooth ${poppins.variable}`} suppressHydrationWarning>
+      <body className="min-h-screen antialiased selection:bg-[color-mix(in_oklab,var(--shpe-accent)_28%,transparent)]">
+        <div className="relative flex flex-col min-h-screen">
           <SiteHeader />
-          <main className="min-h-screen">{children}</main>
+          <main className="flex-1">{children}</main>
           <SiteFooter />
         </div>
       </body>
