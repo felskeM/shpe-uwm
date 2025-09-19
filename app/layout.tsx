@@ -5,17 +5,18 @@ import { ReactNode } from "react";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { Poppins } from "next/font/google";
-import type { Viewport } from 'next'
 
 
-export const viewport: Viewport = {
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
   themeColor: "#0a0a0a",
-}
+};
+
 
 export const metadata: Metadata = {
   title: "UWM-SHPE",
   description: "Society of Hispanic Professional Engineers — University of Wisconsin–Milwaukee",
-  themeColor: viewport.themeColor,
 };
 
 const poppins = Poppins({

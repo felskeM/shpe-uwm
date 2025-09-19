@@ -10,9 +10,9 @@
   },
   "dependencies": {
     "@heroicons/react": "^2.2.0",
-    "@types/nodemailer": "^7.0.1",
     "add-to-calendar-button-react": "^2.11.5",
     "clsx": "^2.1.1",
+    "dotenv": "^17.2.2",
     "framer-motion": "^12.23.12",
     "lucide-react": "^0.539.0",
     "next": "^15.5.3",
@@ -29,6 +29,7 @@
     "@tailwindcss/postcss": "^4.1.11",
     "@tailwindcss/typography": "^0.5.16",
     "@types/node": "^20",
+    "@types/nodemailer": "^7.0.1",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "autoprefixer": "^10.4.21",
