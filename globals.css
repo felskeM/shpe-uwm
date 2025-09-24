@@ -1,9 +1,11 @@
 /* globals.css */
 @import "tailwindcss";
+@plugin "@tailwindcss/forms";
+@plugin "@tailwindcss/typography";
 
 :root {
   --radius: 1rem;
-  --background: #0a0a0a;
+  --background: #071027;
   --foreground: #ededed;
   --font-family: "Poppins", "Inter Variable", system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica Neue, Arial, "Apple Color Emoji", "Segoe UI Emoji";
 
@@ -28,6 +30,7 @@
 
 html {
   color-scheme: dark;
+  height: 100%;
 }
 
 html, body {
@@ -134,10 +137,7 @@ html, body {
   .btn:hover {
     background: var(--shpe-accent);
   }
-}
 
-/* focus rings */
-@layer utilities {
   .ring-brand {
     box-shadow: 0 0 0 2px color-mix(in oklab, var(--shpe-accent) 65%, transparent);
   }
