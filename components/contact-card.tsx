@@ -32,13 +32,7 @@ export function ContactCard() {
   }
 
   return (
-    <div
-      className="p-5 shadow-sm rounded-2xl"
-      style={{
-        background: "color-mix(in oklab, var(--shpe-secondary) 18%, transparent)",
-        border: "1px solid color-mix(in oklab, white 10%, transparent)",
-      }}
-    >
+    <div className="p-5 shadow-sm rounded-2xl border-soft surface-secondary-18">
       <h3 className="text-lg font-semibold text-white">Get in touch</h3>
       <p className="mt-2 text-sm text-zinc-300">
         Shoot us a note and we’ll get back to you.
@@ -74,15 +68,7 @@ export function ContactCard() {
           className="hidden"
           aria-hidden="true"
         />
-        <button
-          disabled={status === "sending"}
-          className="inline-flex items-center justify-center px-4 py-2 mt-1 font-medium text-white transition-colors rounded-xl disabled:opacity-70"
-          style={{
-            background: "var(--shpe-primary)",
-          }}
-        >
-          {status === "sending" ? "Sending…" : "Send"}
-        </button>
+        <button className="btn-brand disabled:opacity-70">{status === "sending" ? "Sending…" : "Send"}</button>
       </form>
 
       {status !== "idle" && (

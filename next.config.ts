@@ -1,7 +1,17 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  experimental: {
-    allowedDevOrigins: ["http://localhost:3000", "http://127.0.0.1:3000"],
-  },
+import type { NextConfig } from "next";
+import bundleAnalyzer from "@next/bundle-analyzer";
+
+const withBundleAnalyzer = bundleAnalyzer({
+  enabled: process.env.ANALYZE === "true",
+});
+
+const nextConfig: NextConfig = {
+  // add config here if/when needed
+  experimental: {}
+};
+
+module.exports = {
+  allowedDevOrigins: ['local-origin.dev', '*.local-origin.dev'],
 }
-export default nextConfig;
+
+export default withBundleAnalyzer(nextConfig);

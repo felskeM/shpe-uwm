@@ -1,7 +1,11 @@
 /* globals.css */
 @import "tailwindcss";
-@plugin "@tailwindcss/forms";
 @plugin "@tailwindcss/typography";
+@plugin "tailwindcss-animate";
+
+/* @plugin "@tailwindcss/forms"; */
+/* @plugin "@tailwindcss/line-clamp"; */
+/* @plugin "@tailwindcss/aspect-ratio"; */
 
 :root {
   --radius: 1rem;
@@ -139,6 +143,56 @@ html, body {
   }
 
   .ring-brand {
+    box-shadow: 0 0 0 2px color-mix(in oklab, var(--shpe-accent) 65%, transparent);
+  }
+
+
+  /* Buttons */
+  .btn-brand {
+    @apply inline-flex items-center justify-center px-4 py-2 font-medium text-white transition-colors rounded-xl;
+    background: var(--shpe-primary);
+  }
+
+  .btn-brand:hover {
+    background: var(--shpe-accent);
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center px-4 py-2 font-medium rounded-xl;
+    color: #e7e7e7;
+    background: #0b0b0b;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .btn-ghost:hover {
+    background: #111;
+  }
+
+  /* Subtly tinted surfaces based on SHPE colors (no variable changes) */
+  .surface-secondary-15 {
+    background: color-mix(in oklab, var(--shpe-secondary) 15%, transparent);
+  }
+
+  .surface-secondary-20 {
+    background: color-mix(in oklab, var(--shpe-secondary) 20%, transparent);
+  }
+
+  .surface-primary-15 {
+    background: color-mix(in oklab, var(--shpe-primary) 15%, transparent);
+  }
+
+  .surface-accent-15 {
+    background: color-mix(in oklab, var(--shpe-accent) 15%, transparent);
+  }
+
+  /* Borders that match the dark theme */
+  .border-soft {
+    border: 1px solid color-mix(in oklab, white 10%, transparent);
+  }
+
+  /* Focus ring in brand */
+  .focus-brand {
+    outline: none;
     box-shadow: 0 0 0 2px color-mix(in oklab, var(--shpe-accent) 65%, transparent);
   }
 }

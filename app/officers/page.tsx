@@ -20,16 +20,12 @@ export default function Page() {
       <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         {officers.map((o) => (
           <div key={o.name} className="p-5 text-center transition-transform border card group border-zinc-800 bg-shpe-secondary-30 hover:-translate-y-1 hover:border-shpe-accent/70 h-full min-h-[220px]">
-            <div className="mx-auto">
-              <Avatar alt={o.person} src={o.src} className="w-20 h-20 rounded-full md:h-24 md:w-24 ring-2 ring-shpe-primary/40 group-hover:ring-shpe-accent/60" />
+            <div className="group card border-soft surface-secondary-20 p-5 text-center transition-transform hover:-translate-y-1 hover:border-[color-mix(in_oklab,var(--shpe-accent)_60%,transparent)]">
+              <Avatar alt={o.person} src={o.src} className="rounded-full ring-2 ring-[color-mix(in_oklab,var(--shpe-primary)_40%,transparent)] group-hover:ring-[color-mix(in_oklab,var(--shpe-accent)_60%,transparent)]" />
             </div>
             <h3 className="mt-3 text-lg font-semibold text-white">{o.person}</h3>
-            <div className="pt-3 mt-3 border-t border-white/5">
-              <p className="text-sm font-bold text-shpe-accent">{o.name}</p>
-              {o.major && (
-                <p className="text-sm text-shpe-light-blue">{o.major}</p>
-              )}
-            </div>
+            <p className="text-sm font-bold text-shpe-accent">{o.name}</p>
+            {o.major && <p className="text-sm text-zinc-400">{o.major}</p>}
           </div>
         ))}
       </div>

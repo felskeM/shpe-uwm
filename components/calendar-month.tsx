@@ -123,11 +123,12 @@ export function CalendarMonth({ events }: Props) {
                 <div className="flex items-center gap-2">
                     <button
                         onClick={() => setCursor(startOfMonth(new Date()))}
-                        className="px-2 py-1 text-xs rounded-lg"
+                        className="px-2 py-1 text-xs btn-ghost"
                         style={{
                             color: "rgba(235,235,235,.85)",
                             background: "var(--shpe-dark)",
                             border: "1px solid color-mix(in oklab, white 8%, transparent)",
+                            cursor: "pointer",
                         }}
                     >
                         Today
@@ -139,6 +140,7 @@ export function CalendarMonth({ events }: Props) {
                         style={{
                             background: "var(--shpe-dark)",
                             border: "1px solid color-mix(in oklab, white 8%, transparent)",
+                            cursor: "pointer",
                         }}
                     >
                         <ChevronLeft className="w-5 h-5" />
@@ -150,6 +152,7 @@ export function CalendarMonth({ events }: Props) {
                         style={{
                             background: "var(--shpe-dark)",
                             border: "1px solid color-mix(in oklab, white 8%, transparent)",
+                            cursor: "pointer",
                         }}
                     >
                         <ChevronRight className="w-5 h-5" />
@@ -230,7 +233,7 @@ function EventPill({ e }: { e: EventItem }) {
 
     return (
         <div
-            className="p-2 rounded-lg group"
+            className="group rounded-lg border-soft bg-zinc-900/85 p-2 ring-1 ring-white/5 hover:border-[color-mix(in_oklab,var(--shpe-accent)_40%,transparent)]"
             title={`${e.title}${e.location ? ` • ${e.location}` : ""}`}
             style={{
                 background: "color-mix(in oklab, var(--shpe-secondary) 16%, transparent)",
@@ -251,7 +254,7 @@ function EventPill({ e }: { e: EventItem }) {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="Add to Google Calendar"
-                    className="rounded-md px-2 py-1 text-[11px] font-medium"
+                    className="px-2 py-1 text-[11px] font-medium text-white btn-brand"
                     style={{
                         color: "var(--shpe-accent)",
                         background: "color-mix(in oklab, var(--shpe-accent) 20%, transparent)",
@@ -264,7 +267,7 @@ function EventPill({ e }: { e: EventItem }) {
                     href={icsHref}
                     download={`${e.title.replace(/\s+/g, "_")}.ics`}
                     aria-label="Download .ics"
-                    className="rounded-md px-2 py-1 text-[11px]"
+                    className="px-2 py-1 text-[11px] btn-ghost"
                     style={{
                         color: "rgba(230,230,230,.85)",
                         background: "var(--shpe-dark)",
