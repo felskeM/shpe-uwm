@@ -116,7 +116,7 @@ export function CalendarMonth({ events }: Props) {
                 <div className="flex items-center gap-2">
                     <button
                         onClick={() => setCursor(startOfMonth(new Date()))}
-                        className="px-2 py-1 text-xs btn-ghost"
+                        className="btn-ghost btn-s"
                         style={{
                             cursor: "pointer",
                         }}
@@ -125,8 +125,8 @@ export function CalendarMonth({ events }: Props) {
                     </button>
                     <button
                         onClick={() => setCursor(addMonths(cursor, -1))}
+                        className="btn-ghost btn-s"
                         aria-label="Previous month"
-                        className="px-2 py-1 btn-ghost"
                         style={{
                             cursor: "pointer",
                         }}
@@ -135,8 +135,8 @@ export function CalendarMonth({ events }: Props) {
                     </button>
                     <button
                         onClick={() => setCursor(addMonths(cursor, 1))}
+                        className="btn-ghost btn-s"
                         aria-label="Next month"
-                        className="px-2 py-1 btn-ghost"
                         style={{
                             cursor: "pointer",
                         }}
@@ -218,38 +218,20 @@ function EventPill({ e }: { e: EventItem }) {
     const gUrl = googleUrl(e);
 
     return (
-        <div className="group rounded-lg p-2 border-soft bg-zinc-900/85 ring-1 ring-white/5 hover:border-[color-mix(in_oklab,var(--shpe-accent)_40%,transparent)]">
-            <div className="min-w-0">
-                <div className="line-clamp-2 text-[13px] font-medium leading-snug text-white">{e.title}</div>
-                <div className="text-[11px]" style={{ color: "rgba(220,220,220,.7)" }}>
-                    {timeLabel(e.start)}{e.location ? ` • ${e.location}` : ""}
+        <div className="group rounded-lg border-soft bg-zinc-900/85 p-2 ring-1 ring-white/5 hover:border-[color-mix(in_oklab,var(--shpe-light-blue)_45%,transparent)]">
+            <div className="flex gap-2">
+                <div className="mt-0.5 h-8 w-1 shrink-0 rounded bg-[var(--shpe-mid-navy)]" />
+                <div className="min-w-0">
+                    <div className="line-clamp-2 text-[13px] font-medium leading-snug text-white">{e.title}</div>
+                    <div className="text-[11px] text-zinc-400">
+                        {timeLabel(e.start)}{e.location ? ` • ${e.location}` : ""}
+                    </div>
                 </div>
             </div>
 
             <div className="mt-1.5 flex items-center gap-1">
-                <a
-                    href={gUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="Add to Google Calendar"
-                    className="btn-primary px-2 py-1 text-[11px]"
-                    style={{
-                        cursor: "pointer",
-                    }}
-                >
-                    Google
-                </a>
-                <a
-                    href={icsHref}
-                    download={`${e.title.replace(/\s+/g, "_")}.ics`}
-                    aria-label="Download .ics"
-                    className="btn-ghost px-2 py-1 text-[11px]"
-                    style={{
-                        cursor: "pointer",
-                    }}
-                >
-                    iCal
-                </a>
+                <a href={gUrl} target="_blank" rel="noopener noreferrer" className="btn-primary h-6 px-2 text-[11px]">Google</a>
+                <a href={icsHref} download={`${e.title.replace(/\s+/g, "_")}.ics`} className="btn-ghost h-6 px-2 text-[11px]">iCal</a>
             </div>
         </div>
     );

@@ -4,15 +4,24 @@
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit"
   },
-  // Use Prettier as the default formatter
-  "[javascript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  "files.associations": {
+    "*.css": "css"
   },
-  "[typescript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  "css.validate": false,
+  // Tailwind CSS IntelliSense: ensure it runs in PostCSS/CSS/TSX
+  "tailwindCSS.includeLanguages": {
+    "plaintext": "javascript",
+    "postcss": "css",
+    "typescriptreact": "html"
   },
-  "[typescriptreact]": {
-    "editor.defaultFormatter": "vscode.typescript-language-features"
+  "tailwindCSS.emmetCompletions": true,
+  "files.watcherExclude": {
+    "**/.next/**": true,
+    "**/node_modules/**": true
+  },
+  "search.exclude": {
+    "**/.next": true,
+    "**/node_modules": true
   },
   // Tailwind CSS IntelliSense
   "tailwindCSS.experimental.classRegex": [
