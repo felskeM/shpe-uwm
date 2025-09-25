@@ -22,12 +22,12 @@ export function SiteHeader() {
 
 
   return (
-    <header className="relative header">
+    <header className="relative top-0 z-50 w-full border-b backdrop-blur-md bg-zinc-950/65 border-soft">
       <div className="header-underline" />
       <div className="flex items-center justify-between px-2 mx-auto h-14 sm:h-16 sm:px-3 lg:h-20 lg:px-6">
         <Logo />
         <nav className="items-center hidden gap-1 text-sm md:flex">
-          {nav.map((n) => {
+          {nav.map(n => {
             const active = pathname === n.href;
             return (
               <Link
@@ -36,8 +36,8 @@ export function SiteHeader() {
                 className={cn(
                   "rounded-lg px-3 py-2 transition-colors",
                   active
-                    ? "bg-[color-mix(in_oklab,var(--shpe-secondary)_25%,transparent)] text-white border border-soft"
-                    : "text-zinc-300 hover:bg-[color-mix(in_oklab,var(--shpe-secondary)_18%,transparent)] hover:text-white"
+                    ? "border-soft surface-navy-18 text-white"
+                    : "text-zinc-300 hover:surface-navy-12 hover:text-white"
                 )}
               >
                 {n.label}

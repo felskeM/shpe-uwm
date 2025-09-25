@@ -19,7 +19,7 @@ export function SponsorGrid() {
         <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4">
             {sponsors.map((s) => {
                 const Tile = (
-                    <Card className="flex items-center gap-4 p-6 border-soft surface-secondary-15">
+                    <Card className="flex items-center gap-4 p-6 border-soft surface-navy-18 transition-transform hover:-translate-y-[2px] hover:border-[color-mix(in_oklab,var(--shpe-light-blue)_55%,transparent)]">
                         <div
                             className="group flex items-center gap-4 rounded-2xl p-5 transition-transform hover:-translate-y-[2px] border-soft surface-secondary-16">
                             <Image

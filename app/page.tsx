@@ -31,15 +31,7 @@ export default function Page() {
       <Section title="What we do" subtitle="Professional development, mentorship, and community.">
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {whatWeDo.map(({ t, d, Icon }) => (
-            <div
-              key={t}
-              className="group rounded-2xl p-5 transition-transform hover:-translate-y-[2px]"
-              style={{
-                background: "color-mix(in oklab, var(--shpe-secondary) 18%, transparent)",
-                border: "1px solid color-mix(in oklab, white 10%, transparent)",
-                boxShadow: "0 1px 2px rgb(0 0 0 / 0.25), 0 8px 24px rgb(0 0 0 / 0.35)",
-              }}
-            >
+            <div className="card border-soft surface-navy-18 p-5 transition-transform hover:-translate-y-[2px]">
               <div className="flex items-center gap-3">
                 <span className="p-2 rounded-xl ring-1"
                   style={{

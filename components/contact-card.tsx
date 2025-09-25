@@ -32,7 +32,7 @@ export function ContactCard() {
   }
 
   return (
-    <div className="p-5 shadow-sm rounded-2xl border-soft surface-secondary-16">
+    <div className="p-5 shadow-sm rounded-2xl border-soft surface-navy-18">
       <h3 className="text-lg font-semibold text-white">Get in touch</h3>
       <p className="mt-2 text-sm text-zinc-300">
         Shoot us a note and we’ll get back to you.
@@ -68,7 +68,7 @@ export function ContactCard() {
           className="hidden"
           aria-hidden="true"
         />
-        <button className="btn-brand disabled:opacity-70">{status === "sending" ? "Sending…" : "Send"}</button>
+        <button className="btn-primary disabled:opacity-70">{status === "sending" ? "Sending…" : "Send"}</button>
       </form>
 
       {status !== "idle" && (

@@ -108,15 +108,8 @@ export function CalendarMonth({ events }: Props) {
         >
             <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center gap-3">
-                    <div
-                        className="p-2 rounded-xl ring-1"
-                        style={{
-                            background: "color-mix(in oklab, var(--shpe-accent) 20%, transparent)",
-                            borderColor: "transparent",
-                            boxShadow: "inset 0 0 0 1px color-mix(in oklab, white 10%, transparent)",
-                        }}
-                    >
-                        <Calendar className="w-5 h-5" style={{ color: "var(--shpe-accent)" }} />
+                    <div className="p-2 rounded-xl surface-navy-18 ring-1 ring-white/10">
+                        <Calendar className="h-5 w-5 text-[var(--shpe-light-blue)]" />
                     </div>
                     <h3 className="text-lg font-semibold text-white">{monthLabel}</h3>
                 </div>
@@ -239,7 +232,7 @@ function EventPill({ e }: { e: EventItem }) {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="Add to Google Calendar"
-                    className="btn-brand px-2 py-1 text-[11px]"
+                    className="btn-primary px-2 py-1 text-[11px]"
                     style={{
                         cursor: "pointer",
                     }}

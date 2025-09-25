@@ -23,17 +23,15 @@
   --shpe-mid-navy: #2F4D87;
 
 
-  --surface-1: rgba(255, 255, 255, 0.04);
-  --surface-2: rgba(255, 255, 255, 0.06);
-  --border-1: rgba(255, 255, 255, 0.08);
-
-  --shadow-sm: 0 1px 2px rgb(0 0 0 / 0.25);
-  --shadow-lg: 0 8px 24px rgb(0 0 0 / 0.35);
+  --surface-1: rgba(255, 255, 255, .04);
+  --surface-2: rgba(255, 255, 255, .06);
+  --border-1: rgba(255, 255, 255, .08);
+  --shadow-sm: 0 1px 2px rgb(0 0 0 / .22);
+  --shadow-lg: 0 10px 30px rgb(0 0 0 / .32);
 }
 
 html {
   color-scheme: dark;
-  /* enforce dark UI colors for UA widgets */
 }
 
 html, body {
@@ -44,7 +42,6 @@ html, body {
   body {
     background: var(--background);
     color: var(--foreground);
-    /* smoother font rendering on dark */
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
@@ -55,30 +52,27 @@ html, body {
   border: 1px solid var(--border-1);
   box-shadow: var(--shadow-sm), var(--shadow-lg);
   backdrop-filter: blur(6px);
-  background: color-mix(in oklab, var(--shpe-secondary) 16%, transparent);
+  /* NAVY-tinted default surface */
+  background: color-mix(in oklab, var(--shpe-secondary) 18%, transparent);
 }
 
 @layer utilities {
 
-  /* Surface tints (non-destructive to brand hex) */
-  .surface-secondary-12 {
+  /* Navy-first surfaces */
+  .surface-navy-12 {
     background: color-mix(in oklab, var(--shpe-secondary) 12%, transparent);
   }
 
-  .surface-secondary-16 {
-    background: color-mix(in oklab, var(--shpe-secondary) 16%, transparent);
+  .surface-navy-18 {
+    background: color-mix(in oklab, var(--shpe-secondary) 18%, transparent);
   }
 
-  .surface-secondary-20 {
-    background: color-mix(in oklab, var(--shpe-secondary) 20%, transparent);
+  .surface-navy-24 {
+    background: color-mix(in oklab, var(--shpe-secondary) 24%, transparent);
   }
 
-  .surface-primary-12 {
-    background: color-mix(in oklab, var(--shpe-primary) 12%, transparent);
-  }
-
-  .surface-accent-12 {
-    background: color-mix(in oklab, var(--shpe-accent) 12%, transparent);
+  .surface-midnavy-18 {
+    background: color-mix(in oklab, var(--shpe-mid-navy) 18%, transparent);
   }
 
   .border-soft {
@@ -86,19 +80,21 @@ html, body {
   }
 
   .ring-brand {
-    box-shadow: 0 0 0 2px color-mix(in oklab, var(--shpe-accent) 65%, transparent);
+    box-shadow: 0 0 0 2px color-mix(in oklab, var(--shpe-light-blue) 65%, transparent);
   }
 
-  /* Buttons (keep hexes; only reuse tokens) */
-  .btn-brand {
+  /* ---------- Buttons ---------- */
+  /* Primary = NAVY (not orange) */
+  .btn-primary {
     @apply inline-flex items-center justify-center px-4 py-2 font-medium text-white transition-colors rounded-xl;
-    background: var(--shpe-primary);
+    background: linear-gradient(180deg, color-mix(in oklab, var(--shpe-mid-navy) 70%, transparent), var(--shpe-secondary));
   }
 
-  .btn-brand:hover {
-    background: var(--shpe-accent);
+  .btn-primary:hover {
+    background: color-mix(in oklab, var(--shpe-mid-navy) 85%, var(--shpe-secondary) 15%);
   }
 
+  /* Secondary ghost */
   .btn-ghost {
     @apply inline-flex items-center justify-center px-4 py-2 font-medium rounded-xl;
     color: #e7e7e7;
@@ -107,26 +103,36 @@ html, body {
   }
 
   .btn-ghost:hover {
-    background: #111111;
+    background: #111;
   }
 
-  /* Chips / badges */
+  /* Accent = ORANGE (small doses) */
+  .btn-accent {
+    @apply inline-flex items-center justify-center rounded-xl px-3 py-1.5 text-sm font-medium text-white transition-colors;
+    background: var(--shpe-primary);
+  }
+
+  .btn-accent:hover {
+    background: var(--shpe-accent);
+  }
+
+  /* ---------- Chips / badges ---------- */
   .chip {
     @apply inline-flex items-center gap-1 px-3 py-1 text-xs font-medium rounded-full;
     border: 1px solid color-mix(in oklab, white 10%, transparent);
-    background: color-mix(in oklab, var(--shpe-accent) 18%, transparent);
-    color: var(--shpe-accent);
+    background: color-mix(in oklab, var(--shpe-mid-navy) 28%, transparent);
+    color: var(--shpe-light-gray);
   }
 
-  /* Typography accents */
+  /* ---------- Typography accents ---------- */
   .headline-gradient {
-    background: linear-gradient(90deg, var(--shpe-primary), var(--shpe-accent), var(--shpe-mid-navy));
+    background: linear-gradient(90deg, var(--shpe-mid-navy), var(--shpe-light-blue), var(--shpe-accent));
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
   }
 
-  /* Themed links */
+  /* Links lean light-blue, hover to light-gray */
   .link {
     color: var(--shpe-light-blue);
     text-decoration: none;
@@ -137,91 +143,48 @@ html, body {
     text-decoration: underline;
   }
 
-  /* Themed selection */
-  .selection-brand::selection {
-    background: color-mix(in oklab, var(--shpe-accent) 28%, transparent);
-  }
-
+  /* Selection: soft blue instead of orange */
   ::selection {
-    background: color-mix(in oklab, var(--shpe-accent) 28%, transparent);
+    background: color-mix(in oklab, var(--shpe-light-blue) 32%, transparent);
   }
 
-  /* Scrollbars (Chromium/Firefox support) */
-  .scrollbar-brand {
-    scrollbar-color: color-mix(in oklab, var(--shpe-secondary) 55%, transparent) transparent;
-  }
-
-  .scrollbar-brand::-webkit-scrollbar {
-    height: 10px;
-    width: 10px;
-  }
-
-  .scrollbar-brand::-webkit-scrollbar-track {
-    background: transparent;
-  }
-
-  .scrollbar-brand::-webkit-scrollbar-thumb {
-    background: color-mix(in oklab, var(--shpe-secondary) 55%, transparent);
-    border-radius: 999px;
-  }
-
-  /* Subtle separators */
-  .divider {
-    height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.12), transparent);
-  }
-
-  /* Header underline glow */
+  /* Header underline glow (blue) */
   .header-underline {
     pointer-events: none;
     position: absolute;
     inset-inline: 0;
     bottom: -1px;
     height: 1px;
-    background: linear-gradient(90deg, transparent, color-mix(in oklab, var(--shpe-accent) 40%, transparent), transparent);
+    background: linear-gradient(90deg, transparent, color-mix(in oklab, var(--shpe-mid-navy) 45%, transparent), transparent);
   }
-}
 
-/* ================================
-   Prose defaults (typography plugin)
-   ================================ */
-.prose {
-  --tw-prose-body: #d9d9d9;
-  --tw-prose-headings: #ffffff;
-  --tw-prose-links: var(--shpe-light-blue);
-  --tw-prose-bold: #ffffff;
-  --tw-prose-counters: #9ca3af;
-  --tw-prose-bullets: #9ca3af;
-  --tw-prose-hr: rgba(255, 255, 255, 0.12);
-  --tw-prose-quotes: #e5e7eb;
-  --tw-prose-quote-borders: rgba(255, 255, 255, 0.18);
-  --tw-prose-captions: #9ca3af;
-  --tw-prose-code: #e5e7eb;
-  --tw-prose-pre-code: #e5e7eb;
-  --tw-prose-pre-bg: #0b0b0b;
-}
+  /* Hero background: navy w/ a touch of accent */
+  .hero-radial {
+    background:
+      radial-gradient(45rem 30rem at 50% -10%,
+        color-mix(in oklab, var(--shpe-mid-navy) 22%, transparent),
+        transparent);
+  }
 
-/* ================================
-   Small component presets
-   ================================ */
-.header {
-  @apply sticky top-0 z-50 w-full backdrop-blur-md;
-  border-bottom: 1px solid color-mix(in oklab, white 8%, transparent);
-  background: color-mix(in oklab, #000 65%, transparent);
-}
+  .hero-image-glow {
+    position: absolute;
+    inset: -1.25rem;
+    z-index: -1;
+    border-radius: 1.25rem;
+    filter: blur(36px);
+    background:
+      radial-gradient(32rem 18rem at 80% 25%, color-mix(in oklab, var(--shpe-mid-navy) 36%, transparent), transparent),
+      radial-gradient(40rem 22rem at 10% 10%, color-mix(in oklab, var(--shpe-accent) 12%, transparent), transparent);
+  }
 
-.hero-radial {
-  background:
-    radial-gradient(45rem 30rem at 50% -10%, color-mix(in oklab, var(--shpe-accent) 12%, transparent), transparent);
-}
-
-.hero-image-glow {
-  position: absolute;
-  inset: -1.25rem;
-  z-index: -1;
-  border-radius: 1.25rem;
-  filter: blur(38px);
-  background:
-    linear-gradient(120deg, var(--shpe-secondary), transparent 60%),
-    radial-gradient(40rem 20rem at 80% 20%, color-mix(in oklab, var(--shpe-accent) 25%, transparent), transparent);
+  /* Prose */
+  .prose {
+    --tw-prose-body: #d9d9d9;
+    --tw-prose-headings: #fff;
+    --tw-prose-links: var(--shpe-light-blue);
+    --tw-prose-bold: #fff;
+    --tw-prose-hr: rgba(255, 255, 255, .12);
+    --tw-prose-code: #e5e7eb;
+    --tw-prose-pre-bg: #0b0b0b;
+  }
 }

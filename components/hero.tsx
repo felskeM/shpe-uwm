@@ -15,14 +15,14 @@ export function Hero() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5 }}
                 >
-                    <h1 className="text-4xl font-extrabold tracking-tight text-white sm:text-5xl">
+                    <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl">
                         Building community, leadership, and careers in <span className="headline-gradient">STEM.</span>
                     </h1>
                     <p className="max-w-xl mt-4 text-lg text-zinc-300">
                         At UWM, SHPE empowers Hispanic students through mentorship, industry partnerships, and hands‑on projects — while welcoming allies of every background.
                     </p>
                     <div className="flex flex-wrap gap-3 mt-6">
-                        <a href="/events" className="btn-brand focus:ring-brand">See upcoming events</a>
+                        <a href="/events" className="btn-primary focus:ring-brand">See upcoming events</a>
                         <a href="/contact" className="btn-ghost focus:ring-brand">Get involved</a>
                     </div>
                 </motion.div>
