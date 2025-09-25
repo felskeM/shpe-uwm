@@ -125,9 +125,6 @@ export function CalendarMonth({ events }: Props) {
                         onClick={() => setCursor(startOfMonth(new Date()))}
                         className="px-2 py-1 text-xs btn-ghost"
                         style={{
-                            color: "rgba(235,235,235,.85)",
-                            background: "var(--shpe-dark)",
-                            border: "1px solid color-mix(in oklab, white 8%, transparent)",
                             cursor: "pointer",
                         }}
                     >
@@ -136,10 +133,8 @@ export function CalendarMonth({ events }: Props) {
                     <button
                         onClick={() => setCursor(addMonths(cursor, -1))}
                         aria-label="Previous month"
-                        className="px-2 py-1 rounded-lg"
+                        className="px-2 py-1 btn-ghost"
                         style={{
-                            background: "var(--shpe-dark)",
-                            border: "1px solid color-mix(in oklab, white 8%, transparent)",
                             cursor: "pointer",
                         }}
                     >
@@ -148,10 +143,8 @@ export function CalendarMonth({ events }: Props) {
                     <button
                         onClick={() => setCursor(addMonths(cursor, 1))}
                         aria-label="Next month"
-                        className="px-2 py-1 rounded-lg"
+                        className="px-2 py-1 btn-ghost"
                         style={{
-                            background: "var(--shpe-dark)",
-                            border: "1px solid color-mix(in oklab, white 8%, transparent)",
                             cursor: "pointer",
                         }}
                     >
@@ -232,15 +225,7 @@ function EventPill({ e }: { e: EventItem }) {
     const gUrl = googleUrl(e);
 
     return (
-        <div
-            className="group rounded-lg border-soft bg-zinc-900/85 p-2 ring-1 ring-white/5 hover:border-[color-mix(in_oklab,var(--shpe-accent)_40%,transparent)]"
-            title={`${e.title}${e.location ? ` • ${e.location}` : ""}`}
-            style={{
-                background: "color-mix(in oklab, var(--shpe-secondary) 16%, transparent)",
-                border: "1px solid color-mix(in oklab, white 10%, transparent)",
-                boxShadow: "inset 0 0 0 1px color-mix(in oklab, white 6%, transparent)",
-            }}
-        >
+        <div className="group rounded-lg p-2 border-soft bg-zinc-900/85 ring-1 ring-white/5 hover:border-[color-mix(in_oklab,var(--shpe-accent)_40%,transparent)]">
             <div className="min-w-0">
                 <div className="line-clamp-2 text-[13px] font-medium leading-snug text-white">{e.title}</div>
                 <div className="text-[11px]" style={{ color: "rgba(220,220,220,.7)" }}>
@@ -254,11 +239,9 @@ function EventPill({ e }: { e: EventItem }) {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="Add to Google Calendar"
-                    className="px-2 py-1 text-[11px] font-medium text-white btn-brand"
+                    className="btn-brand px-2 py-1 text-[11px]"
                     style={{
-                        color: "var(--shpe-accent)",
-                        background: "color-mix(in oklab, var(--shpe-accent) 20%, transparent)",
-                        boxShadow: "inset 0 0 0 1px color-mix(in oklab, white 10%, transparent)",
+                        cursor: "pointer",
                     }}
                 >
                     Google
@@ -267,11 +250,9 @@ function EventPill({ e }: { e: EventItem }) {
                     href={icsHref}
                     download={`${e.title.replace(/\s+/g, "_")}.ics`}
                     aria-label="Download .ics"
-                    className="px-2 py-1 text-[11px] btn-ghost"
+                    className="btn-ghost px-2 py-1 text-[11px]"
                     style={{
-                        color: "rgba(230,230,230,.85)",
-                        background: "var(--shpe-dark)",
-                        border: "1px solid color-mix(in oklab, white 10%, transparent)",
+                        cursor: "pointer",
                     }}
                 >
                     iCal

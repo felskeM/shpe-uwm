@@ -9,32 +9,31 @@
 
 :root {
   --radius: 1rem;
-  --background: #071027;
+  --background: #0a0a0a;
   --foreground: #ededed;
   --font-family: "Poppins", "Inter Variable", system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica Neue, Arial, "Apple Color Emoji", "Segoe UI Emoji";
 
 
-  /* SHPE CSS color variables */
   --shpe-primary: #CF371B;
   --shpe-secondary: #1A2B52;
-  /* global primary SHPE color */
   --shpe-accent: #ED5D29;
-  /* global secondary SHPE color */
   --shpe-dark: #1C1B1A;
-  /* global color for dark text */
   --shpe-light-gray: #BADEEC;
   --shpe-light-blue: #79ABBE;
   --shpe-mid-navy: #2F4D87;
-  /* global color for accent */
+
 
   --surface-1: rgba(255, 255, 255, 0.04);
   --surface-2: rgba(255, 255, 255, 0.06);
   --border-1: rgba(255, 255, 255, 0.08);
+
+  --shadow-sm: 0 1px 2px rgb(0 0 0 / 0.25);
+  --shadow-lg: 0 8px 24px rgb(0 0 0 / 0.35);
 }
 
 html {
   color-scheme: dark;
-  height: 100%;
+  /* enforce dark UI colors for UA widgets */
 }
 
 html, body {
@@ -45,109 +44,52 @@ html, body {
   body {
     background: var(--background);
     color: var(--foreground);
+    /* smoother font rendering on dark */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 }
 
 .card {
   border-radius: var(--radius);
   border: 1px solid var(--border-1);
-  box-shadow: 0 1px 2px rgb(0 0 0 / 0.04), 0 8px 24px rgb(0 0 0 / 0.06);
+  box-shadow: var(--shadow-sm), var(--shadow-lg);
   backdrop-filter: blur(6px);
+  background: color-mix(in oklab, var(--shpe-secondary) 16%, transparent);
 }
 
 @layer utilities {
 
-  /* backgrounds */
-  .bg-shpe-primary {
-    background-color: var(--shpe-primary) !important;
+  /* Surface tints (non-destructive to brand hex) */
+  .surface-secondary-12 {
+    background: color-mix(in oklab, var(--shpe-secondary) 12%, transparent);
   }
 
-  .bg-shpe-secondary {
-    background-color: var(--shpe-secondary) !important;
+  .surface-secondary-16 {
+    background: color-mix(in oklab, var(--shpe-secondary) 16%, transparent);
   }
 
-  .bg-shpe-accent {
-    background-color: var(--shpe-accent) !important;
+  .surface-secondary-20 {
+    background: color-mix(in oklab, var(--shpe-secondary) 20%, transparent);
   }
 
-  .bg-shpe-light-gray {
-    background-color: var(--shpe-light-gray) !important;
+  .surface-primary-12 {
+    background: color-mix(in oklab, var(--shpe-primary) 12%, transparent);
   }
 
-  .bg-shpe-mid-navy {
-    background-color: var(--shpe-mid-navy) !important;
+  .surface-accent-12 {
+    background: color-mix(in oklab, var(--shpe-accent) 12%, transparent);
   }
 
-  /* text */
-  .text-shpe-primary {
-    color: var(--shpe-primary) !important;
-  }
-
-  .text-shpe-secondary {
-    color: var(--shpe-secondary) !important;
-  }
-
-  .text-shpe-light-gray {
-    color: var(--shpe-light-gray) !important;
-  }
-
-  .text-shpe-accent {
-    color: var(--shpe-accent) !important;
-  }
-
-  .text-shpe-dark {
-    color: var(--shpe-dark) !important;
-  }
-
-  /* hovers */
-  .hover\:bg-shpe-accent:hover {
-    background-color: var(--shpe-accent) !important;
-  }
-
-  .hover\:text-shpe-orange:hover {
-    color: var(--shpe-accent) !important;
-  }
-
-  .hover\:bg-shpe-mid-navy:hover {
-    background-color: var(--shpe-mid-navy) !important;
-  }
-
-  /* translucent */
-  .bg-shpe-secondary-10 {
-    background-color: color-mix(in oklab, var(--shpe-secondary) 10%, transparent) !important;
-  }
-
-  .bg-shpe-secondary-20 {
-    background-color: color-mix(in oklab, var(--shpe-secondary) 20%, transparent) !important;
-  }
-
-  .bg-shpe-secondary-30 {
-    background-color: color-mix(in oklab, var(--shpe-secondary) 30%, transparent) !important;
-  }
-
-  .bg-shpe-secondary-40 {
-    background-color: color-mix(in oklab, var(--shpe-secondary) 40%, transparent) !important;
-  }
-
-  .bg-shpe-accent-15 {
-    background-color: color-mix(in oklab, var(--shpe-accent) 15%, transparent) !important;
-  }
-
-  .btn {
-    background: var(--shpe-primary);
-    color: white;
-  }
-
-  .btn:hover {
-    background: var(--shpe-accent);
+  .border-soft {
+    border: 1px solid color-mix(in oklab, white 10%, transparent);
   }
 
   .ring-brand {
     box-shadow: 0 0 0 2px color-mix(in oklab, var(--shpe-accent) 65%, transparent);
   }
 
-
-  /* Buttons */
+  /* Buttons (keep hexes; only reuse tokens) */
   .btn-brand {
     @apply inline-flex items-center justify-center px-4 py-2 font-medium text-white transition-colors rounded-xl;
     background: var(--shpe-primary);
@@ -161,38 +103,125 @@ html, body {
     @apply inline-flex items-center justify-center px-4 py-2 font-medium rounded-xl;
     color: #e7e7e7;
     background: #0b0b0b;
-    border: 1px solid rgba(255, 255, 255, 0.08);
-  }
-
-  .btn-ghost:hover {
-    background: #111;
-  }
-
-  /* Subtly tinted surfaces based on SHPE colors (no variable changes) */
-  .surface-secondary-15 {
-    background: color-mix(in oklab, var(--shpe-secondary) 15%, transparent);
-  }
-
-  .surface-secondary-20 {
-    background: color-mix(in oklab, var(--shpe-secondary) 20%, transparent);
-  }
-
-  .surface-primary-15 {
-    background: color-mix(in oklab, var(--shpe-primary) 15%, transparent);
-  }
-
-  .surface-accent-15 {
-    background: color-mix(in oklab, var(--shpe-accent) 15%, transparent);
-  }
-
-  /* Borders that match the dark theme */
-  .border-soft {
     border: 1px solid color-mix(in oklab, white 10%, transparent);
   }
 
-  /* Focus ring in brand */
-  .focus-brand {
-    outline: none;
-    box-shadow: 0 0 0 2px color-mix(in oklab, var(--shpe-accent) 65%, transparent);
+  .btn-ghost:hover {
+    background: #111111;
   }
+
+  /* Chips / badges */
+  .chip {
+    @apply inline-flex items-center gap-1 px-3 py-1 text-xs font-medium rounded-full;
+    border: 1px solid color-mix(in oklab, white 10%, transparent);
+    background: color-mix(in oklab, var(--shpe-accent) 18%, transparent);
+    color: var(--shpe-accent);
+  }
+
+  /* Typography accents */
+  .headline-gradient {
+    background: linear-gradient(90deg, var(--shpe-primary), var(--shpe-accent), var(--shpe-mid-navy));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* Themed links */
+  .link {
+    color: var(--shpe-light-blue);
+    text-decoration: none;
+  }
+
+  .link:hover {
+    color: var(--shpe-light-gray);
+    text-decoration: underline;
+  }
+
+  /* Themed selection */
+  .selection-brand::selection {
+    background: color-mix(in oklab, var(--shpe-accent) 28%, transparent);
+  }
+
+  ::selection {
+    background: color-mix(in oklab, var(--shpe-accent) 28%, transparent);
+  }
+
+  /* Scrollbars (Chromium/Firefox support) */
+  .scrollbar-brand {
+    scrollbar-color: color-mix(in oklab, var(--shpe-secondary) 55%, transparent) transparent;
+  }
+
+  .scrollbar-brand::-webkit-scrollbar {
+    height: 10px;
+    width: 10px;
+  }
+
+  .scrollbar-brand::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .scrollbar-brand::-webkit-scrollbar-thumb {
+    background: color-mix(in oklab, var(--shpe-secondary) 55%, transparent);
+    border-radius: 999px;
+  }
+
+  /* Subtle separators */
+  .divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.12), transparent);
+  }
+
+  /* Header underline glow */
+  .header-underline {
+    pointer-events: none;
+    position: absolute;
+    inset-inline: 0;
+    bottom: -1px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, color-mix(in oklab, var(--shpe-accent) 40%, transparent), transparent);
+  }
+}
+
+/* ================================
+   Prose defaults (typography plugin)
+   ================================ */
+.prose {
+  --tw-prose-body: #d9d9d9;
+  --tw-prose-headings: #ffffff;
+  --tw-prose-links: var(--shpe-light-blue);
+  --tw-prose-bold: #ffffff;
+  --tw-prose-counters: #9ca3af;
+  --tw-prose-bullets: #9ca3af;
+  --tw-prose-hr: rgba(255, 255, 255, 0.12);
+  --tw-prose-quotes: #e5e7eb;
+  --tw-prose-quote-borders: rgba(255, 255, 255, 0.18);
+  --tw-prose-captions: #9ca3af;
+  --tw-prose-code: #e5e7eb;
+  --tw-prose-pre-code: #e5e7eb;
+  --tw-prose-pre-bg: #0b0b0b;
+}
+
+/* ================================
+   Small component presets
+   ================================ */
+.header {
+  @apply sticky top-0 z-50 w-full backdrop-blur-md;
+  border-bottom: 1px solid color-mix(in oklab, white 8%, transparent);
+  background: color-mix(in oklab, #000 65%, transparent);
+}
+
+.hero-radial {
+  background:
+    radial-gradient(45rem 30rem at 50% -10%, color-mix(in oklab, var(--shpe-accent) 12%, transparent), transparent);
+}
+
+.hero-image-glow {
+  position: absolute;
+  inset: -1.25rem;
+  z-index: -1;
+  border-radius: 1.25rem;
+  filter: blur(38px);
+  background:
+    linear-gradient(120deg, var(--shpe-secondary), transparent 60%),
+    radial-gradient(40rem 20rem at 80% 20%, color-mix(in oklab, var(--shpe-accent) 25%, transparent), transparent);
 }

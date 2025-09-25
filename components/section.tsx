@@ -23,9 +23,10 @@ export function Section({
                 >
                     <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">{title}</h2>
                     {subtitle && (
-                        <p className="max-w-2xl mt-2 text-zinc-300">
-                            {subtitle}
-                        </p>
+                        <>
+                            <p className="max-w-2xl mt-2 text-zinc-300">{subtitle}</p>
+                            <div className="mt-4 divider" />
+                        </>
                     )}
                 </motion.div>
                 <div className="mt-8">{children}</div>

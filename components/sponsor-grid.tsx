@@ -20,7 +20,8 @@ export function SponsorGrid() {
             {sponsors.map((s) => {
                 const Tile = (
                     <Card className="flex items-center gap-4 p-6 border-soft surface-secondary-15">
-                        <div className="relative h-10 w-28 opacity-85">
+                        <div
+                            className="group flex items-center gap-4 rounded-2xl p-5 transition-transform hover:-translate-y-[2px] border-soft surface-secondary-16">
                             <Image
                                 src={s.src}
                                 alt={s.name}
