@@ -1,5 +1,5 @@
-import { Section } from "@/components/section";
 import { CalendarMonth } from "@/components/calendar-month";
+import { Section } from "@/components/section";
 
 const events = [
     {
@@ -31,7 +31,7 @@ const events = [
 
 export default function Page() {
     return (
-        <Section title="Events" subtitle="See the calendar and add events to your own.">
+        <Section title="Events" subtitle="Add the events below to your personal calendar so you don't miss out!">
             <div className="mt-4">
                 <CalendarMonth events={events} />
             </div>
