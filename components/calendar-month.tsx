@@ -89,8 +89,6 @@ function EventPill({ e }: { e: EventItem }) {
             <div className="mt-0.5 flex flex-wrap items-center gap-2 text-[11px] text-white/70">
                 <span>{time}</span>
                 <span>• {e.location}</span>
-
-                {/* action icons */}
                 <a
                     className="inline-flex items-center gap-1 px-2 py-1 ml-auto btn-s btn-ghost"
                     href={googleCalendarUrl(e)}
@@ -99,10 +97,13 @@ function EventPill({ e }: { e: EventItem }) {
                     aria-label="Add to Google Calendar"
                     title="Add to Google Calendar"
                 >
-                    <CalendarDays size={14} />
-                    <span className="hidden sm:inline">Google</span>
+                    <img
+                    src="/images/gcal.png"
+                    alt="Google Calendar"
+                    width={16}
+                    height={16}
+                    />
                 </a>
-
                 <a
                     className="inline-flex items-center gap-1 px-2 py-1 btn-s btn-ghost"
                     href={icsDataHrefFor([e]).href}
@@ -110,8 +111,12 @@ function EventPill({ e }: { e: EventItem }) {
                     aria-label="Download iCal (.ics)"
                     title="Download iCal (.ics)"
                 >
-                    <CalendarPlus size={14} />
-                    <span className="hidden sm:inline">.ics</span>
+                    <img
+                        src="/images/ical.png"
+                        alt="iCal"
+                        width={16}
+                        height={16}
+                    />
                 </a>
             </div>
         </div>

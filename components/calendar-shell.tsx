@@ -1,11 +1,9 @@
-// components/calendar-shell.tsx
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect } from "react";
 import CalendarMonth from "@/components/calendar-month";
 import type { EventItem } from "@/components/event-card";
-import { icsDataHrefFor } from "@/lib/calendar";
-import { CalendarPlus } from "lucide-react";
+import Image from 'next/image';
 
 function monthLabel(y: number, m: number) {
     return new Date(y, m, 1).toLocaleString("en-US", { month: "long", year: "numeric" });
@@ -14,14 +12,13 @@ function monthLabel(y: number, m: number) {
 export default function CalendarShell({ all }: { all: EventItem[] }) {
     const now = new Date();
     const [year, setYear] = useState(now.getFullYear());
-    const [month, setMonth] = useState(now.getMonth()); // 0–11
+    const [month, setMonth] = useState(now.getMonth());
 
     const monthEvents = useMemo(
-        () =>
-            all.filter((e) => {
-                const d = new Date(e.start);
-                return d.getFullYear() === year && d.getMonth() === month;
-            }),
+        () => all.filter((e) => {
+            const d = new Date(e.start);
+            return d.getFullYear() === year && d.getMonth() === month;
+        }),
         [all, year, month]
     );
 
@@ -31,41 +28,60 @@ export default function CalendarShell({ all }: { all: EventItem[] }) {
         setMonth(d.getMonth());
     }
 
-    const { href: allHref, fileName: allName } = icsDataHrefFor(all, "shpe-uwm-events.ics");
-    const { href: monthHref, fileName: monthName } = icsDataHrefFor(
-        monthEvents,
-        `events-${year}-${String(month + 1).padStart(2, "0")}.ics`
-    );
+    // Google needs an absolute URL to your ICS feed
+    const [origin, setOrigin] = useState("");
+    useEffect(() => { setOrigin(window.location.origin); }, []);
+    const googleSubscribeUrl = origin
+        ? `https://calendar.google.com/calendar/u/0/r?cid=${encodeURIComponent(`${origin}/events.ics`)}`
+        : "https://calendar.google.com/calendar/u/0/r";
 
     return (
-        <div className="space-y-3">
-            {/* Header with month pager */}
-            <div className="flex items-center justify-between gap-2">
+        <div>
+            <div className="flex items-center justify-between gap-2 mb-3">
+                {/* Month pager (larger arrows) */}
                 <div className="flex items-center gap-2">
-                    <button className="btn-ghost btn-s" onClick={() => shift(-1)} aria-label="Previous month">‹</button>
-                    <div className="text-sm font-semibold uppercase text-white/80">
+                    <button
+                        className="px-3 py-2 text-2xl leading-none btn-ghost"
+                        onClick={() => shift(-1)}
+                        aria-label="Previous month"
+                    >‹</button>
+                    <div className="text-base font-semibold uppercase sm:text-lg text-white/80">
                         {monthLabel(year, month)}
                     </div>
-                    <button className="btn-ghost btn-s" onClick={() => shift(1)} aria-label="Next month">›</button>
+                    <button
+                        className="px-3 py-2 text-2xl leading-none btn-ghost"
+                        onClick={() => shift(1)}
+                        aria-label="Next month"
+                    >›</button>
                 </div>
 
+                {/* Top-right subscribe actions */}
                 <div className="flex items-center gap-2">
                     <a
-                        className="inline-flex items-center gap-2 px-3 py-2 btn-ghost"
+                        className="inline-flex items-center gap-2 px-2 py-2 btn-ghost"
                         href="/events.ics"
-                        title="Subscribe or download all events (.ics)"
+                        title="Subscribe to all events (.ics)"
                     >
-                        <CalendarPlus size={16} />
-                        Subscribe (.ics)
+                        <Image
+                            src="/images/ical.png"
+                            alt="iCal"
+                            width={16}
+                            height={16}
+                        />
                     </a>
                     <a
-                        className="inline-flex items-center gap-2 px-3 py-2 btn-ghost"
-                        href={monthHref}
-                        download={monthName}
-                        title="Download current month (.ics)"
+                        className="inline-flex items-center gap-2 px-2 py-2 btn-ghost"
+                        href={googleSubscribeUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        title="Subscribe in Google Calendar"
                     >
-                        <CalendarPlus size={16} />
-                        Month (.ics)
+                        <Image
+                            src="/images/gcal.png"
+                            alt="Google Calendar"
+                            width={16}
+                            height={16}
+                        />
                     </a>
                 </div>
             </div>

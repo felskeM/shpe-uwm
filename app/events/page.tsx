@@ -9,9 +9,9 @@ export default function Page() {
             title={<span className="headline-gradient">Events</span>}
             subtitle="Workshops, recruiting, socials, and outreach—all in one place."
         >
-            <CalendarShell all={events} />
-
-            {/* your CTA banner stays the same */}
+            <div className="max-w-5xl mx-auto">
+                <CalendarShell all={events} />
+            </div>
             <div
                 className="p-5 mt-8 rounded-2xl border-soft"
                 style={{

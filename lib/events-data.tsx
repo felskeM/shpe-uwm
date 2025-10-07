@@ -33,8 +33,8 @@ export const events: EventItem[] = [
         title: "Convention Readiness Workshop in Chicago",
         start: "2025-10-11T09:30:00",
         end: "2025-10-11T18:30:00",
-        location: "750 S Halsted St, Chicago, IL 60607 (UIC - Student Centers)",
-        description: "Join us for a professional workshop for a convention in Chicago. We will be going over how to prepare for the convention, what to expect, and how to make the most out of your experience by building your public speaking and networking skills.",
+        location: "750 S Halsted St, Chicago, IL 60607",
+        description: "Join us for a professional workshop at the UIC - Student Centers for a convention in Chicago. We will be going over how to prepare for the convention, what to expect, and how to make the most out of your experience by building your public speaking and networking skills.",
         category: "Career",
     },
     {
