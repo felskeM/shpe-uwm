@@ -5,6 +5,8 @@
   "scripts": {
     "dev": "WATCHPACK_POLLING=true next dev --turbopack",
     "build": "next build",
+    "export": "next export -o out",
+    "pages:build": "GITHUB_PAGES=true next build && GITHUB_PAGES=true next export -o out",
     "start": "next start",
     "lint": "next lint",
     "lint:debug": "eslint ./src --debug",
