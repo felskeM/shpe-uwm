@@ -22,6 +22,13 @@
   --shpe-light-blue: #79ABBE;
   --shpe-mid-navy: #2F4D87;
 
+  --tier-gold: #FFBD00;
+  /* UWM gold */
+  --tier-silver: #C6C9CF;
+  /* neutral silver */
+  --tier-bronze: #CD7F32;
+  /* coppery bronze */
+
 
   --surface-1: rgba(255, 255, 255, .04);
   --surface-2: rgba(255, 255, 255, .06);
@@ -39,6 +46,10 @@
     color: var(--foreground);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+
+    * {
+      @apply transition-colors transition-transform duration-300;
+    }
   }
 }
 
@@ -52,6 +63,45 @@
 }
 
 @layer utilities {
+
+  /* Silver surfaces */
+  .surface-silver-12 {
+    background: color-mix(in oklab, var(--tier-silver) 12%, transparent);
+  }
+
+  .surface-silver-18 {
+    background: color-mix(in oklab, var(--tier-silver) 18%, transparent);
+  }
+
+  .surface-silver-24 {
+    background: color-mix(in oklab, var(--tier-silver) 24%, transparent);
+  }
+
+  /* Bronze surfaces */
+  .surface-bronze-12 {
+    background: color-mix(in oklab, var(--tier-bronze) 12%, transparent);
+  }
+
+  .surface-bronze-18 {
+    background: color-mix(in oklab, var(--tier-bronze) 18%, transparent);
+  }
+
+  .surface-bronze-24 {
+    background: color-mix(in oklab, var(--tier-bronze) 24%, transparent);
+  }
+
+  /* Tier ribbons (small badge in corner) */
+  .tier-ribbon {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    padding: 2px 8px;
+    border-radius: 9999px;
+    font-size: 10px;
+    font-weight: 600;
+    border: 1px solid color-mix(in oklab, white 12%, transparent);
+    background: color-mix(in oklab, black 20%, transparent);
+  }
 
   /* Navy surfaces */
   .surface-navy-12 {
