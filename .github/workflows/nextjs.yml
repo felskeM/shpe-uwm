@@ -26,26 +26,17 @@ jobs:
           cache: "npm"
 
       - run: npm ci
-
-      # No configure-pages 'static_site_generator: next' here.
-      # We build/export ourselves with the GITHUB_PAGES flag.
-      - name: Build & Export (static)
-        env:
-          GITHUB_PAGES: "true"
-        run: |
-          npm run build
-          npm run export
-
+      - run: npm run build
       - uses: actions/upload-pages-artifact@v3
         with:
           path: ./out
 
   deploy:
+    needs: build
+    runs-on: ubuntu-latest
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    needs: build
     steps:
       - id: deployment
         uses: actions/deploy-pages@v4
