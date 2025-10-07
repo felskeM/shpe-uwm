@@ -1,87 +1,30 @@
-import { CalendarMonth } from "@/components/calendar-month";
+// app/events/page.tsx
 import { Section } from "@/components/section";
-
-const events = [
-    {
-        id: "gbm-1",
-        title: "First General Body Meeting",
-        start: "2025-09-17T16:00:00",
-        end: "2025-09-17T19:00:00",
-        location: "UWM LECWC 203",
-        description: "Tomorrow, we have our first general body meeting, it's a more lowkey event just to get to know people in the chapter and see what events we have planning this year.",
-    },
-    {
-        id: "ceas-involvement-fair",
-        title: "CEAS Involvement Fair",
-        start: "2025-09-18T11:30:00",
-        end: "2025-09-18T13:00:00",
-        location: "UWM EMS building",
-        description: "Come and see us at the CEAS involvement fair to get to know other STEM orgs on campus. If you went to the Involvement fair last week, it's going to pretty much the same thing except STEM related.",
-    },
-    {
-        id: "speed-dating",
-        title: "Speed Dating",
-        start: "2025-09-18T17:30:00",
-        end: "2025-09-18T18:30:00",
-        location: "UWM Student Union 381",
-        description: "Lastly, join us for our Speed Dating (career-wise, not the actual kind).",
-    },
-    {
-        id: "convention-readiness-workshop",
-        title: "Convention Readiness Workshop in Chicago",
-        start: "2025-10-11T09:30:00",
-        end: "2025-10-11T18:30:00",
-        location: "750 S Halsted St, Chicago, IL 60607 (UIC - Student Centers)",
-        description: "Join us for a professional workshop for a convention in Chicago. We will be going over how to prepare for the convention, what to expect, and how to make the most out of your experience by building your public speaking and networking skills.",
-    },
-    {
-        id: "gbm-2",
-        title: "Second General Body Meeting",
-        start: "2025-10-15T17:00:00",
-        end: "2025-10-15T18:30:00",
-        location: "UWM Union 280",
-        description: "Join us for our second general body meeting, where we will discuss upcoming events and initiatives for the chapter. Additionally, the Milwaukee professional chapter will be joining us to share insights and opportunities.",
-    },
-    {
-        id: "uwm-marquette-john-deere-event",
-        title: "UWM & Marquette John Deere Event",
-        start: "2025-11-12T17:00:00",
-        end: "2025-11-12T19:30:00",
-        location: "UWM Student Union Fireside Lounge",
-        description: "Join us for an exciting event hosted by John Deere in collaboration with UWM and Marquette University. This event will provide insights into career opportunities, industry trends, and networking with professionals from John Deere.",
-    },
-    {
-        id: "friendsgiving-potluck",
-        title: "Friendsgiving Potluck",
-        start: "2025-11-21T17:00:00",
-        end: "2025-11-21T19:00:00",
-        location: "UWM Student Union 191",
-        description: "Join us for our Friendsgiving Potluck! Bring your favorite dish to share and enjoy a meal with your fellow members.",
-    },
-    {
-        id: "study-night-for-finals",
-        title: "Study Night For Finals",
-        start: "2025-12-10T17:30:00",
-        end: "2025-12-10T20:00:00",
-        location: "UWM LECWC 203",
-        description: "Join us for a study night to prepare for finals. We'll have a quiet space to study and resources available to help you succeed! Snacks and drinks will be provided.",
-    },
-    {
-        id: "holiday-social",
-        title: "Holiday Social",
-        start: "2025-12-12T17:00:00",
-        end: "2025-12-12T19:00:00",
-        location: "UWM Student Union 191",
-        description: "Join us for our Holiday Social! We'll have food, drinks, and fun activities to celebrate the season! Fun way to unwind before finals.",
-    },
-];
-
+import CalendarShell from "@/components/calendar-shell";
+import { events } from "@/lib/events-data";
 
 export default function Page() {
     return (
-        <Section title="Events" subtitle="Add the events below to your personal calendar so you don't miss out!">
-            <div className="mt-4">
-                <CalendarMonth events={events} />
+        <Section
+            title={<span className="headline-gradient">Events</span>}
+            subtitle="Workshops, recruiting, socials, and outreach—all in one place."
+        >
+            <CalendarShell all={events} />
+
+            {/* your CTA banner stays the same */}
+            <div
+                className="p-5 mt-8 rounded-2xl border-soft"
+                style={{
+                    background:
+                        "linear-gradient(90deg, var(--shpe-mid-navy), color-mix(in oklab, var(--shpe-light-blue) 60%, transparent), color-mix(in oklab, var(--shpe-accent) 40%, transparent))",
+                }}
+            >
+                <div className="flex flex-col items-start justify-between gap-3 sm:flex-row sm:items-center">
+                    <p className="text-sm text-white/90">Want to host a workshop or recruit with us?</p>
+                    <a href="/contact" className="px-4 py-2 btn-ghost bg-black/30 backdrop-blur">
+                        Partner with SHPE-UWM
+                    </a>
+                </div>
             </div>
         </Section>
     );
