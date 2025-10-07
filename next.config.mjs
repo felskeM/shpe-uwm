@@ -5,7 +5,8 @@ import bundleAnalyzer from "@next/bundle-analyzer";
 const withBundleAnalyzer = bundleAnalyzer({ enabled: process.env.ANALYZE === "true" });
 
 const isPages = process.env.GITHUB_PAGES === "true"; // set in Actions only
-const repo = "shpe-uwm"; // <<< your repo name
+const isProd = process.env.NODE_ENV === 'production'
+const repo = 'shpe-uwm'
 
 const nextConfig = {
   // --- Static Export for GitHub Pages ---
@@ -15,11 +16,10 @@ const nextConfig = {
   images: { unoptimized: true },
 
   // GitHub Pages serves under /<repo> (NOT root). Keep dev local paths clean.
-  basePath: isPages ? `/${repo}` : undefined,
-  assetPrefix: isPages ? `/${repo}/` : undefined,
+  basePath: isProd ? `/${repo}` : '',
+  assetPrefix: isProd ? `/${repo}/` : '',
 
-  // (Optional) directory-style URLs are often safer on Pages
-  // trailingSlash: true,
+  trailingSlash: true,
 
   // Existing stuff
   eslint: { ignoreDuringBuilds: true },
