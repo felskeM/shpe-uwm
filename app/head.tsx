@@ -1,7 +1,8 @@
-// app/head.tsx
-/**
- * Global <head> settings for SHPE-UWM.
- */
+
+
+
+const base = process.env.NEXT_PUBLIC_BASE_PATH ?? '';
+
 export default function Head() {
   return (
     <>
@@ -24,7 +25,7 @@ export default function Head() {
         href="https://fonts.gstatic.com"
         crossOrigin="anonymous"
       />
-      <link rel="icon" href="/favicon.ico" />
+      <link rel="icon" href={`${base}/favicon.ico`} />
     </>
   );
 }
