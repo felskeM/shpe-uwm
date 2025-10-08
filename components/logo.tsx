@@ -17,7 +17,7 @@ export function Logo({ className }: Props) {
                 width={0}
                 height={0}
                 sizes="(max-width: 640px) 180px, (max-width: 1024px) 260px, 320px"
-                className="object-contain w-auto h-12 sm:h-14 md:h-16 lg:h-20"
+                className="object-contain w-auto h-auto sm:h-14 md:h-16 lg:h-20"
                 priority
             />
 

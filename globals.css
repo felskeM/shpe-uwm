@@ -1,11 +1,13 @@
-/* globals.css */
+/* Tailwind plugins should be enabled in tailwind.config.js, not via @plugin at-rule. */
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 @plugin "tailwindcss-animate";
 
-/* @plugin "@tailwindcss/forms"; */
-/* @plugin "@tailwindcss/line-clamp"; */
-/* @plugin "@tailwindcss/aspect-ratio"; */
+/* @plugin "@tailwindcss/forms";
+@plugin "@tailwindcss/line-clamp";
+@plugin "@tailwindcss/aspect-ratio"; */
+
+
 
 :root {
   --radius: 1rem;
@@ -45,11 +47,22 @@
   /* shpe-primary */
 
 
-  --surface-1: rgba(255, 255, 255, .04);
-  --surface-2: rgba(255, 255, 255, .06);
+  --surface-0: var(--shpe-navy-2);
+  --surface-1: var(--shpe-navy);
+  --surface-2: 222 40% 16%;
+  --surface-3: 222 35% 20%;
   --border-1: rgba(255, 255, 255, .08);
   --shadow-sm: 0 1px 2px rgb(0 0 0 / .22);
   --shadow-lg: 0 10px 30px rgb(0 0 0 / .32);
+
+  /* Gradients */
+  --grad-header: linear-gradient(90deg, hsl(var(--shpe-navy-2)) 0%, hsl(var(--shpe-navy)) 45%, hsl(var(--surface-2)) 100%);
+  --grad-underline: linear-gradient(90deg, hsl(var(--shpe-orange)), hsl(var(--shpe-sky)));
+
+  /* Focus rings & shadows */
+  --ring: 0 0% 100% / 0.12;
+  --ring-accent: hsl(var(--shpe-sky) / 0.5);
+  --shadow-soft: 0 10px 30px -15px rgba(0, 0, 0, .55);
 }
 
 @layer base {
