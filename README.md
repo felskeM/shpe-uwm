@@ -1,12 +1,13 @@
 # SHPE UWM Website
 
-Welcome to the official repository for the Society of Hispanic Professional Engineers (SHPE) at the University of Wisconsin-Milwaukee (UWM) chapter!  
+Welcome to the official repository for the Society of Hispanic Professional Engineers (SHPE) at the University of Wisconsin-Milwaukee (UWM) chapter!
 This website is built to empower Hispanic STEM leaders in our community, share events, programs, and foster connection among students and professionals.
 
 ## 🚧 Early Development Notice
 
-> **Note:** This site is in its very early development stages.  
-> The deployed version on GitHub Pages is a static export, so some images and visual elements may not appear correctly.  
+> **Please Note:** This site is in its very early development stages.
+> The deployed version on GitHub Pages is a static export, so some images and visual elements may not appear correctly.
+> We'll link in the official website deployment link once the site reaches its final stages.
 > We're actively working to improve the experience—stay tuned for updates!
 
 ## 🛠️ Frameworks & Tools
@@ -26,15 +27,13 @@ See [`package.json`](https://github.com/felskeM/shpe-uwm/blob/main/package.json)
 - Static export means some dynamic features (like image optimization) may not work as expected.
 - See the [GitHub Actions workflows](https://github.com/felskeM/shpe-uwm/tree/main/.github/workflows) for deployment details.
 
-## 🧑‍💻 Local Development
+## 🧑‍💻 Local Development For Dynamic Site
 
-To run the site locally:
+To run the site locally so you can see all the features the current github.io site isn't showing:
 
 ```bash
 npm install
 npm run dev
-# or
-yarn dev
 ```
 
 Visit [http://localhost:3000](http://localhost:3000) in your browser.
@@ -45,10 +44,11 @@ Visit [http://localhost:3000](http://localhost:3000) in your browser.
 - Modern, minimal style guide (see `/style-guide`)
 - Focus on real text, contrast, and UX polish
 
-## 📢 Contributing
+## 📢 Contribution
 
-We're excited to build this together!  
-Feel free to open issues or PRs with ideas, improvements, or questions.
+My name is Matthew Felske --but most call me Mateo-- and I am part of the executive board for SHPE @ UWM as a webmaster. All descriptive content and media wouldn't be possible without my fellow board members who you can find on the site.
+
+Please feel free to open issues or pull requests with ideas, improvements, or questions. Additionally, I've added a discussions tab to just communicate with me directly. Constructive criticism is the best way to get feedback and resolve problems!
 
 ---
 
@@ -60,4 +60,4 @@ Feel free to open issues or PRs with ideas, improvements, or questions.
 
 ---
 
-_If you want to see more code or configuration details, visit the repository: [felskeM/shpe-uwm](https://github.com/felskeM/shpe-uwm)_
+*If you want to see more code or configuration details, visit the repository: [felskeM/shpe-uwm](https://github.com/felskeM/shpe-uwm)*
