@@ -3,6 +3,7 @@
 import { cn } from "@/lib/cn";
 import { useState } from "react";
 import Link from "next/link";
+import type { Route } from "next";
 import { Menu, X } from "lucide-react";
 import { Logo } from "@/components/logo";
 import { usePathname } from "next/navigation";
@@ -14,14 +15,14 @@ const nav = [
   { href: "/events", label: "Events" },
   { href: "/sponsors", label: "Sponsors" },
   { href: "/contact", label: "Contact" },
-];
+] as const satisfies ReadonlyArray<{ href: Route; label: string }>;
 
 function NavLink({
   href,
   active,
   children,
 }: {
-  href: string;
+  href: Route;
   active: boolean;
   children: React.ReactNode;
 }) {

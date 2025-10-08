@@ -1,31 +1,22 @@
-// next.config.mjs
-import bundleAnalyzer from "@next/bundle-analyzer";
-
 /** @type {import('next').NextConfig} */
-const withBundleAnalyzer = bundleAnalyzer({ enabled: process.env.ANALYZE === "true" });
+const isStatic = process.env.NEXT_STATIC_EXPORT === '1';
+const repo = 'shpe-uwm'; // (for https://felskeM.github.io/shpe-uwm)
 
-const isPages = process.env.GITHUB_PAGES === "true"; // set in Actions only
-const isProd = process.env.NODE_ENV === 'production'
-const repo = 'shpe-uwm'
+export default {
+  // Only enable static export for GH Pages builds:
+  output: isStatic ? 'export' : undefined,
 
-const nextConfig = {
-  // --- Static Export for GitHub Pages ---
-  output: "export",
+  // GH Pages serves from /<repo>, so set a basePath & assetPrefix in static mode:
+  basePath: isStatic ? `/${repo}` : '',
+  assetPrefix: isStatic ? `/${repo}` : '',
 
-  // Next/Image doesn't run an optimizer on static export
-  images: { unoptimized: true },
+  // next/image must be unoptimized in export mode (no server to optimize)
+  images: { unoptimized: isStatic },
 
-  // GitHub Pages serves under /<repo> (NOT root). Keep dev local paths clean.
-  basePath: isProd ? `/${repo}` : '',
-  assetPrefix: isProd ? `/${repo}/` : '',
+  // Helps GH Pages find folder-based index.html files
+  trailingSlash: isStatic,
 
-  trailingSlash: true,
-
-  // Existing stuff
-  eslint: { ignoreDuringBuilds: true },
-
-  // Dev-only; harmless here but not needed in prod
-  allowedDevOrigins: ["127.0.0.1", "localhost", "10.0.14.252"],
+  experimental: {
+    typedRoutes: true,
+  },
 };
-
-export default withBundleAnalyzer(nextConfig);
