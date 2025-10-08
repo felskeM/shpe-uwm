@@ -1,6 +1,6 @@
 "use client";
 
-import { CalendarDays, CalendarPlus } from "lucide-react";
+import Image from "next/image";
 import { googleCalendarUrl, icsDataHrefFor, slugify } from "@/lib/calendar";
 import type { EventItem, Category } from "@/components/event-card";
 
@@ -97,7 +97,7 @@ function EventPill({ e }: { e: EventItem }) {
                     aria-label="Add to Google Calendar"
                     title="Add to Google Calendar"
                 >
-                    <img
+                    <Image
                     src="/images/gcal.png"
                     alt="Google Calendar"
                     width={16}
@@ -111,7 +111,7 @@ function EventPill({ e }: { e: EventItem }) {
                     aria-label="Download iCal (.ics)"
                     title="Download iCal (.ics)"
                 >
-                    <img
+                    <Image
                         src="/images/ical.png"
                         alt="iCal"
                         width={16}

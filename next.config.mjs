@@ -1,7 +1,5 @@
 const isStatic = process.env.NEXT_STATIC_EXPORT === '1';
 const repo = 'shpe-uwm';
-
-/** @type {import('next').NextConfig} */
 export default {
   output: isStatic ? 'export' : undefined,
   basePath: isStatic ? `/${repo}` : '',
