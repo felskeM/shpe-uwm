@@ -2,23 +2,31 @@ import Image from "next/image";
 import Link from "next/link";
 import { cn } from "@/lib/cn";
 
-type Props = {
-    className?: string;
-};
+type Props = { className?: string };
 
 export function Logo({ className }: Props) {
     return (
-        <Link href="/" className={cn("flex items-center gap-3", className)} aria-label="SHPE UWM home">
-            {/* Mobile: icon only */}
+    <Link
+            href="/"
+            aria-label="SHPE UWM home"
+            className={cn("group flex items-center gap-3", className)}
+        >
             <Image
-                src="/images/UWMSHPE.png"
-                alt="SHPE — University of Wisconsin–Milwaukee"
+                src="/images/shpe-logo.webp"
+                alt="SHPE logo"
                 width={0}
                 height={0}
-                sizes="(max-width: 640px) 128px, (max-width: 1024px) 160px, 192px"
-                className="object-contain w-auto h-8 sm:h-9 md:h-10 lg:h-12"
+                sizes="(max-width: 640px) 180px, (max-width: 1024px) 260px, 320px"
+                className="object-contain w-auto h-12 sm:h-14 md:h-16 lg:h-20"
                 priority
             />
+
+            {/* Divider */}
+            <span className="w-px h-14 sm:block md:h-12 bg-white/20" />
+
+            <span className="text-base font-semibold tracking-tight text-white whitespace-nowrap sm:text-lg md:text-xl lg:text-2xl">
+                University of <br /> Wisconsin–Milwaukee
+            </span>
         </Link>
     );
 }

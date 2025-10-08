@@ -2,8 +2,8 @@
 import type { Metadata } from "next";
 import "../globals.css";
 import type { ReactNode } from "react";
-import { SiteHeader } from "@/components/site-header";
-import { SiteFooter } from "@/components/site-footer";
+import { SiteHeader } from "@/components/SiteHeader";
+import { SiteFooter } from "@/components/SiteFooter";
 import { Poppins } from "next/font/google";
 
 

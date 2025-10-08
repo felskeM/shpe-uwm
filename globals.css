@@ -21,6 +21,11 @@
   --shpe-light-gray: #BADEEC;
   --shpe-light-blue: #79ABBE;
   --shpe-mid-navy: #2F4D87;
+  --shpe-navy: #0E1A2D;
+  --shpe-sky: #68A5D0;
+  /* light blue from SHPE mark */
+  --shpe-orange: #F26522;
+  /* SHPE accent */
 
   --tier-gold: #FFBD00;
   /* UWM gold */
@@ -50,8 +55,8 @@
 @layer base {
   body {
     background:
-      radial-gradient(1200px 700px at 15% -10%, color-mix(in oklab, var(--shpe-secondary) 18%, transparent), transparent),
-      radial-gradient(1400px 900px at 85% -5%, color-mix(in oklab, var(--shpe-mid-navy) 14%, transparent), transparent),
+      radial-gradient(1200px 700px at 15% -10%, color-mix(in oklab, var(--shpe-mid-navy) 18%, transparent), transparent),
+      radial-gradient(1400px 900px at 85% -5%, color-mix(in oklab, var(--shpe-sky) 14%, transparent), transparent),
       var(--background);
     color: var(--foreground);
     -webkit-font-smoothing: antialiased;
