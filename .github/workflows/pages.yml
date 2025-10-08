@@ -31,7 +31,7 @@ jobs:
 
       - name: Build (static export)
         env:
-          NEXT_STATIC_EXPORT: "1"
+          NEXT_STATIC_EXPORT: "1"   # <-- critical
         run: npm run build
 
       # Next 15 with output:'export' emits to ./out by default
