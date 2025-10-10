@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image from '@/components/BpImage';
 import { Section } from "@/components/section";
 import { Users, GraduationCap, Handshake, Rocket } from "lucide-react";
 

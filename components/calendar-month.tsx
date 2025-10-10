@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import Image from '@/components/BpImage';
 import { googleCalendarUrl, icsDataHrefFor, slugify } from "@/lib/calendar";
 import type { EventItem, Category } from "@/components/event-card";
 

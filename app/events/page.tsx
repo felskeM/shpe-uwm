@@ -1,4 +1,3 @@
-// app/events/page.tsx
 import { Section } from "@/components/section";
 import CalendarShell from "@/components/calendar-shell";
 import { events } from "@/lib/events-data";

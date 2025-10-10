@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image from '@/components/BpImage';
 import Link from "next/link";
 import { cn } from "@/lib/cn";
 

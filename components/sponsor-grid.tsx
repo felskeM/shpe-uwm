@@ -1,5 +1,5 @@
 import { Card } from "@/components/card";
-import Image from "next/image";
+import Image from '@/components/BpImage';
 
 type Tier = "Gold" | "Silver" | "Bronze";
 

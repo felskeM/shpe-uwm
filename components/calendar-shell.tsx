@@ -3,7 +3,7 @@
 import { useMemo, useState, useEffect } from "react";
 import CalendarMonth from "@/components/calendar-month";
 import type { EventItem } from "@/components/event-card";
-import Image from 'next/image';
+import Image from '@/components/BpImage';
 
 function monthLabel(y: number, m: number) {
     return new Date(y, m, 1).toLocaleString("en-US", { month: "long", year: "numeric" });

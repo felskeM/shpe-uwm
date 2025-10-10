@@ -1,5 +1,5 @@
 "use client";
-import Image from "next/image";
+import Image from '@/components/BpImage';
 import { motion } from "framer-motion";
 import { Container } from "@/components/container";
 
