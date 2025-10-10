@@ -3,9 +3,7 @@ import { Section } from "@/components/section";
 import { SponsorGrid } from "@/components/sponsor-grid";
 import { Users, GraduationCap, Megaphone } from "lucide-react";
 
-
 export default function Page() {
-
   return (
     <>
       <Hero />

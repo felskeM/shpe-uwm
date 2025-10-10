@@ -5,7 +5,7 @@ type Props = {
     src: string;
     alt: string;
     className?: string;
-    position?: string; // e.g. "center top"
+    position?: string;
 };
 
 export function Avatar({ src, alt, className, position = "center top" }: Props) {

@@ -4,7 +4,7 @@ import Image from "next/image";
 import { googleCalendarUrl, icsDataHrefFor, slugify } from "@/lib/calendar";
 import type { EventItem, Category } from "@/components/event-card";
 
-// category → tint classes (from your globals.css)
+// category → tint classes for surface and dot
 const CAT = {
     Workshop: { surface: "surface-workshop", dot: "dot-workshop" },
     Career: { surface: "surface-career", dot: "dot-career" },
@@ -13,8 +13,8 @@ const CAT = {
 } as const satisfies Record<Category, { surface: string; dot: string }>;
 
 type Props = {
-    year: number;           // e.g., 2025
-    month: number;          // 0-11 (0 = Jan)
+    year: number;           // 2025
+    month: number;          // 0 = Jan and so forth
     events: EventItem[];
 };
 
@@ -23,7 +23,7 @@ export default function CalendarMonth({ year, month, events }: Props) {
     const startWeekday = first.getDay(); // 0 Sun ... 6 Sat
     const daysInMonth = new Date(year, month + 1, 0).getDate();
 
-    // Build a 6x7 grid (enough for all month layouts)
+    // 6x7 grid for calendar
     const cells: (Date | null)[] = [];
     for (let i = 0; i < startWeekday; i++) cells.push(null);
     for (let d = 1; d <= daysInMonth; d++) cells.push(new Date(year, month, d));

@@ -3,7 +3,6 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { Container } from "@/components/container";
 
-
 export function Hero() {
     return (
         <div className="relative isolate">
