@@ -30,7 +30,7 @@ function NavLink({
     <Link
       href={href}
       className={cn(
-        "relative rounded-lg px-3 py-2 text-sm transition-colors outline-none",
+        "relative rounded-lg px-3 py-2 text-base transition-colors outline-none",
         "text-zinc-200/90 hover:text-white",
         "hover:bg-white/5",
         active && [
@@ -62,7 +62,7 @@ export function SiteHeader() {
   return (
     <header className="relative top-0 z-50 w-full">
       {/* thin accent strip */}
-      <div className="h-[3px] w-full bg-[linear-gradient(90deg,var(--shpe-orange,#F26522),var(--shpe-sky,#68A5D0))]" />
+      <div className="h-[3px] w-full bg-[linear-gradient(90deg,var(--shpe-orange,#F26522)_0%,color-mix(in_oklab,var(--shpe-orange)_35%,var(--shpe-sky)_65%)_50%,var(--shpe-sky,#68A5D0)_100%)]" />
 
       {/* shell */}
       <div
@@ -78,7 +78,7 @@ export function SiteHeader() {
             style={{ background: "radial-gradient(60% 60% at 40% 40%, var(--shpe-sky,#68A5D0), transparent 70%)" }} />
         </div>
 
-        <div className="flex items-center justify-between h-16 px-2 mx-auto sm:h-20 lg:h-24 lg:px-6">
+        <div className="flex items-center justify-between px-2 mx-auto h-14 sm:h-18 lg:h-20 lg:px-6">
           <Logo />
 
           {/* desktop nav */}

@@ -206,15 +206,152 @@
 
   /* Tier ribbons (small badge in corner) */
   .tier-ribbon {
-    position: absolute;
-    top: 8px;
-    right: 8px;
-    padding: 2px 8px;
+    opacity: .9;
+    backdrop-filter: blur(2px);
+  }
+
+  /* Tiny tier chip used in the section headings and cards */
+  .tier-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: .4rem;
+    padding: .22rem .55rem;
     border-radius: 9999px;
-    font-size: 10px;
-    font-weight: 600;
-    border: 1px solid color-mix(in oklab, white 12%, transparent);
-    background: color-mix(in oklab, black 20%, transparent);
+    font-size: .65rem;
+    font-weight: 700;
+    letter-spacing: .02em;
+    text-transform: uppercase;
+    color: #0b0b0b;
+    background: #f5f5f5;
+    border: 1px solid color-mix(in oklab, black 10%, transparent);
+  }
+
+  /* Sponsor logo tile */
+  .logo-tile {
+    position: relative;
+    aspect-ratio: 3/1.4;
+    /* consistent logo stage */
+    border-radius: .75rem;
+    background: color-mix(in oklab, var(--shpe-secondary) 16%, transparent);
+    border: 1px solid color-mix(in oklab, white 10%, transparent);
+    box-shadow: 0 6px 30px -18px rgba(0, 0, 0, .5);
+    transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+    overflow: hidden;
+  }
+
+  .sponsor-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 220px;
+    /* uniform card height */
+    border-radius: .9rem;
+  }
+
+  .logo-tile:hover {
+    transform: translateY(-2px);
+    border-color: color-mix(in oklab, white 22%, transparent);
+    box-shadow: 0 10px 36px -16px rgba(0, 0, 0, .7);
+  }
+
+  .logo-img {
+    filter: grayscale(100%) contrast(1.05);
+    transition: filter .25s ease;
+  }
+
+  .logo-tile:hover .logo-img {
+    filter: none;
+  }
+
+  /* Soft inner shimmer on hover */
+  .logo-tile::after {
+    content: "";
+    position: absolute;
+    inset: -20%;
+    background:
+      radial-gradient(40rem 20rem at 85% -5%, color-mix(in oklab, var(--shpe-accent) 10%, transparent), transparent),
+      radial-gradient(44rem 26rem at 10% 10%, color-mix(in oklab, var(--shpe-light-blue) 18%, transparent), transparent);
+    opacity: 0;
+    pointer-events: none;
+    filter: blur(30px);
+    transition: opacity .3s ease;
+  }
+
+  .logo-tile:hover::after {
+    opacity: .7;
+  }
+
+  .logo-tile--compact {
+    height: 112px;
+    /* ~h-28 */
+    aspect-ratio: auto;
+    /* we don't need 3/1.4 anymore */
+    border-radius: .75rem;
+    background: color-mix(in oklab, var(--shpe-secondary) 16%, transparent);
+    border: 1px solid color-mix(in oklab, white 10%, transparent);
+    overflow: hidden;
+  }
+
+  .logo-img--compact {
+    object-fit: contain;
+    padding: .75rem;
+    filter: grayscale(100%) contrast(1.05);
+    transition: filter .25s ease;
+  }
+
+  .logo-tile--compact:hover .logo-img--compact {
+    filter: none;
+  }
+
+  /* Grid: fixed, smaller cards */
+  .grid-sponsor {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+
+  @media (min-width: 640px) {
+    .grid-sponsor {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .grid-sponsor {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  .marquee {
+    display: flex;
+    gap: 1rem;
+    overflow: hidden;
+    mask-image: linear-gradient(90deg, transparent, black 10%, black 90%, transparent);
+  }
+
+  .marquee-track {
+    display: flex;
+    gap: 1rem;
+    flex: none;
+    min-width: 200%;
+    animation: marquee 30s linear infinite;
+  }
+
+  /* Grid helper that auto-fits nice cards */
+  .grid-auto-fit {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1rem;
   }
 
   /* Navy surfaces */
