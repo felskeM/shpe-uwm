@@ -24,13 +24,15 @@ See [`package.json`](https://github.com/felskeM/shpe-uwm/blob/main/package.json)
 
 ## 📦 Deployment
 
-- The site is deployed as a static export to [GitHub Pages](https://felskem.github.io/shpe-uwm/).
-- Static export means some dynamic features (like image optimization) may not work as expected.
+- The site is deployed as a **static export** to [GitHub Pages](https://felskem.github.io/shpe-uwm/).
+- Static export means some dynamic features (like image optimization, size configuration, and links) may not work as expected.
 - See the [GitHub Actions workflows](https://github.com/felskeM/shpe-uwm/tree/main/.github/workflows) for deployment details.
 
 ## 🧑‍💻 Local Development For Dynamic Site
 
-To run the site locally so you can see all the features the current github.io site isn't showing:
+### To run the site locally so you can see all the features the current github.io site isn't showing:
+
+Clone the repository and install npmjs:
 
 ```bash
 npm install
