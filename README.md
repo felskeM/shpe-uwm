@@ -7,8 +7,9 @@ This website is built to empower Hispanic STEM leaders in our community, share e
 
 > **Please Note:** This site is in its very early development stages.
 > The deployed version on GitHub Pages is a static export, so some images and visual elements may not appear correctly.
-> We'll link in the official website deployment link once the site reaches its final stages.
-> We're actively working to improve the experience—stay tuned for updates!
+> I'll link in the official website deployment link once the site reaches its final stages.
+> I'm actively working w/ the board members to improve the experience—stay tuned for updates!
+> **ADDITIONAL NOTE:** NOT SUITED FOR MOBILE DEVICES YET
 
 ## 🛠️ Frameworks & Tools
 
