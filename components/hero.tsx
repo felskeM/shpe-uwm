@@ -2,6 +2,7 @@
 import Image from '@/components/BpImage';
 import { motion } from "framer-motion";
 import { Container } from "@/components/container";
+import Link from "next/link";
 
 export function Hero() {
     return (
@@ -21,8 +22,12 @@ export function Hero() {
                         At UWM, SHPE empowers Hispanic students through mentorship, industry partnerships, and hands‑on projects — while welcoming allies of every background.
                     </p>
                     <div className="flex flex-wrap gap-3 mt-6">
-                        <a href="/events" className="btn-primary focus:ring-brand">See upcoming events</a>
-                        <a href="/contact" className="btn-ghost focus:ring-brand">Get involved</a>
+                        <Link
+                        href="/events"
+                        className="btn-primary focus:ring-brand">See upcoming events</Link>
+                        <Link
+                        href="/contact"
+                        className="btn-ghost focus:ring-brand">Get involved</Link>
                     </div>
                 </motion.div>
                 <motion.div
