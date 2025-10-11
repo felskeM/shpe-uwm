@@ -2,9 +2,12 @@
 import Image from '@/components/BpImage';
 import { motion } from "framer-motion";
 import { Container } from "@/components/container";
-import Link from "next/link";
+import { withBasePath } from '@/lib/basePath';
 
 export function Hero() {
+    const Events = withBasePath("/events");
+    const Contact = withBasePath("/contact");
+
     return (
         <div className="relative isolate">
             <div className="absolute inset-0 -z-10 hero-radial" />
@@ -22,12 +25,12 @@ export function Hero() {
                         At UWM, SHPE empowers Hispanic students through mentorship, industry partnerships, and hands‑on projects — while welcoming allies of every background.
                     </p>
                     <div className="flex flex-wrap gap-3 mt-6">
-                        <Link
-                        href="/events"
-                        className="btn-primary focus:ring-brand">See upcoming events</Link>
-                        <Link
-                        href="/contact"
-                        className="btn-ghost focus:ring-brand">Get involved</Link>
+                        <a
+                        href={Events}
+                        className="btn-primary focus:ring-brand">See upcoming events</a>
+                        <a
+                        href={Contact}
+                        className="btn-ghost focus:ring-brand">Get involved</a>
                     </div>
                 </motion.div>
                 <motion.div
