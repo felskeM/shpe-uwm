@@ -32,7 +32,7 @@ See [`package.json`](https://github.com/felskeM/shpe-uwm/blob/main/package.json)
 
 ### To run the site locally so you can see all the features the current github.io site isn't showing:
 
-Clone the repository and install npmjs:
+Clone the repository and install npmjs
 
 ```bash
 npm install
@@ -44,7 +44,7 @@ Visit [http://localhost:3000](http://localhost:3000) in your browser.
 ## ✨ Design Highlights
 
 - Accessible, responsive layouts using Tailwind CSS
-- Modern, minimal style guide (see `/style-guide`)
+- Modern, minimal style guide
 - Focus on real text, contrast, and UX polish
 
 ## 📢 Contribution
@@ -56,11 +56,3 @@ Please feel free to open issues or pull requests with ideas, improvements, or qu
 ---
 
 *This project is not officially affiliated with SHPE National. For more information about SHPE, visit [shpe.org](https://shpe.org).*
-
----
-
-> For more details, check the [Next.js](https://nextjs.org/), [Tailwind CSS](https://tailwindcss.com), and [deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying).
-
----
-
-*If you want to see more code or configuration details, visit the repository: [felskeM/shpe-uwm](https://github.com/felskeM/shpe-uwm)*
