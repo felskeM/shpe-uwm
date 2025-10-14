@@ -3,12 +3,6 @@
 @plugin "@tailwindcss/typography";
 @plugin "tailwindcss-animate";
 
-/* @plugin "@tailwindcss/forms";
-@plugin "@tailwindcss/line-clamp";
-@plugin "@tailwindcss/aspect-ratio"; */
-
-
-
 :root {
   --radius: 1rem;
   --background: #0a0a0a;
