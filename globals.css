@@ -464,4 +464,26 @@
       radial-gradient(32rem 18rem at 80% 25%, color-mix(in oklab, var(--shpe-mid-navy) 36%, transparent), transparent),
       radial-gradient(40rem 22rem at 10% 10%, color-mix(in oklab, var(--shpe-accent) 12%, transparent), transparent);
   }
+
+  .footer-bg {
+    background:
+      radial-gradient(60rem 32rem at 15% -10%, color-mix(in oklab, var(--shpe-mid-navy) 22%, transparent), transparent),
+      radial-gradient(70rem 40rem at 85% -5%, color-mix(in oklab, var(--shpe-sky) 16%, transparent), transparent),
+      linear-gradient(180deg, rgba(9,12,20,.88), rgba(8,10,16,.88));
+    backdrop-filter: blur(6px);
+  }
+
+  /* Footer link + heading */
+  .footer-heading {
+    @apply font-semibold tracking-wide text-white;
+  }
+
+  .footer-link {
+    @apply text-zinc-400 hover:text-zinc-200;
+  }
+
+  /* Social icon pills */
+  .social-pill {
+    @apply inline-flex items-center justify-center border rounded-full h-9 w-9 border-white/10 bg-black/30 hover:bg-black/45 text-zinc-200;
+  }
 }
