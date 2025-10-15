@@ -24,7 +24,7 @@ export default function Page() {
             href={o.linkedin}
             target="_blank"
             rel="noopener noreferrer"
-            className="group block card border-soft surface-navy-18 p-5 text-center transition-transform hover:-translate-y-[2px] hover:ring-1 hover:ring-[color-mix(in_oklab,var(--shpe-light-blue)_65%,transparent)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[color-mix(in_oklab,var(--shpe-light-blue)_75%,transparent)]"
+            className="group relative block card border-soft surface-navy-18 p-5 text-center card-hover focus-brand hover:ring-1 hover:ring-[color-mix(in_oklab,var(--shpe-light-blue)_65%,transparent)]"
           >
             <span className="absolute transition-opacity duration-300 opacity-0 top-3 right-3 group-hover:opacity-100">
               <svg
