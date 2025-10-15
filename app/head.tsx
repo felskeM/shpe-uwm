@@ -21,7 +21,6 @@ export default function Head() {
       href="https://fonts.gstatic.com"
       crossOrigin="anonymous"
       />
-      <link rel="icon" href={`${withBasePath}/images/favicon.ico`} />
     </>
   );
 }
