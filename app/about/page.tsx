@@ -89,7 +89,7 @@ export default function Page() {
 
       {/* Photo strip (swap images later) */}
       <div className="grid grid-cols-3 gap-3 mt-12">
-        {["/images/hero.png", "/images/placeholder-event.jpg", "/images/placeholder-hero.jpg"].map(
+        {["/images/hero.png", "/images/speeddating.png", "/images/studentorgspicnic.png"].map(
           (src, i) => (
             <div key={i} className="relative aspect-[16/9] overflow-hidden rounded-2xl ring-1 ring-white/10">
               <Image

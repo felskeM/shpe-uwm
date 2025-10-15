@@ -38,6 +38,15 @@ export const events: EventItem[] = [
         category: "Career",
     },
     {
+        id: "bakery",
+        title: "SHPE Bake Sale",
+        start: "2025-10-14T11:00:00",
+        end: "2025-10-14T15:00:00",
+        location: "UWM Union",
+        description: "",
+        category: "Social",
+    },
+    {
         id: "gbm-2",
         title: "Second General Body Meeting",
         start: "2025-10-15T17:00:00",
@@ -45,6 +54,15 @@ export const events: EventItem[] = [
         location: "UWM Union 280",
         description: "Join us for our second general body meeting, where we will discuss upcoming events and initiatives for the chapter. Additionally, the Milwaukee professional chapter will be joining us to share insights and opportunities.",
         category: "Workshop",
+    },
+    {
+        id: "swe-shpe-material",
+        title: "Cast A Keychain",
+        start: "2025-10-31T13:00:00",
+        end: "2025-10-31T15:00:00",
+        location: "EMS E 371",
+        description: "SWE and Material Advantage Club will be showing the movie Coraline and having snacks in CEAS E 371. Please wear long pants and closed toed shoes.",
+        category: "Social",
     },
     {
         id: "uwm-marquette-john-deere-event",
