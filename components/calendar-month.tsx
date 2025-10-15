@@ -4,7 +4,7 @@ import Image from '@/components/BpImage';
 import { googleCalendarUrl, icsDataHrefFor, slugify } from "@/lib/calendar";
 import type { EventItem, Category } from "@/components/event-card";
 
-// category → tint classes for surface and dot
+// category
 const CAT = {
     Workshop: { surface: "surface-workshop", dot: "dot-workshop" },
     Career: { surface: "surface-career", dot: "dot-career" },

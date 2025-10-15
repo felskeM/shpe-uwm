@@ -1,7 +1,7 @@
-/* Tailwind plugins should be enabled in tailwind.config.js, not via @plugin at-rule. */
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 @plugin "tailwindcss-animate";
+@plugin "@tailwindcss/forms";
 
 :root {
   --radius: 1rem;
@@ -59,6 +59,7 @@
 
 
 @layer utilities {
+
   /* ---- Generic ---- */
   .border-soft {
     border: 1px solid color-mix(in oklab, white 10%, transparent);
@@ -67,6 +68,7 @@
   .headline-gradient {
     background: linear-gradient(90deg, var(--shpe-mid-navy), var(--shpe-light-blue), var(--shpe-accent));
     -webkit-background-clip: text;
+    background-clip: text;
     color: transparent;
   }
 
@@ -83,9 +85,10 @@
   .btn-primary {
     @apply inline-flex items-center justify-center px-4 py-2 font-medium text-white transition-colors rounded-xl;
     background: linear-gradient(180deg,
-      color-mix(in oklab, var(--shpe-mid-navy) 70%, transparent),
-      var(--shpe-secondary));
+        color-mix(in oklab, var(--shpe-mid-navy) 70%, transparent),
+        var(--shpe-secondary));
   }
+
   .btn-primary:hover {
     background: color-mix(in oklab, var(--shpe-mid-navy) 85%, var(--shpe-secondary) 15%);
   }
@@ -95,6 +98,7 @@
     background: #0b0b0b;
     border: 1px solid color-mix(in oklab, white 10%, transparent);
   }
+
   .btn-ghost:hover {
     background: #111;
   }
@@ -107,17 +111,20 @@
     aspect-ratio: 3/1.4;
     transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
   }
+
   .logo-tile:hover {
     transform: translateY(-2px);
     border-color: color-mix(in oklab, white 22%, transparent);
     box-shadow: 0 10px 36px -16px rgba(0, 0, 0, 0.7);
   }
+
   .logo-img {
     filter: grayscale(100%) contrast(1.05);
     transition: filter 0.25s ease;
     object-fit: contain;
     padding: 0.75rem;
   }
+
   .logo-tile:hover .logo-img {
     filter: none;
   }
@@ -126,12 +133,15 @@
   .surface-navy-18 {
     background: color-mix(in oklab, var(--shpe-secondary) 18%, transparent);
   }
+
   .surface-gold-18 {
     background: color-mix(in oklab, var(--tier-gold) 18%, transparent);
   }
+
   .surface-silver-18 {
     background: color-mix(in oklab, var(--tier-silver) 18%, transparent);
   }
+
   .surface-bronze-18 {
     background: color-mix(in oklab, var(--tier-bronze) 18%, transparent);
   }
@@ -149,6 +159,7 @@
     border-color: color-mix(in oklab, white 10%, transparent);
     background: #0000004d;
   }
+
   .social-pill:hover {
     background: #00000073;
   }
@@ -161,61 +172,72 @@
       linear-gradient(180deg, rgba(9, 12, 20, 0.88), rgba(8, 10, 16, 0.88));
     backdrop-filter: blur(6px);
   }
+
   .footer-heading {
     @apply font-semibold tracking-wide text-white;
   }
+
   .footer-link {
     @apply text-zinc-400 hover:text-zinc-200;
   }
 
   /* ---- Animations ---- */
   @keyframes marquee {
-    from { transform: translateX(0); }
-    to { transform: translateX(-50%); }
+    from {
+      transform: translateX(0);
+    }
+
+    to {
+      transform: translateX(-50%);
+    }
   }
 
   /* --- Tier group header: filled bar above cards --- */
-.tier-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: .75rem;
-  padding: .55rem .75rem;
-  border-radius: .75rem;
-  border: 1px solid color-mix(in oklab, black 12%, transparent);
-  box-shadow: 0 8px 30px -18px rgba(0,0,0,.55);
-}
-.tier-header--gold {
-  background: linear-gradient(180deg, #ffe58f, #ffcf4f);
-  color: #1f1400;
-}
-.tier-header--silver {
-  background: linear-gradient(180deg, #f2f4f7, #d8dbe2);
-  color: #111216;
-}
-.tier-header--bronze {
-  background: linear-gradient(180deg, #f3c7a3, #e3a778);
-  color: #1c0e06;
-}
+  .tier-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: .75rem;
+    padding: .55rem .75rem;
+    border-radius: .75rem;
+    border: 1px solid color-mix(in oklab, black 12%, transparent);
+    box-shadow: 0 8px 30px -18px rgba(0, 0, 0, .55);
+  }
 
-.tier-header__label {
-  font-weight: 800;
-  letter-spacing: .02em;
-  text-transform: none;
-}
-.tier-header__verify {
-  display: inline-flex;
-  align-items: center;
-  gap: .35rem;
-  padding: .28rem .6rem;
-  border-radius: 9999px;
-  font-size: .7rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  color: #0b0b0b;
-  background: rgba(255,255,255,.85);
-  border: 1px solid color-mix(in oklab, black 12%, transparent);
-}
+  .tier-header--gold {
+    background: linear-gradient(180deg, #ffe58f, #ffcf4f);
+    color: #1f1400;
+  }
+
+  .tier-header--silver {
+    background: linear-gradient(180deg, #f2f4f7, #d8dbe2);
+    color: #111216;
+  }
+
+  .tier-header--bronze {
+    background: linear-gradient(180deg, #f3c7a3, #e3a778);
+    color: #1c0e06;
+  }
+
+  .tier-header__label {
+    font-weight: 800;
+    letter-spacing: .02em;
+    text-transform: none;
+  }
+
+  .tier-header__verify {
+    display: inline-flex;
+    align-items: center;
+    gap: .35rem;
+    padding: .28rem .6rem;
+    border-radius: 9999px;
+    font-size: .7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #0b0b0b;
+    background: rgba(255, 255, 255, .85);
+    border: 1px solid color-mix(in oklab, black 12%, transparent);
+  }
 
   .sponsor-card {
     display: flex;
@@ -229,29 +251,92 @@
     height: 176px;
   }
 
-  .logo-tile--compact { position: relative; height: 72px; border-radius: .6rem; background: color-mix(in oklab, var(--shpe-secondary) 16%, transparent); border: 1px solid color-mix(in oklab, white 10%, transparent); overflow: hidden; }
-  .logo-img--compact { object-fit: contain; padding: .5rem; }
+  .logo-tile--compact {
+    position: relative;
+    height: 72px;
+    border-radius: .6rem;
+    background: color-mix(in oklab, var(--shpe-secondary) 16%, transparent);
+    border: 1px solid color-mix(in oklab, white 10%, transparent);
+    overflow: hidden;
+  }
 
-  .sponsor-name { color: white; font-weight: 600; }
-  .sponsor-desc { color: rgba(255,255,255,.75); font-size: .75rem; line-height: 1.15rem; }
+  .logo-img--compact {
+    object-fit: contain;
+    padding: .5rem;
+  }
+
+  .sponsor-name {
+    color: white;
+    font-weight: 600;
+  }
+
+  .sponsor-desc {
+    color: rgba(255, 255, 255, .75);
+    font-size: .75rem;
+    line-height: 1.15rem;
+  }
 
   /* grid */
-  .grid-sponsor { display: grid; gap: 1rem; grid-template-columns: repeat(1, minmax(0,1fr)); }
-  @media (min-width:640px){ .grid-sponsor { grid-template-columns: repeat(2, minmax(0,1fr)); } }
-  @media (min-width:1024px){ .grid-sponsor { grid-template-columns: repeat(3, minmax(0,1fr)); } }
+  .grid-sponsor {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+
+  @media (min-width:640px) {
+    .grid-sponsor {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (min-width:1024px) {
+    .grid-sponsor {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
 
   /* subtle title/desc text tones */
-  .sponsor-name { color: white; font-weight: 600; }
-  .sponsor-desc { color: rgba(255,255,255,.75); font-size: .75rem; line-height: 1.15rem; }
+  .sponsor-name {
+    color: white;
+    font-weight: 600;
+  }
+
+  .sponsor-desc {
+    color: rgba(255, 255, 255, .75);
+    font-size: .75rem;
+    line-height: 1.15rem;
+  }
 
   /* ---------- CALENDAR COLORS (restores on-brand category pills) ---------- */
-  .dot-workshop { background: var(--shpe-light-blue); }
-  .dot-career   { background: var(--shpe-accent); }
-  .dot-social   { background: var(--shpe-light-gray); }
-  .dot-outreach { background: var(--shpe-primary); }
+  .dot-workshop {
+    background: var(--shpe-light-blue);
+  }
 
-  .surface-workshop { background: color-mix(in oklab, var(--shpe-light-blue) 16%, transparent); }
-  .surface-career   { background: color-mix(in oklab, var(--shpe-accent) 16%, transparent); }
-  .surface-social   { background: color-mix(in oklab, var(--shpe-light-gray) 16%, transparent); }
-  .surface-outreach { background: color-mix(in oklab, var(--shpe-primary) 16%, transparent); }
+  .dot-career {
+    background: var(--shpe-accent);
+  }
+
+  .dot-social {
+    background: var(--shpe-light-gray);
+  }
+
+  .dot-outreach {
+    background: var(--shpe-primary);
+  }
+
+  .surface-workshop {
+    background: color-mix(in oklab, var(--shpe-light-blue) 16%, transparent);
+  }
+
+  .surface-career {
+    background: color-mix(in oklab, var(--shpe-accent) 16%, transparent);
+  }
+
+  .surface-social {
+    background: color-mix(in oklab, var(--shpe-light-gray) 16%, transparent);
+  }
+
+  .surface-outreach {
+    background: color-mix(in oklab, var(--shpe-primary) 16%, transparent);
+  }
 }

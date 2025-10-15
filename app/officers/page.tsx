@@ -8,7 +8,7 @@ const officers = [
   { name: "Treasurer", person: "Amanda Chavez", src: "/images/AmandaHeadshot.png", major: "BS Health Care Administration", linkedin: "https://www.linkedin.com/in/amanda-chavez-11b75a2aa/" },
   { name: "Secretary", person: "Jesus Garcia Rodriguez", src: "/images/JesusHeadshot.png", major: "BSE Mechanical Engineering", linkedin: "https://www.linkedin.com/in/jesus-garcia-rodriguez-92a83a333/" },
   { name: "Social Media Coordinator", person: "Ismael Ovalle Castorena", src: "/images/IsmaelHeadshot.png", major: "BS Computer Science", linkedin: "https://www.linkedin.com/in/ismael-ovalle-castorena-6239a6216/" },
-  { name: "Social Media Photographer", person: "Flavio Ibarra", src: "/images/FlavioHeadshot.png", major: "BSE Biomedical Engineering", linkedin: "https://www.linkedin.com/in/flavio-ibarra-238089251/" },
+  { name: "Social Media Coordinator", person: "Flavio Ibarra", src: "/images/FlavioHeadshot.png", major: "BSE Biomedical Engineering", linkedin: "https://www.linkedin.com/in/flavio-ibarra-238089251/" },
   { name: "Recruiter", person: "Gabriella Davila Albor", src: "/images/GabbyHeadshot.png", major: "PhD Mechanical Engineer", linkedin: "https://www.linkedin.com/in/iamgabby/" },
   { name: "Webmaster", person: "Mateo Felske", src: "/images/MateoHeadshot.png", major: "BS Information Science & Technology", linkedin: "https://www.linkedin.com/in/mateofelske/" }
 ];
@@ -20,10 +20,10 @@ export default function Page() {
       <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         {officers.map((o) => (
           <a
-            key={o.name}
+            key={`${o.name}-${o.person}`}
             href={o.linkedin}
             target="_blank"
-            rel="noopener noreferrer" // Open link in a new tab safely
+            rel="noopener noreferrer"
             className="group block card border-soft surface-navy-18 p-5 text-center transition-transform hover:-translate-y-[2px] hover:ring-1 hover:ring-[color-mix(in_oklab,var(--shpe-light-blue)_65%,transparent)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[color-mix(in_oklab,var(--shpe-light-blue)_75%,transparent)]"
           >
             <span className="absolute transition-opacity duration-300 opacity-0 top-3 right-3 group-hover:opacity-100">

@@ -26,12 +26,12 @@ export default function Page() {
               Icon: Megaphone,
             },
           ].map(({ t, d, Icon }) => (
-            <div className="p-5 card card-meter border-soft surface-navy-18">
+            <div key={t} className="p-5 card card-meter border-soft surface-navy-18">
               <div className="flex items-center gap-3">
                 <Icon className="w-7 h-7" style={{ color: "var(--shpe-accent)" }} />
                 <h3 className="text-lg font-semibold">{t}</h3>
               </div>
-              <p className="mt-2 text-sm text-zinc-400">{d}</p>
+              <p className="text-sm mt-2 text-white/80">{d}</p>
             </div>
           ))}
         </div>
