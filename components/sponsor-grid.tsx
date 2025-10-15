@@ -1,4 +1,3 @@
-import { Card } from "@/components/card";
 import Image from '@/components/BpImage';
 
 type Tier = "Gold" | "Silver" | "Bronze";
@@ -37,54 +36,29 @@ const sponsors: Sponsor[] = [
 
 const TIER_ORDER: Tier[] = ["Gold", "Silver", "Bronze"];
 
-const TIER_STYLES: Record<Tier, { surface: string; chip: string }> = {
-  Gold:   { surface: "surface-gold-18",   chip: "bg-[#ffd867] text-black" },
-  Silver: { surface: "surface-silver-18", chip: "bg-[#e5e7eb] text-black" },
-  Bronze: { surface: "surface-bronze-18", chip: "bg-[#e0b08a] text-black" },
+const TIER_STYLES: Record<Tier, { header: string }> = {
+  Gold: { header: "tier-header tier-header--gold" },
+  Silver: { header: "tier-header tier-header--silver" },
+  Bronze: { header: "tier-header tier-header--bronze" },
 };
 
+
 function SponsorCard({ s }: { s: Sponsor }) {
-  const style = TIER_STYLES[s.tier];
   return (
-    <a
-      href={s.href}
-      target="_blank"
-      rel="noopener noreferrer"
-      aria-label={`${s.name} — ${s.tier} Sponsor`}
-    >
-      <Card className={`sponsor-card group p-4 border-soft ${style.surface} transition-transform hover:-translate-y-[2px]`}>
-        {/* Top row: tier chip */}
-        <div className="flex items-center justify-between">
-          <span className={`tier-chip ${style.chip}`}>{s.tier}</span>
-        </div>
-
-        {/* Logo stage */}
+    <a href={s.href} target="_blank" rel="noopener noreferrer" aria-label={`${s.name} — ${s.tier} Sponsor`}>
+      <div className="sponsor-card">
         <div className="logo-tile--compact">
-          <div className="relative w-full h-full">
-            <Image
-              src={s.src}
-              alt={s.name}
-              fill
-              sizes="420px"
-              className="logo-img--compact"
-              priority
-            />
-          </div>
+          <Image src={s.src} alt={s.name} fill sizes="320px" className="logo-img--compact" priority />
         </div>
-
-        {/* Name */}
-        <div className="pt-3">
-          <div className="truncate text-zinc-100">{s.name}</div>
-          {s.blurb && (
-            <p className="mt-0.5 line-clamp-2 text-xs text-white/70">
-              {s.blurb}
-            </p>
-          )}
+        <div>
+          <div className="sponsor-name">{s.name}</div>
+          {s.blurb && <div className="sponsor-desc">{s.blurb}</div>}
         </div>
-      </Card>
+      </div>
     </a>
   );
 }
+
 export function SponsorGrid() {
   return (
     <div className="space-y-10">
@@ -94,20 +68,14 @@ export function SponsorGrid() {
 
         return (
           <section key={tier} aria-labelledby={`tier-${tier}`}>
-            <header className="flex items-center gap-2 mb-3">
-              <h3
-                id={`tier-${tier}`}
-                className="text-sm font-semibold tracking-wide uppercase text-white/80"
-              >
+            {/* filled, colored bar outside the cards */}
+            <div className={TIER_STYLES[tier].header}>
+              <h3 id={`tier-${tier}`} className="tier-header__label">
                 {tier} Sponsors
               </h3>
-              <span className="tier-chip bg-black/10 text-white/80 border-white/10">
-                Verified
-              </span>
-            </header>
+            </div>
 
-            {/* fixed, smaller cards */}
-            <div className="grid-sponsor">
+            <div className="mt-3 grid-sponsor">
               {items.map((s) => (
                 <SponsorCard key={s.name} s={s} />
               ))}

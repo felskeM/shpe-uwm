@@ -1,7 +1,6 @@
 import { Section } from "@/components/section";
 import { SponsorGrid } from "@/components/sponsor-grid";
 import { SponsorCTA } from "@/components/sponsor-cta";
-import { SponsorMarquee } from "@/components/sponsor-marquee";
 
 export default function Page() {
   return (
@@ -15,9 +14,7 @@ export default function Page() {
         <SponsorGrid />
       </div>
 
-      <SponsorMarquee />
-
-      {/* calm gradient CTA */}
+      {/* CTA */}
       <div className="mt-8">
         <SponsorCTA />
       </div>
