@@ -1,7 +1,6 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 @plugin "tailwindcss-animate";
-@plugin "@tailwindcss/forms";
 
 :root {
   --radius: 1rem;
@@ -13,12 +12,11 @@
   --shpe-primary: #CF371B;
   --shpe-secondary: #1A2B52;
   --shpe-accent: #ED5D29;
-  --shpe-dark: #1C1B1A;
-  --shpe-light-gray: #BADEEC;
-  --shpe-light-blue: #79ABBE;
   --shpe-mid-navy: #2F4D87;
   --shpe-navy: #0E1A2D;
   --shpe-sky: #68A5D0;
+  --shpe-light-blue: #79ABBE;
+  --shpe-light-gray: #BADEEC;
   --shpe-orange: #F26522;
 
   /* Tier colors */
@@ -27,13 +25,10 @@
   --tier-bronze: #CD7F32;
 
   /* Shadows / borders */
-  --border-1: rgba(255, 255, 255, 0.08);
-  --shadow-sm: 0 1px 2px rgb(0 0 0 / 0.22);
-  --shadow-lg: 0 10px 30px rgb(0 0 0 / 0.32);
-  --shadow-soft: 0 10px 30px -15px rgba(0, 0, 0, 0.55);
-
-  /* Gradients */
-  --grad-underline: linear-gradient(90deg, var(--shpe-orange), var(--shpe-sky));
+  --line: rgba(255, 255, 255, .08);
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, .22);
+  --shadow-lg: 0 10px 30px rgba(0, 0, 0, .32);
+  --shadow-soft: 0 18px 40px -20px rgba(0, 0, 0, .6);
 }
 
 @layer base {
@@ -43,8 +38,8 @@
 
   body {
     background:
-      radial-gradient(1200px 700px at 15% -10%, color-mix(in oklab, var(--shpe-mid-navy) 18%, transparent), transparent),
-      radial-gradient(1400px 900px at 85% -5%, color-mix(in oklab, var(--shpe-sky) 14%, transparent), transparent),
+      radial-gradient(1200px 700px at 15% -10%, color-mix(in oklab, var(--shpe-mid-navy) 16%, transparent), transparent),
+      radial-gradient(1400px 900px at 85% -5%, color-mix(in oklab, var(--shpe-sky) 12%, transparent), transparent),
       var(--background);
     color: var(--foreground);
     font-family: var(--font-family);
@@ -55,42 +50,65 @@
   * {
     @apply transition-colors duration-300;
   }
+
+  @media (prefers-reduced-motion:reduce) {
+    * {
+      transition: none !important;
+      animation: none !important;
+    }
+  }
 }
 
 
 @layer utilities {
 
-  /* ---- Generic ---- */
+  /* Generic */
   .border-soft {
     border: 1px solid color-mix(in oklab, white 10%, transparent);
   }
 
-  .headline-gradient {
-    background: linear-gradient(90deg, var(--shpe-mid-navy), var(--shpe-light-blue), var(--shpe-accent));
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
+  .ring-brand {
+    box-shadow: 0 0 0 2px color-mix(in oklab, var(--shpe-light-blue) 65%, transparent);
   }
 
-  /* ---- Cards ---- */
+  .focus-brand {
+    @apply outline-none;
+    box-shadow: none;
+  }
+
+  .focus-brand:focus-visible {
+    @apply ring-2;
+  }
+
+  .focus-brand:focus-visible {
+    --tw-ring-color: color-mix(in oklab, var(--shpe-sky) 55%, transparent);
+  }
+
+  /* Cards */
   .card {
     border-radius: var(--radius);
-    border: 1px solid var(--border-1);
+    border: 1px solid var(--line);
+    background: color-mix(in oklab, var(--shpe-secondary) 18%, transparent);
     box-shadow: var(--shadow-lg);
     backdrop-filter: blur(6px);
-    background: color-mix(in oklab, var(--shpe-secondary) 18%, transparent);
   }
 
-  /* ---- Buttons ---- */
+  .card-hover {
+    @apply transition-transform;
+  }
+
+  .card-hover:hover {
+    transform: translateY(-2px);
+  }
+
+  /* Buttons */
   .btn-primary {
-    @apply inline-flex items-center justify-center px-4 py-2 font-medium text-white transition-colors rounded-xl;
-    background: linear-gradient(180deg,
-        color-mix(in oklab, var(--shpe-mid-navy) 70%, transparent),
-        var(--shpe-secondary));
+    @apply inline-flex items-center justify-center px-4 py-2 font-medium text-white rounded-xl;
+    background: linear-gradient(180deg, color-mix(in oklab, var(--shpe-mid-navy) 68%, transparent), var(--shpe-secondary));
   }
 
   .btn-primary:hover {
-    background: color-mix(in oklab, var(--shpe-mid-navy) 85%, var(--shpe-secondary) 15%);
+    background: color-mix(in oklab, var(--shpe-mid-navy) 82%, var(--shpe-secondary) 18%);
   }
 
   .btn-ghost {
@@ -100,60 +118,125 @@
   }
 
   .btn-ghost:hover {
-    background: #111;
+    background: #121212;
   }
 
-  /* ---- Logo Tiles ---- */
-  .logo-tile {
-    @apply relative overflow-hidden border rounded-lg;
-    background: color-mix(in oklab, var(--shpe-secondary) 16%, transparent);
-    border-color: color-mix(in oklab, white 10%, transparent);
-    aspect-ratio: 3/1.4;
-    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  /* Headlines */
+  .headline-gradient {
+    background: linear-gradient(90deg, var(--shpe-mid-navy), var(--shpe-light-blue), var(--shpe-orange));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
   }
 
-  .logo-tile:hover {
-    transform: translateY(-2px);
-    border-color: color-mix(in oklab, white 22%, transparent);
-    box-shadow: 0 10px 36px -16px rgba(0, 0, 0, 0.7);
-  }
-
-  .logo-img {
-    filter: grayscale(100%) contrast(1.05);
-    transition: filter 0.25s ease;
-    object-fit: contain;
-    padding: 0.75rem;
-  }
-
-  .logo-tile:hover .logo-img {
-    filter: none;
-  }
-
-  /* ---- Surfaces ---- */
-  .surface-navy-18 {
-    background: color-mix(in oklab, var(--shpe-secondary) 18%, transparent);
-  }
-
-  .surface-gold-18 {
-    background: color-mix(in oklab, var(--tier-gold) 18%, transparent);
-  }
-
-  .surface-silver-18 {
-    background: color-mix(in oklab, var(--tier-silver) 18%, transparent);
-  }
-
-  .surface-bronze-18 {
-    background: color-mix(in oklab, var(--tier-bronze) 18%, transparent);
-  }
-
-  /* ---- Grid Helpers ---- */
+  /* Sponsor & Event helpers */
   .grid-auto-fit {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: 1rem;
   }
 
-  /* ---- Social Pills (Footer) ---- */
+  .tier-chip {
+    @apply inline-flex items-center gap-1 rounded-full border px-2 py-0.5 text-[0.65rem] font-bold uppercase;
+    border-color: color-mix(in oklab, black 10%, transparent);
+    background: #f5f5f5;
+    color: #0b0b0b;
+  }
+
+  .tier-chip--gold {
+    background: #ffdf7a;
+    color: #2b2100;
+  }
+
+  .tier-chip--silver {
+    background: #eef0f4;
+    color: #151515;
+  }
+
+  .tier-chip--bronze {
+    background: #f2c3a0;
+    color: #2a170c;
+  }
+
+  .section-chip {
+    @apply inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wide px-2.5 py-1 rounded-full text-black;
+  }
+
+  .section-chip--gold {
+    background: color-mix(in oklab, var(--tier-gold) 80%, white 0%);
+  }
+
+  .section-chip--silver {
+    background: color-mix(in oklab, var(--tier-silver) 92%, white 0%);
+  }
+
+  .section-chip--bronze {
+    background: color-mix(in oklab, var(--tier-bronze) 85%, white 0%);
+  }
+
+  .logo-stage {
+    @apply relative overflow-hidden border rounded-lg;
+    height: 72px;
+    border-color: color-mix(in oklab, white 10%, transparent);
+    background: color-mix(in oklab, var(--shpe-secondary) 16%, transparent);
+  }
+
+  .logo-img {
+    object-fit: contain;
+    padding: .5rem;
+    filter: grayscale(100%) contrast(1.05);
+    transition: filter .25s ease;
+  }
+
+  .logo-stage:hover .logo-img {
+    filter: none;
+  }
+
+  .surface-navy-18 {
+    background: color-mix(in oklab, var(--shpe-secondary) 18%, transparent);
+  }
+
+  .surface-workshop {
+    background: color-mix(in oklab, var(--shpe-light-blue) 16%, transparent);
+  }
+
+  .surface-career {
+    background: color-mix(in oklab, var(--shpe-accent) 16%, transparent);
+  }
+
+  .surface-social {
+    background: color-mix(in oklab, var(--shpe-light-gray) 16%, transparent);
+  }
+
+  .surface-outreach {
+    background: color-mix(in oklab, var(--shpe-primary) 16%, transparent);
+  }
+
+  .dot-workshop {
+    background: var(--shpe-light-blue);
+  }
+
+  .dot-career {
+    background: var(--shpe-accent);
+  }
+
+  .dot-social {
+    background: var(--shpe-light-gray);
+  }
+
+  .dot-outreach {
+    background: var(--shpe-primary);
+  }
+
+  /* Footer */
+  .footer-bg {
+    background:
+      radial-gradient(60rem 32rem at 15% -10%, color-mix(in oklab, var(--shpe-mid-navy) 20%, transparent), transparent),
+      radial-gradient(70rem 40rem at 85% -5%, color-mix(in oklab, var(--shpe-sky) 14%, transparent), transparent),
+      linear-gradient(180deg, rgba(9, 12, 20, .9), rgba(8, 10, 16, .9));
+    backdrop-filter: blur(6px);
+  }
+
   .social-pill {
     @apply inline-flex items-center justify-center border rounded-full h-9 w-9 text-zinc-200;
     border-color: color-mix(in oklab, white 10%, transparent);
@@ -162,34 +245,6 @@
 
   .social-pill:hover {
     background: #00000073;
-  }
-
-  /* ---- Footer ---- */
-  .footer-bg {
-    background:
-      radial-gradient(60rem 32rem at 15% -10%, color-mix(in oklab, var(--shpe-mid-navy) 22%, transparent), transparent),
-      radial-gradient(70rem 40rem at 85% -5%, color-mix(in oklab, var(--shpe-sky) 16%, transparent), transparent),
-      linear-gradient(180deg, rgba(9, 12, 20, 0.88), rgba(8, 10, 16, 0.88));
-    backdrop-filter: blur(6px);
-  }
-
-  .footer-heading {
-    @apply font-semibold tracking-wide text-white;
-  }
-
-  .footer-link {
-    @apply text-zinc-400 hover:text-zinc-200;
-  }
-
-  /* ---- Animations ---- */
-  @keyframes marquee {
-    from {
-      transform: translateX(0);
-    }
-
-    to {
-      transform: translateX(-50%);
-    }
   }
 
   /* --- Tier group header: filled bar above cards --- */
@@ -223,20 +278,6 @@
     font-weight: 800;
     letter-spacing: .02em;
     text-transform: none;
-  }
-
-  .tier-header__verify {
-    display: inline-flex;
-    align-items: center;
-    gap: .35rem;
-    padding: .28rem .6rem;
-    border-radius: 9999px;
-    font-size: .7rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    color: #0b0b0b;
-    background: rgba(255, 255, 255, .85);
-    border: 1px solid color-mix(in oklab, black 12%, transparent);
   }
 
   .sponsor-card {
@@ -293,50 +334,5 @@
     .grid-sponsor {
       grid-template-columns: repeat(3, minmax(0, 1fr));
     }
-  }
-
-  /* subtle title/desc text tones */
-  .sponsor-name {
-    color: white;
-    font-weight: 600;
-  }
-
-  .sponsor-desc {
-    color: rgba(255, 255, 255, .75);
-    font-size: .75rem;
-    line-height: 1.15rem;
-  }
-
-  /* ---------- CALENDAR COLORS (restores on-brand category pills) ---------- */
-  .dot-workshop {
-    background: var(--shpe-light-blue);
-  }
-
-  .dot-career {
-    background: var(--shpe-accent);
-  }
-
-  .dot-social {
-    background: var(--shpe-light-gray);
-  }
-
-  .dot-outreach {
-    background: var(--shpe-primary);
-  }
-
-  .surface-workshop {
-    background: color-mix(in oklab, var(--shpe-light-blue) 16%, transparent);
-  }
-
-  .surface-career {
-    background: color-mix(in oklab, var(--shpe-accent) 16%, transparent);
-  }
-
-  .surface-social {
-    background: color-mix(in oklab, var(--shpe-light-gray) 16%, transparent);
-  }
-
-  .surface-outreach {
-    background: color-mix(in oklab, var(--shpe-primary) 16%, transparent);
   }
 }
