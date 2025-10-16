@@ -5,16 +5,8 @@ export function SponsorCTA() {
   const contact = withBasePath("/contact/");
 
   return (
-    <div
-      className="relative overflow-hidden rounded-2xl border-soft p-4 sm:p-5"
-      style={{
-        /* Softer, more cohesive gradient */
-        background:
-          "linear-gradient(90deg, color-mix(in oklab, var(--shpe-mid-navy) 70%, transparent) 0%, color-mix(in oklab, var(--shpe-sky) 22%, transparent) 50%, color-mix(in oklab, var(--shpe-accent) 18%, transparent) 100%)",
-      }}
-    >
-      {/* gentle overlay for contrast without muddy borders */}
-      <div className="pointer-events-none absolute inset-0 bg-black/6" />
+    <div className="cta-shell cta-gradient">
+      <div className="cta-overlay" />
 
       <div className="relative flex flex-col items-start justify-between gap-3 sm:flex-row sm:items-center">
         <p className="max-w-2xl text-sm text-[color:color-mix(in_oklab,var(--foreground)_90%,transparent)]">
