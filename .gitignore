@@ -17,6 +17,12 @@
 /.next/
 /out/
 
+# build artifacts
+.open-next/
+.vercel/output/
+out/
+dist/
+
 # production
 /build
 

@@ -84,11 +84,15 @@
     "wrangler": "^4.43.0"
   },
   "lint-staged": {
-    "*.{ts,tsx,js,jsx}": [
-      "eslint --fix"
-    ],
-    "*.{ts,tsx,js,jsx,css,md}": [
-      "prettier --write"
+    "*.{js,jsx,ts,tsx}": "eslint --fix",
+    "*.{css,md,mdx,json,yaml,yml}": "prettier --write",
+    "ignore": [
+      "**/.open-next/**",
+      "**/.vercel/**",
+      "public/**",
+      "node_modules/**",
+      "out/**",
+      "dist/**"
     ]
   },
   "packageManager": "npm@11.6.2"
