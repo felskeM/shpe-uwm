@@ -1,4 +1,6 @@
-const isStatic = process.env.NEXT_STATIC_EXPORT === '1';
+const isStatic =
+  process.env.NEXT_STATIC_EXPORT === '1' ||
+  process.env.GITHUB_PAGES === 'true';
 const repo = 'shpe-uwm';
 
 /** @type {import('next').NextConfig} */

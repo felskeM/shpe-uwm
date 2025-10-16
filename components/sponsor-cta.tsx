@@ -2,7 +2,7 @@ import { withBasePath } from "@/lib/basePath";
 
 export function SponsorCTA() {
   const packetHref = withBasePath("/documents/sponsor.pdf");
-  const contact = withBasePath("/contact");
+  const contact = withBasePath("/contact/");
 
   return (
     <div
@@ -26,7 +26,6 @@ export function SponsorCTA() {
           >
             Become a sponsor
           </a>
-          {/* ADD FILE */}
           <a
             href={packetHref}
             download="sponsor.pdf"
