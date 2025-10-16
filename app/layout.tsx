@@ -13,18 +13,20 @@ export const viewport: Viewport = {
   themeColor: "#0a0a0a",
 };
 
+const isGh = process.env.GITHUB_PAGES === "true";
+const cfUrl = process.env.CF_PAGES_URL; // Cloudflare Pages given domain
 const siteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL ||
-  (process.env.GITHUB_PAGES === "true"
+  process.env.NEXT_PUBLIC_SITE_URL ??
+  (isGh
     ? "https://felskem.github.io/shpe-uwm"
-    : "https://10db25ab.shpe-uwm.pages.dev/");
+    : (cfUrl ?? "https://shpe-uwm.pages.dev")); // CF preview/prod fallback
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: "UWM-SHPE",
+  title: "SHPE UW-Milwaukee",
   description:
     "Society of Hispanic Professional Engineers — University of Wisconsin–Milwaukee",
-  applicationName: "SHPE UWM",
+  applicationName: "SHPE UW-Milwaukee",
   alternates: { canonical: siteUrl },
   authors: [{ name: "Matthew (Mateo) Salvador Felske" }],
   keywords: ["SHPE", "UWM", "Hispanic", "STEM", "engineering"],
