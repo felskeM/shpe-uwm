@@ -17,15 +17,23 @@ const nav = [
   { href: "/contact", label: "Contact" },
 ] as const satisfies ReadonlyArray<{ href: Route; label: string }>;
 
-function NavLink({ href, active, children }: { href: Route; active: boolean; children: React.ReactNode }) {
+function NavLink({
+  href,
+  active,
+  children,
+}: {
+  href: Route;
+  active: boolean;
+  children: React.ReactNode;
+}) {
   return (
     <Link
       href={href}
       className={cn(
         "relative rounded-xl px-3.5 py-2.5 text-[0.95rem] outline-none",
-        "text-zinc-200/90 hover:text-white hover:bg-white/5",
-        active && "text-white bg-[rgba(16,33,58,0.55)] ring-1 ring-white/10 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.04)]",
-        "focus-brand"
+        "text-[color:color-mix(in_oklab,var(--foreground)_90%,transparent)] hover:text-[color:var(--foreground)] hover:bg-[color-mix(in_oklab,white_5%,transparent)]",
+        active &&
+          "text-[color:var(--foreground)] bg-[rgba(16,33,58,0.55)] ring-1 ring-white/10 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.04)]",
       )}
     >
       {children}
@@ -33,7 +41,7 @@ function NavLink({ href, active, children }: { href: Route; active: boolean; chi
         className={cn(
           "pointer-events-none absolute left-3 right-3 -bottom-[7px] h-[2px] rounded-full opacity-0 transition-opacity",
           active && "opacity-100",
-          "bg-[linear-gradient(90deg,var(--shpe-orange),var(--shpe-sky))]"
+          "bg-[linear-gradient(90deg,var(--shpe-orange),var(--shpe-sky))]",
         )}
       />
     </Link>
@@ -47,9 +55,12 @@ export function SiteHeader() {
   return (
     <header className="relative top-0 z-50 w-full">
       <div className="h-[3px] w-full bg-[linear-gradient(90deg,var(--shpe-orange),var(--shpe-sky))]" />
-      <div className={cn("border-b border-white/8 backdrop-blur-md",
-        "bg-[linear-gradient(90deg,#0C1626_0%,#0E1A2D_45%,#0B1322_100%)]"
-      )}>
+      <div
+        className={cn(
+          "border-b border-white/8 backdrop-blur-md",
+          "bg-[linear-gradient(90deg,#0C1626_0%,#0E1A2D_45%,#0B1322_100%)]",
+        )}
+      >
         <div className="flex items-center justify-between h-14 sm:h-16 lg:h-[70px] px-3 lg:px-6">
           <div className="scale-[.9] sm:scale-100">
             <Logo />
@@ -65,7 +76,7 @@ export function SiteHeader() {
           {/* MOBILE NAV ONLY */}
           <button
             aria-label="Toggle menu"
-            className="md:hidden rounded-lg p-2 text-zinc-200/90 hover:text-white hover:bg-white/5 focus-brand"
+            className="md:hidden rounded-lg p-2 text-[color:color-mix(in_oklab,var(--foreground)_90%,transparent)] hover:text-[color:var(--foreground)] hover:bg-[color-mix(in_oklab,white_5%,transparent)] focus-brand"
             onClick={() => setOpen((v) => !v)}
           >
             {open ? <X /> : <Menu />}
@@ -81,9 +92,10 @@ export function SiteHeader() {
                     key={n.href}
                     href={n.href}
                     className={cn(
-                      "rounded-xl px-3 py-2.5 outline-none text-zinc-200/90 hover:text-white hover:bg-white/5",
-                      active && "text-white bg-[rgba(16,33,58,0.55)] ring-1 ring-white/10",
-                      "focus-brand"
+                      "rounded-xl px-3 py-2.5 outline-none text-[color:color-mix(in_oklab,var(--foreground)_90%,transparent)] hover:text-[color:var(--foreground)] hover:bg-[color-mix(in_oklab,white_5%,transparent)]",
+                      active &&
+                        "text-[color:var(--foreground)] bg-[rgba(16,33,58,0.55)] ring-1 ring-white/10",
+                      "focus-brand",
                     )}
                   >
                     {n.label}

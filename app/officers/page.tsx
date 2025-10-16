@@ -1,22 +1,71 @@
 import { Avatar } from "@/components/avatar";
 import { Section } from "@/components/section";
 
-
 const officers = [
-  { name: "President", person: "Diego Sarmiento", src: "/images/DiegoHeadshot.png", major: "BSE Mechanical Engineering", linkedin: "https://www.linkedin.com/in/diegosarmientopr/" },
-  { name: "Vice President", person: "Erick Covarrubias", src: "/images/ErickHeadshot.png", major: "BSE Electrical Engineering", linkedin: "https://www.linkedin.com/in/erick-covarrubias-073601332/" },
-  { name: "Treasurer", person: "Amanda Chavez", src: "/images/AmandaHeadshot.png", major: "BS Health Care Administration", linkedin: "https://www.linkedin.com/in/amanda-chavez-11b75a2aa/" },
-  { name: "Secretary", person: "Jesus Garcia Rodriguez", src: "/images/JesusHeadshot.png", major: "BSE Mechanical Engineering", linkedin: "https://www.linkedin.com/in/jesus-garcia-rodriguez-92a83a333/" },
-  { name: "Social Media Coordinator", person: "Ismael Ovalle Castorena", src: "/images/IsmaelHeadshot.png", major: "BS Computer Science", linkedin: "https://www.linkedin.com/in/ismael-ovalle-castorena-6239a6216/" },
-  { name: "Social Media Coordinator", person: "Flavio Ibarra", src: "/images/FlavioHeadshot.png", major: "BSE Biomedical Engineering", linkedin: "https://www.linkedin.com/in/flavio-ibarra-238089251/" },
-  { name: "Recruiter", person: "Gabriella Davila Albor", src: "/images/GabbyHeadshot.png", major: "PhD Mechanical Engineer", linkedin: "https://www.linkedin.com/in/iamgabby/" },
-  { name: "Webmaster", person: "Mateo Felske", src: "/images/MateoHeadshot.png", major: "BS Information Science & Technology", linkedin: "https://www.linkedin.com/in/mateofelske/" }
+  {
+    name: "President",
+    person: "Diego Sarmiento",
+    src: "/images/DiegoHeadshot.png",
+    major: "BSE Mechanical Engineering",
+    linkedin: "https://www.linkedin.com/in/diegosarmientopr/",
+  },
+  {
+    name: "Vice President",
+    person: "Erick Covarrubias",
+    src: "/images/ErickHeadshot.png",
+    major: "BSE Electrical Engineering",
+    linkedin: "https://www.linkedin.com/in/erick-covarrubias-073601332/",
+  },
+  {
+    name: "Treasurer",
+    person: "Amanda Chavez",
+    src: "/images/AmandaHeadshot.png",
+    major: "BS Health Care Administration",
+    linkedin: "https://www.linkedin.com/in/amanda-chavez-11b75a2aa/",
+  },
+  {
+    name: "Secretary",
+    person: "Jesus Garcia Rodriguez",
+    src: "/images/JesusHeadshot.png",
+    major: "BSE Mechanical Engineering",
+    linkedin: "https://www.linkedin.com/in/jesus-garcia-rodriguez-92a83a333/",
+  },
+  {
+    name: "Social Media Coordinator",
+    person: "Ismael Ovalle Castorena",
+    src: "/images/IsmaelHeadshot.png",
+    major: "BS Computer Science",
+    linkedin: "https://www.linkedin.com/in/ismael-ovalle-castorena-6239a6216/",
+  },
+  {
+    name: "Social Media Coordinator",
+    person: "Flavio Ibarra",
+    src: "/images/FlavioHeadshot.png",
+    major: "BSE Biomedical Engineering",
+    linkedin: "https://www.linkedin.com/in/flavio-ibarra-238089251/",
+  },
+  {
+    name: "Recruiter",
+    person: "Gabriella Davila Albor",
+    src: "/images/GabbyHeadshot.png",
+    major: "PhD Mechanical Engineer",
+    linkedin: "https://www.linkedin.com/in/iamgabby/",
+  },
+  {
+    name: "Webmaster",
+    person: "Mateo Felske",
+    src: "/images/MateoHeadshot.png",
+    major: "BS Information Science & Technology",
+    linkedin: "https://www.linkedin.com/in/mateofelske/",
+  },
 ];
-
 
 export default function Page() {
   return (
-    <Section title="Executive Board" subtitle="Meet our eboard team for the 2025-2026 academic year at UWM!">
+    <Section
+      title="Executive Board"
+      subtitle="Meet our eboard team for the 2025-2026 academic year at UWM!"
+    >
       <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         {officers.map((o) => (
           <a
@@ -40,16 +89,22 @@ export default function Page() {
               <Avatar
                 alt={o.person}
                 src={o.src}
-                className="rounded-full ring-2 ring-[color-mix(in_oklab,var(--shpe-mid-navy)_55%,transparent)] group-hover:ring-[#0A66C2] h-24 w-24 transition-all duration-300"
+                className="mt-3 text-lg font-semibold text-[color:var(--foreground)] group-hover:text-[#0A66C2] transition-colors duration-300"
                 position="center top"
               />
             </div>
 
-            <h3 className="mt-3 text-lg font-semibold text-white group-hover:text-[#0A66C2] transition-colors duration-300">
+            <h3 className="mt-3 text-lg font-semibold text-[color:var(--foreground)] group-hover:text-[#0A66C2] transition-colors duration-300">
               {o.person}
             </h3>
-            <p className="text-sm font-bold text-[var(--shpe-accent)]">{o.name}</p>
-            {o.major && <p className="text-sm text-zinc-400">{o.major}</p>}
+            <p className="text-sm font-bold text-[var(--shpe-accent)]">
+              {o.name}
+            </p>
+            {o.major && (
+              <p className="text-sm text-[color:color-mix(in_oklab,var(--foreground)_65%,transparent)]">
+                {o.major}
+              </p>
+            )}
           </a>
         ))}
       </div>

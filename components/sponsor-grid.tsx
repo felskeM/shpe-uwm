@@ -1,4 +1,4 @@
-import Image from '@/components/BpImage';
+import Image from "@/components/BpImage";
 
 type Tier = "Gold" | "Silver" | "Bronze";
 
@@ -41,16 +41,33 @@ const SECTION_CHIP: Record<Tier, string> = {
   Bronze: "section-chip section-chip--bronze",
 };
 
-
 function SponsorCard({ s }: { s: Sponsor }) {
   return (
-    <a href={s.href} target="_blank" rel="noopener noreferrer" aria-label={`${s.name} — ${s.tier} Sponsor`}>
+    <a
+      href={s.href}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={`${s.name} — ${s.tier} Sponsor`}
+    >
       <div className="card card-hover p-4 border-soft surface-navy-18">
         <div className="logo-stage mb-3">
-          <Image src={s.src} alt={s.name} fill sizes="320px" className="logo-img" priority />
+          <Image
+            src={s.src}
+            alt={s.name}
+            fill
+            sizes="320px"
+            className="logo-img"
+            priority
+          />
         </div>
-        <div className="text-white font-semibold truncate">{s.name}</div>
-        {s.blurb && <div className="text-xs text-white/70 mt-0.5">{s.blurb}</div>}
+        <div className="text-[color:var(--foreground)] font-semibold truncate">
+          {s.name}
+        </div>
+        {s.blurb && (
+          <div className="text-xs text-[color:color-mix(in_oklab,var(--foreground)_70%,transparent)] mt-0.5">
+            {s.blurb}
+          </div>
+        )}
       </div>
     </a>
   );
@@ -68,7 +85,9 @@ export function SponsorGrid() {
               <span className={SECTION_CHIP[tier]}>{tier + " Sponsors"}</span>
             </header>
             <div className="mt-3 grid-sponsor">
-              {items.map((s) => <SponsorCard key={`${s.name}-${s.tier}`} s={s} />)}
+              {items.map((s) => (
+                <SponsorCard key={`${s.name}-${s.tier}`} s={s} />
+              ))}
             </div>
           </section>
         );

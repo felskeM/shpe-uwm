@@ -7,7 +7,10 @@ export default function Page() {
   return (
     <>
       <Hero />
-      <Section title="What we do" subtitle="Professional development, mentorship, and community.">
+      <Section
+        title="What we do"
+        subtitle="Professional development, mentorship, and community."
+      >
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {[
             {
@@ -26,12 +29,20 @@ export default function Page() {
               Icon: Megaphone,
             },
           ].map(({ t, d, Icon }) => (
-            <div key={t} className="p-5 card card-meter border-soft surface-navy-18">
+            <div
+              key={t}
+              className="p-5 card card-meter border-soft surface-navy-18"
+            >
               <div className="flex items-center gap-3">
-                <Icon className="w-7 h-7" style={{ color: "var(--shpe-accent)" }} />
+                <Icon
+                  className="w-7 h-7"
+                  style={{ color: "var(--shpe-accent)" }}
+                />
                 <h3 className="text-lg font-semibold">{t}</h3>
               </div>
-              <p className="text-sm mt-2 text-white/80">{d}</p>
+              <p className="text-sm mt-2 text-[color:color-mix(in_oklab,var(--foreground)_80%,transparent)]">
+                {d}
+              </p>
             </div>
           ))}
         </div>
