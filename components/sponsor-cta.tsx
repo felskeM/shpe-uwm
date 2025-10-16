@@ -20,7 +20,7 @@ export function SponsorCTA() {
         </p>
         <div className="flex gap-2">
           <a
-            href="/contact"
+            href={`${withBasePath}/contact`}
             className="px-4 py-2 btn-ghost backdrop-blur ring-1 ring-white/10"
           >
             Become a sponsor
