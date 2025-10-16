@@ -12,7 +12,7 @@ export default function Page() {
         <CalendarShell all={events} />
       </div>
       <div
-        className="p-5 mt-8 rounded-2xl border-soft"
+        className="p-5 mt-8 rounded-2xl border-soft surface-navy-18"
         style={{
           background:
             "linear-gradient(90deg, var(--shpe-mid-navy), color-mix(in oklab, var(--shpe-light-blue) 60%, transparent), color-mix(in oklab, var(--shpe-accent) 40%, transparent))",
