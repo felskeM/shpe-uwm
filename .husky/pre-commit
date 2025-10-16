@@ -1,1 +1,5 @@
-npm test
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+# Fast checks on staged files
+npx --no-install lint-staged

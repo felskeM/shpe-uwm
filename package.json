@@ -5,10 +5,12 @@
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
+    "start": "next start",
+    "lint": "next lint --max-warnings=0",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "echo \"(no tests yet)\" && exit 0",
     "export": "next export -o out",
     "pages:build": "GITHUB_PAGES=true next build && GITHUB_PAGES=true next export -o out",
-    "start": "next start",
-    "lint": "next lint",
     "lint:debug": "eslint ./src --debug",
     "lint:fix": "eslint ./src --fix",
     "prepare": "husky",
@@ -46,7 +48,7 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.1",
-    "@eslint/js": "^10.0.0",
+    "@eslint/js": "^9.37.0",
     "@next/bundle-analyzer": "^15.5.5",
     "@tailwindcss/aspect-ratio": "^0.4.2",
     "@tailwindcss/container-queries": "^0.1.1",
