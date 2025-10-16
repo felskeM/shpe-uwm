@@ -5,7 +5,7 @@ import { googleCalendarUrl, icsDataHrefFor, slugify } from "@/lib/calendar";
 import type { EventItem, Category } from "@/components/event-card";
 import { cn } from "@/lib/cn";
 
-// category
+// category -> surface/dot utilities from globals.css
 const CAT = {
   Workshop: { surface: "surface-workshop", dot: "dot-workshop" },
   Career: { surface: "surface-career", dot: "dot-career" },
@@ -14,8 +14,8 @@ const CAT = {
 } as const satisfies Record<Category, { surface: string; dot: string }>;
 
 type Props = {
-  year: number; // 2025
-  month: number; // 0 = Jan and so forth
+  year: number; // e.g. 2025
+  month: number; // 0 = Jan
   events: EventItem[];
 };
 
@@ -24,26 +24,24 @@ export default function CalendarMonth({ year, month, events }: Props) {
   const startWeekday = first.getDay(); // 0 Sun ... 6 Sat
   const daysInMonth = new Date(year, month + 1, 0).getDate();
 
-  // 6x7 grid for calendar
+  // Build only as many cells as needed; pad to whole weeks (5 or 6 rows)
   const cells: (Date | null)[] = [];
   for (let i = 0; i < startWeekday; i++) cells.push(null);
   for (let d = 1; d <= daysInMonth; d++) cells.push(new Date(year, month, d));
   while (cells.length % 7 !== 0) cells.push(null);
-  while (cells.length < 42) cells.push(null);
 
   return (
-    <div className="p-4 rounded-2xl border-soft surface-navy-18">
+    <div className="p-5 rounded-2xl border-soft surface-navy-18">
       <div className="grid grid-cols-7 gap-2 mb-2 text-xs text-[color:color-mix(in_oklab,var(--foreground)_70%,transparent)]">
         {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map((d) => (
-          <div
-            key={d}
-            className="text-center text-[color:color-mix(in_oklab,var(--foreground)_70%,transparent)]"
-          >
+          <div key={d} className="text-center">
             {d}
           </div>
         ))}
       </div>
-      <div className="grid grid-cols-7 gap-2">
+
+      {/* Consistent row height per week, responsive: 120px minimum */}
+      <div className="grid grid-cols-7 gap-2 [grid-auto-rows:minmax(120px,1fr)]">
         {cells.map((date, idx) => (
           <DayCell key={idx} date={date} month={month} events={events} />
         ))}
@@ -64,13 +62,12 @@ function DayCell({
   const dayEvents = date
     ? events.filter((e) => isSameDay(new Date(e.start), date))
     : [];
-
   const isOtherMonth = date ? date.getMonth() !== month : false;
 
   return (
     <div
       className={cn(
-        "min-h-28 rounded-xl p-2 border-soft surface-navy-18",
+        "rounded-xl p-2 border-soft surface-navy-18 min-h-0", // min-h-0 to allow children to define height
         isOtherMonth && "opacity-40",
       )}
     >
@@ -80,7 +77,7 @@ function DayCell({
         </span>
       </div>
 
-      <div className="space-y-1">
+      <div className="space-y-1 min-h-0">
         {dayEvents.map((e) => (
           <EventPill key={e.id} e={e} />
         ))}
@@ -93,43 +90,54 @@ function EventPill({ e }: { e: EventItem }) {
   const cat = CAT[e.category];
   const start = new Date(e.start);
   const end = new Date(e.end);
-  const time = `${fmtTime(start)}–${fmtTime(end)}`;
 
   return (
     <div className={cn("group border-soft rounded-lg p-2", cat.surface)}>
-      <div className="flex items-center gap-2">
-        <span className={cn("inline-block h-2 w-2 rounded-full", cat.dot)} />
-        <span className="text-sm truncate text-[color:color-mix(in_oklab,var(--foreground)_90%,transparent)]">
+      <div className="flex items-start gap-2">
+        <span
+          className={cn(
+            "mt-1 inline-block h-2 w-2 rounded-full shrink-0",
+            cat.dot,
+          )}
+        />
+        <span className="text-sm leading-snug line-clamp-2 text-[color:color-mix(in_oklab,var(--foreground)_90%,transparent)]">
           {e.title}
         </span>
       </div>
-      <div className="mt-0.5 flex flex-wrap items-center gap-2 text-[11px] text-[color:color-mix(in_oklab,var(--foreground)_70%,transparent)]">
-        <span>{time}</span>
-        <span>• {e.location}</span>
-        <a
-          className="inline-flex items-center gap-1 px-2 py-1 ml-auto btn-ghost focus-brand"
-          href={googleCalendarUrl(e)}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Add to Google Calendar"
-          title="Add to Google Calendar"
-        >
-          <Image
-            src="/images/gcal.png"
-            alt="Google Calendar"
-            width={16}
-            height={16}
-          />
-        </a>
-        <a
-          className="inline-flex items-center gap-1 px-2 py-1 btn-ghost focus-brand"
-          href={icsDataHrefFor([e]).href}
-          download={`${slugify(e.title)}.ics`}
-          aria-label="Download iCal (.ics)"
-          title="Download iCal (.ics)"
-        >
-          <Image src="/images/ical.png" alt="iCal" width={16} height={16} />
-        </a>
+
+      {/* SINGLE LINE — time, location, and icons all inline */}
+      <div className="mt-1 flex items-center gap-2 text-[11px] text-[color:color-mix(in_oklab,var(--foreground)_70%,transparent)]">
+        <span className="truncate">
+          {fmtTime(start)}–{fmtTime(end)}
+        </span>
+        {e.location && <span className="truncate">· {e.location}</span>}
+
+        <div className="ml-auto flex items-center gap-1">
+          <a
+            href={googleCalendarUrl(e)}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Add to Google Calendar"
+            title="Add to Google Calendar"
+            className="inline-flex h-6 w-6 items-center justify-center rounded-md border-soft bg-black/30 hover:bg-black/45 focus-brand"
+          >
+            <Image
+              src="/images/gcal.png"
+              alt="Google Calendar"
+              width={14}
+              height={14}
+            />
+          </a>
+          <a
+            href={icsDataHrefFor([e]).href}
+            download={`${slugify(e.title)}.ics`}
+            aria-label="Download iCal (.ics)"
+            title="Download iCal (.ics)"
+            className="inline-flex h-6 w-6 items-center justify-center rounded-md border-soft bg-black/30 hover:bg-black/45 focus-brand"
+          >
+            <Image src="/images/ical.png" alt="iCal" width={14} height={14} />
+          </a>
+        </div>
       </div>
     </div>
   );

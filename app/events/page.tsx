@@ -8,7 +8,7 @@ export default function Page() {
       title={<span className="headline-gradient">Events</span>}
       subtitle="Workshops, recruiting, socials, and outreach—all in one place."
     >
-      <div className="max-w-5xl mx-auto">
+      <div className="max-w-6xl mx-auto">
         <CalendarShell all={events} />
       </div>
       <div
