@@ -29,6 +29,7 @@ export function SponsorCTA() {
           {/* ADD FILE */}
           <a
             href={packetHref}
+            download="sponsors.pdf"
             className="px-4 py-2 btn-primary ring-1 ring-white/10 focus-brand"
             target="_blank"
             rel="noopener noreferrer"

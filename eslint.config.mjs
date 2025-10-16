@@ -9,7 +9,6 @@ export default [
   { ignores: ['.next/**', 'out/**', 'dist/**', 'node_modules/**', 'next-env.d.ts'] },
 
   js.configs.recommended,
-
   ...tseslint.configs.recommended,
 
   {
