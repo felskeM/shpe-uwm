@@ -48,8 +48,15 @@ function SponsorCard({ s }: { s: Sponsor }) {
       target="_blank"
       rel="noopener noreferrer"
       aria-label={`${s.name} — ${s.tier} Sponsor`}
+      className="focus-brand"
     >
-      <div className="card card-hover p-4 border-soft surface-navy-18">
+      <div
+        className={[
+          "card card-hover border-soft surface-navy-18 p-5",
+          "transition-all hover:-translate-y-0.5 hover:ring-1",
+          "hover:ring-[color-mix(in_oklab,var(--shpe-light-blue)_60%,transparent)]",
+        ].join(" ")}
+      >
         <div className="logo-stage mb-3">
           <Image
             src={s.src}
@@ -60,11 +67,12 @@ function SponsorCard({ s }: { s: Sponsor }) {
             priority
           />
         </div>
-        <div className="text-[color:var(--foreground)] font-semibold truncate">
+        <div className="text-[color:var(--foreground)] font-semibold text-base text-center">
           {s.name}
         </div>
+
         {s.blurb && (
-          <div className="text-xs text-[color:color-mix(in_oklab,var(--foreground)_70%,transparent)] mt-0.5">
+          <div className="mt-1.5 text-center text-[11.5px] leading-5 text-[color:color-mix(in_oklab,var(--foreground)_70%,transparent)]">
             {s.blurb}
           </div>
         )}
@@ -79,12 +87,18 @@ export function SponsorGrid() {
       {TIER_ORDER.map((tier) => {
         const items = sponsors.filter((s) => s.tier === tier);
         if (!items.length) return null;
+
         return (
           <section key={tier} aria-labelledby={`tier-${tier}`}>
-            <header className="mb-2 flex items-center gap-2">
-              <span className={SECTION_CHIP[tier]}>{tier + " Sponsors"}</span>
+            <header className="mb-3 flex items-center gap-2">
+              <span id={`tier-${tier}`} className={SECTION_CHIP[tier]}>
+                {tier} Sponsors
+              </span>
+              <div className="h-px flex-1 bg-[color:color-mix(in_oklab,white_10%,transparent)]" />
             </header>
-            <div className="mt-3 grid-sponsor">
+
+            {/* KEY FIX: use the utility that exists (auto-fit min cards) */}
+            <div className="grid-auto-fit">
               {items.map((s) => (
                 <SponsorCard key={`${s.name}-${s.tier}`} s={s} />
               ))}
