@@ -52,12 +52,14 @@ function SponsorCard({ s }: { s: Sponsor }) {
     >
       <div
         className={[
-          "card card-hover border-soft surface-navy-18 p-5",
-          "transition-all hover:-translate-y-0.5 hover:ring-1",
-          "hover:ring-[color-mix(in_oklab,var(--shpe-light-blue)_60%,transparent)]",
+          "card border-soft surface-navy-18",
+          "p-5 w-[min(100%,320px)] mx-auto", // hard max width per card
+          "transition-all hover:-translate-y-0.5 hover:ring-2 hover:ring-brand",
+          "flex flex-col items-center text-center",
+          "min-h-[220px]", // keeps rows even
         ].join(" ")}
       >
-        <div className="logo-stage mb-3">
+        <div className="logo-stage mb-3 w-full">
           <Image
             src={s.src}
             alt={s.name}
@@ -67,12 +69,13 @@ function SponsorCard({ s }: { s: Sponsor }) {
             priority
           />
         </div>
-        <div className="text-[color:var(--foreground)] font-semibold text-base text-center">
+
+        <div className="text-[color:var(--foreground)] font-semibold text-base">
           {s.name}
         </div>
 
         {s.blurb && (
-          <div className="mt-1.5 text-center text-[11.5px] leading-5 text-[color:color-mix(in_oklab,var(--foreground)_70%,transparent)]">
+          <div className="mt-1.5 text-[11.5px] leading-5 text-[color:color-mix(in_oklab,var(--foreground)_70%,transparent)]">
             {s.blurb}
           </div>
         )}
@@ -97,8 +100,8 @@ export function SponsorGrid() {
               <div className="h-px flex-1 bg-[color:color-mix(in_oklab,white_10%,transparent)]" />
             </header>
 
-            {/* KEY FIX: use the utility that exists (auto-fit min cards) */}
-            <div className="grid-auto-fit">
+            {/* Fixed card size grid: min 260px, cap at 320px, center the items */}
+            <div className="grid justify-center gap-4 [grid-template-columns:repeat(auto-fit,minmax(260px,320px))]">
               {items.map((s) => (
                 <SponsorCard key={`${s.name}-${s.tier}`} s={s} />
               ))}

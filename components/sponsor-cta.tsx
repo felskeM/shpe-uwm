@@ -8,13 +8,13 @@ export function SponsorCTA() {
     <div
       className="relative overflow-hidden rounded-2xl border-soft p-4 sm:p-5"
       style={{
+        /* Softer, more cohesive gradient */
         background:
-          "linear-gradient(90deg, color-mix(in oklab, var(--shpe-mid-navy) 92%, transparent) 0%, color-mix(in oklab, var(--shpe-light-blue) 28%, transparent) 45%, color-mix(in oklab, var(--shpe-accent) 24%, transparent) 100%)",
-        boxShadow: "inset 0 1px 0 0 rgba(255,255,255,0.04)",
+          "linear-gradient(90deg, color-mix(in oklab, var(--shpe-mid-navy) 70%, transparent) 0%, color-mix(in oklab, var(--shpe-sky) 22%, transparent) 50%, color-mix(in oklab, var(--shpe-accent) 18%, transparent) 100%)",
       }}
     >
-      {/* softer overlay so content pops a bit more */}
-      <div className="pointer-events-none absolute inset-0 bg-black/8" />
+      {/* gentle overlay for contrast without muddy borders */}
+      <div className="pointer-events-none absolute inset-0 bg-black/6" />
 
       <div className="relative flex flex-col items-start justify-between gap-3 sm:flex-row sm:items-center">
         <p className="max-w-2xl text-sm text-[color:color-mix(in_oklab,var(--foreground)_90%,transparent)]">
@@ -23,17 +23,13 @@ export function SponsorCTA() {
         </p>
 
         <div className="flex flex-wrap gap-2">
-          <a
-            href={contact}
-            className="btn-ghost backdrop-blur ring-1 ring-white/10 focus-brand"
-          >
+          <a href={contact} className="btn-ghost focus-brand">
             Become a sponsor
           </a>
-
           <a
             href={packetHref}
             download="sponsor.pdf"
-            className="btn-primary ring-1 ring-white/10 focus-brand"
+            className="btn-primary focus-brand"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Download sponsor overview (PDF)"
