@@ -4,15 +4,6 @@ import Link from "next/link";
 import { Container } from "@/components/container";
 import { withBasePath } from "@/lib/basePath";
 
-const NAV = [
-  { href: "/", label: "Home" },
-  { href: "/about", label: "About" },
-  { href: "/officers", label: "Officers" },
-  { href: "/events", label: "Events" },
-  { href: "/sponsors", label: "Sponsors" },
-  { href: "/contact", label: "Contact" },
-] as const;
-
 export function SiteFooter() {
   const logo = withBasePath("/images/shpe-logo.webp");
   return (
@@ -21,7 +12,6 @@ export function SiteFooter() {
         <div className="grid gap-8 md:grid-cols-3">
           <div>
             <Link href="/" className="inline-flex items-center gap-3 group">
-              {/* plain <img> so it works under static export */}
               <img
                 src={logo}
                 alt="SHPE UWM"

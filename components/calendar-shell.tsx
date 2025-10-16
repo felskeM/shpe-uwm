@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState, useEffect } from "react";
+import { useState } from "react";
 import CalendarMonth from "@/components/calendar-month";
 import type { EventItem } from "@/components/event-card";
 
@@ -16,25 +16,11 @@ export default function CalendarShell({ all }: { all: EventItem[] }) {
   const [year, setYear] = useState(now.getFullYear());
   const [month, setMonth] = useState(now.getMonth());
 
-  const monthEvents = useMemo(
-    () =>
-      all.filter((e) => {
-        const d = new Date(e.start);
-        return d.getFullYear() === year && d.getMonth() === month;
-      }),
-    [all, year, month],
-  );
-
   function shift(delta: number) {
     const d = new Date(year, month + delta, 1);
     setYear(d.getFullYear());
     setMonth(d.getMonth());
   }
-
-  const [origin, setOrigin] = useState("");
-  useEffect(() => {
-    setOrigin(window.location.origin);
-  }, []);
 
   return (
     <div>

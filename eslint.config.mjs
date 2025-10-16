@@ -1,42 +1,39 @@
-import js from "@eslint/js";
-import nextPlugin from "eslint-config-next";
-import reactHooks from "eslint-plugin-react-hooks";
-import jsxA11y from "eslint-plugin-jsx-a11y";
-import ts from "@typescript-eslint/eslint-plugin";
-import tsParser from "@typescript-eslint/parser";
+import js from '@eslint/js';
+import react from 'eslint-plugin-react';
+import reactHooks from 'eslint-plugin-react-hooks';
+import jsxA11y from 'eslint-plugin-jsx-a11y';
+import tseslint from 'typescript-eslint';
 
 export default [
-  // Base JS config
+  { ignores: ['.next/**', 'out/**', 'dist/**', 'node_modules/**', 'next-env.d.ts'] },
+
   js.configs.recommended,
 
-  // Next’s recommended (core-web-vitals included in v15)
-  ...nextPlugin,
+  ...tseslint.configs.recommended,
 
   {
-    files: ["**/*.{ts,tsx,js,jsx}"],
+    files: ['**/*.{ts,tsx,js,jsx}'],
+    settings: { react: { version: 'detect' } },
+    plugins: { react, 'react-hooks': reactHooks, 'jsx-a11y': jsxA11y },
     languageOptions: {
-      parser: tsParser,
-      parserOptions: {
-        ecmaVersion: "latest",
-        sourceType: "module",
-        ecmaFeatures: { jsx: true }
-      }
-    },
-    plugins: {
-      "@typescript-eslint": ts,
-      "react-hooks": reactHooks,
-      "jsx-a11y": jsxA11y
+      ecmaVersion: 2022,
+      sourceType: 'module',
+      globals: { JSX: true },
     },
     rules: {
-      // React hooks
-      "react-hooks/rules-of-hooks": "error",
-      "react-hooks/exhaustive-deps": "warn",
+      'react/react-in-jsx-scope': 'off',
+      'react/jsx-uses-react': 'off',
 
-      // TS niceties
-      "@typescript-eslint/consistent-type-imports": "warn",
+      'react-hooks/rules-of-hooks': 'error',
+      'react-hooks/exhaustive-deps': 'warn',
 
-      // a11y
-      "jsx-a11y/alt-text": "error"
-    }
-  }
+      '@typescript-eslint/no-unused-vars': [
+        'warn',
+        { argsIgnorePattern: '^_', varsIgnorePattern: '^_' },
+      ],
+      '@typescript-eslint/consistent-type-imports': 'warn',
+
+      'jsx-a11y/alt-text': 'error',
+    },
+  },
 ];
