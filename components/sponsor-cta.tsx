@@ -1,7 +1,7 @@
 import { withBasePath } from "@/lib/basePath";
 
 export function SponsorCTA() {
-  const packetHref = withBasePath("/documents/sponsors.pdf");
+  const packetHref = withBasePath("/documents/sponsor.pdf");
   const contact = withBasePath("/contact");
 
   return (
@@ -29,7 +29,7 @@ export function SponsorCTA() {
           {/* ADD FILE */}
           <a
             href={packetHref}
-            download="sponsors.pdf"
+            download="sponsor.pdf"
             className="px-4 py-2 btn-primary ring-1 ring-white/10 focus-brand"
             target="_blank"
             rel="noopener noreferrer"
