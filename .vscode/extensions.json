@@ -1,5 +1,6 @@
 {
     "recommendations": [
-        "firefox-devtools.vscode-firefox-debug"
+        "firefox-devtools.vscode-firefox-debug",
+        "danielsanmedium.dscodegpt"
     ]
 }

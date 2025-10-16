@@ -11,5 +11,6 @@
       "mode": "auto"
     }
   ],
-  "css.lint.unknownAtRules": "ignore"
+  "css.lint.unknownAtRules": "ignore",
+  "CodeGPT.apiKey": "OpenAI"
 }
