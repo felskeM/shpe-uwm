@@ -2,6 +2,7 @@ import { withBasePath } from "@/lib/basePath";
 
 export function SponsorCTA() {
   const packetHref = withBasePath("/documents/sponsors.pdf");
+  const contact = withBasePath("/contact");
 
   return (
     <div
@@ -20,7 +21,7 @@ export function SponsorCTA() {
         </p>
         <div className="flex gap-2">
           <a
-            href="/contact"
+            href={contact}
             className="px-4 py-2 btn-ghost backdrop-blur ring-1 ring-white/10"
           >
             Become a sponsor
