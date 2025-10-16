@@ -17,7 +17,7 @@ const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL ||
   (process.env.GITHUB_PAGES === "true"
     ? "https://felskem.github.io/shpe-uwm"
-    : "https://shpe-uwm.pages.dev");
+    : "https://10db25ab.shpe-uwm.pages.dev/");
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
