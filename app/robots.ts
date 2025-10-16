@@ -1,5 +1,6 @@
 import type { MetadataRoute } from 'next';
 
+export const dynamic = 'force-static'; // required for static export
 const isGh = process.env.GITHUB_PAGES === 'true';
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || (isGh ? '/shpe-uwm' : '');
 
