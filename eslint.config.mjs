@@ -1,4 +1,5 @@
 import js from '@eslint/js';
+import globals from 'globals';
 import react from 'eslint-plugin-react';
 import reactHooks from 'eslint-plugin-react-hooks';
 import jsxA11y from 'eslint-plugin-jsx-a11y';
@@ -12,13 +13,18 @@ export default [
   ...tseslint.configs.recommended,
 
   {
-    files: ['**/*.{ts,tsx,js,jsx}'],
+    files: [
+      'next.config.*',
+      'postcss.config.*',
+      'tailwind.config.*',
+      '**/*.config.{js,cjs,mjs}',
+    ],
     settings: { react: { version: 'detect' } },
     plugins: { react, 'react-hooks': reactHooks, 'jsx-a11y': jsxA11y },
     languageOptions: {
       ecmaVersion: 2022,
       sourceType: 'module',
-      globals: { JSX: true },
+      globals: { JSX: true, ...globals.node },
     },
     rules: {
       'react/react-in-jsx-scope': 'off',
