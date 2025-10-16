@@ -129,48 +129,8 @@
     color: transparent;
   }
 
+
   /* Sponsor & Event helpers */
-  .sponsor-card {
-    display: flex;
-    flex-direction: column;
-    gap: .6rem;
-    border-radius: .9rem;
-    border: 1px solid color-mix(in oklab, white 10%, transparent);
-    background: color-mix(in oklab, var(--shpe-secondary) 16%, transparent);
-    box-shadow: var(--shadow-sm);
-    padding: .9rem 1rem;
-    height: 176px;
-  }
-
-  .sponsor-name {
-    color: white;
-    font-weight: 600;
-  }
-
-  .sponsor-desc {
-    color: rgba(255, 255, 255, .75);
-    font-size: .75rem;
-    line-height: 1.15rem;
-  }
-
-  .grid-sponsor {
-    display: grid;
-    gap: 1rem;
-    grid-template-columns: repeat(1, minmax(0, 1fr));
-  }
-
-  @media (min-width:640px) {
-    .grid-sponsor {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-  }
-
-  @media (min-width:1024px) {
-    .grid-sponsor {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
-  }
-
   .grid-auto-fit {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -286,5 +246,31 @@
 
   .social-pill:hover {
     background: #00000073;
+  }
+
+  /* Simple marquee */
+  @keyframes marquee {
+    from {
+      transform: translateX(0)
+    }
+
+    to {
+      transform: translateX(-50%)
+    }
+  }
+
+  .marquee {
+    display: flex;
+    gap: 1rem;
+    overflow: hidden;
+    mask-image: linear-gradient(90deg, transparent, black 12%, black 88%, transparent);
+  }
+
+  .marquee-track {
+    display: flex;
+    gap: 1rem;
+    flex: none;
+    min-width: 200%;
+    animation: marquee 30s linear infinite;
   }
 }

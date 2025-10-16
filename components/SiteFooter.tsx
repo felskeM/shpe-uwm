@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { Container } from "@/components/container";
 import { withBasePath } from "@/lib/basePath";
-import { ArrowUpRight, ChevronUp } from "lucide-react";
 
 const NAV = [
   { href: "/", label: "Home" },
