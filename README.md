@@ -24,7 +24,8 @@ See [`package.json`](https://github.com/felskeM/shpe-uwm/blob/main/package.json)
 
 ## 📦 Deployment
 
-- The site is deployed as a **static export** to [GitHub Pages](https://felskem.github.io/shpe-uwm/).
+- The site is deployed as a **static export** to [GitHub Page Link](https://felskem.github.io/shpe-uwm/).
+- The site is also deployed as a **dynamic export** to [Cloudflare Page Link](https://71934a1d.shpe-uwm.pages.dev/).
 - Static export means some dynamic features (like image optimization, size configuration, and links) may not work as expected.
 - See the [GitHub Actions workflows](https://github.com/felskeM/shpe-uwm/tree/main/.github/workflows) for deployment details.
 
