@@ -1,0 +1,69 @@
+{
+  "pages": {
+    "/_not-found/page": [
+      "static/chunks/webpack-2163d490fafe4027.js",
+      "static/chunks/4bd1b696-c023c6e3521b1417.js",
+      "static/chunks/255-839588e0f3decf6f.js",
+      "static/chunks/main-app-ce42fb0ce74ffb22.js",
+      "static/chunks/app/_not-found/page-08ae2531b73d960c.js"
+    ],
+    "/layout": [
+      "static/chunks/webpack-2163d490fafe4027.js",
+      "static/chunks/4bd1b696-c023c6e3521b1417.js",
+      "static/chunks/255-839588e0f3decf6f.js",
+      "static/chunks/main-app-ce42fb0ce74ffb22.js",
+      "static/css/7fa85fefc1dd884b.css",
+      "static/chunks/239-e5a90e2a60ae59a5.js",
+      "static/chunks/726-53510943437fc8f6.js",
+      "static/chunks/app/layout-bf8029fa97973a40.js"
+    ],
+    "/about/page": [
+      "static/chunks/webpack-2163d490fafe4027.js",
+      "static/chunks/4bd1b696-c023c6e3521b1417.js",
+      "static/chunks/255-839588e0f3decf6f.js",
+      "static/chunks/main-app-ce42fb0ce74ffb22.js",
+      "static/chunks/239-e5a90e2a60ae59a5.js",
+      "static/chunks/app/about/page-8e7af19cb512479b.js"
+    ],
+    "/contact/page": [
+      "static/chunks/webpack-2163d490fafe4027.js",
+      "static/chunks/4bd1b696-c023c6e3521b1417.js",
+      "static/chunks/255-839588e0f3decf6f.js",
+      "static/chunks/main-app-ce42fb0ce74ffb22.js",
+      "static/chunks/app/contact/page-44b1ad812f073893.js"
+    ],
+    "/events/page": [
+      "static/chunks/webpack-2163d490fafe4027.js",
+      "static/chunks/4bd1b696-c023c6e3521b1417.js",
+      "static/chunks/255-839588e0f3decf6f.js",
+      "static/chunks/main-app-ce42fb0ce74ffb22.js",
+      "static/chunks/239-e5a90e2a60ae59a5.js",
+      "static/chunks/app/events/page-fdc310282f74d045.js"
+    ],
+    "/officers/page": [
+      "static/chunks/webpack-2163d490fafe4027.js",
+      "static/chunks/4bd1b696-c023c6e3521b1417.js",
+      "static/chunks/255-839588e0f3decf6f.js",
+      "static/chunks/main-app-ce42fb0ce74ffb22.js",
+      "static/chunks/239-e5a90e2a60ae59a5.js",
+      "static/chunks/app/officers/page-8e7af19cb512479b.js"
+    ],
+    "/page": [
+      "static/chunks/webpack-2163d490fafe4027.js",
+      "static/chunks/4bd1b696-c023c6e3521b1417.js",
+      "static/chunks/255-839588e0f3decf6f.js",
+      "static/chunks/main-app-ce42fb0ce74ffb22.js",
+      "static/chunks/239-e5a90e2a60ae59a5.js",
+      "static/chunks/557-3358e66dcc2dd21f.js",
+      "static/chunks/app/page-2a9e1ee01badecb2.js"
+    ],
+    "/sponsors/page": [
+      "static/chunks/webpack-2163d490fafe4027.js",
+      "static/chunks/4bd1b696-c023c6e3521b1417.js",
+      "static/chunks/255-839588e0f3decf6f.js",
+      "static/chunks/main-app-ce42fb0ce74ffb22.js",
+      "static/chunks/239-e5a90e2a60ae59a5.js",
+      "static/chunks/app/sponsors/page-8e7af19cb512479b.js"
+    ]
+  }
+}
