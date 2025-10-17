@@ -3,6 +3,8 @@
 import { useState } from "react";
 import CalendarMonth from "@/components/calendar-month";
 import type { EventItem } from "@/components/event-card";
+import AgendaList from "@/components/agenda-list";
+
 
 function monthLabel(y: number, m: number) {
   return new Date(y, m, 1).toLocaleString("en-US", {
@@ -25,7 +27,6 @@ export default function CalendarShell({ all }: { all: EventItem[] }) {
   return (
     <div>
       <div className="flex items-center justify-between gap-2 mb-3">
-        {/* Month pager */}
         <div className="flex items-center gap-2">
           <button
             className="px-3 py-2 text-2xl leading-none btn-ghost focus-brand"
@@ -34,7 +35,7 @@ export default function CalendarShell({ all }: { all: EventItem[] }) {
           >
             ‹
           </button>
-          <div className="text-base font-semibold uppercase sm:text-lg text-[color:color-mix(in_oklab,var(--foreground)_80%,transparent)]">
+          <div className="text-base sm:text-lg font-semibold uppercase text-[color:color-mix(in_oklab,var(--foreground)_80%,transparent)]">
             {monthLabel(year, month)}
           </div>
           <button
@@ -46,7 +47,16 @@ export default function CalendarShell({ all }: { all: EventItem[] }) {
           </button>
         </div>
       </div>
-      <CalendarMonth year={year} month={month} events={all} />
+
+      {/* Mobile: agenda list */}
+      <div className="md:hidden">
+        <AgendaList year={year} month={month} events={all} />
+      </div>
+
+      {/* Tablet/Desktop: month grid */}
+      <div className="hidden md:block">
+        <CalendarMonth year={year} month={month} events={all} />
+      </div>
     </div>
   );
 }

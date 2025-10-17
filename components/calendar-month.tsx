@@ -5,7 +5,6 @@ import { googleCalendarUrl, icsDataHrefFor, slugify } from "@/lib/calendar";
 import type { EventItem, Category } from "@/components/event-card";
 import { cn } from "@/lib/cn";
 
-// Category → surface utilities from globals.css
 const CAT = {
   Workshop: { surface: "surface-workshop" },
   Career: { surface: "surface-career" },
@@ -24,23 +23,20 @@ export default function CalendarMonth({ year, month, events }: Props) {
   const startWeekday = first.getDay(); // 0 Sun ... 6 Sat
   const daysInMonth = new Date(year, month + 1, 0).getDate();
 
-  // Build only as many cells as needed; pad to whole weeks (5 or 6 rows)
   const cells: (Date | null)[] = [];
   for (let i = 0; i < startWeekday; i++) cells.push(null);
   for (let d = 1; d <= daysInMonth; d++) cells.push(new Date(year, month, d));
   while (cells.length % 7 !== 0) cells.push(null);
 
   return (
-    <div className="p-5 rounded-2xl border-soft surface-navy-18">
-      <div className="mb-2 grid grid-cols-7 gap-2 text-xs text-[color:color-mix(in_oklab,var(--foreground)_70%,transparent)]">
+    <div className="p-5 rounded-2xl border-soft surface-navy-18 overflow-x-auto">
+      <div className="min-w-[720px] mb-2 grid grid-cols-7 gap-2 text-xs text-[color:color-mix(in_oklab,var(--foreground)_70%,transparent)]">
         {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map((d) => (
           <div key={d} className="text-center">
             {d}
           </div>
         ))}
       </div>
-
-      {/* Consistent row height per week; comfortable for multi-line pills */}
       <div className="grid grid-cols-7 gap-2 [grid-auto-rows:minmax(130px,1fr)]">
         {cells.map((date, idx) => (
           <DayCell key={idx} date={date} month={month} events={events} />
