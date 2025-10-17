@@ -6,10 +6,17 @@ import { withBasePath } from "@/lib/basePath";
 
 export function SiteFooter() {
   const logo = withBasePath("/images/shpe-logo.webp");
+  const navLinks = [
+    ["/about", "About"],
+    ["/officers", "Officers"],
+    ["/events", "Events"],
+    ["/sponsors", "Sponsors"],
+    ["/contact", "Contact"],
+  ] as const;
   return (
     <footer className="mt-16 text-sm border-t border-[color:var(--line)] footer-bg">
       <Container className="py-10">
-        <div className="grid gap-8 md:grid-cols-3">
+        <div className="grid gap-10 md:grid-cols-3">
           <div>
             <Link href="/" className="inline-flex items-center gap-3 group">
               <img
@@ -17,16 +24,15 @@ export function SiteFooter() {
                 alt="SHPE UWM"
                 className="object-contain w-auto h-10 opacity-90 group-hover:opacity-100"
               />
-              <div className="leading-tight">
-                <p className="text-[color:color-mix(in_oklab,var(--foreground)_65%,transparent)]">
-                  University of Wisconsin–Milwaukee
-                </p>
-              </div>
+              <p className="leading-tight text-[color:color-mix(in_oklab,var(--foreground)_70%,transparent)]">
+                University of Wisconsin–Milwaukee
+              </p>
             </Link>
-            <p className="mt-1 text-[color:color-mix(in_oklab,var(--foreground)_65%,transparent)]">
+            <p className="mt-3 text-[color:color-mix(in_oklab,var(--foreground)_65%,transparent)]">
               Leading Hispanics in STEM at University of Wisconsin–Milwaukee.
             </p>
-            <div className="mt-4 flex gap-2">
+
+            <div className="mt-5 flex gap-2">
               <a
                 className="social-pill"
                 aria-label="Instagram"
@@ -53,74 +59,43 @@ export function SiteFooter() {
                   <path d="M4.98 3.5C4.98 4.88 3.88 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM0 8h5v16H0V8zm7.5 0h4.7v2.5h.07c.65-1.2 2.25-2.5 4.63-2.5 4.95 0 5.86 3.25 5.86 7.47V24h-5v-7.8c0-1.86-.03-4.25-2.6-4.25-2.6 0-3 2.03-3 4.12V24h-5V8z" />
                 </svg>
               </a>
-              <a
-                className="social-pill"
-                aria-label="Email"
-                href="mailto:garciar9@uwm.edu"
-              >
-                <svg
-                  viewBox="0 0 24 24"
-                  className="w-5 h-5"
-                  fill="currentColor"
-                >
+              <a className="social-pill" aria-label="Email" href="mailto:garciar9@uwm.edu">
+                <svg viewBox="0 0 24 24" className="w-5 h-5" fill="currentColor">
                   <path d="M2 4h20v16H2z" fill="none" />
                   <path d="M20 6v.01L12 12 4 6.01V6h16m0-2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z" />
                 </svg>
               </a>
             </div>
           </div>
-          <div>
+
+          <nav>
             <div className="font-semibold text-[color:var(--foreground)]">
-              Navigation
+              Navigate
             </div>
-            <ul className="mt-2 space-y-1">
-              <li>
-                <a className="footer-link" href="/about">
-                  About
-                </a>
-              </li>
-              <li>
-                <a className="footer-link" href="/officers">
-                  Officers
-                </a>
-              </li>
-              <li>
-                <a className="footer-link" href="/events">
-                  Events
-                </a>
-              </li>
-              <li>
-                <a className="footer-link" href="/sponsors">
-                  Sponsors
-                </a>
-              </li>
-              <li>
-                <a className="footer-link" href="/contact">
-                  Contact
-                </a>
-              </li>
+            <ul className="mt-2 space-y-1.5">
+              {navLinks.map(([href, label]) => (
+                <li key={href}>
+                  <Link className="footer-link block rounded-md px-2 py-1.5 focus-brand" href={href}>
+                    {label}
+                  </Link>
+                </li>
+              ))}
             </ul>
-          </div>
+          </nav>
 
           <div>
-            <div className="font-semibold text-[color:var(--foreground)]">
-              Join us
-            </div>
+            <div className="font-semibold text-[color:var(--foreground)]">Join us</div>
             <p className="mt-2 text-[color:color-mix(in_oklab,var(--foreground)_65%,transparent)]">
               Partner on workshops, projects, and careers.
             </p>
-            <div className="mt-3 flex gap-2">
-              <a href="/contact" className="btn-primary">
-                Become a sponsor
-              </a>
-              <a href="/events" className="btn-ghost">
-                Attend an event
-              </a>
+            <div className="mt-3 grid gap-2 sm:flex">
+              <a href="/contact" className="btn-primary w-full sm:w-auto">Become a sponsor</a>
+              <a href="/events" className="btn-ghost w-full sm:w-auto">Attend an event</a>
             </div>
           </div>
         </div>
 
-        <div className="mt-8 pt-6 border-t border-[color:var(--line)] text-[color:color-mix(in_oklab,var(--foreground)_60%,transparent)] flex items-center justify-between">
+        <div className="mt-8 pt-6 border-t border-[color:var(--line)] text-[color:color-mix(in_oklab,var(--foreground)_60%,transparent)] flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
           <p>© {new Date().getFullYear()} SHPE UWM.</p>
           <p>Go Panthers!</p>
         </div>

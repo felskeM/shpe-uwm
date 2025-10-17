@@ -288,6 +288,15 @@
     backdrop-filter: blur(6px);
   }
 
+  .footer-link {
+    color: color-mix(in oklab, var(--foreground) 75%, transparent);
+  }
+
+  .footer-link:hover {
+    color: var(--foreground);
+    background: color-mix(in oklab, white 5%, transparent);
+  }
+
   .social-pill {
     @apply inline-flex items-center justify-center border rounded-full h-9 w-9 text-zinc-200;
     border-color: color-mix(in oklab, white 10%, transparent);
