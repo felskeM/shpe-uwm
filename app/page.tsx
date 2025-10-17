@@ -1,7 +1,26 @@
 import { Hero } from "@/components/hero";
 import { Section } from "@/components/section";
-import { SponsorGrid } from "@/components/sponsor-grid";
 import { Users, GraduationCap, Megaphone } from "lucide-react";
+import { SponsorMarquee, type SponsorLogo } from "@/components/sponsor-marquee";
+
+const SPONSORS: SponsorLogo[] = [
+  {
+    name: "GE HealthCare",
+    src: "/images/GELogo.png",
+    href: "https://www.gehealthcare.com/",
+  },
+  {
+    name: "Eaton",
+    src: "/images/EatonLogo.png",
+    href: "https://www.eaton.com/us/en-us.html",
+  },
+  {
+    name: "Roberto Hernandez Center",
+    src: "/images/RHCLogo.png",
+    href: "https://uwm.edu/community-empowerment-institutional-inclusivity/services/roberto-hernandez-center/",
+  },
+];
+
 
 export default function Page() {
   return (
@@ -29,27 +48,19 @@ export default function Page() {
               Icon: Megaphone,
             },
           ].map(({ t, d, Icon }) => (
-            <div
-              key={t}
-              className="p-5 card card-meter border-soft surface-navy-18"
-            >
+            <div key={t} className="p-5 card card-meter border-soft surface-navy-18">
               <div className="flex items-center gap-3">
-                <Icon
-                  className="w-7 h-7"
-                  style={{ color: "var(--shpe-accent)" }}
-                />
+                <Icon className="w-7 h-7" style={{ color: "var(--shpe-accent)" }} />
                 <h3 className="text-lg font-semibold">{t}</h3>
               </div>
-              <p className="text-sm mt-2 text-[color:color-mix(in_oklab,var(--foreground)_80%,transparent)]">
-                {d}
-              </p>
+              <p className="mt-2 text-sm text-[color:color-mix(in_oklab,var(--foreground)_80%,transparent)]">{d}</p>
             </div>
           ))}
         </div>
       </Section>
 
       <Section title="Our sponsors">
-        <SponsorGrid />
+        <SponsorMarquee items={SPONSORS} />
       </Section>
     </>
   );

@@ -16,7 +16,7 @@ export function Logo({ className }: Props) {
         alt="SHPE logo"
         width={320}
         height={90}
-        className="block h-10 sm:h-12 lg:h-14 w-auto shrink-0 object-contain"
+        className="block h-10 sm:h-8 lg:h-10 w-auto shrink-0 object-contain"
         sizes="(max-width: 640px) 180px, (max-width: 1024px) 260px, 320px"
         priority
       />
@@ -24,7 +24,7 @@ export function Logo({ className }: Props) {
       {/* Hide on small screens */}
       <span className="hidden sm:block w-px h-12 md:h-12 lg:h-14 bg-[color:color-mix(in_oklab,var(--foreground)_20%,transparent)]" />
 
-      <span className="hidden sm:inline leading-tight text-[15px] font-semibold tracking-tight text-[color:var(--foreground)] whitespace-nowrap md:text-lg lg:text-xl">
+      <span className="hidden sm:inline leading-tight font-semibold tracking-tight text-[color:var(--foreground)] whitespace-nowrap md:text-base lg:text-lg">
         University of
         <br className="hidden md:inline" />
         Wisconsin–Milwaukee
