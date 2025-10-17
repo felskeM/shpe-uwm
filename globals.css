@@ -53,9 +53,29 @@
       ),
       var(--background);
     color: var(--foreground);
+    font-size: 0.95rem;
     font-family: var(--font-family);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 1.8rem;
+        line-height: 1.15;
+      }
+
+      h2 {
+        font-size: 1.4rem;
+      }
+
+      p {
+        font-size: 0.95rem;
+      }
+
+      .card {
+        padding: 1rem;
+      }
+    }
   }
 
   * {

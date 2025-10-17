@@ -11,7 +11,7 @@ export function Hero() {
   return (
     <div className="relative isolate">
       <div className="absolute inset-x-0 bottom-0 h-40 -z-10 bg-gradient-to-t from-black/50 to-transparent" />
-      <Container className="grid items-center gap-10 py-14 sm:py-16 lg:grid-cols-2 lg:py-24">
+      <Container className="grid items-center gap-6 py-10 sm:py-16 lg:grid-cols-2 lg:py-24 relative w-full aspect-[4/3] sm:aspect-[16/9]">
         <motion.div
           initial={{ opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
