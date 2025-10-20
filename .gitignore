@@ -1,7 +1,12 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+# Node / package managers
+node_modules/
+pnpm-lock.yaml
+yarn-error.log*
+npm-debug.log*
+yarn-debug.log*
+.pnpm-debug.log*
 
 # dependencies
-/node_modules
 /.pnp
 .pnp.*
 .yarn/*
@@ -14,42 +19,25 @@
 /coverage
 
 # next.js
-/.next/
-/out/
+.next/
+out/
+dist/
 
 # build artifacts
 .open-next/
-.vercel/output/
-out/
-dist/
+.wrangler/
+.dev.vars
 
 # production
 /build
 
-# misc
+# Tools
 .DS_Store
+*.tsbuildinfo
+.eslintcache
+.vscode/
+.idea/
 *.pem
 
-# debug
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-.pnpm-debug.log*
-
-# env files (can opt-in for committing if needed)
+# env files
 .env*
-
-# vercel
-.vercel
-
-# typescript
-*.tsbuildinfo
-next-env.d.ts
-
-# Dev/test scaffolding not used by the site
-petstore-*.py
-requirements.txt
-compose*.yaml
-Dockerfile
-.devcontainer/
-.azure/
