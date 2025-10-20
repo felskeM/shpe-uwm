@@ -1,5 +1,6 @@
-# Node / package managers
-node_modules/
+# NextJS and NPM Logs
+node_modules
+*.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
@@ -7,30 +8,30 @@ yarn-error.log*
 
 # testing
 coverage/
-/.tsout/
-/.tscache/
+.tsout/
+.tscache/
 
 # next.js
-.next/
-out/
-dist/
-.open-next/
+.next
+out
+dist
 
 # build artifacts
 .open-next/
 .wrangler/
 .dev.vars
-build/
+build
 .vercel/
 
 # Tools
 .DS_Store
 *.tsbuildinfo
 .eslintcache
-.vscode/
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
 .idea/
 *.pem
 
 # env files
 .env*
-!.env.example
