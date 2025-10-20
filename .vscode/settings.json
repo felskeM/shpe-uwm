@@ -13,5 +13,12 @@
   ],
   "css.lint.unknownAtRules": "ignore",
   "CodeGPT.apiKey": "OpenAI",
-  "cSpell.words": ["eslintcache", "tscache", "tsout", "vercel"]
+  "cSpell.words": [
+    "eslintcache",
+    "mmayorf",
+    "opennextjs",
+    "tscache",
+    "tsout",
+    "vercel"
+  ]
 }

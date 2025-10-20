@@ -1,6 +1,9 @@
+main = ".open-next/worker.js"
 name = "shpe-uwm"
-compatibility_date = "2025-10-16"
+compatibility_date = "2025-10-20"
 compatibility_flags = ["nodejs_compat"]
+[assets]
+directory = ".open-next/assets"
+binding = "ASSETS"
 
-[pages]
 pages_build_output_dir = ".open-next/cloudflare"
