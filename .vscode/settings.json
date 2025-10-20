@@ -12,5 +12,9 @@
     }
   ],
   "css.lint.unknownAtRules": "ignore",
-  "CodeGPT.apiKey": "OpenAI"
+  "CodeGPT.apiKey": "OpenAI",
+  "cSpell.words": [
+    "eslintcache",
+    "vercel"
+  ]
 }
