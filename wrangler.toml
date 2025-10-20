@@ -1,9 +1,13 @@
-main = ".open-next/worker.js"
+# wrangler.toml
 name = "shpe-uwm"
-compatibility_date = "2025-10-20"
-compatibility_flags = ["nodejs_compat"]
+main = ".open-next/worker.js"
+compatibility_date = "2025-10-16"
+compatibility_flags = ["nodejs_compat", "global_fetch_strictly_public"]
+
 [assets]
 directory = ".open-next/assets"
 binding = "ASSETS"
 
-pages_build_output_dir = ".open-next/cloudflare"
+[[services]]
+binding = "WORKER_SELF_REFERENCE"
+service = "shpe-uwm"
