@@ -14,15 +14,16 @@
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
-    "noEmit": true,
+    "noEmit": false,
+    "outDir": ".tsout",
+    "tsBuildInfoFile": ".tscache/tsconfig.tsbuildinfo",
+    "incremental": true,
     "esModuleInterop": true,
     "module": "ESNext",
     "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
-    "incremental": true,
-    "outDir": "/",
     "plugins": [
       {
         "name": "next"
