@@ -1,30 +1,38 @@
 import js from '@eslint/js';
-import globals from 'globals';
 import react from 'eslint-plugin-react';
 import reactHooks from 'eslint-plugin-react-hooks';
 import jsxA11y from 'eslint-plugin-jsx-a11y';
 import tseslint from 'typescript-eslint';
 
-export default [
-  { ignores: ['.next/**', 'out/**', 'dist/**', 'node_modules/**', 'next-env.d.ts'] },
+export default tseslint.config(
+  {
+    ignores: [
+      "**/.open-next/**",
+      "**/.vercel/**",
+      "node_modules/**",
+      "out/**",
+      "dist/**",
+      ".tsout/**",
+      ".tscache/**"
+    ],
+  },
 
   js.configs.recommended,
-  ...tseslint.configs.recommended,
+  ...tseslint.configs.recommendedTypeChecked,
 
   {
-    files: [
-      'next.config.*',
-      'postcss.config.*',
-      'tailwind.config.*',
-      '**/*.config.{js,cjs,mjs}',
-    ],
+    files: ["**/*.ts", "**/*.tsx"],
     settings: { react: { version: 'detect' } },
     plugins: { react, 'react-hooks': reactHooks, 'jsx-a11y': jsxA11y },
     languageOptions: {
-      ecmaVersion: 2022,
-      sourceType: 'module',
-      globals: { JSX: true, ...globals.node },
+      parserOptions: {
+        projectService: true,
+        tsconfigRootDir: import.meta.dirname,
+      },
     },
+  },
+
+  {
     rules: {
       'react/react-in-jsx-scope': 'off',
       'react/jsx-uses-react': 'off',
@@ -40,5 +48,5 @@ export default [
 
       'jsx-a11y/alt-text': 'error',
     },
-  },
-];
+  }
+);
