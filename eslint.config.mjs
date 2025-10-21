@@ -1,10 +1,8 @@
 import js from '@eslint/js';
-import react from 'eslint-plugin-react';
-import reactHooks from 'eslint-plugin-react-hooks';
-import jsxA11y from 'eslint-plugin-jsx-a11y';
 import tseslint from 'typescript-eslint';
+import { defineConfig } from 'eslint/config';
 
-export default tseslint.config(
+export default defineConfig([
   {
     ignores: [
       "**/.open-next/**",
@@ -23,7 +21,6 @@ export default tseslint.config(
   {
     files: ["**/*.ts", "**/*.tsx"],
     settings: { react: { version: 'detect' } },
-    plugins: { react, 'react-hooks': reactHooks, 'jsx-a11y': jsxA11y },
     languageOptions: {
       parserOptions: {
         projectService: true,
@@ -49,4 +46,4 @@ export default tseslint.config(
       'jsx-a11y/alt-text': 'error',
     },
   }
-);
+]);
