@@ -7,16 +7,14 @@
     "build": "next build",
     "dev:worker": "opennextjs-cloudflare build && wrangler dev --port 8771",
     "deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy",
+    "cf:build": "opennextjs-cloudflare build",
+    "cf:login": "wrangler login",
+    "cf:whoami": "wrangler whoami",
     "lint": "eslint . --max-warnings=0 --fix",
     "lint:debug": "eslint ./src --debug",
-    "typecheck": "tsc -p tsconfig.json --noEmit",
-    "test": "echo \"(no tests yet)\" && exit 0",
-    "export": "next export -o out",
-    "pages:build": "GITHUB_PAGES=true next build && GITHUB_PAGES=true next export -o out",
-    "cf:build": "opennextjs-cloudflare build",
     "lint:fix": "eslint ./src --fix",
-    "prepare": "husky",
-    "output": "export"
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "echo \"(no tests yet)\" && exit 0"
   },
   "dependencies": {
     "@heroicons/react": "^2.2.0",
