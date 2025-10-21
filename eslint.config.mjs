@@ -1,49 +1,60 @@
 import js from '@eslint/js';
 import tseslint from 'typescript-eslint';
-import { defineConfig } from 'eslint/config';
+import react from 'eslint-plugin-react';
+import reactHooks from 'eslint-plugin-react-hooks';
+import jsxA11y from 'eslint-plugin-jsx-a11y';
 
-export default defineConfig([
+export default defineConfig(
   {
     ignores: [
-      "**/.open-next/**",
-      "**/.vercel/**",
-      "node_modules/**",
-      "out/**",
-      "dist/**",
-      ".tsout/**",
-      ".tscache/**"
+      '**/.next/**',
+      '**/.open-next/**',
+      '**/.vercel/**',
+      'node_modules/**',
+      'out/**',
+      'dist/**',
+      '.tsout/**',
+      '.tscache/**',
     ],
   },
 
   js.configs.recommended,
-  ...tseslint.configs.recommendedTypeChecked,
+  ...tseslint.configs.recommended,
 
   {
-    files: ["**/*.ts", "**/*.tsx"],
+    files: ['**/*.{js,jsx,ts,tsx}'],
+    plugins: {
+      react,
+      'react-hooks': reactHooks,
+      'jsx-a11y': jsxA11y,
+    },
+    rules: {
+      ...(react.configs.recommended?.rules ?? {}),
+      ...(reactHooks.configs.recommended?.rules ?? {}),
+      ...(jsxA11y.configs.recommended?.rules ?? {}),
+    },
     settings: { react: { version: 'detect' } },
+  },
+  ...tseslint.configs.recommendedTypeChecked.map((cfg) => ({
+    ...cfg,
+    files: ['**/*.ts', '**/*.tsx'],
     languageOptions: {
+      ...(cfg.languageOptions ?? {}),
       parserOptions: {
+        ...(cfg.languageOptions?.parserOptions ?? {}),
         projectService: true,
         tsconfigRootDir: import.meta.dirname,
       },
     },
-  },
+  })),
 
   {
     rules: {
-      'react/react-in-jsx-scope': 'off',
-      'react/jsx-uses-react': 'off',
-
-      'react-hooks/rules-of-hooks': 'error',
-      'react-hooks/exhaustive-deps': 'warn',
-
       '@typescript-eslint/no-unused-vars': [
         'warn',
         { argsIgnorePattern: '^_', varsIgnorePattern: '^_' },
       ],
       '@typescript-eslint/consistent-type-imports': 'warn',
-
-      'jsx-a11y/alt-text': 'error',
     },
-  }
-]);
+  },
+);
