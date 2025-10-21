@@ -1,4 +1,3 @@
-# wrangler.toml
 name = "shpe-uwm"
 main = ".open-next/worker.js"
 compatibility_date = "2025-10-16"
