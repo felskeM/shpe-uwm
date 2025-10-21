@@ -1,7 +1,7 @@
 name = "shpe-uwm"
 main = ".open-next/worker.js"
 compatibility_date = "2025-10-16"
-compatibility_flags = ["nodejs_compat", "global_fetch_strictly_public"]
+compatibility_flags = ["nodejs_compat"]
 
 [assets]
 directory = ".open-next/assets"
