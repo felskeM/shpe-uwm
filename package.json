@@ -31,7 +31,7 @@
     "focus-visible": "^5.2.1",
     "framer-motion": "^12.23.24",
     "lucide-react": "^0.546.0",
-    "next": "^15.5.6",
+    "next": "^16.0.0",
     "next-mdx-remote": "^5.0.0",
     "next-seo": "^7.0.1",
     "next-sitemap": "^4.2.3",
@@ -40,7 +40,7 @@
     "react-dom": "^19.2.0",
     "react-hook-form": "^7.65.0",
     "recharts": "^3.3.0",
-    "resend": "^6.2.0",
+    "resend": "^6.2.2",
     "swr": "^2.3.6",
     "tailwind-merge": "^3.3.1",
     "zod": "^4.1.12",
@@ -48,7 +48,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.38.0",
-    "@next/bundle-analyzer": "^15.5.6",
+    "@next/bundle-analyzer": "^16.0.0",
     "@opennextjs/cloudflare": "^1.11.0",
     "@tailwindcss/aspect-ratio": "^0.4.2",
     "@tailwindcss/container-queries": "^0.1.1",
@@ -57,7 +57,7 @@
     "@tailwindcss/postcss": "^4.1.15",
     "@tailwindcss/typography": "^0.5.19",
     "@types/css-modules": "^1.0.5",
-    "@types/node": "^24.9.0",
+    "@types/node": "^24.9.1",
     "@types/nodemailer": "^7.0.2",
     "@types/react": "^19.2.2",
     "@types/react-dom": "^19.2.2",
@@ -79,7 +79,7 @@
     "tailwindcss-animate": "^1.0.7",
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.46.2",
-    "wrangler": "^4.43.0"
+    "wrangler": "^4.44.0"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": "eslint --fix",
