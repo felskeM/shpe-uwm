@@ -6,7 +6,6 @@ This website is built to empower Hispanic STEM leaders in our community, share e
 ## 🚧 Early Development Notice
 
 > **Please Note:** This site is in its very early development stages.
-> The deployed version on GitHub Pages is a static export, so some images and visual elements may not appear correctly.
 > I'll link in the official website deployment link once the site reaches its final stages.
 > I'm actively working w/ the board members to improve the experience—stay tuned for updates!
 > **ADDITIONAL NOTE:** NOT SUITED FOR MOBILE DEVICES YET
@@ -24,23 +23,8 @@ See [`package.json`](https://github.com/felskeM/shpe-uwm/blob/main/package.json)
 
 ## 📦 Deployment
 
-- The site is deployed as a **static export** to [GitHub Page Link](https://felskem.github.io/shpe-uwm/).
 - The site is also deployed as a **dynamic export** to [Cloudflare Page Link](https://shpe-uwm.pages.dev/).
-- Static export means some dynamic features (like image optimization, size configuration, and links) may not work as expected.
 - See the [GitHub Actions workflows](https://github.com/felskeM/shpe-uwm/tree/main/.github/workflows) for deployment details.
-
-## 🧑‍💻 Local Development For Dynamic Site
-
-### To run the site locally so you can see all the features the current github.io site isn't showing:
-
-Clone the repository and install npmjs
-
-```bash
-npm install
-npm run dev
-```
-
-Visit [http://localhost:3000](http://localhost:3000) in your browser.
 
 ## ✨ Design Highlights
 
