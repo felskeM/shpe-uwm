@@ -12,7 +12,10 @@ binding = "WORKER_SELF_REFERENCE"
 service = "shpe-uwm"
 
 [observability]
-[observability.logs]
-enabled = true
-head_sampling_rate = 1
-invocation_logs = true
+    [observability.logs]
+    enabled = true
+    head_sampling_rate = 1
+    invocation_logs = true
+
+[vars]
+NEXT_PUBLIC_BASE_PATH = ""

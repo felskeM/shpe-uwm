@@ -2,28 +2,33 @@ name: Deploy Cloudflare Worker
 
 on:
   push:
-    branches: ["main"] # Run this workflow on pushes to the main branch (adjust as needed)
+    branches:
+      - main
+  workflow_dispatch:
 
 jobs:
   build_and_deploy:
-    runs-on: ubuntu-latest # Use the latest Ubuntu runner for the job
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3 # Check out the repository code
+      - name: Checkout
+        uses: actions/checkout@v4
 
       - name: Setup Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: "18" # Use Node.js 18 (LTS) for building the project
+          node-version: 22
+          cache: "npm"
 
       - name: Install dependencies
-        run: npm ci # Install npm dependencies (uses package-lock for consistency)
-
-      - name: Build project for Cloudflare Worker
-        run: npx opennextjs-cloudflare build # Build the Next.js app into a Cloudflare Worker format
-
-      - name: Deploy to Cloudflare Workers
-        run: npx wrangler deploy # Deploy the Worker using Wrangler CLI
+        run: npm ci
+      - name: Build OpenNext bundle
+        run: npx opennextjs-cloudflare build
+      - name: Deploy to Cloudflare
         env:
-          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }} # Cloudflare Account ID from GitHub Secrets
-          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }} # Cloudflare API Token from GitHub Secrets
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        run: npx wrangler deploy
