@@ -1,14 +1,12 @@
 import type { MetadataRoute } from 'next';
 
-export const dynamic = 'force-static'; // required for static export
-export const revalidate = 86400;  
-const isGh = process.env.GITHUB_PAGES === 'true';
-const basePath = process.env.NEXT_PUBLIC_BASE_PATH || (isGh ? '/shpe-uwm' : '');
+export const dynamic = 'force-static';
+export const revalidate = 86400;
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? '';
 
 // Site URL depending on deployment target
 const siteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL ??
-  (isGh ? 'https://felskem.github.io' : (process.env.CF_PAGES_URL ?? 'https://shpe-uwm.pages.dev'));
+  process.env.CF_PAGES_URL ?? 'https://shpe-uwm.pages.dev';
 
 const routes = ['/', '/about', '/contact', '/events', '/officers', '/sponsors'];
 export default function sitemap(): MetadataRoute.Sitemap {

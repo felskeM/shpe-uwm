@@ -1,12 +1,8 @@
 import type { MetadataRoute } from 'next';
 
 export const dynamic = 'force-static'; // required for static export
-const isGh = process.env.GITHUB_PAGES === 'true';
-const basePath = process.env.NEXT_PUBLIC_BASE_PATH || (isGh ? '/shpe-uwm' : '');
-
-const siteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL ??
-  (isGh ? 'https://felskem.github.io' : (process.env.CF_PAGES_URL ?? 'https://shpe-uwm.pages.dev'));
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? '';
+const siteUrl = process.env.CF_PAGES_URL ?? 'https://shpe-uwm.pages.dev';
 
 export default function robots(): MetadataRoute.Robots {
   return {
