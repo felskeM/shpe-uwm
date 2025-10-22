@@ -2,7 +2,6 @@
 const nextConfig = {
   images: {},
   typedRoutes: true,
-  eslint: { ignoreDuringBuilds: true },
   env: {
     NEXT_PUBLIC_BASE_PATH: '',
   },
