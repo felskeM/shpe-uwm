@@ -16,3 +16,5 @@ service = "shpe-uwm"
 enabled = true
 head_sampling_rate = 1
 invocation_logs = true
+CLOUDFLARE_ACCOUNT_ID = 74c637f0698bc402f3c4dda4bd83a0ad
+CLOUDFLARE_API_TOKEN = JPqqYiGzZYS0L748acaQDmBBpLFRt0CizF09_fPU
