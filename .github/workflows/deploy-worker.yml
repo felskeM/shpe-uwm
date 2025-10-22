@@ -1,7 +1,9 @@
 name: Deploy Cloudflare Worker
+
 on:
   push:
-    branches: [main]
+    branches:
+      - main
   workflow_dispatch:
 
 jobs:
@@ -10,6 +12,7 @@ jobs:
     permissions:
       contents: read
       id-token: write
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -18,7 +21,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: "npm"
+          cache: npm
 
       - name: Install dependencies
         run: npm ci
@@ -29,5 +32,5 @@ jobs:
       - name: Deploy to Cloudflare Worker
         run: npx wrangler deploy
         env:
-          CF_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
-          CF_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
