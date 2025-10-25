@@ -3,7 +3,7 @@ import type { MetadataRoute } from 'next';
 export const dynamic = 'force-static';
 export const revalidate = 86400; // daily
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? '';
-const siteUrl = process.env.SITE_URL || process.env.CF_PAGES_URL || 'https://shpe-uwm.pages.dev';
+const siteUrl = process.env.SITE_URL || process.env.CF_PAGES_URL || 'https://shpe-uwm.mmayorf.workers.dev';
 
 const routes = ['/', '/about', '/contact', '/events', '/officers', '/sponsors'];
 
