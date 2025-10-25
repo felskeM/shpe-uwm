@@ -14,13 +14,10 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
-
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: 22
           cache: npm
@@ -40,7 +37,7 @@ jobs:
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
 
-      # First deploy (ensures a version exists)
+      # 1) Create the worker version
       - name: Deploy (base)
         run: npx wrangler deploy --name shpe-uwm
         env:
@@ -48,17 +45,15 @@ jobs:
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
 
-      # Rotate/create the secret against the deployed worker
+      # 2) Set the secret
       - name: Put secret RESEND_API_KEY
-        if: ${{ secrets.RESEND_API_KEY != '' }}
         run: echo "${{ secrets.RESEND_API_KEY }}" | npx wrangler secret put RESEND_API_KEY --name shpe-uwm
         env:
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
 
-      # Deploy again so this new secret is included in the active version
+      # 3) Activate the secret by redeploying
       - name: Deploy (activate secret)
-        if: ${{ secrets.RESEND_API_KEY != '' }}
         run: npx wrangler deploy --name shpe-uwm
         env:
           NEXT_FORCE_WEBPACK: "1"
