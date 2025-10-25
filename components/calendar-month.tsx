@@ -30,14 +30,14 @@ export default function CalendarMonth({ year, month, events }: Props) {
 
   return (
     <div className="p-5 rounded-2xl border-soft surface-navy-18 overflow-x-auto">
-      <div className="min-w-[720px] mb-2 grid grid-cols-7 gap-2 text-xs text-[color:color-mix(in_oklab,var(--foreground)_70%,transparent)]">
+      <div className="min-w-[720px] mb-2 grid grid-cols-7 gap-2 text-xs text-[color-mix(in_oklab,var(--foreground)_70%,transparent)]">
         {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map((d) => (
           <div key={d} className="text-center">
             {d}
           </div>
         ))}
       </div>
-      <div className="grid grid-cols-7 gap-2 [grid-auto-rows:minmax(130px,1fr)]">
+      <div className="grid grid-cols-7 gap-2 auto-rows-[minmax(130px,1fr)]">
         {cells.map((date, idx) => (
           <DayCell key={idx} date={date} month={month} events={events} />
         ))}
@@ -68,7 +68,7 @@ function DayCell({
       )}
     >
       <div className="mb-1 flex items-center justify-between">
-        <span className="text-sm font-semibold text-[color:color-mix(in_oklab,var(--foreground)_90%,transparent)]">
+        <span className="text-sm font-semibold text-[color-mix(in_oklab,var(--foreground)_90%,transparent)]">
           {date ? date.getDate() : ""}
         </span>
       </div>
@@ -95,13 +95,13 @@ function EventPill({ e }: { e: EventItem }) {
     >
       {/* Title — no leading bullet */}
       <div className="flex">
-        <span className="line-clamp-2 text-sm leading-snug text-[color:color-mix(in_oklab,var(--foreground)_90%,transparent)]">
+        <span className="line-clamp-2 text-sm leading-snug text-[color-mix(in_oklab,var(--foreground)_90%,transparent)]">
           {e.title}
         </span>
       </div>
 
       {/* Time (and optional location) — second line */}
-      <div className="mt-0.5 text-[11px] leading-4 text-[color:color-mix(in_oklab,var(--foreground)_75%,transparent)]">
+      <div className="mt-0.5 text-[11px] leading-4 text-[color-mix(in_oklab,var(--foreground)_75%,transparent)]">
         <span>
           {fmtTime(start)}–{fmtTime(end)}
         </span>

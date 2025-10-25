@@ -47,15 +47,15 @@ export function SiteHeader() {
                   href={n.href}
                   className={cn(
                     "relative rounded-xl px-3.5 py-2.5 text-[0.95rem] outline-none",
-                    "text-[color:color-mix(in_oklab,var(--foreground)_90%,transparent)] hover:text-[color:var(--foreground)] hover:bg-[color-mix(in_oklab,white_5%,transparent)]",
+                    "text-[color-mix(in_oklab,var(--foreground)_90%,transparent)] hover:text-(--foreground) hover:bg-[color-mix(in_oklab,white_5%,transparent)]",
                     active &&
-                    "text-[color:var(--foreground)] bg-[rgba(16,33,58,0.55)] ring-1 ring-white/10 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.04)]",
+                    "text-(--foreground) bg-[rgba(16,33,58,0.55)] ring-1 ring-white/10 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.04)]",
                   )}
                 >
                   {n.label}
                   <span
                     className={cn(
-                      "pointer-events-none absolute left-3 right-3 -bottom-[7px] h-[2px] rounded-full opacity-0 transition-opacity",
+                      "pointer-events-none absolute left-3 right-3 -bottom-[7px] h-0.5 rounded-full opacity-0 transition-opacity",
                       active && "opacity-100",
                       "bg-[linear-gradient(90deg,var(--shpe-orange),var(--shpe-sky))]",
                     )}
@@ -70,7 +70,7 @@ export function SiteHeader() {
             aria-label="Toggle menu"
             aria-expanded={open}
             aria-controls="mobile-nav"
-            className="md:hidden rounded-lg p-2 text-[color:color-mix(in_oklab,var(--foreground)_90%,transparent)] hover:text-[color:var(--foreground)] hover:bg-[color-mix(in_oklab,white_5%,transparent)] focus-brand"
+            className="md:hidden rounded-lg p-2 text-[color-mix(in_oklab,var(--foreground)_90%,transparent)] hover:text-(--foreground) hover:bg-[color-mix(in_oklab,white_5%,transparent)] focus-brand"
             onClick={() => setOpen((v) => !v)}
           >
             {open ? <X /> : <Menu />}
@@ -91,8 +91,8 @@ export function SiteHeader() {
                     href={n.href}
                     onClick={() => setOpen(false)} // close on click
                     className={cn(
-                      "rounded-xl px-3 py-2.5 outline-none text-[color:color-mix(in_oklab,var(--foreground)_90%,transparent)] hover:text-[color:var(--foreground)] hover:bg-[color-mix(in_oklab,white_5%,transparent)]",
-                      active && "text-[color:var(--foreground)] bg-[rgba(16,33,58,0.55)] ring-1 ring-white/10",
+                      "rounded-xl px-3 py-2.5 outline-none text-[color-mix(in_oklab,var(--foreground)_90%,transparent)] hover:text-(--foreground) hover:bg-[color-mix(in_oklab,white_5%,transparent)]",
+                      active && "text-(--foreground) bg-[rgba(16,33,58,0.55)] ring-1 ring-white/10",
                       "focus-brand",
                     )}
                   >

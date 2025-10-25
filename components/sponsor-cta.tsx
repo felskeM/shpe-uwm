@@ -9,7 +9,7 @@ export function SponsorCTA() {
       <div className="cta-overlay" />
 
       <div className="relative flex flex-col items-start justify-between gap-3 sm:flex-row sm:items-center">
-        <p className="max-w-2xl text-sm text-[color:color-mix(in_oklab,var(--foreground)_90%,transparent)]">
+        <p className="max-w-2xl text-sm text-[color-mix(in_oklab,var(--foreground)_90%,transparent)]">
           Interested in supporting SHPE at UWM? Let’s partner on workshops,
           projects, and careers.
         </p>

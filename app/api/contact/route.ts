@@ -1,18 +1,18 @@
-export const runtime = 'edge'; // Workers
-
 type Body = {
   name?: string;
   email?: string;
   message?: string;
-  website?: string; // sec
+  website?: string; // honeypot
 };
 
 function isEmail(s: string) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(s);
 }
 
+// Optional: ensure it's treated as dynamic (not required, but harmless)
+export const dynamic = 'force-dynamic';
+
 export async function POST(req: Request) {
-  // 1) validation
   const body = (await req.json().catch(() => ({}))) as Body;
 
   const name = (body.name ?? '').toString().trim().slice(0, 120);
@@ -26,18 +26,18 @@ export async function POST(req: Request) {
     return new Response('Invalid request', { status: 400 });
   }
 
-  // Prepare email via Resend
   const RESEND_API_KEY = process.env.RESEND_API_KEY;
   const CONTACT_TO = process.env.CONTACT_TO || 'mmayorf@outlook.com';
 
   if (!RESEND_API_KEY) {
-    // If key not configured, don’t fail the user; log and succeed to keep UX smooth.
     console.error('Missing RESEND_API_KEY');
     return new Response('ok', { status: 200 });
   }
 
-  // "from" must be a verified domain in Resend; adjust to your domain when verified.
-  const from = 'SHPE UWM <mmayorf@outlook.com>';
+  // IMPORTANT: use a verified sender. For testing, use Resend’s sandbox:
+  // const from = 'SHPE UWM <onboarding@resend.dev>';
+  // For production, switch to your verified domain sender:
+  const from = 'SHPE UWM <onboarding@resend.dev>';
 
   const subject = `New contact form submission — ${name}`;
   const text = `New message from SHPE UWM website
@@ -49,7 +49,6 @@ ${message}
 
 — end —`;
 
-  // Call Resend
   const r = await fetch('https://api.resend.com/emails', {
     method: 'POST',
     headers: {

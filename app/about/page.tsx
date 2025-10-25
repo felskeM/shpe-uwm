@@ -33,9 +33,9 @@ export default function Page() {
   };
   return (
     <Section title="About SHPE UWM">
-      <div className="card border-soft surface-navy-18 [--tw-ring-color:var(--shpe-accent)]">
+      <div className="card border-soft surface-navy-18 ring-(--shpe-accent)">
         <div className="grid gap-6 p-6 md:grid-cols-[1fr]">
-          <p className="text-[color:color-mix(in_oklab,var(--foreground)_75%,transparent)]">
+          <p className="text-[color-mix(in_oklab,var(--foreground)_75%,transparent)]">
             At UWM, SHPE is dedicated to empowering Hispanic students in STEM
             through education, mentorship, and professional development. We
             strive to create a supportive environment that fosters academic
@@ -44,7 +44,7 @@ export default function Page() {
             academically and professionally, and to develop the next generation
             of Hispanic leaders in STEM.
           </p>
-          <div className="h-px mt-3 bg-gradient-to-r from-transparent via-[color:color-mix(in_oklab,var(--foreground)_10%,transparent)] to-transparent" />
+          <div className="h-px mt-3 bg-linear-to-r from-transparent via-[color-mix(in_oklab,var(--foreground)_10%,transparent)] to-transparent" />
           <div className="flex flex-wrap gap-2">
             <span className="px-3 py-1 text-xs font-medium rounded-full bg-shpe-accent/20 text-shpe-accent">
               Mentorship
@@ -57,13 +57,13 @@ export default function Page() {
             </span>
           </div>
         </div>
-        <div className="h-1 w-full rounded-b-[inherit] bg-gradient-to-r from-shpe-primary via-shpe-accent to-shpe-mid-navy" />
+        <div className="h-1 w-full rounded-b-[inherit] bg-linear-to-r from-shpe-primary via-shpe-accent to-shpe-mid-navy" />
       </div>
       {/* Values */}
-      <h3 className="mt-12 text-xl font-semibold text-[color:var(--foreground)]">
+      <h3 className="mt-12 text-xl font-semibold text-(--foreground)">
         Our values
       </h3>
-      <p className="mt-2 text-[color:color-mix(in_oklab,var(--foreground)_65%,transparent)]">
+      <p className="mt-2 text-[color-mix(in_oklab,var(--foreground)_65%,transparent)]">
         The pillars that shape how we learn, lead, and serve.
       </p>
       <div className="grid gap-4 mt-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -81,11 +81,11 @@ export default function Page() {
               <div className="p-2 rounded-xl bg-shpe-accent/15 ring-1 ring-white/10">
                 <Icon className="w-5 h-5 text-shpe-accent" />
               </div>
-              <h4 className="font-semibold text-[color:var(--foreground)]">
+              <h4 className="font-semibold text-(--foreground)">
                 {title}
               </h4>
             </div>
-            <p className="mt-3 text-sm text-[color:color-mix(in_oklab,var(--foreground)_65%,transparent)]">
+            <p className="mt-3 text-sm text-[color-mix(in_oklab,var(--foreground)_65%,transparent)]">
               {desc}
             </p>
           </div>
@@ -101,7 +101,7 @@ export default function Page() {
         ].map((src, i) => (
           <div
             key={i}
-            className="relative aspect-[16/9] overflow-hidden rounded-2xl ring-1 ring-white/10"
+            className="relative aspect-video overflow-hidden rounded-2xl ring-1 ring-white/10"
           >
             <Image
               src={src}
@@ -116,7 +116,7 @@ export default function Page() {
 
       {/* CTA */}
       <div className="mt-12 grid gap-4 sm:grid-cols-[1fr_auto] items-center">
-        <p className="text-[color:color-mix(in_oklab,var(--foreground)_75%,transparent)]">
+        <p className="text-[color-mix(in_oklab,var(--foreground)_75%,transparent)]">
           Want to get involved, sponsor an event, or speak at a meeting?
         </p>
         <div className="flex gap-3">

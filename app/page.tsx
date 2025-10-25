@@ -53,7 +53,7 @@ export default function Page() {
                 <Icon className="w-7 h-7" style={{ color: "var(--shpe-accent)" }} />
                 <h3 className="text-lg font-semibold">{t}</h3>
               </div>
-              <p className="mt-2 text-sm text-[color:color-mix(in_oklab,var(--foreground)_80%,transparent)]">{d}</p>
+              <p className="mt-2 text-sm text-[color-mix(in_oklab,var(--foreground)_80%,transparent)]">{d}</p>
             </div>
           ))}
         </div>

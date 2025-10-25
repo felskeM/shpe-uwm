@@ -21,9 +21,9 @@ export function Logo({ className }: Props) {
         priority
       />
 
-      <span className="hidden sm:block w-px h-12 md:h-12 lg:h-14 bg-[color:color-mix(in_oklab,var(--foreground)_20%,transparent)]" />
+      <span className="hidden sm:block w-px h-12 md:h-12 lg:h-14 bg-[color-mix(in_oklab,var(--foreground)_20%,transparent)]" />
 
-      <span className="hidden sm:inline font-medium text-[color:var(--foreground)] whitespace-nowrap md:text-sm lg:text-base">
+      <span className="hidden sm:inline font-medium text-(--foreground) whitespace-nowrap md:text-sm lg:text-base">
         University of
         <br className="hidden md:inline" />
         Wisconsin–Milwaukee

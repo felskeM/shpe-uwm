@@ -89,19 +89,19 @@ export default function Page() {
               <Avatar
                 alt={o.person}
                 src={o.src}
-                className="mt-3 text-lg font-semibold text-[color:var(--foreground)] group-hover:text-[#0A66C2] transition-colors duration-300"
+                className="mt-3 text-lg font-semibold text-(--foreground) group-hover:text-[#0A66C2] transition-colors duration-300"
                 position="center top"
               />
             </div>
 
-            <h3 className="mt-3 text-lg font-semibold text-[color:var(--foreground)] group-hover:text-[#0A66C2] transition-colors duration-300">
+            <h3 className="mt-3 text-lg font-semibold text-(--foreground) group-hover:text-[#0A66C2] transition-colors duration-300">
               {o.person}
             </h3>
-            <p className="text-sm font-bold text-[var(--shpe-accent)]">
+            <p className="text-sm font-bold text-(--shpe-accent)">
               {o.name}
             </p>
             {o.major && (
-              <p className="text-sm text-[color:color-mix(in_oklab,var(--foreground)_65%,transparent)]">
+              <p className="text-sm text-[color-mix(in_oklab,var(--foreground)_65%,transparent)]">
                 {o.major}
               </p>
             )}

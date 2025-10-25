@@ -43,7 +43,7 @@ export default function AgendaList({
 
     if (inMonth.length === 0) {
         return (
-            <div className="rounded-2xl border-soft surface-navy-18 p-4 text-sm text-[color:color-mix(in_oklab,var(--foreground)_80%,transparent)]">
+            <div className="rounded-2xl border-soft surface-navy-18 p-4 text-sm text-[color-mix(in_oklab,var(--foreground)_80%,transparent)]">
                 No events this month yet.
             </div>
         );
@@ -54,20 +54,20 @@ export default function AgendaList({
             {[...days.values()].map(({ date, items }) => (
                 <section key={dayKey(date)} className="rounded-2xl border-soft surface-navy-18">
                     <header className="px-4 py-2 border-b border-white/10">
-                        <h3 className="text-base font-semibold text-[color:var(--foreground)]">{fmtDateHeader(date)}</h3>
+                        <h3 className="text-base font-semibold text-(--foreground)">{fmtDateHeader(date)}</h3>
                     </header>
                     <ul className="divide-y divide-white/10">
                         {items.map((e) => (
                             <li key={e.id} className="p-4">
                                 <div className="flex items-start justify-between gap-3">
                                     <div>
-                                        <div className="text-sm font-medium text-[color:var(--foreground)]">{e.title}</div>
-                                        <div className="mt-0.5 text-xs text-[color:color-mix(in_oklab,var(--foreground)_75%,transparent)]">
+                                        <div className="text-sm font-medium text-(--foreground)">{e.title}</div>
+                                        <div className="mt-0.5 text-xs text-[color-mix(in_oklab,var(--foreground)_75%,transparent)]">
                                             {fmtTime(new Date(e.start))}–{fmtTime(new Date(e.end))}
                                             {e.location ? <> — {e.location}</> : null}
                                         </div>
                                         {e.description ? (
-                                            <p className="mt-2 text-xs leading-relaxed text-[color:color-mix(in_oklab,var(--foreground)_70%,transparent)] line-clamp-3">
+                                            <p className="mt-2 text-xs leading-relaxed text-[color-mix(in_oklab,var(--foreground)_70%,transparent)] line-clamp-3">
                                                 {e.description}
                                             </p>
                                         ) : null}

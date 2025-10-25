@@ -70,12 +70,12 @@ function SponsorCard({ s }: { s: Sponsor }) {
           />
         </div>
 
-        <div className="text-[color:var(--foreground)] font-semibold text-base">
+        <div className="text-(--foreground) font-semibold text-base">
           {s.name}
         </div>
 
         {s.blurb && (
-          <div className="mt-1.5 text-[11.5px] leading-5 text-[color:color-mix(in_oklab,var(--foreground)_70%,transparent)]">
+          <div className="mt-1.5 text-[11.5px] leading-5 text-[color-mix(in_oklab,var(--foreground)_70%,transparent)]">
             {s.blurb}
           </div>
         )}
@@ -97,11 +97,11 @@ export function SponsorGrid() {
               <span id={`tier-${tier}`} className={SECTION_CHIP[tier]}>
                 {tier} Sponsors
               </span>
-              <div className="h-px flex-1 bg-[color:color-mix(in_oklab,white_10%,transparent)]" />
+              <div className="h-px flex-1 bg-[color-mix(in_oklab,white_10%,transparent)]" />
             </header>
 
             {/* Fixed card size grid: min 260px, cap at 320px, center the items */}
-            <div className="grid justify-center gap-4 [grid-template-columns:repeat(auto-fit,minmax(260px,320px))]">
+            <div className="grid justify-center gap-4 grid-cols-[repeat(auto-fit,minmax(260px,320px))]">
               {items.map((s) => (
                 <SponsorCard key={`${s.name}-${s.tier}`} s={s} />
               ))}

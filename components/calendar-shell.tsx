@@ -35,7 +35,7 @@ export default function CalendarShell({ all }: { all: EventItem[] }) {
           >
             ‹
           </button>
-          <div className="text-base sm:text-lg font-semibold uppercase text-[color:color-mix(in_oklab,var(--foreground)_80%,transparent)]">
+          <div className="text-base sm:text-lg font-semibold uppercase text-[color-mix(in_oklab,var(--foreground)_80%,transparent)]">
             {monthLabel(year, month)}
           </div>
           <button

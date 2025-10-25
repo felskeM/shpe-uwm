@@ -19,7 +19,7 @@ export default function Page() {
         }}
       >
         <div className="flex flex-col items-start justify-between gap-3 sm:flex-row sm:items-center">
-          <p className="text-sm text-[color:color-mix(in_oklab,var(--foreground)_90%,transparent)]">
+          <p className="text-sm text-[color-mix(in_oklab,var(--foreground)_90%,transparent)]">
             Want to host a workshop or recruit with us?
           </p>
           <a

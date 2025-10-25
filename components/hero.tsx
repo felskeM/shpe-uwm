@@ -10,8 +10,8 @@ export function Hero() {
 
   return (
     <div className="relative isolate">
-      <div className="absolute inset-x-0 bottom-0 h-40 -z-10 bg-gradient-to-t from-black/50 to-transparent" />
-      <Container className="grid items-center gap-6 py-10 sm:py-16 lg:grid-cols-2 lg:py-24 relative w-full aspect-[4/3] sm:aspect-[16/9]">
+      <div className="absolute inset-x-0 bottom-0 h-40 -z-10 bg-linear-to-t from-black/50 to-transparent" />
+      <Container className="grid items-center gap-6 py-10 sm:py-16 lg:grid-cols-2 lg:py-24 relative w-full aspect-4/3 sm:aspect-video">
         <motion.div
           initial={{ opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
@@ -21,7 +21,7 @@ export function Hero() {
             Building community, leadership, and careers in{" "}
             <span className="headline-gradient">STEM.</span>
           </h1>
-          <p className="max-w-xl mt-4 text-lg text-[color:color-mix(in_oklab,var(--foreground)_75%,transparent)]">
+          <p className="max-w-xl mt-4 text-lg text-[color-mix(in_oklab,var(--foreground)_75%,transparent)]">
             At UWM, SHPE empowers Hispanic students through mentorship, industry
             partnerships, and hands‑on projects — while welcoming allies of
             every background.
@@ -39,7 +39,7 @@ export function Hero() {
           initial={{ opacity: 0, scale: 0.98 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6 }}
-          className="relative w-full aspect-[4/3]"
+          className="relative w-full aspect-4/3"
         >
           <Image
             src="/images/hero.png"
