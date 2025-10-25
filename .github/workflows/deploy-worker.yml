@@ -2,8 +2,7 @@ name: Deploy Cloudflare Worker
 
 on:
   push:
-    branches:
-      - main
+    branches: [main]
   workflow_dispatch:
 
 concurrency:
@@ -41,14 +40,26 @@ jobs:
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
 
-      - name: Set Cloudflare secret (RESEND_API_KEY)
-        run: echo "${{ secrets.RESEND_API_KEY }}" | npx wrangler secret put RESEND_API_KEY
+      # First deploy (ensures a version exists)
+      - name: Deploy (base)
+        run: npx wrangler deploy --name shpe-uwm
+        env:
+          NEXT_FORCE_WEBPACK: "1"
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+
+      # Rotate/create the secret against the deployed worker
+      - name: Put secret RESEND_API_KEY
+        if: ${{ secrets.RESEND_API_KEY != '' }}
+        run: echo "${{ secrets.RESEND_API_KEY }}" | npx wrangler secret put RESEND_API_KEY --name shpe-uwm
         env:
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
 
-      - name: Deploy to Cloudflare
-        run: npx wrangler deploy
+      # Deploy again so this new secret is included in the active version
+      - name: Deploy (activate secret)
+        if: ${{ secrets.RESEND_API_KEY != '' }}
+        run: npx wrangler deploy --name shpe-uwm
         env:
           NEXT_FORCE_WEBPACK: "1"
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
