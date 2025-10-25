@@ -42,7 +42,7 @@ export function ContactCard() {
         Shoot us a note and we’ll get back to you.
       </p>
 
-      <form onSubmit={onSubmit} className="grid gap-3 mt-5">
+      <form onSubmit={(e) => { void onSubmit(e); }} className="grid gap-3 mt-5">
         <input
           name="name"
           required

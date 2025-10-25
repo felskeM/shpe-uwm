@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { Container } from "@/components/container";
 import { withBasePath } from "@/lib/basePath";
@@ -20,7 +21,7 @@ export function SiteFooter() {
         <div className="grid gap-10 md:grid-cols-[1fr_auto_1fr] md:items-start">
           <div>
             <Link href="/" className="inline-flex items-center gap-3 group">
-              <img
+              <Image
                 src={logo}
                 alt="SHPE UWM"
                 className="object-contain w-auto h-10 opacity-90 group-hover:opacity-100"
