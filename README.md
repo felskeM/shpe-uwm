@@ -1,7 +1,7 @@
 # SHPE UWM Website
 
 Welcome to the official repository for the Society of Hispanic Professional Engineers (SHPE) at the University of Wisconsin-Milwaukee (UWM) chapter!
-This website is built to empower Hispanic STEM leaders in our community, share events, programs, and foster connection among students and professionals.
+This website is built to empower Hispanic STEM leaders in our community, share events, programs, and foster connection among UWM students and professionals.
 
 ## 🚧 Early Development Notice
 
