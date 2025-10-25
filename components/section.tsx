@@ -14,12 +14,12 @@ export function Section({ title, subtitle, children, center }: Props) {
         {" "}
         {/* ↑ wider */}
         <header className={center ? "mb-6 text-center" : "mb-6"}>
-          <h2 className="text-2xl font-bold text-[color:var(--foreground)]">
+          <h2 className="text-2xl font-bold text-(--foreground)">
             {title}
           </h2>
 
           {subtitle && (
-            <p className="mt-1 text-[color:color-mix(in_oklab,var(--foreground)_80%,transparent)]">
+            <p className="mt-1 text-[color-mix(in_oklab,var(--foreground)_80%,transparent)]">
               {subtitle}
             </p>
           )}

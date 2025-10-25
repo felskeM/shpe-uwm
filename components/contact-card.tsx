@@ -35,10 +35,10 @@ export function ContactCard() {
 
   return (
     <div className="p-5 shadow-sm rounded-2xl border-soft surface-navy-18">
-      <h3 className="text-lg font-semibold text-[color:var(--foreground)]">
+      <h3 className="text-lg font-semibold text-(--foreground)">
         Get in touch
       </h3>
-      <p className="mt-2 text-sm text-[color:color-mix(in_oklab,var(--foreground)_75%,transparent)]">
+      <p className="mt-2 text-sm text-[color-mix(in_oklab,var(--foreground)_75%,transparent)]">
         Shoot us a note and we’ll get back to you.
       </p>
 
@@ -47,20 +47,20 @@ export function ContactCard() {
           name="name"
           required
           placeholder="Name"
-          className="px-3 py-2 rounded-xl border-soft focus-brand text-[color:var(--foreground)] placeholder:[color:color-mix(in_oklab,var(--foreground)_45%,transparent)] bg-[color:color-mix(in_oklab,var(--shpe-secondary)_22%,transparent)]"
+          className="px-3 py-2 rounded-xl border-soft focus-brand text-(--foreground) placeholder:text-[color-mix(in_oklab,var(--foreground)_45%,transparent)] bg-[color-mix(in_oklab,var(--shpe-secondary)_22%,transparent)]"
         />
         <input
           name="email"
           type="email"
           required
           placeholder="Email"
-          className="px-3 py-2 rounded-xl border-soft focus-brand text-[color:var(--foreground)] placeholder:[color:color-mix(in_oklab,var(--foreground)_45%,transparent)] bg-[color:color-mix(in_oklab,var(--shpe-secondary)_22%,transparent)]"
+          className="px-3 py-2 rounded-xl border-soft focus-brand text-(--foreground) placeholder:text-[color-mix(in_oklab,var(--foreground)_45%,transparent)] bg-[color-mix(in_oklab,var(--shpe-secondary)_22%,transparent)]"
         />
         <textarea
           name="message"
           required
           placeholder="Message"
-          className="min-h-[140px] rounded-xl border-soft focus-brand px-3 py-2 text-[color:var(--foreground)] placeholder:[color:color-mix(in_oklab,var(--foreground)_45%,transparent)] bg-[color:color-mix(in_oklab,var(--shpe-secondary)_22%,transparent)]"
+          className="min-h-[140px] rounded-xl border-soft focus-brand px-3 py-2 text-(--foreground) placeholder:text-[color-mix(in_oklab,var(--foreground)_45%,transparent)] bg-[color-mix(in_oklab,var(--shpe-secondary)_22%,transparent)]"
         />
         {/* Non-visible honeypot field for bots */}
         <input
