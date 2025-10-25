@@ -3,7 +3,7 @@ import tseslint from 'typescript-eslint';
 import react from 'eslint-plugin-react';
 import reactHooks from 'eslint-plugin-react-hooks';
 import jsxA11y from 'eslint-plugin-jsx-a11y';
-import next from 'eslint-plugin-next';
+import next from '@next/eslint-plugin-next';
 
 export default [
   {
@@ -36,6 +36,13 @@ export default [
       ...(jsxA11y.configs.recommended?.rules ?? {}),
       ...(next.configs['core-web-vitals']?.rules ?? next.configs.recommended.rules),
 
+      // React 17+ JSX transform – don't require `import React`
+      'react/react-in-jsx-scope': 'off',
+      'react/jsx-uses-react': 'off',
+
+      // Closing mobile menu on route change is fine; disable this noisy rule
+      'react-hooks/set-state-in-effect': 'off',
+
       '@typescript-eslint/no-unused-vars': [
         'warn',
         { argsIgnorePattern: '^_', varsIgnorePattern: '^_' },
@@ -45,7 +52,7 @@ export default [
     settings: { react: { version: 'detect' } },
     languageOptions: {
       parserOptions: {
-        projectService: true, // type-aware rules
+        projectService: true,
         tsconfigRootDir: import.meta.dirname,
       },
     },
@@ -62,4 +69,18 @@ export default [
       },
     },
   })),
+  {
+    files: ['next-env.d.ts'],
+    rules: {
+      '@typescript-eslint/triple-slash-reference': 'off',
+    },
+  },
+  {
+    files: ['public/**/*.{ts,tsx}'],
+    rules: {
+      '@typescript-eslint/no-unsafe-assignment': 'off',
+      '@typescript-eslint/no-unsafe-argument': 'off',
+      '@typescript-eslint/require-await': 'off',
+    },
+  },
 ];
