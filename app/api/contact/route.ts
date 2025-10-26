@@ -9,7 +9,7 @@ function isEmail(s: string) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(s);
 }
 
-// Optional: ensure it's treated as dynamic (not required, but harmless)
+// Ensure it's treated as dynamic
 export const dynamic = 'force-dynamic';
 
 export async function POST(req: Request) {
@@ -34,7 +34,7 @@ export async function POST(req: Request) {
     return new Response('ok', { status: 200 });
   }
 
-  // IMPORTANT: use a verified sender. For testing, use Resend’s sandbox:
+  // For testing, use Resend’s sandbox:
   // const from = 'SHPE UWM <onboarding@resend.dev>';
   // For production, switch to your verified domain sender:
   const from = 'SHPE UWM <onboarding@resend.dev>';
