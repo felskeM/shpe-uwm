@@ -30,6 +30,7 @@ jobs:
         env:
           NEXT_FORCE_WEBPACK: "1"
           NEXT_TELEMETRY_DISABLED: "1"
+          SITE_URL: https://shpeuwm.org
 
       - name: Verify Cloudflare auth
         run: npx wrangler whoami
