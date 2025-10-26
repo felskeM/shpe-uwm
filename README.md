@@ -25,7 +25,7 @@ The site is powered by **Next.js**, **TypeScript**, and **TailwindCSS**, dynamic
 
 ## Live Deployment
 
-**Production:** [https://shpe-uwm.mmayorf.workers.dev](https://shpe-uwm.mmayorf.workers.dev)
+**Production:** [https://shpeuwm.org](https://shpeuwm.org)
 
 The website runs as a fully dynamic Cloudflare Worker using `@opennextjs/cloudflare`, supporting:
 
