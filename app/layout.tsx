@@ -5,7 +5,8 @@ import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { Poppins } from "next/font/google";
 
-const basePath = process.env.NEXT_PUBLIC_BASE_PATH || ""; // "" == CF, "/shpe-uwm" == GH
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
+const siteUrl = process.env.SITE_URL ?? "https://shpeuwm.org";
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -13,28 +14,36 @@ export const viewport: Viewport = {
   themeColor: "#0a0a0a",
 };
 
-const isGh = process.env.GITHUB_PAGES === "true";
-const cfUrl = process.env.CF_PAGES_URL; // Cloudflare Pages given domain
-const siteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL ??
-  (isGh
-    ? "https://felskem.github.io/shpe-uwm"
-    : (cfUrl ?? "https://shpe-uwm.pages.dev")); // CF preview/prod fallback
-
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
+  alternates: { canonical: "/" },
   title: "SHPE UW-Milwaukee",
   description:
     "Society of Hispanic Professional Engineers — University of Wisconsin–Milwaukee",
   applicationName: "SHPE UW-Milwaukee",
-  alternates: { canonical: siteUrl },
   authors: [{ name: "Matthew (Mateo) Salvador Felske" }],
   keywords: ["SHPE", "UWM", "Hispanic", "STEM", "engineering"],
   icons: {
     icon: [{ url: `${basePath}/favicon.ico` }],
     apple: [{ url: `${basePath}/apple-touch-icon.png`, sizes: "180x180" }],
   },
-  manifest: `${basePath}/site.webmanifest`,
+  manifest: `${basePath}/site.webmanifest`, // ensure to change the android-chrome icons in the manifest later because I'm lazy to do it now
+
+  openGraph: {
+    url: siteUrl,
+    siteName: "SHPE UWM",
+    title: "SHPE UW-Milwaukee",
+    description:
+      "Society of Hispanic Professional Engineers — University of Wisconsin–Milwaukee",
+      images: [{ url: `${basePath}/og.png` }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "SHPE UW-Milwaukee",
+    description:
+      "Society of Hispanic Professional Engineers — University of Wisconsin–Milwaukee",
+      images: [`${basePath}/og.png`],
+  },
 };
 
 const poppins = Poppins({
