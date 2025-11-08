@@ -26,7 +26,7 @@
     "@t3-oss/env-nextjs": "^0.13.8",
     "@vercel/analytics": "^1.5.0",
     "@vercel/speed-insights": "^1.2.0",
-    "add-to-calendar-button-react": "^2.12.12",
+    "add-to-calendar-button-react": "^2.12.13",
     "clsx": "^2.1.1",
     "dotenv": "^17.2.3",
     "focus-visible": "^5.2.1",
