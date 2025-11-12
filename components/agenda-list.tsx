@@ -1,8 +1,21 @@
 "use client";
 
 import Image from "@/components/BpImage";
-import { googleCalendarUrl, icsDataHrefFor, slugify } from "@/lib/calendar";
+import { googleCalendarUrl, slugify } from "@/lib/calendar";
 import type { EventItem } from "@/components/event-card";
+
+// universal add to calendar button wouldn't work on iOS devices
+function icsUrl(e: EventItem) {
+    const params = new URLSearchParams({
+      slug: slugify(e.title),
+      title: e.title,
+      start: new Date(e.start).toISOString(), // UTC -> iOS friendly
+      end: new Date(e.end).toISOString(),
+    });
+    if (e.location) params.set("location", e.location);
+    if (e.description) params.set("desc", e.description);
+    return `/api/ics?${params.toString()}`;
+  }
 
 type AugEvent = EventItem & { _start: Date; _end: Date };
 
@@ -83,11 +96,11 @@ export default function AgendaList({
                                         >
                                             <Image src="/images/gcal.png" alt="Google Calendar" width={16} height={16} />
                                         </a>
+                                        {/* Now iOS-friendly */}
                                         <a
-                                            href={icsDataHrefFor([e]).href}
-                                            download={`${slugify(e.title)}.ics`}
-                                            aria-label="Download iCal (.ics)"
-                                            title="Download iCal (.ics)"
+                                            href={icsUrl(e)}
+                                            aria-label="Add to Calendar (.ics)"
+                                            title="Add to Calendar (.ics)"
                                             className="inline-flex h-8 w-8 items-center justify-center rounded-md border-soft bg-black/30 hover:bg-black/45 focus-brand"
                                         >
                                             <Image src="/images/ical.png" alt="iCal" width={16} height={16} />

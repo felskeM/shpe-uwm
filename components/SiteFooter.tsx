@@ -26,6 +26,8 @@ export function SiteFooter() {
               <Image
                 src={logo}
                 alt="SHPE UWM"
+                width={160}
+                height={48}
                 className="object-contain w-auto h-10 opacity-90 group-hover:opacity-100"
                 priority
               />

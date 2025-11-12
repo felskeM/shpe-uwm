@@ -93,19 +93,18 @@ function EventPill({ e }: { e: EventItem }) {
         CAT[e.category].surface,
       )}
     >
-      {/* Title — no leading bullet */}
+      {/* Title */}
       <div className="flex">
-        <span className="line-clamp-2 text-sm leading-snug text-[color-mix(in_oklab,var(--foreground)_90%,transparent)]">
+        <span className="line-clamp-3 text-sm leading-snug text-[color-mix(in_oklab,var(--foreground)_90%,transparent)]">
           {e.title}
         </span>
       </div>
 
-      {/* Time (and optional location) — second line */}
+      {/* Time */}
       <div className="mt-0.5 text-[11px] leading-4 text-[color-mix(in_oklab,var(--foreground)_75%,transparent)]">
         <span>
           {fmtTime(start)}–{fmtTime(end)}
         </span>
-        {e.location && <span> — {e.location}</span>}
       </div>
 
       {/* Icons — third line, inline, equal size, aligned right */}
@@ -128,8 +127,8 @@ function EventPill({ e }: { e: EventItem }) {
         <a
           href={icsDataHrefFor([e]).href}
           download={`${slugify(e.title)}.ics`}
-          aria-label="Download iCal (.ics)"
-          title="Download iCal (.ics)"
+          aria-label="Download Event (.ics)"
+          title="Download Event (.ics)"
           className="inline-flex h-6 w-6 items-center justify-center rounded-md border-soft bg-black/30 hover:bg-black/45 focus-brand"
         >
           <Image src="/images/ical.png" alt="iCal" width={14} height={14} />
