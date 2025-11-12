@@ -69,7 +69,7 @@ export const events: EventItem[] = [
         title: "UWM & Marquette John Deere Event",
         start: "2025-11-12T17:00:00",
         end: "2025-11-12T19:30:00",
-        location: "UWM Student Union Fireside Lounge",
+        location: "UWM LEC",
         description: "Join us for an exciting event hosted by John Deere in collaboration with UWM and Marquette University. This event will provide insights into career opportunities, industry trends, and networking with professionals from John Deere.",
         category: "Career",
     },
