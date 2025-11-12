@@ -91,7 +91,6 @@
 }
 
 @layer utilities {
-  /* Generic */
   .border-soft {
     border: 1px solid color-mix(in oklab, white 10%, transparent);
   }
@@ -227,12 +226,7 @@
   .logo-img {
     object-fit: contain;
     padding: 0.5rem;
-    filter: grayscale(100%) contrast(1.05);
     transition: filter 0.25s ease;
-  }
-
-  .logo-stage:hover .logo-img {
-    filter: none;
   }
 
   .surface-navy-18 {
@@ -318,6 +312,16 @@
     }
   }
 
+  @keyframes shpe-marquee {
+    from {
+      transform: translate3d(0, 0, 0);
+    }
+
+    to {
+      transform: translate3d(calc(-1 * var(--marquee-dist, 0px)), 0, 0);
+    }
+  }
+
   .marquee {
     display: flex;
     overflow: hidden;
@@ -344,17 +348,20 @@
     --offset: 100%;
   }
 
-  .marquee-track > * {
-    margin: 0;
-    flex: none;
-  }
-
-  .marquee .logo-img {
-    filter: none;
-    padding: 0;
-  }
-
-  .marquee .logo-stage:hover .logo-img {
-    filter: none;
+  .marquee-mask {
+    -webkit-mask-image: linear-gradient(
+      90deg,
+      transparent 0,
+      #000 6%,
+      #000 94%,
+      transparent 100%
+    );
+    mask-image: linear-gradient(
+      90deg,
+      transparent 0,
+      #000 6%,
+      #000 94%,
+      transparent 100%
+    );
   }
 }

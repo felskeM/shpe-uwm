@@ -14,11 +14,18 @@
   "css.lint.unknownAtRules": "ignore",
   "CodeGPT.apiKey": "OpenAI",
   "cSpell.words": [
+    "CALSCALE",
+    "DTEND",
+    "DTSTAMP",
+    "DTSTART",
     "eslintcache",
     "mmayorf",
     "opennextjs",
+    "PRODID",
     "tscache",
     "tsout",
-    "vercel"
+    "VCALENDAR",
+    "vercel",
+    "VEVENT"
   ]
 }
