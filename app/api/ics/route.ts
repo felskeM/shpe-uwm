@@ -1,3 +1,4 @@
+/* eslint-disable no-control-regex */
 import { NextResponse } from 'next/server';
 
 // Robust RFC5545 escaping
@@ -5,6 +6,7 @@ function esc(raw: string): string {
   const cleaned = raw
     .replace(/\r\n?/g, "\n")
     .replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F]/g, "");
+    // possibly change to \x notation -> .replace(/[\x00-\x08\x0B\x0C\x0E-\x1F\x7F]/g, "");
   return cleaned
     .replace(/\\/g, "\\\\")
     .replace(/([;,])/g, "\\$1")
@@ -19,6 +21,7 @@ function foldLines(s: string): string {
     .map((line) => {
       const bytes = new TextEncoder().encode(line);
       if (bytes.length <= 75) return line;
+      // eslint-disable-next-line prefer-const
       let out: string[] = [];
       let i = 0;
       while (i < bytes.length) {
