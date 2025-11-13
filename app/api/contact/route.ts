@@ -2,7 +2,7 @@ type Body = {
   name?: string;
   email?: string;
   message?: string;
-  website?: string; // honeypot
+  website?: string;
 };
 
 function isEmail(s: string) {
@@ -27,16 +27,14 @@ export async function POST(req: Request) {
   }
 
   const RESEND_API_KEY = process.env.RESEND_API_KEY;
-  const CONTACT_TO = process.env.CONTACT_TO || 'mmayorf@outlook.com';
+  const CONTACT_TO = process.env.CONTACT_TO || 'receiving@shpeuwm.org';
 
   if (!RESEND_API_KEY) {
     console.error('Missing RESEND_API_KEY');
     return new Response('ok', { status: 200 });
   }
 
-  // For testing, use Resend’s sandbox:
-  // const from = 'SHPE UWM <onboarding@resend.dev>';
-  // For production, switch to your verified domain sender:
+  // Switch to your verified domain sender later:
   const from = 'SHPE UWM <onboarding@resend.dev>';
 
   const subject = `New contact form submission — ${name}`;
