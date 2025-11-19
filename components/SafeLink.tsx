@@ -26,7 +26,7 @@ export function SafeLink({
             : rel;
 
     return (
-        <a href={safeHref} target={target} rel={finalRel} {...rest}>
+        <a href={`${safeHref}`} target={target} rel={finalRel} {...rest}>
             {children}
         </a>
     );
