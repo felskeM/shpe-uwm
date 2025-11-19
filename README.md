@@ -81,60 +81,6 @@ The build process compiles your Next.js app for Cloudflare’s runtime (`.open-n
 
 ---
 
-## Development Setup (From Scratch)
-
-To run this project locally or deploy your own Cloudflare Worker version, follow these steps:
-
-### Clone the repository
-
-```bash
-git clone https://github.com/felskeM/shpe-uwm.git
-cd shpe-uwm
-```
-
-### Install dependencies
-
-```bash
-# Preferred method of clean installation
-npm ci
-
-# Original install method instead if npm ci doesn't work
-npm install
-```
-
-### Configure environment variables
-
-Create a `.env.local` file in the project root:
-
-```bash
-NEXT_PUBLIC_BASE_PATH=""
-CONTACT_TO="youremail@example.com"
-SMTP_HOST="smtp.example.com"
-SMTP_PORT=465
-SMTP_SECURE=true
-SMTP_USER="example_user"
-SMTP_PASS="example_password"
-SMTP_FROM="SHPE UWM <no-reply@shpeuwm.org>"
-```
-
-### Log in to Cloudflare
-
-```bash
-npm run cf:build
-```
-
-### Start local development server
-
-```bash
-# Next.js local dev mode
-npm run dev
-
-# OR Cloudflare Worker runtime
-npm run dev:worker
-```
-
----
-
 ## Design Highlights
 
 - Fully responsive and accessible layout
@@ -164,23 +110,6 @@ Constructive feedback and collaboration are always welcome!
 
 _This project is not officially affiliated with SHPE National._
 For more information about SHPE, visit [shpe.org](https://shpe.org).
-
----
-
-## 📦 Tech Stack Summary
-
-| Category   | Tool                                  |
-| ---------- | ------------------------------------- |
-| Frontend   | Next.js 15, React 18, TailwindCSS 4   |
-| Backend    | Cloudflare Workers (OpenNext adapter) |
-| State/Data | Zustand, SWR                          |
-| Validation | Zod                                   |
-| Animation  | Framer Motion                         |
-| Forms      | react-hook-form                       |
-| Components | Radix UI                              |
-| Deployment | Wrangler, GitHub Actions              |
-| Analytics  | Vercel Insights                       |
-| Email      | Resend                                |
 
 ---
 

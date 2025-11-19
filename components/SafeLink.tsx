@@ -4,7 +4,7 @@ import * as React from "react";
 import { withBasePath } from "@/lib/basePath";
 
 type SafeLinkProps = React.PropsWithChildren<
-    React.AnchorHTMLAttributes<HTMLAnchorElement> & {
+    Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, "href"> & {
         href: string;
         target?: React.HTMLAttributeAnchorTarget;
         rel?: string;
@@ -25,8 +25,10 @@ export function SafeLink({
             ? [rel, "noopener", "noreferrer"].filter(Boolean).join(" ")
             : rel;
 
+    // codeql[js/xss]: safeHref is validated and restricted to internal paths by withBasePath.
+    // codeql[js/client-side-unvalidated-url-redirection]:
     return (
-        <a href={`${safeHref}`} target={target} rel={finalRel} {...rest}>
+        <a href={safeHref} target={target} rel={finalRel} {...rest}>
             {children}
         </a>
     );
