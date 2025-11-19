@@ -1,0 +1,16 @@
+services:
+  db:
+    image: postgres:16
+    container_name: shpe-uwm-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: shpe_uwm
+      POSTGRES_USER: shpe_uwm_user
+      POSTGRES_PASSWORD: super-secret-dev-password
+    ports:
+      - "5432:5432"
+    volumes:
+      - shpe_uwm_db_data:/var/lib/postgresql/data
+
+volumes:
+  shpe_uwm_db_data:

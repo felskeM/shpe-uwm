@@ -37,3 +37,5 @@ build
 # env files
 .env*
 cloudflare-env.d.ts
+
+/lib/generated/prisma
