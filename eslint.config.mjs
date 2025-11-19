@@ -36,6 +36,9 @@ export default [
       ...(jsxA11y.configs.recommended?.rules ?? {}),
       ...(next.configs['core-web-vitals']?.rules ?? next.configs.recommended.rules),
 
+      // TS for prop checking
+      "react/prop-types": "off",
+
       // React 17+ JSX transform – don't require `import React`
       'react/react-in-jsx-scope': 'off',
       'react/jsx-uses-react': 'off',
