@@ -32,6 +32,7 @@ build
 !.vscode/extensions.json
 .idea/
 *.pem
+.directory
 
 # env files
 .env*
