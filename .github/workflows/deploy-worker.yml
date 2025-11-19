@@ -32,29 +32,12 @@ jobs:
           NEXT_TELEMETRY_DISABLED: "1"
           SITE_URL: https://shpeuwm.org
 
-      - name: Verify Cloudflare auth
-        run: npx wrangler whoami
-        env:
-          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-
-      # 1) Create the worker version
-      - name: Deploy (base)
-        run: npx wrangler deploy --name shpe-uwm
-        env:
-          NEXT_FORCE_WEBPACK: "1"
-          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-
-      # Set RESEND_API_KEY secret
-      - name: Put secret RESEND_API_KEY
+      - name: Verify Cloudflare API
         run: echo "${{ secrets.RESEND_API_KEY }}" | npx wrangler secret put RESEND_API_KEY --name shpe-uwm
         env:
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-
-      # Activate RESEND_API_KEY secret by redeploying
-      - name: Deploy (activate secret)
+      - name: Deploy
         run: npx wrangler deploy --name shpe-uwm
         env:
           NEXT_FORCE_WEBPACK: "1"
