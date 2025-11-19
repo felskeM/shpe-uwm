@@ -1,15 +1,9 @@
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
+const INTERNAL_PATH = /^\/(?!\/)[A-Za-z0-9._~!$&'()*+,;=:@/-]*$/;
 
 export function withBasePath(path: string): string {
-  // Root-relative internal paths
-  if (!path.startsWith('/')) {
-    throw new Error('withBasePath expects a root-relative path');
+  if (!INTERNAL_PATH.test(path)) {
+    throw new Error('Invalid internal path passed to withBasePath()');
   }
-
-  // Block absolute URLs
-  if (path.includes('://') || path.toLowerCase().startsWith('javascript:')) {
-    throw new Error('withBasePath must not be used with external URLs');
-  }
-
   return `${basePath}${path}`;
 }

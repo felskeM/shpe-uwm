@@ -1,9 +1,6 @@
-import { withBasePath } from "@/lib/basePath";
+import { SafeLink } from "@/components/SafeLink";
 
 export function SponsorCTA() {
-  const packetHref = withBasePath("/documents/sponsor.pdf");
-  const contact = withBasePath("/contact/");
-
   return (
     <div className="cta-shell cta-gradient">
       <div className="cta-overlay" />
@@ -15,20 +12,20 @@ export function SponsorCTA() {
         </p>
 
         <div className="flex flex-wrap gap-2">
-          <a href={contact} className="btn-ghost focus-brand">
+          <SafeLink href="/contact" className="btn-ghost focus-brand">
             Become a sponsor
-          </a>
-          <a
-            href={packetHref}
+          </SafeLink>
+
+          <SafeLink
+            href="/documents/sponsor.pdf"
             download="sponsor.pdf"
             className="btn-primary focus-brand"
             target="_blank"
-            rel="noopener noreferrer"
             aria-label="Download sponsor overview (PDF)"
             title="Download sponsor overview (PDF)"
           >
             Download overview
-          </a>
+          </SafeLink>
         </div>
       </div>
     </div>

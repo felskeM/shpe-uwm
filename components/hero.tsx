@@ -2,12 +2,9 @@
 import Image from "@/components/BpImage";
 import { motion } from "framer-motion";
 import { Container } from "@/components/container";
-import { withBasePath } from "@/lib/basePath";
+import { SafeLink } from "@/components/SafeLink";
 
 export function Hero() {
-  const Events = withBasePath("/events");
-  const Contact = withBasePath("/contact");
-
   return (
     <div className="relative isolate">
       <div className="absolute inset-x-0 bottom-0 h-40 -z-10 bg-linear-to-t from-black/50 to-transparent" />
@@ -27,12 +24,12 @@ export function Hero() {
             every background.
           </p>
           <div className="flex flex-wrap gap-3 mt-6">
-            <a href={Events} className="btn-primary focus-brand">
+            <SafeLink href="/events" className="btn-primary focus-brand">
               See upcoming events
-            </a>
-            <a href={Contact} className="btn-ghost focus-brand">
+            </SafeLink>
+            <SafeLink href="/contact" className="btn-ghost focus-brand">
               Get involved
-            </a>
+            </SafeLink>
           </div>
         </motion.div>
         <motion.div
