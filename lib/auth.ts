@@ -1,13 +1,39 @@
 import bcrypt from 'bcryptjs';
-import type { User } from '@prisma/client';
 import { prisma } from '@/lib/prisma';
 
-export async function verifyUser(email: string, password: string): Promise<User | null> {
-  const user = await prisma.user.findUnique({ where: { email } });
-  if (!user) return null;
+export type AuthUser = {
+  id: number;
+  email: string;
+  passwordHash: string;
+  name: string | null;
+  role: string;
+};
 
-  const ok = await bcrypt.compare(password, user.passwordHash);
+function isAuthUserLike(value: unknown): value is AuthUser {
+  if (typeof value !== 'object' || value === null) return false;
+
+  const v = value as Record<string, unknown>;
+
+  return (
+    typeof v.id === 'number' &&
+    typeof v.email === 'string' &&
+    typeof v.passwordHash === 'string' &&
+    (typeof v.name === 'string' || v.name === null) &&
+    typeof v.role === 'string'
+  );
+}
+
+export async function verifyUser(email: string, password: string): Promise<AuthUser | null> {
+  const userUnknown: unknown = await prisma.user.findUnique({
+    where: { email },
+  });
+
+  if (!isAuthUserLike(userUnknown)) {
+    return null;
+  }
+
+  const ok = await bcrypt.compare(password, userUnknown.passwordHash);
   if (!ok) return null;
 
-  return user;
+  return userUnknown;
 }
