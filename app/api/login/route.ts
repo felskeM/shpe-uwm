@@ -25,18 +25,15 @@ export async function POST(req: Request) {
     return NextResponse.redirect(new URL('/login?error=invalid', req.url), { status: 302 });
   }
 
-  // Create session token
   const token = await signSession(user.id);
 
-  const res = NextResponse.redirect(new URL('/events/manage', req.url), { status: 302 });
-
+  const res = NextResponse.redirect(new URL('/events/manage', req.url));
   res.cookies.set(SESSION_COOKIE, token, {
     httpOnly: true,
-    secure: true,
+    secure: process.env.NODE_ENV === 'production',
     sameSite: 'lax',
     path: '/',
     maxAge: 60 * 60 * 24 * 7,
   });
-
   return res;
 }

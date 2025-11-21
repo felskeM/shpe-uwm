@@ -6,7 +6,7 @@ import EventList from "./EventList";
 export default async function ManageEventsPage() {
     const user = await getSessionUser();
 
-    if (!user || (user.role !== "eboard" && user.role !== "admin")) {
+    if (!user || (user.role !== "board")) {
         redirect("/login");
     }
 
