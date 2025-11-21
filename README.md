@@ -30,7 +30,6 @@ Runs on **Cloudflare Workers** using OpenNext, supporting:
 - Server-Side Rendering (SSR)
 - Static Site Generation (SSG)
 - API Routes
-- Edge caching + smart routing
 
 ---
 
