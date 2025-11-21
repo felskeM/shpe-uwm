@@ -27,5 +27,7 @@
     "VCALENDAR",
     "vercel",
     "VEVENT"
-  ]
+  ],
+  "WillLuke.nextjs.addTypesOnSave": true,
+  "WillLuke.nextjs.hasPrompted": true
 }
