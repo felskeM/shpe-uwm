@@ -18,3 +18,5 @@ export const prisma =
 if (process.env.NODE_ENV !== 'production') {
   globalThis.prisma = prisma;
 }
+
+export type { User } from '../prisma/generated/prisma/client';

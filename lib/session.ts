@@ -1,9 +1,7 @@
 // lib/session.ts
 import { cookies } from 'next/headers';
 import { SignJWT, jwtVerify } from 'jose';
-import type { User } from '@prisma/client';
-import { prisma } from '@/lib/prisma';
-
+import { prisma, type User } from '@/lib/prisma';
 export const SESSION_COOKIE = 'shpe_session';
 
 function getSecretKey(): Uint8Array {
@@ -14,18 +12,16 @@ function getSecretKey(): Uint8Array {
   return new TextEncoder().encode(secret);
 }
 
-// Create a signed JWT for a user id
 export async function signSession(userId: number): Promise<string> {
   const token = await new SignJWT({ userId })
     .setProtectedHeader({ alg: 'HS256' })
     .setIssuedAt()
-    .setExpirationTime('7d') // adjust as needed
+    .setExpirationTime('7d')
     .sign(getSecretKey());
 
   return token;
 }
 
-// Internal: verify a JWT and pull the userId out
 async function verifySessionToken(token: string): Promise<number | null> {
   try {
     const { payload } = await jwtVerify(token, getSecretKey());
