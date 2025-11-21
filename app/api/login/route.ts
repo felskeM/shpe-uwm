@@ -1,4 +1,3 @@
-// app/api/login/route.ts
 import { NextResponse } from 'next/server';
 import { verifyUser } from '@/lib/auth';
 import { SESSION_COOKIE, signSession } from '@/lib/session';
@@ -36,7 +35,7 @@ export async function POST(req: Request) {
     secure: true,
     sameSite: 'lax',
     path: '/',
-    maxAge: 60 * 60 * 24 * 7, // 7 days
+    maxAge: 60 * 60 * 24 * 7,
   });
 
   return res;
