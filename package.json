@@ -53,8 +53,8 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",
-    "@next/bundle-analyzer": "15.5.6",
-    "@next/eslint-plugin-next": "^15.5.6",
+    "@next/bundle-analyzer": "16.0.7",
+    "@next/eslint-plugin-next": "^16.0.7",
     "@opennextjs/aws": "^3.9.4",
     "@opennextjs/cloudflare": "^1.14.3",
     "@tailwindcss/aspect-ratio": "^0.4.2",
