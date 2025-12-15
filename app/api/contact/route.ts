@@ -34,8 +34,7 @@ export async function POST(req: Request) {
     return new Response('ok', { status: 200 });
   }
 
-  // Switch to your verified domain sender later:
-  const from = 'SHPE UWM <onboarding@resend.dev>';
+  const from = 'SHPE UWM <contact@shpeuwm.org>';
 
   const subject = `New contact form submission — ${name}`;
   const text = `New message from SHPE UWM website

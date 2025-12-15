@@ -60,9 +60,9 @@ export function ContactCard() {
           name="message"
           required
           placeholder="Message"
-          className="min-h-[140px] rounded-xl border-soft focus-brand px-3 py-2 text-(--foreground) placeholder:text-[color-mix(in_oklab,var(--foreground)_45%,transparent)] bg-[color-mix(in_oklab,var(--shpe-secondary)_22%,transparent)]"
+          className="min-h-35 rounded-xl border-soft focus-brand px-3 py-2 text-(--foreground) placeholder:text-[color-mix(in_oklab,var(--foreground)_45%,transparent)] bg-[color-mix(in_oklab,var(--shpe-secondary)_22%,transparent)]"
         />
-        {/* Non-visible honeypot field for bots */}
+        {/* Non-visible */}
         <input
           type="text"
           name="website"
