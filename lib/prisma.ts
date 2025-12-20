@@ -1,16 +1,19 @@
 import { PrismaClient } from '../app/generated/prisma';
 import { withAccelerate } from '@prisma/extension-accelerate';
 
-const makePrisma = () => new PrismaClient().$extends(withAccelerate());
-type PrismaWithAccelerate = ReturnType<typeof makePrisma>;
+function makePrisma() {
+  const accelerateUrl = process.env.DATABASE_URL;
+  if (!accelerateUrl) throw new Error('DATABASE_URL (Accelerate URL) is not set');
 
-declare global {
-  var __prisma: PrismaWithAccelerate | undefined;
+  return new PrismaClient({ accelerateUrl }).$extends(withAccelerate());
 }
 
-export function getPrisma(): PrismaWithAccelerate {
-  if (!globalThis.__prisma) {
-    globalThis.__prisma = makePrisma();
-  }
-  return globalThis.__prisma;
+const globalForPrisma = globalThis as unknown as {
+  prisma?: ReturnType<typeof makePrisma>;
+};
+
+export const prisma = globalForPrisma.prisma ?? makePrisma();
+
+if (process.env.NODE_ENV !== 'production') {
+  globalForPrisma.prisma = prisma;
 }

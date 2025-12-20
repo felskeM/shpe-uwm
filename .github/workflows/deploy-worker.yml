@@ -41,6 +41,8 @@ jobs:
         run: npx prisma migrate deploy
         env:
           DIRECT_URL: ${{ secrets.DIRECT_URL }}
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+
       - name: Sync Worker secrets
         run: |
           echo "${{ secrets.RESEND_API_KEY }}"   | npx wrangler secret put RESEND_API_KEY   --name shpe-uwm

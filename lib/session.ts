@@ -1,7 +1,7 @@
 import { cookies } from 'next/headers';
 import { SignJWT, jwtVerify } from 'jose';
 import type { User } from '../app/generated/prisma';
-import { getPrisma } from '@/lib/prisma';
+import { prisma } from '@/lib/prisma';
 
 export const SESSION_COOKIE = 'shpe_session';
 
@@ -12,7 +12,7 @@ function getSecretKey(): Uint8Array {
 }
 
 export async function signSession(userId: number): Promise<string> {
-  return await new SignJWT({ userId })
+  return new SignJWT({ userId })
     .setProtectedHeader({ alg: 'HS256' })
     .setIssuedAt()
     .setExpirationTime('7d')
@@ -37,8 +37,7 @@ export async function getSessionUser(): Promise<User | null> {
   const userId = await verifySessionToken(token);
   if (!userId) return null;
 
-  const prisma = getPrisma();
-  return await prisma.user.findUnique({ where: { id: userId } });
+  return prisma.user.findUnique({ where: { id: userId } });
 }
 
 export async function clearSessionCookie() {

@@ -1,8 +1,7 @@
 import bcrypt from 'bcryptjs';
-import { getPrisma } from '@/lib/prisma';
+import { prisma } from '@/lib/prisma';
 
 export async function verifyUser(email: string, password: string) {
-  const prisma = getPrisma();
   const user = await prisma.user.findUnique({ where: { email } });
   if (!user) return null;
 
