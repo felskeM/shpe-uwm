@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "rootDir": ".",
     "paths": {
       "@/*": ["./*"],
       "@/components/*": ["./components/*"],
@@ -38,9 +39,7 @@
     ".next/types/**/*.ts",
     "tailwind.config.js",
     "next.config.ts",
-    ".next/dev/types/**/*.ts",
-    "app/generated/prisma/**/*.js",
-    "app/generated/prisma/**/*.d.ts"
+    ".next/dev/types/**/*.ts"
   ],
   "exclude": ["node_modules"]
 }
