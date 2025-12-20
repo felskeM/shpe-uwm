@@ -28,7 +28,8 @@ jobs:
       - name: Generate Prisma Client
         run: npx prisma generate
         env:
-          DATABASE_URL: postgresql://user:pass@localhost:5432/db
+          DIRECT_URL: ${{ secrets.DIRECT_URL }}
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
 
       - name: Build OpenNext bundle
         run: npx opennextjs-cloudflare build
@@ -36,6 +37,10 @@ jobs:
           NEXT_FORCE_WEBPACK: "1"
           NEXT_TELEMETRY_DISABLED: "1"
           SITE_URL: https://shpeuwm.org
+      - name: Apply migrations
+        run: npx prisma migrate deploy
+        env:
+          DIRECT_URL: ${{ secrets.DIRECT_URL }}
       - name: Sync Worker secrets
         run: |
           echo "${{ secrets.RESEND_API_KEY }}"   | npx wrangler secret put RESEND_API_KEY   --name shpe-uwm

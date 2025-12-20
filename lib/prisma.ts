@@ -1,22 +1,10 @@
-import { PrismaClient } from '../prisma/generated/prisma/client';
-import { PrismaPg } from '@prisma/adapter-pg';
+import { PrismaClient } from '../app/generated/prisma/edge';
 
-declare global {
-  var prisma: PrismaClient | undefined;
+export function getPrisma() {
+  const accelerateUrl = process.env.DATABASE_URL;
+  if (!accelerateUrl) {
+    throw new Error('DATABASE_URL (Accelerate URL) is not set');
+  }
+
+  return new PrismaClient({ accelerateUrl });
 }
-
-const adapter = new PrismaPg({
-  connectionString: process.env.DATABASE_URL ?? '',
-});
-
-export const prisma =
-  globalThis.prisma ??
-  new PrismaClient({
-    adapter,
-  });
-
-if (process.env.NODE_ENV !== 'production') {
-  globalThis.prisma = prisma;
-}
-
-export type { User } from '../prisma/generated/prisma/client';

@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "paths": {
-      "@/*": ["./src/*"],
+      "@/*": ["./*"],
       "@/components/*": ["./components/*"],
       "@/lib/*": ["./lib/*"]
     },
@@ -12,6 +12,7 @@
     "exactOptionalPropertyTypes": true,
     "forceConsistentCasingInFileNames": true,
     "allowJs": true,
+    "checkJs": false,
     "skipLibCheck": true,
     "strict": true,
     "noEmit": false,
@@ -37,7 +38,9 @@
     ".next/types/**/*.ts",
     "tailwind.config.js",
     "next.config.ts",
-    ".next/dev/types/**/*.ts"
+    ".next/dev/types/**/*.ts",
+    "app/generated/prisma/**/*.js",
+    "app/generated/prisma/**/*.d.ts"
   ],
   "exclude": ["node_modules"]
 }
