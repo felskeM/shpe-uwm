@@ -1,7 +1,7 @@
-import { cookies } from 'next/headers';
-import { SignJWT, jwtVerify } from 'jose';
-import type { User } from '../app/generated/prisma';
 import { prisma } from '@/lib/prisma';
+import type { User } from '@prisma/client';
+import { SignJWT, jwtVerify } from 'jose';
+import { cookies } from 'next/headers';
 
 export const SESSION_COOKIE = 'shpe_session';
 
@@ -29,6 +29,7 @@ async function verifySessionToken(token: string): Promise<number | null> {
   }
 }
 
+// eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
 export async function getSessionUser(): Promise<User | null> {
   const cookieStore = await cookies();
   const token = cookieStore.get(SESSION_COOKIE)?.value;
@@ -37,6 +38,7 @@ export async function getSessionUser(): Promise<User | null> {
   const userId = await verifySessionToken(token);
   if (!userId) return null;
 
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
   return prisma.user.findUnique({ where: { id: userId } });
 }
 

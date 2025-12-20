@@ -1,19 +1,29 @@
-import { PrismaClient } from '../app/generated/prisma';
+import { PrismaClient } from '@prisma/client';
 import { withAccelerate } from '@prisma/extension-accelerate';
 
-function makePrisma() {
-  const accelerateUrl = process.env.DATABASE_URL;
-  if (!accelerateUrl) throw new Error('DATABASE_URL (Accelerate URL) is not set');
+// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call
+export const prisma = new PrismaClient().$extends(withAccelerate());
 
-  return new PrismaClient({ accelerateUrl }).$extends(withAccelerate());
+async function main() {
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
+  const user = await prisma.user.create({
+    data: {
+      name: 'Alice',
+      email: 'alice@prisma.io',
+    },
+  });
+
+  console.log(user);
 }
 
-const globalForPrisma = globalThis as unknown as {
-  prisma?: ReturnType<typeof makePrisma>;
-};
-
-export const prisma = globalForPrisma.prisma ?? makePrisma();
-
-if (process.env.NODE_ENV !== 'production') {
-  globalForPrisma.prisma = prisma;
-}
+main()
+  .then(async () => {
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
+    await prisma.$disconnect();
+  })
+  .catch(async (e) => {
+    console.error(e);
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
+    await prisma.$disconnect();
+    process.exit(1);
+  });

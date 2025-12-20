@@ -1,10 +1,10 @@
 generator client {
-  provider = "prisma-client-js"
-  output   = "../app/generated/prisma"
+  provider = "prisma-client"
+  output   = "../generated/prisma"
 }
 
 datasource db {
-  provider = "postgresql"
+  provider  = "postgresql"
 }
 
 model User {
@@ -12,11 +12,11 @@ model User {
   email        String   @unique
   passwordHash String
   name         String?
-  role         String   @default("eboard")
+  role         String   @default("officer")
   createdAt    DateTime @default(now())
-  updatedAt    DateTime @updatedAt
-
   eventsCreated Event[]
+
+  posts Post[]
 }
 
 model Event {
@@ -26,10 +26,17 @@ model Event {
   location    String?
   startTime   DateTime
   endTime     DateTime
-
   createdById Int?
   createdBy   User? @relation(fields: [createdById], references: [id])
-
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+}
+
+model Post {
+  id        Int     @id @default(autoincrement())
+  title     String
+  content   String?
+  published Boolean @default(false)
+  author    User    @relation(fields: [authorId], references: [id])
+  authorId  Int
 }
