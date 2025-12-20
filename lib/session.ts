@@ -1,6 +1,6 @@
 import { cookies } from 'next/headers';
 import { SignJWT, jwtVerify } from 'jose';
-import type { User } from '../app/generated/prisma';
+import type { User } from '../app/generated/prisma/client';
 import { getPrisma } from '@/lib/prisma';
 
 export const SESSION_COOKIE = 'shpe_session';

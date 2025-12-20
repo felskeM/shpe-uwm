@@ -22,6 +22,7 @@ dist
 .dev.vars
 build
 .vercel/
+app/generated/prisma/**
 
 # Tools
 .DS_Store

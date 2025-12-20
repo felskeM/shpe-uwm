@@ -1,7 +1,6 @@
 generator client {
   provider = "prisma-client-js"
   output   = "../app/generated/prisma"
-  // REMOVE engineType = "edge"
 }
 
 datasource db {
