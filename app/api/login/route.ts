@@ -1,3 +1,6 @@
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { NextResponse } from 'next/server';
 import { verifyUser } from '@/lib/auth';
 import { SESSION_COOKIE, signSession } from '@/lib/session';
