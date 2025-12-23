@@ -23,6 +23,7 @@ dist
 build
 .vercel/
 app/generated/prisma/**
+generated/prisma/**
 
 # Tools
 .DS_Store

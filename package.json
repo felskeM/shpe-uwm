@@ -3,15 +3,16 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "NEXT_FORCE_WEBPACK=1 next dev",
     "build": "NEXT_FORCE_WEBPACK=1 next build",
+    "postinstall": "prisma generate",
     "cf:build": "NEXT_FORCE_WEBPACK=1 opennextjs-cloudflare build",
     "start": "next start",
     "dev:worker": "opennextjs-cloudflare build && wrangler dev --port 8771",
     "deploy": "opennextjs-cloudflare build && npx opennextjs-cloudflare deploy",
     "cf:login": "wrangler login",
     "cf:whoami": "wrangler whoami",
-    "lint": "eslint . --max-warnings=0 --fix",
+    "lint": "next lint",
     "lint:debug": "eslint ./src --debug",
     "lint:fix": "eslint ./src --fix",
     "typecheck": "tsc -p tsconfig.json --noEmit",
@@ -32,6 +33,7 @@
     "add-to-calendar-button-react": "^2.13.4",
     "bcryptjs": "^3.0.3",
     "clsx": "^2.1.1",
+    "express": "^5.2.1",
     "focus-visible": "^5.2.1",
     "framer-motion": "^12.23.26",
     "jose": "^6.1.3",
@@ -41,11 +43,11 @@
     "next-mdx-remote": "^5.0.0",
     "next-seo": "^7.0.1",
     "next-sitemap": "^4.2.3",
-    "nodemailer": "^7.0.11",
+    "nodemailer": "^7.0.12",
     "pg": "^8.16.3",
     "react": "18.3.1",
     "react-dom": "18.3.1",
-    "react-hook-form": "^7.68.0",
+    "react-hook-form": "^7.69.0",
     "recharts": "^3.6.0",
     "resend": "^6.6.0",
     "swr": "^2.3.8",
@@ -90,7 +92,7 @@
     "tailwindcss-animate": "^1.0.7",
     "tsx": "^4.21.0",
     "typescript": "^5.9.3",
-    "typescript-eslint": "^8.50.0",
+    "typescript-eslint": "^8.50.1",
     "wrangler": "^4.56.0"
   },
   "lint-staged": {
@@ -105,8 +107,27 @@
       "dist/**"
     ]
   },
+  "prisma": {
+    "seed": "tsx prisma/seed.ts"
+  },
   "packageManager": "npm@11.6.2",
   "overrides": {
     "shelljs": "0.8.5"
-  }
+  },
+  "description": "SHPE UWM Website",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/felskeM/shpe-uwm.git"
+  },
+  "keywords": [],
+  "author": "Matthew (Mateo) Felske",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/felskeM/shpe-uwm/issues"
+  },
+  "homepage": "https://shpeuwm.org/"
 }

@@ -1,29 +1,11 @@
-import { PrismaClient } from '@prisma/client';
+import { PrismaClient } from '../app/generated/prisma/client';
 import { withAccelerate } from '@prisma/extension-accelerate';
 
-// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call
-export const prisma = new PrismaClient().$extends(withAccelerate());
+type PrismaExtended = ReturnType<PrismaClient['$extends']>;
 
-async function main() {
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
-  const user = await prisma.user.create({
-    data: {
-      name: 'Alice',
-      email: 'alice@prisma.io',
-    },
-  });
+const globalForPrisma = globalThis as unknown as { prisma?: PrismaExtended };
 
-  console.log(user);
-}
+export const prisma: PrismaExtended =
+  globalForPrisma.prisma ?? new PrismaClient().$extends(withAccelerate());
 
-main()
-  .then(async () => {
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
-    await prisma.$disconnect();
-  })
-  .catch(async (e) => {
-    console.error(e);
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
-    await prisma.$disconnect();
-    process.exit(1);
-  });
+if (process.env.NODE_ENV !== 'production') globalForPrisma.prisma = prisma;
