@@ -136,4 +136,13 @@ export const events: EventItem[] = [
         description: "Join us for our Holiday Social! We'll have food, drinks, and fun activities to celebrate the season! Fun way to unwind before finals.",
         category: "Social",
     },
+    {
+        id: "gbm-1",
+        title: "Holiday Social",
+        start: "2026-2-12T17:30:00",
+        end: "2026-2-12T18:30:00",
+        location: "Lubar S231",
+        description: "Join us for the first GBM of the fall 2026 semester! We'll be discussing upcoming events and initiatives for the chapter.",
+        category: "Workshop",
+    },
 ];
