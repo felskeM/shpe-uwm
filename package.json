@@ -5,7 +5,6 @@
   "scripts": {
     "dev": "NEXT_FORCE_WEBPACK=1 next dev",
     "build": "NEXT_FORCE_WEBPACK=1 next build",
-    "postinstall": "prisma generate",
     "cf:build": "NEXT_FORCE_WEBPACK=1 opennextjs-cloudflare build",
     "start": "next start",
     "dev:worker": "opennextjs-cloudflare build && wrangler dev --port 8771",
@@ -21,9 +20,6 @@
   "dependencies": {
     "@heroicons/react": "^2.2.0",
     "@hookform/resolvers": "^5.2.2",
-    "@prisma/adapter-pg": "^7.4.0",
-    "@prisma/client": "^7.4.0",
-    "@prisma/extension-accelerate": "^3.0.1",
     "@radix-ui/react-dialog": "^1.1.15",
     "@radix-ui/react-popover": "^1.1.15",
     "@radix-ui/react-tooltip": "^1.2.8",
@@ -35,15 +31,15 @@
     "clsx": "^2.1.1",
     "express": "^5.2.1",
     "focus-visible": "^5.2.1",
-    "framer-motion": "^12.34.0",
+    "framer-motion": "^12.34.1",
     "jose": "^6.1.3",
     "js-yaml": "^4.1.1",
-    "lucide-react": "^0.564.0",
+    "lucide-react": "^0.574.0",
     "next": "^15.5.12",
     "next-mdx-remote": "^6.0.0",
     "next-seo": "^7.2.0",
     "next-sitemap": "^4.2.3",
-    "nodemailer": "^7.0.13",
+    "nodemailer": "^8.0.1",
     "pg": "^8.18.0",
     "react": "18.3.1",
     "react-dom": "18.3.1",
@@ -86,14 +82,13 @@
     "postcss": "^8.5.6",
     "prettier": "^3.8.1",
     "prettier-plugin-tailwindcss": "^0.7.2",
-    "prisma": "^7.4.0",
     "svgo": "^4.0.0",
     "tailwindcss": "^4.1.18",
     "tailwindcss-animate": "^1.0.7",
     "tsx": "^4.21.0",
     "typescript": "^5.9.3",
-    "typescript-eslint": "^8.55.0",
-    "wrangler": "^4.65.0"
+    "typescript-eslint": "^8.56.0",
+    "wrangler": "^4.66.0"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": "eslint --fix",
@@ -106,9 +101,6 @@
       "out/**",
       "dist/**"
     ]
-  },
-  "prisma": {
-    "seed": "tsx prisma/seed.ts"
   },
   "packageManager": "npm@11.6.2",
   "overrides": {

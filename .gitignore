@@ -22,8 +22,8 @@ dist
 .dev.vars
 build
 .vercel/
-app/generated/prisma/**
-generated/prisma/**
+oracleJDK-25/*
+
 
 # Tools
 .DS_Store
@@ -39,5 +39,3 @@ generated/prisma/**
 # env files
 .env*
 cloudflare-env.d.ts
-
-/lib/generated/prisma

@@ -8,13 +8,6 @@ import { Menu, X } from "lucide-react";
 import { Logo } from "@/components/logo";
 import { usePathname } from "next/navigation";
 
-type SessionUser = {
-  id: number;
-  name: string | null;
-  email: string;
-  role: string;
-};
-
 const nav = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About" },
@@ -30,51 +23,11 @@ const baseNavItem =
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
-  const [user, setUser] = useState<SessionUser | null>(null);
-
-  useEffect(() => {
-    void (async () => {
-      try {
-        const res = await fetch("/api/me", { cache: "no-store" });
-        if (!res.ok) return;
-        const data = (await res.json()) as SessionUser;
-        if (data && data.email) {
-          setUser(data);
-        }
-      } catch {
-        // treat as not logged in
-      }
-    })();
-  }, []);
 
   // Close mobile menu on route change
   useEffect(() => {
     setOpen(false);
   }, [pathname]);
-
-  const handleLogout = () => {
-    void (async () => {
-      try {
-        await fetch("/api/logout", { method: "POST" });
-      } catch {
-        // ignore errors, still nuke local state
-      } finally {
-        setUser(null);
-        window.location.href = "/";
-      }
-    })();
-  };
-
-  const displayName = user?.name || user?.email?.split("@")[0] || "Member";
-
-  const authItems = user
-    ? ([
-      { key: "user", type: "label" as const, label: displayName },
-      { key: "logout", type: "logout" as const, label: "Logout" },
-    ] as const)
-    : ([
-      { key: "login", type: "login" as const, label: "Board Login" },
-    ] as const);
 
   return (
     <header className="relative top-0 z-50 w-full">
@@ -118,46 +71,6 @@ export function SiteHeader() {
                 </Link>
               );
             })}
-
-            {/* Auth items */}
-            {authItems.map((item) => {
-              if (item.type === "label") {
-                return (
-                  <span
-                    key={item.key}
-                    className={cn(
-                      baseNavItem,
-                      "cursor-default text-white/80 hover:bg-transparent",
-                    )}
-                  >
-                    {item.label}
-                  </span>
-                );
-              }
-
-              if (item.type === "logout") {
-                return (
-                  <button
-                    key={item.key}
-                    type="button"
-                    onClick={handleLogout}
-                    className={baseNavItem}
-                  >
-                    {item.label}
-                  </button>
-                );
-              }
-
-              return (
-                <Link
-                  key={item.key}
-                  href="/login"
-                  className={baseNavItem}
-                >
-                  {item.label}
-                </Link>
-              );
-            })}
           </nav>
 
           {/* MOBILE NAV ONLY */}
@@ -196,32 +109,6 @@ export function SiteHeader() {
                   </Link>
                 );
               })}
-
-              {user ? (
-                <>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setOpen(false);
-                      handleLogout();
-                    }}
-                    className="mt-2 rounded-xl px-3 py-2.5 text-left outline-none text-[color-mix(in_oklab,var(--foreground)_90%,transparent)] hover:text-(--foreground) hover:bg-[color-mix(in_oklab,white_5%,transparent)]"
-                  >
-                    Logout
-                  </button>
-                  <span className="mt-1 text-sm text-white/70">
-                    {displayName}
-                  </span>
-                </>
-              ) : (
-                <Link
-                  href="/login"
-                  onClick={() => setOpen(false)}
-                  className="mt-2 rounded-xl px-3 py-2.5 outline-none text-[color-mix(in_oklab,var(--foreground)_90%,transparent)] hover:text-(--foreground) hover:bg-[color-mix(in_oklab,white_5%,transparent)]"
-                >
-                  Board Login
-                </Link>
-              )}
             </nav>
           </div>
         )}
