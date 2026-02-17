@@ -25,32 +25,12 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Generate Prisma Client
-        run: npx prisma generate
-        env:
-          DIRECT_URL: ${{ secrets.DIRECT_URL }}
-          DATABASE_URL: ${{ secrets.DATABASE_URL }}
-
       - name: Build OpenNext bundle
         run: npx opennextjs-cloudflare build
         env:
           NEXT_FORCE_WEBPACK: "1"
           NEXT_TELEMETRY_DISABLED: "1"
           SITE_URL: https://shpeuwm.org
-      - name: Apply migrations
-        run: npx prisma migrate deploy
-        env:
-          DIRECT_URL: ${{ secrets.DIRECT_URL }}
-          DATABASE_URL: ${{ secrets.DATABASE_URL }}
-
-      - name: Sync Worker secrets
-        run: |
-          echo "${{ secrets.RESEND_API_KEY }}"   | npx wrangler secret put RESEND_API_KEY   --name shpe-uwm
-          echo "${{ secrets.SESSION_SECRET }}"   | npx wrangler secret put SESSION_SECRET   --name shpe-uwm
-          echo "${{ secrets.DATABASE_URL }}"     | npx wrangler secret put DATABASE_URL     --name shpe-uwm
-        env:
-          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
 
       - name: Deploy
         run: npx wrangler deploy --name shpe-uwm
