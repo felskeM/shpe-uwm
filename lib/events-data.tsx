@@ -180,10 +180,10 @@ export const events: EventItem[] = [
     category: 'Workshop',
   },
   {
-    id: 'eaton-interviews',
+    id: 'microsoft-escobedo',
     title: 'Pathway to Success at Microsoft with Anthony Escobedo',
-    start: '2026-04-03T18:00:00',
-    end: '2026-04-03T19:30:00',
+    start: '2026-03-04T18:00:00',
+    end: '2026-03-04T19:30:00',
     location: 'Lubar N130',
     description:
       'Join us for a special session with Anthony Escobedo from Microsoft! Learn about the path to success in engineering and get insights into what it takes to thrive in today\'s competitive landscape.',
