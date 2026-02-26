@@ -52,9 +52,9 @@
     "zustand": "^5.0.11"
   },
   "devDependencies": {
-    "@eslint/js": "^9.39.2",
-    "@next/bundle-analyzer": "15.5.12",
-    "@next/eslint-plugin-next": "^15.5.12",
+    "@eslint/js": "^10.0.1",
+    "@next/bundle-analyzer": "16.1.6",
+    "@next/eslint-plugin-next": "^16.1.6",
     "@opennextjs/aws": "^3.9.16",
     "@opennextjs/cloudflare": "^1.16.5",
     "@tailwindcss/aspect-ratio": "^0.4.2",
@@ -71,7 +71,7 @@
     "@types/react-dom": "^18.3.7",
     "autoprefixer": "^10.4.24",
     "dotenv": "^17.3.1",
-    "eslint": "^9.39.2",
+    "eslint": "^10.0.2",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-jsx-a11y": "^6.10.2",
     "eslint-plugin-prettier": "^5.5.5",
