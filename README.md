@@ -6,7 +6,6 @@
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4.1-06B6D4?logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
 [![Cloudflare Workers](https://img.shields.io/badge/Cloudflare_Workers-F38020?logo=cloudflare&logoColor=white)](https://developers.cloudflare.com/workers/)
 [![Wrangler](https://img.shields.io/badge/Wrangler-4.45.0-orange?logo=cloudflare&logoColor=white)](https://developers.cloudflare.com/workers/wrangler/)
-[![Prisma](https://img.shields.io/badge/Prisma-ORM-2D3748?logo=prisma&logoColor=white)](https://www.prisma.io/)
 [![Docker](https://img.shields.io/badge/Docker-Containerized-2496ED?logo=docker&logoColor=white)](https://www.docker.com/)
 [![Vercel](https://img.shields.io/badge/Vercel-Preview_Deploys-000000?logo=vercel&logoColor=white)](https://vercel.com/)
 [![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-CI/CD-2088FF?logo=githubactions&logoColor=white)](https://github.com/features/actions)
@@ -17,7 +16,7 @@
 
 This is the official repository for the **Society of Hispanic Professional Engineers (SHPE)** at the **University of Wisconsin–Milwaukee (UWM)** chapter — a high-performance website designed to inform, empower, and connect Hispanic STEM students and professionals.
 
-Built with **Next.js**, powered by **Cloudflare Workers**, and now fully containerized with **Docker**, versioned with **Prisma**, and previewed on **Vercel** for rapid testing.
+Built with **Next.js**, powered by **Cloudflare Workers**, and now fully containerized with **Docker**, and previewed on **Vercel** for rapid testing.
 
 ---
 
@@ -35,16 +34,15 @@ Runs on **Cloudflare Workers** using OpenNext, supporting:
 
 ## Frameworks & Tools
 
-| Purpose      | Tool                    |
-| ------------ | ----------------------- |
-| Framework    | Next.js 15.5.6          |
-| Language     | TypeScript 5.9.3        |
-| Styling      | Tailwind CSS 4.1.17     |
-| Database ORM | Prisma 7.0.0            |
-| Hosting      | Cloudflare Workers      |
-| CI/CD        | GitHub Actions          |
-| Previews     | Vercel                  |
-| Containers   | Docker / Docker Compose |
+| Purpose    | Tool                    |
+| ---------- | ----------------------- |
+| Framework  | Next.js 15.5.6          |
+| Language   | TypeScript 5.9.3        |
+| Styling    | Tailwind CSS 4.1.17     |
+| Hosting    | Cloudflare Workers      |
+| CI/CD      | GitHub Actions          |
+| Previews   | Vercel                  |
+| Containers | Docker / Docker Compose |
 
 ---
 

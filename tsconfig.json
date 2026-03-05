@@ -39,12 +39,7 @@
     ".next/types/**/*.ts",
     "tailwind.config.js",
     "next.config.ts",
-    ".next/dev/types/**/*.ts",
-    "prisma/**/*.ts",
-    "app/generated/prisma/**/*.js",
-    "app/generated/prisma/**/*.d.ts",
-    "app/generated/prisma/**/*.mjs",
-    "app/generated/prisma/**/*.cjs"
+    ".next/dev/types/**/*.ts"
   ],
   "exclude": ["node_modules"]
 }

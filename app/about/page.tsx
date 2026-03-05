@@ -92,7 +92,7 @@ export default function Page() {
         ))}
       </div>
 
-      {/* Photo strip (swap images later) */}
+      {/* Photo strip */}
       <div className="grid grid-cols-3 gap-3 mt-12">
         {[
           "/images/hero.png",

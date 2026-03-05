@@ -16,7 +16,6 @@ export default [
       'dist/**',
       '.tsout/**',
       '.tscache/**',
-      'app/generated/**',
     ],
   },
 
