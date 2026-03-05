@@ -186,7 +186,17 @@ export const events: EventItem[] = [
     end: '2026-03-04T19:30:00',
     location: 'Lubar N130',
     description:
-      'Join us for a special session with Anthony Escobedo from Microsoft! Learn about the path to success in engineering and get insights into what it takes to thrive in today\'s competitive landscape.',
+      "Join us for a special session with Anthony Escobedo from Microsoft! Learn about the path to success in engineering and get insights into what it takes to thrive in today's competitive landscape.",
+    category: 'Workshop',
+  },
+  {
+    id: 'stoughton-trailers',
+    title: 'Stoughton Trailers Collab',
+    start: '2026-03-19T16:00:00',
+    end: '2026-03-19T17:30:00',
+    location: 'UWM Student Union',
+    description:
+      "Join us for a collaborative event with Stoughton Trailers!",
     category: 'Workshop',
   },
 ];
