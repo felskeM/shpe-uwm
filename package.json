@@ -29,6 +29,7 @@
     "add-to-calendar-button-react": "^2.13.8",
     "bcryptjs": "^3.0.3",
     "clsx": "^2.1.1",
+    "commander": "^13.1.0",
     "express": "^5.2.1",
     "focus-visible": "^5.2.1",
     "framer-motion": "^12.35.2",
