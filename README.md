@@ -6,7 +6,6 @@
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4.1-06B6D4?logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
 [![Cloudflare Workers](https://img.shields.io/badge/Cloudflare_Workers-F38020?logo=cloudflare&logoColor=white)](https://developers.cloudflare.com/workers/)
 [![Wrangler](https://img.shields.io/badge/Wrangler-4.45.0-orange?logo=cloudflare&logoColor=white)](https://developers.cloudflare.com/workers/wrangler/)
-[![Docker](https://img.shields.io/badge/Docker-Containerized-2496ED?logo=docker&logoColor=white)](https://www.docker.com/)
 [![Vercel](https://img.shields.io/badge/Vercel-Preview_Deploys-000000?logo=vercel&logoColor=white)](https://vercel.com/)
 [![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-CI/CD-2088FF?logo=githubactions&logoColor=white)](https://github.com/features/actions)
 [![License](https://img.shields.io/github/license/felskeM/shpe-uwm?color=blue)](LICENSE)
