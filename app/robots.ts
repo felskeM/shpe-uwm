@@ -16,8 +16,6 @@ export default function robots(): MetadataRoute.Robots {
           `${basePath}/events/`,
           `${basePath}/api`,
           `${basePath}/api/`,
-          `${basePath}/login`,
-          `${basePath}/login/`,
           `${basePath}/contact`,
           `${basePath}/contact/`,
         ],
