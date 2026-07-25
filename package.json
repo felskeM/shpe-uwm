@@ -83,7 +83,7 @@
     "postcss": "^8.5.9",
     "prettier": "^3.8.1",
     "prettier-plugin-tailwindcss": "^0.7.2",
-    "svgo": "^4.0.1",
+    "svgo": "^4.0.2",
     "tailwindcss": "^4.2.2",
     "tailwindcss-animate": "^1.0.7",
     "tsx": "^4.21.0",
