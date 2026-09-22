@@ -13,10 +13,13 @@ function monthLabel(y: number, m: number) {
   });
 }
 
-export default function CalendarShell({ all }: { all: EventItem[] }) {
-  const now = new Date();
-  const [year, setYear] = useState(now.getFullYear());
-  const [month, setMonth] = useState(now.getMonth());
+export default function CalendarShell({ all, initialYear, initialMonth }: {
+  all: EventItem[];
+  initialYear: number;
+  initialMonth: number;
+}) {
+  const [year, setYear] = useState(initialYear);
+  const [month, setMonth] = useState(initialMonth);
 
   function shift(delta: number) {
     const d = new Date(year, month + delta, 1);

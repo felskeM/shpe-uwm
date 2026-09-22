@@ -16,7 +16,7 @@
     "checkJs": false,
     "skipLibCheck": true,
     "strict": true,
-    "noEmit": false,
+    "noEmit": true,
     "outDir": ".tsout",
     "tsBuildInfoFile": ".tscache/tsconfig.tsbuildinfo",
     "incremental": true,
@@ -25,7 +25,7 @@
     "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "preserve",
+    "jsx": "react-jsx",
     "plugins": [
       {
         "name": "next"
@@ -41,5 +41,5 @@
     "next.config.ts",
     ".next/dev/types/**/*.ts"
   ],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", ".open-next", ".tsout", ".tscache"]
 }

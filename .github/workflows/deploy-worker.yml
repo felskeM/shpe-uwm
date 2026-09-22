@@ -1,12 +1,13 @@
 name: Deploy Cloudflare Worker
 
 on:
+  pull_request:
   push:
     branches: [main]
   workflow_dispatch:
 
 concurrency:
-  group: deploy-worker
+  group: deploy-worker-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
@@ -19,22 +20,24 @@ jobs:
 
       - uses: actions/setup-node@v6
         with:
-          node-version: 22
+          node-version: 24
           cache: npm
 
       - name: Install dependencies
         run: npm ci
 
+      - name: Lint and typecheck
+        run: npm run check
+
       - name: Build OpenNext bundle
-        run: npx opennextjs-cloudflare build
+        run: npm run cf:build
         env:
-          NEXT_FORCE_WEBPACK: "1"
           NEXT_TELEMETRY_DISABLED: "1"
           SITE_URL: https://shpeuwm.org
 
       - name: Deploy
-        run: npx wrangler deploy --name shpe-uwm
+        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+        run: npx opennextjs-cloudflare deploy
         env:
-          NEXT_FORCE_WEBPACK: "1"
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}

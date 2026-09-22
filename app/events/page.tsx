@@ -3,13 +3,21 @@ import CalendarShell from "@/components/calendar-shell";
 import { events } from "@/lib/events-data";
 
 export default function Page() {
+  const today = new Intl.DateTimeFormat("en-US", {
+    timeZone: "America/Chicago",
+    year: "numeric",
+    month: "numeric",
+  }).formatToParts(new Date());
+  const initialYear = Number(today.find((part) => part.type === "year")?.value);
+  const initialMonth = Number(today.find((part) => part.type === "month")?.value) - 1;
+
   return (
     <Section
       title={<span className="headline-gradient">Events</span>}
       subtitle="Workshops, recruiting, socials, and outreach—all in one place."
     >
       <div className="max-w-6xl mx-auto">
-        <CalendarShell all={events} />
+        <CalendarShell all={events} initialYear={initialYear} initialMonth={initialMonth} />
       </div>
       <div className="relative p-5 mt-8 rounded-2xl overflow-hidden border border-(--line)">
         <div

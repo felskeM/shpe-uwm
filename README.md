@@ -1,69 +1,71 @@
 # SHPE UWM Website
 
-[![Next.js](https://img.shields.io/badge/Next.js-15-black?logo=nextdotjs&logoColor=white)](https://nextjs.org/)
-[![React](https://img.shields.io/badge/React-18.3.1-61DAFB?logo=react&logoColor=white)](https://react.dev/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.9-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4.1-06B6D4?logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
-[![Cloudflare Workers](https://img.shields.io/badge/Cloudflare_Workers-F38020?logo=cloudflare&logoColor=white)](https://developers.cloudflare.com/workers/)
-[![Wrangler](https://img.shields.io/badge/Wrangler-4.45.0-orange?logo=cloudflare&logoColor=white)](https://developers.cloudflare.com/workers/wrangler/)
-[![Vercel](https://img.shields.io/badge/Vercel-Preview_Deploys-000000?logo=vercel&logoColor=white)](https://vercel.com/)
-[![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-CI/CD-2088FF?logo=githubactions&logoColor=white)](https://github.com/features/actions)
-[![License](https://img.shields.io/github/license/felskeM/shpe-uwm?color=blue)](LICENSE)
-[![Status](https://img.shields.io/badge/Status-Active-brightgreen)](https://github.com/felskeM/shpe-uwm)
+The official website for the Society of Hispanic Professional Engineers at the University of Wisconsin–Milwaukee.
 
----
+Production: [shpeuwm.org](https://shpeuwm.org)
 
-This is the official repository for the **Society of Hispanic Professional Engineers (SHPE)** at the **University of Wisconsin–Milwaukee (UWM)** chapter — a high-performance website designed to inform, empower, and connect Hispanic STEM students and professionals.
+## Development
 
-Built with **Next.js**, powered by **Cloudflare Workers**, and now fully containerized with **Docker**, and previewed on **Vercel** for rapid testing.
+Use Node.js 24 LTS (or Node.js 22.22.1+) and npm 11.
 
----
+```sh
+npm ci
+npm run dev
+```
 
-## Live Deployment
+Open http://localhost:3000. In Windows PowerShell, use `npm.cmd` if the `npm.ps1` launcher fails.
 
-**Production:** [https://shpeuwm.org](https://shpeuwm.org)
+## Checks and commits
 
-Runs on **Cloudflare Workers** using OpenNext, supporting:
+```sh
+npm run check
+npm run build
+```
 
-- Server-Side Rendering (SSR)
-- Static Site Generation (SSG)
-- API Routes
+`check` runs ESLint and generates Next.js route types before type checking. `npm ci` installs the Husky pre-commit hook, which runs ESLint on staged code and Prettier on staged text files. Commit both `package.json` and `package-lock.json` when updating dependencies.
 
----
+The toolchain intentionally uses ESLint 9 and TypeScript 6 to stay within the installed lint plugins' supported versions.
 
-## Frameworks & Tools
+## Server-side rendering
 
-| Purpose    | Tool                    |
-| ---------- | ----------------------- |
-| Framework  | Next.js 15.5.6          |
-| Language   | TypeScript 5.9.3        |
-| Styling    | Tailwind CSS 4.1.17     |
-| Hosting    | Cloudflare Workers      |
-| CI/CD      | GitHub Actions          |
-| Previews   | Vercel                  |
-| Containers | Docker / Docker Compose |
+Next.js 16 and React 19 render pages on every request through `dynamic = "force-dynamic"` in the root layout. Interactive components hydrate in the browser. The contact and calendar endpoints run on the server; the project does not use a static export.
 
----
+To run the production Node.js server:
 
-## Design Highlights
+```sh
+npm run build
+npm start
+```
 
-- Fully responsive, mobile-first layout
-- SHPE-themed color palette (navy, blue, accent gold)
-- Accessible components (Radix UI)
-- Framer Motion animations
-- Optimized Lighthouse scores
+To build and preview the Cloudflare Worker:
 
----
+```sh
+npm run dev:worker
+```
 
-## Contribution & Credits
+The Worker preview listens on http://localhost:8771. OpenNext adapts the Next.js build for Cloudflare Workers, with `nodejs_compat` enabled in `wrangler.toml`. If native Windows encounters OpenNext filesystem issues, use WSL or the Linux CI build.
 
-**Matthew Felske (Mateo)** — SHPE UWM Webmaster
-Massive shoutout to the UWM SHPE E-Board for constant input, content, and feedback.
+## Configuration
 
----
+Set `RESEND_API_KEY` and `CONTACT_TO` in `.env.local` for the Node.js development server. For the Worker preview, use the gitignored `.dev.vars` file. Configure the production API key with `npx wrangler secret put RESEND_API_KEY`; the recipient is configured in `wrangler.toml`. Email requires a verified sending domain in Resend.
 
-## Disclaimer
+`SITE_URL` defaults to `https://shpeuwm.org`. `NEXT_PUBLIC_BASE_PATH` defaults to an empty string.
 
-This project is a student-run initiative and not officially affiliated with SHPE National.
+## Deployment
 
-For official SHPE resources: [https://shpe.org](https://shpe.org)
+Pull requests run lint, type checking, and the OpenNext build in GitHub Actions. Pushes to `main` run the same checks and then deploy through OpenNext. The repository must have `CLOUDFLARE_ACCOUNT_ID` and `CLOUDFLARE_API_TOKEN` configured as GitHub Actions secrets.
+
+For a manual deployment:
+
+```sh
+npm run cf:login
+npm run deploy
+```
+
+See the [OpenNext Cloudflare documentation](https://opennext.js.org/cloudflare/get-started) for adapter configuration.
+
+## Credits
+
+Matthew (Mateo) Felske — SHPE UWM Webmaster, with input, content, and feedback from the UWM SHPE E-Board.
+
+This is a student-run initiative and is not officially affiliated with [SHPE National](https://shpe.org).

@@ -8,7 +8,7 @@ export default function BpImage(props: ImageProps) {
   let finalSrc: ImageProps["src"] = src;
 
   if (typeof src === "string" && src.startsWith("/")) {
-    finalSrc = withBasePath(src) as ImageProps["src"];
+    finalSrc = withBasePath(src);
   }
   return <NextImage src={finalSrc} {...rest} />;
 }

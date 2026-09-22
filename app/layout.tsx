@@ -6,6 +6,8 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { Poppins } from "next/font/google";
 import Script from "next/script";
 
+// Render pages on each request in Node.js and Cloudflare Workers.
+export const dynamic = "force-dynamic";
 
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";

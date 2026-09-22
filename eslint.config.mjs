@@ -53,12 +53,6 @@ export default [
       '@typescript-eslint/consistent-type-imports': 'warn',
     },
     settings: { react: { version: 'detect' } },
-    languageOptions: {
-      parserOptions: {
-        projectService: true,
-        tsconfigRootDir: import.meta.dirname,
-      },
-    },
   },
   ...tseslint.configs.recommendedTypeChecked.map((cfg) => ({
     ...cfg,
