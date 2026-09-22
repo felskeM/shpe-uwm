@@ -1,8 +1,14 @@
 import { Section } from "@/components/section";
 import CalendarShell from "@/components/calendar-shell";
-import { events } from "@/lib/events-data";
+import { getCalendarEvents } from "@/lib/events-source";
 
-export default function Page() {
+export default async function Page() {
+  let events;
+  try {
+    events = await getCalendarEvents();
+  } catch (error) {
+    console.error("Event calendar could not refresh:", error instanceof Error ? error.message : "Unknown error");
+  }
   const today = new Intl.DateTimeFormat("en-US", {
     timeZone: "America/Chicago",
     year: "numeric",
@@ -17,7 +23,11 @@ export default function Page() {
       subtitle="Workshops, recruiting, socials, and outreach—all in one place."
     >
       <div className="max-w-6xl mx-auto">
-        <CalendarShell all={events} initialYear={initialYear} initialMonth={initialMonth} />
+        {events ? <CalendarShell all={events} initialYear={initialYear} initialMonth={initialMonth} /> : (
+          <p role="status" className="rounded-2xl border-soft surface-navy-18 p-5">
+            The event calendar is temporarily unavailable. Please try again shortly or <a href="/contact" className="underline">contact us</a> for event details.
+          </p>
+        )}
       </div>
       <div className="relative p-5 mt-8 rounded-2xl overflow-hidden border border-(--line)">
         <div

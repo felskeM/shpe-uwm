@@ -29,6 +29,9 @@ jobs:
       - name: Lint and typecheck
         run: npm run check
 
+      - name: Test Excel calendar integration
+        run: npm test
+
       - name: Build OpenNext bundle
         run: npm run cf:build
         env:

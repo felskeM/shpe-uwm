@@ -11,6 +11,7 @@ export default [
       '**/.next/**',
       '**/.open-next/**',
       '**/.vercel/**',
+      '**/.wrangler/**',
       'node_modules/**',
       'out/**',
       'dist/**',

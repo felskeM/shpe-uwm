@@ -52,6 +52,7 @@ export default function CalendarShell({ all, initialYear, initialMonth }: {
       </div>
 
       {/* Mobile: agenda list */}
+      <p className="mb-3 text-sm text-white/70">All event times are shown in Central time (Milwaukee).</p>
       <div className="md:hidden">
         <AgendaList year={year} month={month} events={all} />
       </div>

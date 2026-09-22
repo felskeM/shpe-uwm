@@ -1,35 +1,20 @@
 "use client";
 
 import Image from "@/components/BpImage";
-import { googleCalendarUrl, slugify } from "@/lib/calendar";
+import { googleCalendarUrl, icsUrlFor } from "@/lib/calendar";
 import type { EventItem } from "@/components/event-card";
 
-// universal add to calendar button wouldn't work on iOS devices
-function icsUrl(e: EventItem) {
-    const params = new URLSearchParams({
-      slug: slugify(e.title),
-      title: e.title,
-      start: new Date(e.start).toISOString(), // UTC -> iOS friendly
-      end: new Date(e.end).toISOString(),
-    });
-    if (e.location) params.set("location", e.location);
-    if (e.description) params.set("desc", e.description);
-    return `/api/ics?${params.toString()}`;
-  }
+import { calendarDate, eventTimeLabel } from "@/lib/event-time";
 
 type AugEvent = EventItem & { _start: Date; _end: Date };
 
 function dayKey(d: Date) {
-    return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+    return `${d.getUTCFullYear()}-${String(d.getUTCMonth() + 1).padStart(2, "0")}-${String(d.getUTCDate()).padStart(2, "0")}`;
 }
 
 function fmtDateHeader(d: Date) {
-    return d.toLocaleDateString([], { weekday: "long", month: "long", day: "numeric" });
+    return d.toLocaleDateString("en-US", { timeZone: "UTC", weekday: "long", month: "long", day: "numeric" });
 }
-function fmtTime(d: Date) {
-    return d.toLocaleTimeString([], { hour: "numeric", minute: "2-digit" });
-}
-
 export default function AgendaList({
     year,
     month, // 0-based
@@ -39,11 +24,11 @@ export default function AgendaList({
     month: number;
     events: EventItem[];
 }) {
-    const start = new Date(year, month, 1);
-    const end = new Date(year, month + 1, 0, 23, 59, 59);
+    const start = new Date(Date.UTC(year, month, 1));
+    const end = new Date(Date.UTC(year, month + 1, 0, 23, 59, 59));
 
     const inMonth: AugEvent[] = events
-        .map<AugEvent>((e) => ({ ...e, _start: new Date(e.start), _end: new Date(e.end) }))
+        .map<AugEvent>((e) => ({ ...e, _start: calendarDate(e.start), _end: calendarDate(e.end) }))
         .filter((e) => e._start >= start && e._start <= end)
         .sort((a, b) => +a._start - +b._start);
 
@@ -76,7 +61,7 @@ export default function AgendaList({
                                     <div>
                                         <div className="text-sm font-medium text-(--foreground)">{e.title}</div>
                                         <div className="mt-0.5 text-xs text-[color-mix(in_oklab,var(--foreground)_75%,transparent)]">
-                                            {fmtTime(new Date(e.start))}–{fmtTime(new Date(e.end))}
+                                            {eventTimeLabel(e.start)}–{eventTimeLabel(e.end)}
                                             {e.location ? <> — {e.location}</> : null}
                                         </div>
                                         {e.description ? (
@@ -98,7 +83,7 @@ export default function AgendaList({
                                         </a>
                                         {/* Now iOS-friendly */}
                                         <a
-                                            href={icsUrl(e)}
+                                            href={icsUrlFor(e)}
                                             aria-label="Add to Calendar (.ics)"
                                             title="Add to Calendar (.ics)"
                                             className="inline-flex h-8 w-8 items-center justify-center rounded-md border-soft bg-black/30 hover:bg-black/45 focus-brand"

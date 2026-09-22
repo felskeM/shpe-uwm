@@ -1,7 +1,8 @@
 "use client";
 
 import Image from "@/components/BpImage";
-import { googleCalendarUrl, icsDataHrefFor, slugify } from "@/lib/calendar";
+import { googleCalendarUrl, icsUrlFor } from "@/lib/calendar";
+import { calendarDate, eventTimeLabel } from "@/lib/event-time";
 import type { EventItem, Category } from "@/components/event-card";
 import { cn } from "@/lib/cn";
 
@@ -19,13 +20,13 @@ type Props = {
 };
 
 export default function CalendarMonth({ year, month, events }: Props) {
-  const first = new Date(year, month, 1);
-  const startWeekday = first.getDay(); // 0 Sun ... 6 Sat
-  const daysInMonth = new Date(year, month + 1, 0).getDate();
+  const first = new Date(Date.UTC(year, month, 1));
+  const startWeekday = first.getUTCDay(); // 0 Sun ... 6 Sat
+  const daysInMonth = new Date(Date.UTC(year, month + 1, 0)).getUTCDate();
 
   const cells: (Date | null)[] = [];
   for (let i = 0; i < startWeekday; i++) cells.push(null);
-  for (let d = 1; d <= daysInMonth; d++) cells.push(new Date(year, month, d));
+  for (let d = 1; d <= daysInMonth; d++) cells.push(new Date(Date.UTC(year, month, d)));
   while (cells.length % 7 !== 0) cells.push(null);
 
   return (
@@ -56,9 +57,9 @@ function DayCell({
   events: EventItem[];
 }) {
   const dayEvents = date
-    ? events.filter((e) => isSameDay(new Date(e.start), date))
+    ? events.filter((e) => isSameDay(calendarDate(e.start), date))
     : [];
-  const isOtherMonth = date ? date.getMonth() !== month : false;
+  const isOtherMonth = date ? date.getUTCMonth() !== month : false;
 
   return (
     <div
@@ -69,7 +70,7 @@ function DayCell({
     >
       <div className="mb-1 flex items-center justify-between">
         <span className="text-sm font-semibold text-[color-mix(in_oklab,var(--foreground)_90%,transparent)]">
-          {date ? date.getDate() : ""}
+          {date ? date.getUTCDate() : ""}
         </span>
       </div>
 
@@ -83,8 +84,6 @@ function DayCell({
 }
 
 function EventPill({ e }: { e: EventItem }) {
-  const start = new Date(e.start);
-  const end = new Date(e.end);
 
   return (
     <div
@@ -103,7 +102,7 @@ function EventPill({ e }: { e: EventItem }) {
       {/* Time */}
       <div className="mt-0.5 text-[11px] leading-4 text-[color-mix(in_oklab,var(--foreground)_75%,transparent)]">
         <span>
-          {fmtTime(start)}–{fmtTime(end)}
+          {eventTimeLabel(e.start)}–{eventTimeLabel(e.end)}
         </span>
       </div>
 
@@ -125,8 +124,7 @@ function EventPill({ e }: { e: EventItem }) {
           />
         </a>
         <a
-          href={icsDataHrefFor([e]).href}
-          download={`${slugify(e.title)}.ics`}
+          href={icsUrlFor(e)}
           aria-label="Download Event (.ics)"
           title="Download Event (.ics)"
           className="inline-flex h-6 w-6 items-center justify-center rounded-md border-soft bg-black/30 hover:bg-black/45 focus-brand"
@@ -138,14 +136,10 @@ function EventPill({ e }: { e: EventItem }) {
   );
 }
 
-function fmtTime(d: Date) {
-  return d.toLocaleTimeString([], { hour: "numeric", minute: "2-digit" });
-}
-
 function isSameDay(a: Date, b: Date) {
   return (
-    a.getFullYear() === b.getFullYear() &&
-    a.getMonth() === b.getMonth() &&
-    a.getDate() === b.getDate()
+    a.getUTCFullYear() === b.getUTCFullYear() &&
+    a.getUTCMonth() === b.getUTCMonth() &&
+    a.getUTCDate() === b.getUTCDate()
   );
 }
