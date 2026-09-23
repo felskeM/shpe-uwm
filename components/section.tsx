@@ -1,31 +1,36 @@
 import type { ReactNode } from "react";
+import { Container } from "@/components/container";
 
 type Props = {
   title: ReactNode;
   subtitle?: ReactNode;
   children: ReactNode;
   center?: boolean;
+  headingLevel?: "h1" | "h2";
 };
 
-export function Section({ title, subtitle, children, center }: Props) {
+export function Section({
+  title,
+  subtitle,
+  children,
+  center,
+  headingLevel: Heading = "h1",
+}: Props) {
   return (
-    <section className="pt-10 sm:pt-12 lg:pt-8">
-      <div className="w-full px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
-        {" "}
-        {/* ↑ wider */}
-        <header className={center ? "mb-6 text-center" : "mb-6"}>
-          <h2 className="text-2xl font-bold text-(--foreground)">
+    <section className="py-10 sm:py-14">
+      <Container>
+        <header
+          className={center ? "mb-8 text-center sm:mb-10" : "mb-8 sm:mb-10"}
+        >
+          <Heading className="text-3xl font-semibold tracking-tight sm:text-4xl">
             {title}
-          </h2>
-
+          </Heading>
           {subtitle && (
-            <p className="mt-1 text-[color-mix(in_oklab,var(--foreground)_80%,transparent)]">
-              {subtitle}
-            </p>
+            <p className="mt-3 text-(--muted) leading-7">{subtitle}</p>
           )}
         </header>
         {children}
-      </div>
+      </Container>
     </section>
   );
 }

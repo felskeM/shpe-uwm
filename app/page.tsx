@@ -1,33 +1,16 @@
 import { Hero } from "@/components/hero";
 import { Section } from "@/components/section";
 import { Users, GraduationCap, Megaphone } from "lucide-react";
-import { SponsorMarquee, type SponsorLogo } from "@/components/sponsor-marquee";
-
-const SPONSORS: SponsorLogo[] = [
-  {
-    name: "GE HealthCare",
-    src: "/images/GELogo.png",
-    href: "https://www.gehealthcare.com/",
-  },
-  {
-    name: "Eaton",
-    src: "/images/EatonLogo.png",
-    href: "https://www.eaton.com/us/en-us.html",
-  },
-  {
-    name: "Roberto Hernandez Center",
-    src: "/images/RHCLogo.png",
-    href: "https://uwm.edu/community-empowerment-institutional-inclusivity/services/roberto-hernandez-center/",
-  },
-];
-
+import { SponsorMarquee } from "@/components/sponsor-marquee";
+import { sponsors } from "@/lib/sponsors";
 
 export default function Page() {
   return (
     <>
       <Hero />
       <Section
-        title="What we do"
+        headingLevel="h2"
+        title="A place to belong. Room to grow."
         subtitle="Professional development, mentorship, and community."
       >
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -48,19 +31,25 @@ export default function Page() {
               Icon: Megaphone,
             },
           ].map(({ t, d, Icon }) => (
-            <div key={t} className="p-5 card card-meter border-soft surface-navy-18">
-              <div className="flex items-center gap-3">
-                <Icon className="w-7 h-7" style={{ color: "var(--shpe-accent)" }} />
+            <div key={t} className="p-7 card feature-card">
+              <div className="flex flex-col items-start gap-6">
+                <span className="feature-icon">
+                  <Icon className="w-6 h-6" />
+                </span>
                 <h3 className="text-lg font-semibold">{t}</h3>
               </div>
-              <p className="mt-2 text-sm text-[color-mix(in_oklab,var(--foreground)_80%,transparent)]">{d}</p>
+              <p className="mt-3 text-sm leading-7 text-(--muted)">{d}</p>
             </div>
           ))}
         </div>
       </Section>
 
-      <Section title="Our sponsors">
-        <SponsorMarquee items={SPONSORS} />
+      <Section
+        headingLevel="h2"
+        title="Investing in our future"
+        subtitle="Thank you to the partners helping our community go further."
+      >
+        <SponsorMarquee items={sponsors} />
       </Section>
     </>
   );

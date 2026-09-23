@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import { withBasePath } from "@/lib/basePath";
 
 export function ContactCard() {
   const [status, setStatus] = useState<"idle" | "sending" | "ok" | "err">(
@@ -9,6 +10,7 @@ export function ContactCard() {
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    if (status === "sending") return;
     setStatus("sending");
     setMsg("");
 
@@ -17,7 +19,7 @@ export function ContactCard() {
     const payload = Object.fromEntries(formData.entries());
 
     try {
-      const res = await fetch("/api/contact", {
+      const res = await fetch(withBasePath("/api/contact"), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
@@ -34,7 +36,7 @@ export function ContactCard() {
   }
 
   return (
-    <div className="p-5 shadow-sm rounded-2xl border-soft surface-navy-18">
+    <div className="card mx-auto max-w-2xl p-6 sm:p-9">
       <h3 className="text-lg font-semibold text-(--foreground)">
         Get in touch
       </h3>
@@ -42,26 +44,43 @@ export function ContactCard() {
         Shoot us a note and we’ll get back to you.
       </p>
 
-      <form onSubmit={(e) => { void onSubmit(e); }} className="grid gap-3 mt-5">
-        <input
-          name="name"
-          required
-          placeholder="Name"
-          className="px-3 py-2 rounded-xl border-soft focus-brand text-(--foreground) placeholder:text-[color-mix(in_oklab,var(--foreground)_45%,transparent)] bg-[color-mix(in_oklab,var(--shpe-secondary)_22%,transparent)]"
-        />
-        <input
-          name="email"
-          type="email"
-          required
-          placeholder="Email"
-          className="px-3 py-2 rounded-xl border-soft focus-brand text-(--foreground) placeholder:text-[color-mix(in_oklab,var(--foreground)_45%,transparent)] bg-[color-mix(in_oklab,var(--shpe-secondary)_22%,transparent)]"
-        />
-        <textarea
-          name="message"
-          required
-          placeholder="Message"
-          className="min-h-35 rounded-xl border-soft focus-brand px-3 py-2 text-(--foreground) placeholder:text-[color-mix(in_oklab,var(--foreground)_45%,transparent)] bg-[color-mix(in_oklab,var(--shpe-secondary)_22%,transparent)]"
-        />
+      <form
+        onSubmit={(e) => {
+          void onSubmit(e);
+        }}
+        className="grid gap-3 mt-5"
+      >
+        <label className="text-sm font-medium">
+          Name
+          <input
+            name="name"
+            autoComplete="name"
+            required
+            placeholder="Your name"
+            className="form-field"
+          />
+        </label>
+        <label className="text-sm font-medium">
+          Email
+          <input
+            name="email"
+            type="email"
+            autoComplete="email"
+            required
+            placeholder="you@example.com"
+            className="form-field"
+          />
+        </label>
+        <label className="text-sm font-medium">
+          Message
+          <textarea
+            name="message"
+            required
+            placeholder="How would you like to get involved?"
+            rows={5}
+            className="form-field resize-y"
+          />
+        </label>
         {/* Non-visible */}
         <input
           type="text"
@@ -71,12 +90,16 @@ export function ContactCard() {
           className="hidden"
           aria-hidden="true"
         />
-        <button className="btn-primary focus-brand disabled:opacity-70">
+        <button
+          type="submit"
+          disabled={status === "sending"}
+          className="btn-primary focus-brand disabled:opacity-70"
+        >
           {status === "sending" ? "Sending…" : "Send"}
         </button>
       </form>
 
-      {status !== "idle" && (
+      {msg && (
         <div
           className="px-3 py-2 mt-3 text-sm rounded-lg"
           style={{

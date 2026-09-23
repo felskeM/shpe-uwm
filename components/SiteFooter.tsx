@@ -1,107 +1,82 @@
-import Image from "next/image";
 import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
 import { Container } from "@/components/container";
-import { withBasePath } from "@/lib/basePath";
+import { Logo } from "@/components/logo";
+import { navigation } from "@/lib/navigation";
+
+const socials = [
+  { label: "Instagram", href: "https://www.instagram.com/shpe_uwm/" },
+  {
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/in/society-of-hispanic-professional-engineers-at-university-of-wisconsin-milwaukee-1b9031232/",
+  },
+  { label: "Email", href: "mailto:garciar9@uwm.edu" },
+];
 
 export function SiteFooter() {
-  const logo = withBasePath("/images/shpe-logo.webp");
-
-  const navLinks = [
-    ["/about", "About"],
-    ["/officers", "Officers"],
-    ["/events", "Events"],
-    ["/sponsors", "Sponsors"],
-    ["/contact", "Contact"],
-  ] as const;
-
   return (
-    <footer className="mt-16 text-sm border-t border-(--line) footer-bg">
-      <Container className="py-8 md:py-10">
-        <div className="grid gap-8 md:grid-cols-[1fr_auto] md:items-start">
+    <footer className="mt-12 border-t border-(--line) bg-[#08111e]">
+      <Container className="py-12">
+        <div className="grid gap-10 lg:grid-cols-[1.3fr_.7fr_1fr]">
           <div>
-            <Link href="/" className="inline-flex items-center gap-3 group">
-              <Image
-                src={logo}
-                alt="SHPE UWM"
-                width={140}
-                height={42}
-                className="object-contain w-auto h-8 md:h-10 opacity-90 group-hover:opacity-100"
-                priority
-              />
-              <p className="leading-tight text-[color-mix(in_oklab,var(--foreground)_70%,transparent)] text-sm md:text-base">
-                University of Wisconsin–Milwaukee
-              </p>
-            </Link>
-
-            <p className="mt-3 text-[color-mix(in_oklab,var(--foreground)_65%,transparent)] text-sm md:text-base">
-              Leading Hispanics in STEM at University of Wisconsin–Milwaukee.
+            <Logo />
+            <p className="mt-5 max-w-sm text-sm leading-7 text-(--muted)">
+              Leading Hispanics in STEM at the University of
+              Wisconsin–Milwaukee. Grow with our familia.
             </p>
-
-            {/* Footer nav: hidden on mobile, visible ≥ md */}
-            <nav aria-label="Footer navigation" className="hidden md:block">
-              <ul className="mt-4 flex flex-wrap items-center gap-2 md:gap-3">
-                {navLinks.map(([href, label]) => (
+            <div className="mt-5 flex gap-3">
+              {socials.map(({ label, href }) => (
+                <a
+                  key={label}
+                  href={href}
+                  aria-label={label}
+                  target={href.startsWith("https") ? "_blank" : undefined}
+                  rel="noopener noreferrer"
+                  className="btn-ghost px-3"
+                >
+                  {label}
+                </a>
+              ))}
+            </div>
+          </div>
+          <nav aria-label="Footer navigation">
+            <p className="eyebrow">Explore</p>
+            <ul className="mt-4 grid grid-cols-2 gap-3 text-sm sm:grid-cols-1">
+              {navigation
+                .filter(({ href }) => href !== "/")
+                .map(({ href, label }) => (
                   <li key={href}>
                     <Link
                       href={href}
-                      className="footer-link inline-flex rounded-md px-3 py-1.5 focus-brand"
+                      className="text-(--muted) hover:text-white"
                     >
                       {label}
                     </Link>
                   </li>
                 ))}
-              </ul>
-            </nav>
-
-            {/* Socials under the nav */}
-            <div className="mt-4 flex gap-2">
-              <a
-                className="social-pill h-8 w-8 md:h-9 md:w-9"
-                aria-label="Instagram"
-                href="https://www.instagram.com/shpe_uwm/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <svg viewBox="0 0 24 24" className="w-4 h-4 md:w-5 md:h-5" fill="currentColor">
-                  <path d="M7 2C4.243 2 2 4.243 2 7v10c0 2.757 2.243 5 5 5h10c2.757 0 5-2.243 5-5V7c0-2.757-2.243-5-5-5H7zm10 2a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3V7a3 3 0 0 1 3-3h10zm-5 3a5 5 0 1 0 .001 10.001A5 5 0 0 0 12 7zm0 2.2A2.8 2.8 0 1 1 9.2 12 2.8 2.8 0 0 1 12 9.2zM17.5 6a1 1 0 1 0 1 1 1 1 0 0 0-1-1z" />
-                </svg>
-              </a>
-              <a
-                className="social-pill h-8 w-8 md:h-9 md:w-9"
-                aria-label="LinkedIn"
-                href="https://www.linkedin.com/in/society-of-hispanic-professional-engineers-at-university-of-wisconsin-milwaukee-1b9031232/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <svg viewBox="0 0 24 24" className="w-4 h-4 md:w-5 md:h-5" fill="#0A66C2">
-                  <path d="M4.98 3.5C4.98 4.88 3.88 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM0 8h5v16H0V8zm7.5 0h4.7v2.5h.07c.65-1.2 2.25-2.5 4.63-2.5 4.95 0 5.86 3.25 5.86 7.47V24h-5v-7.8c0-1.86-.03-4.25-2.6-4.25-2.6 0-3 2.03-3 4.12V24h-5V8z" />
-                </svg>
-              </a>
-              <a className="social-pill h-8 w-8 md:h-9 md:w-9" aria-label="Email" href="mailto:garciar9@uwm.edu">
-                <svg viewBox="0 0 24 24" className="w-4 h-4 md:w-5 md:h-5" fill="currentColor">
-                  <path d="M2 4h20v16H2z" fill="none" />
-                  <path d="M20 6v.01L12 12 4 6.01V6h16m0-2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z" />
-                </svg>
-              </a>
-            </div>
-          </div>
-
-          <div className="md:justify-self-end">
-            <div className="font-semibold text-(--foreground)">Join us</div>
-            <p className="mt-2 text-[color-mix(in_oklab,var(--foreground)_65%,transparent)]">
+            </ul>
+          </nav>
+          <div>
+            <p className="eyebrow">Build what comes next</p>
+            <p className="mt-4 text-xl font-semibold">
+              Great futures start together.
+            </p>
+            <p className="mt-3 text-sm leading-7 text-(--muted)">
               Partner on workshops, projects, and careers.
             </p>
-            <div className="mt-3 grid gap-2 sm:flex">
-              <a href="/contact" className="btn-primary w-full sm:w-auto">Become a sponsor</a>
-              <a href="/events" className="btn-ghost w-full sm:w-auto">Attend an event</a>
+            <div className="mt-5 flex flex-wrap gap-3">
+              <Link href="/contact" className="btn-primary">
+                Become a sponsor <ArrowUpRight size={16} />
+              </Link>
+              <Link href="/events" className="btn-ghost">
+                Attend an event
+              </Link>
             </div>
           </div>
         </div>
-
-        {/* Bottom strip */}
-        <div className="mt-6 md:mt-8 pt-4 md:pt-6 border-t border-(--line) text-[color-mix(in_oklab,var(--foreground)_60%,transparent)] flex flex-col sm:flex-row sm:items-center sm:justify-between text-xs md:text-sm">
+        <div className="mt-10 flex flex-wrap justify-between gap-3 border-t border-(--line) pt-6 text-xs text-(--muted)">
           <p>© {new Date().getFullYear()} SHPE UWM.</p>
-          <p className="mt-1 sm:mt-0">Go Panthers!</p>
+          <p>Milwaukee, Wisconsin · Go Panthers!</p>
         </div>
       </Container>
     </footer>

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Image from "@/components/BpImage";
 import { Section } from "@/components/section";
 import { Users, GraduationCap, Handshake, Rocket } from "lucide-react";
@@ -26,11 +27,6 @@ export default function Page() {
     },
   ];
 
-  const surface = "bg-shpe-secondary-20";
-  const surfaceFallback: Record<string, string> = {
-    ["--card-bg"]:
-      "color-mix(in oklab, var(--shpe-secondary) 20%, transparent)",
-  };
   return (
     <Section title="About SHPE UWM">
       <div className="card border-soft surface-navy-18 ring-(--shpe-accent)">
@@ -71,19 +67,12 @@ export default function Page() {
           <div
             key={title}
             className="card group border-soft surface-navy-18 p-5 transition-transform hover:-translate-y-1"
-            style={
-              surface === "bg-shpe-secondary-20"
-                ? undefined
-                : (surfaceFallback as React.CSSProperties)
-            }
           >
             <div className="flex items-center gap-3">
               <div className="p-2 rounded-xl bg-shpe-accent/15 ring-1 ring-white/10">
                 <Icon className="w-5 h-5 text-shpe-accent" />
               </div>
-              <h4 className="font-semibold text-(--foreground)">
-                {title}
-              </h4>
+              <h4 className="font-semibold text-(--foreground)">{title}</h4>
             </div>
             <p className="mt-3 text-sm text-[color-mix(in_oklab,var(--foreground)_65%,transparent)]">
               {desc}
@@ -93,7 +82,7 @@ export default function Page() {
       </div>
 
       {/* Photo strip */}
-      <div className="grid grid-cols-3 gap-3 mt-12">
+      <div className="grid gap-4 mt-12 sm:grid-cols-3">
         {[
           "/images/hero.png",
           "/images/speeddating.png",
@@ -120,18 +109,18 @@ export default function Page() {
           Want to get involved, sponsor an event, or speak at a meeting?
         </p>
         <div className="flex gap-3">
-          <a
+          <Link
             href="/events"
             className="px-4 py-2 text-sm font-medium rounded-xl btn-primary"
           >
             See events
-          </a>
-          <a
+          </Link>
+          <Link
             href="/contact"
             className="px-4 py-2 text-sm font-medium rounded-xl btn-ghost"
           >
             Contact us
-          </a>
+          </Link>
         </div>
       </div>
     </Section>

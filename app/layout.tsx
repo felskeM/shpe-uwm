@@ -9,14 +9,13 @@ import Script from "next/script";
 // Render pages on each request in Node.js and Cloudflare Workers.
 export const dynamic = "force-dynamic";
 
-
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 const siteUrl = process.env.SITE_URL ?? "https://shpeuwm.org";
 
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#0a0a0a",
+  themeColor: "#0b1423",
 };
 
 export const metadata: Metadata = {
@@ -39,14 +38,18 @@ export const metadata: Metadata = {
     title: "SHPE UW-Milwaukee",
     description:
       "Society of Hispanic Professional Engineers — University of Wisconsin–Milwaukee",
-    images: [{ url: new URL(`${basePath}/og.webp`, siteUrl).toString() }],
+    images: [
+      { url: new URL(`${basePath}/images/og.webp`, siteUrl).toString() },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "SHPE UW-Milwaukee",
     description:
       "Society of Hispanic Professional Engineers — University of Wisconsin–Milwaukee",
-    images: [{ url: new URL(`${basePath}/og.webp`, siteUrl).toString() }],
+    images: [
+      { url: new URL(`${basePath}/images/og.webp`, siteUrl).toString() },
+    ],
   },
 };
 
@@ -65,7 +68,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html
       lang="en"
-      className={`dark scroll-smooth ${poppins.variable}`}
+      className={`dark ${poppins.variable}`}
       suppressHydrationWarning
     >
       <body className="min-h-screen antialiased selection:bg-[color-mix(in_oklab,var(--shpe-accent)_28%,transparent)]">
@@ -76,8 +79,13 @@ export default function RootLayout({ children }: RootLayoutProps) {
           strategy="afterInteractive"
         />
         <div className="relative flex flex-col min-h-screen">
+          <a href="#main-content" className="skip-link">
+            Skip to content
+          </a>
           <SiteHeader />
-          <main className="flex-1">{children}</main>
+          <main id="main-content" tabIndex={-1} className="flex-1">
+            {children}
+          </main>
           <SiteFooter />
         </div>
       </body>

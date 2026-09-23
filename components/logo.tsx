@@ -16,12 +16,12 @@ export function Logo({ className }: Props) {
         alt="SHPE logo"
         width={320}
         height={90}
-        className="block h-10 sm:h-8 lg:h-10 w-auto shrink-0 object-contain"
+        className="block h-10 w-auto shrink-0 rounded-lg bg-white px-2 py-1 object-contain"
         sizes="(max-width: 640px) 180px, (max-width: 1024px) 260px, 320px"
         priority
       />
 
-      <span className="hidden sm:block w-px h-12 md:h-12 lg:h-14 bg-[color-mix(in_oklab,var(--foreground)_20%,transparent)]" />
+      <span className="hidden sm:block w-px h-9 bg-[color-mix(in_oklab,var(--foreground)_20%,transparent)]" />
 
       <span className="hidden sm:inline font-medium text-(--foreground) whitespace-nowrap md:text-sm lg:text-base">
         University of
