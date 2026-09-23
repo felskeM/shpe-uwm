@@ -57,7 +57,7 @@ export default function Page() {
   return (
     <Section
       title="Executive Board"
-      subtitle="Meet our eboard team for the 2025-2026 academic year at UWM!"
+      subtitle="Meet our eboard team for the 2026-2027 academic year at UWM!"
     >
       <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         {officers.map((o) => (
