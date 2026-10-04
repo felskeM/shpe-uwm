@@ -1,53 +1,44 @@
-# Shared Excel event calendar
+# Excel event calendar
 
-## Event editors
+`docs/Website-Events.xlsx` is the only calendar source. Share this file with members. If someone edits a separate copy, copy it back to this exact repository path before publishing. No Microsoft connection is used.
 
-Use `Website-Events.xlsx` in the SHPE UWM SharePoint Shared Documents library:
+## Editing events
 
-[Open the shared workbook](https://panthers.sharepoint.com/sites/SocietyofHispanicEngineers/_layouts/15/doc.aspx?sourcedoc=%7Ba74524ad-0655-464c-b596-b10713452e8a%7D&action=edit)
+1. On `Sheet1`, enter one event per row in `EventsTable`. Use the blank Draft row; press Tab in the last cell to extend the table.
+2. Fill Event ID, Title, Category, Start, End, and Location. Description is optional. IDs must be unique and remain unchanged when editing an event.
+3. Enter real Excel dates and times, such as `9/25/2026 5:30 PM`, in Milwaukee/Central time. Include the date in both Start and End. Use values, not formulas.
+4. Set Status to **Published** to show the event. **Draft** or blank Status hides it. Deleting a row removes it; no Published rows clears the calendar.
+5. Save. Keep the eight headings and `Sheet1` name unchanged.
 
-The edited file is in `outputs/excel-events/Website-Events.xlsx`. Replace the existing blank workbook in SharePoint with this file, keeping the same name and location. The local output does not automatically overwrite the SharePoint copy. Share it with the event editors using **Specific people → Can edit**. Website visitors receive only Published event fields, not access to the workbook.
+Dropdowns are prepared through row 228; copy an existing row to carry validation forward. Duplicate IDs and End-before-Start dates are highlighted. The importer supports up to 2,000 event rows and a 2 MB workbook.
 
-1. On `Sheet1`, enter one event per row in `EventsTable`. Use its blank Draft row; press Tab in the last cell to extend the table.
-2. Fill Event ID, Title, Category, Start, End, and Location. Description is optional. IDs must be unique and stay unchanged when an event is edited.
-3. Enter real Excel dates and times, such as `9/25/2026 5:30 PM`, in Milwaukee/Central time. Include the date in both Start and End. Do not use formulas in event fields; formula caches may not reflect recent edits.
-4. Choose **Published** to show the event. **Draft** or a blank Status hides it. Deleting a row removes the event. Keep the eight headings and `Sheet1` name unchanged.
-5. Let Excel save. After the Microsoft connection is activated, reload the website calendar after about a minute to see changes. Already-open browser tabs do not refresh themselves.
+## Preview and publish
 
-The entire Published list comes from this workbook after activation. The initial 20 website events are included. The later duplicate `gbm-1` ID has been changed to `gbm-1-2026-02-12`. An empty Published list deliberately clears the calendar.
+With `npm run dev` running, saves regenerate the calendar within a few seconds. Reload `/events` if needed. Invalid saves print an error in the terminal and keep the last valid local preview until corrected.
 
-Invalid Published rows stop that refresh. The site displays an unavailable message after its previous one-minute snapshot expires; server logs identify the offending row. Correct the entry or set it to Draft. Duplicate IDs and End-before-Start dates are also highlighted in Excel. Validation dropdowns are prepared for 221 event rows; copying an existing table row carries the validation forward. The reader supports up to 2,000 event rows and a 2 MB workbook.
+**Saving a shared file alone does not change the hosted website.** The webmaster must commit the updated workbook and push to `main`; the existing GitHub Actions workflow builds and deploys it to Cloudflare. Repository deployment secrets must already be configured. A separately shared copy must be brought back into `docs/Website-Events.xlsx` first.
 
-## One-time webmaster / UWM IT setup
+```sh
+npm run check
+npm test
+git add docs/Website-Events.xlsx
+git commit -m "Update calendar events"
+git push
+```
 
-The SharePoint editing link alone does not grant the deployed website permission to read the file. No Microsoft credentials or tenant permissions have been configured by this change.
+Wait for the deployment workflow to succeed, then reload the live calendar. Production Node servers and Worker previews also need a rebuild/redeploy for workbook changes.
 
-1. Register a single-tenant Microsoft Entra application for the SHPE website.
-2. Grant Microsoft Graph **application** permission `Sites.Selected`, with tenant admin consent. Then explicitly grant the app the **read** role on `/sites/SocietyofHispanicEngineers`. `Sites.Selected` consent alone grants no site access. Broad tenant-wide file permissions are unnecessary.
-3. Create the app credential using your organization's approved process. Store these as Cloudflare Worker secrets (never as `NEXT_PUBLIC_*` variables or in Git):
+## Implementation and validation
 
-   ```sh
-   npx wrangler secret put MICROSOFT_TENANT_ID
-   npx wrangler secret put MICROSOFT_CLIENT_ID
-   npx wrangler secret put MICROSOFT_CLIENT_SECRET
-   ```
+Development startup, type checking, and production builds generate `lib/generated/events.json` from the workbook. This generated file is ignored by Git and bundled into the server build, so Cloudflare needs no filesystem access at runtime. There is no hardcoded fallback list or remote source.
 
-4. The default path is `Website-Events.xlsx` in the site's default document library root (Shared Documents). If the workbook is in a subfolder, set `EVENTS_WORKBOOK_PATH` to the path relative to that library, for example `Website/Website-Events.xlsx`. Do not paste the `doc.aspx` URL into this setting.
-5. Deploy the website changes. Add a temporary event as Draft, verify it is hidden, change it to Published, wait one minute, and reload `/events`. Check its title, date, time, and calendar download. Set it back to Draft afterward.
-
-For local Node development, put those settings in gitignored `.env.local`. For the Worker preview, put them in gitignored `.dev.vars`. If all three Microsoft settings are absent, the current hardcoded calendar continues working. A partial configuration or an inaccessible workbook produces an unavailable message; it never silently falls back to the old list after activation.
-
-The server uses OAuth client credentials and Graph's file download endpoint, then reads the `.xlsx` on the server. It does not use the Graph Excel workbook APIs, which have different authentication restrictions. Tokens and validated events are cached only inside the server isolate, with a 60-second event lifetime. Keep client credentials rotated and update Worker secrets when they change.
-
-## Verification
+`npm run events:generate` validates the workbook independently. Invalid Published rows or a missing workbook fail the build; correct the reported row or change its Status to Draft. A failed build does not replace the previously deployed site.
 
 ```sh
 npm ci
-npm test
 npm run check
+npm test
 npm run cf:build
 ```
 
-Tests import the actual delivered workbook, validate publication and edits, exercise Microsoft fetch caching and errors with a mock, and check Central-time conversion at daylight-saving boundaries. A successful local test does not verify the real UWM tenant permission grant; run the live test in step 5 after activation.
-
-References: [Microsoft selected permissions](https://learn.microsoft.com/en-us/graph/permissions-selected-overview), [Graph file download](https://learn.microsoft.com/en-us/graph/api/driveitem-get-content), [client credentials flow](https://learn.microsoft.com/en-us/entra/identity-platform/v2-oauth2-client-creds-grant-flow).
+Tests exercise the actual workbook, generation failures, publication/edit/removal behavior, validation, and Central-time conversion.

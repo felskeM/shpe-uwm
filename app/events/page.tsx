@@ -2,20 +2,16 @@ import { Section } from "@/components/section";
 import CalendarShell from "@/components/calendar-shell";
 import { getCalendarEvents } from "@/lib/events-source";
 
-export default async function Page() {
-  let events;
-  try {
-    events = await getCalendarEvents();
-  } catch (error) {
-    console.error("Event calendar could not refresh:", error instanceof Error ? error.message : "Unknown error");
-  }
+export default function Page() {
+  const events = getCalendarEvents();
   const today = new Intl.DateTimeFormat("en-US", {
     timeZone: "America/Chicago",
     year: "numeric",
     month: "numeric",
   }).formatToParts(new Date());
   const initialYear = Number(today.find((part) => part.type === "year")?.value);
-  const initialMonth = Number(today.find((part) => part.type === "month")?.value) - 1;
+  const initialMonth =
+    Number(today.find((part) => part.type === "month")?.value) - 1;
 
   return (
     <Section
@@ -23,11 +19,11 @@ export default async function Page() {
       subtitle="Workshops, recruiting, socials, and outreach—all in one place."
     >
       <div className="max-w-6xl mx-auto">
-        {events ? <CalendarShell all={events} initialYear={initialYear} initialMonth={initialMonth} /> : (
-          <p role="status" className="rounded-2xl border-soft surface-navy-18 p-5">
-            The event calendar is temporarily unavailable. Please try again shortly or <a href="/contact" className="underline">contact us</a> for event details.
-          </p>
-        )}
+        <CalendarShell
+          all={events}
+          initialYear={initialYear}
+          initialMonth={initialMonth}
+        />
       </div>
       <div className="relative p-5 mt-8 rounded-2xl overflow-hidden border border-(--line)">
         <div
@@ -45,13 +41,17 @@ export default async function Page() {
         />
         <div className="absolute inset-0 rounded-2xl bg-black/25 backdrop-blur-sm mask-[radial-gradient(130%_100%_at_50%_50%,#000_70%,transparent_100%)]" />
         <div className="relative flex flex-col items-start justify-between gap-3 sm:flex-row sm:items-center">
-          <p className="text-sm text-white/90">Want to host a workshop or recruit with us?</p>
-          <a href="/contact" className="px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition text-white font-medium backdrop-blur-sm">
+          <p className="text-sm text-white/90">
+            Want to host a workshop or recruit with us?
+          </p>
+          <a
+            href="/contact"
+            className="px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition text-white font-medium backdrop-blur-sm"
+          >
             Partner with SHPE-UWM
           </a>
         </div>
       </div>
-
     </Section>
   );
 }

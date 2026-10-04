@@ -17,6 +17,8 @@ out
 dist
 
 # build artifacts
+lib/generated/
+docs/~$*.xlsx
 .open-next/*
 .wrangler/
 .dev.vars

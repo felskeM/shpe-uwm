@@ -47,7 +47,7 @@ The Worker preview listens on http://localhost:8771. OpenNext adapts the Next.js
 
 ## Configuration
 
-The calendar supports the shared UWM workbook `Website-Events.xlsx`. See [Excel event setup](docs/excel-events.md) for editor instructions and the one-time Microsoft read-only connection. Until configured, the existing event list remains active.
+The calendar reads only `docs/Website-Events.xlsx`. Saving it updates the local development preview; committing and pushing it to `main` updates the live site through deployment. See [Excel event instructions](docs/excel-events.md). No Microsoft connection is used.
 
 Set `RESEND_API_KEY` and `CONTACT_TO` in `.env.local` for the Node.js development server. For the Worker preview, use the gitignored `.dev.vars` file. Configure the production API key with `npx wrangler secret put RESEND_API_KEY`; the recipient is configured in `wrangler.toml`. Email requires a verified sending domain in Resend.
 
