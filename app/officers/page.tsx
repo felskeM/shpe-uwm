@@ -26,7 +26,7 @@ const officers = [
   {
     name: "Treasurer",
     person: "David Loeza",
-    src: "/images/DavidHeadshot.jpg",
+    src: "/images/DavidHeadshot.JPG",
     major: "BSE Mechanical Engineering",
     linkedin: "https://www.linkedin.com/in/david-alejandro-loeza/",
   },

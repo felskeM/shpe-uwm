@@ -6,7 +6,7 @@
 
 1. On `Sheet1`, enter one event per row in `EventsTable`. Use the blank Draft row; press Tab in the last cell to extend the table.
 2. Fill Event ID, Title, Category, Start, End, and Location. Description is optional. IDs must be unique and remain unchanged when editing an event.
-3. Enter real Excel dates and times, such as `9/25/2026 5:30 PM`, in Milwaukee/Central time. Include the date in both Start and End. Use values, not formulas.
+3. Enter real Excel dates and times, such as `9/25/2026 5:30 PM`, in Milwaukee/Central time. Include the date in both Start and End. Use values, not formulas. The workbook displays month/day/year: `10/02/26` means October 2; `02/10/26` means February 10. The calendar places each event on its **Start** date, even when End is in a later month.
 4. Set Status to **Published** to show the event. **Draft** or blank Status hides it. Deleting a row removes it; no Published rows clears the calendar.
 5. Save. Keep the eight headings and `Sheet1` name unchanged.
 
@@ -27,6 +27,10 @@ git push
 ```
 
 Wait for the deployment workflow to succeed, then reload the live calendar. Production Node servers and Worker previews also need a rebuild/redeploy for workbook changes.
+
+If an event seems missing, check its Status and Start date, then navigate to that month on the calendar. A successful deployment can contain an event that is outside the currently displayed month.
+
+The hosted server cannot monitor files on a member's computer. Automatic publishing from this local workbook requires a watcher on the computer holding the repository, with that computer awake, connected, and authenticated to GitHub. Sharing independent copies does not synchronize their edits into the repository.
 
 ## Implementation and validation
 
